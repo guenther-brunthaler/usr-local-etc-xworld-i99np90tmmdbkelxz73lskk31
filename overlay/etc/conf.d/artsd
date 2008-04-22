@@ -1,0 +1,2 @@
+# $Header: /etc/init.d/../conf.d/RCS/artsd,v 1.1 2005/08/17 15:20:47 root Exp $
+ARTS_ARGS="-a alsa -F 10 -S 16384 -s 60 -m artsmessage -c drkonqi -l 3 -f"

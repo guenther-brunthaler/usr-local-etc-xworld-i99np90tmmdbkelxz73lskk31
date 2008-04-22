@@ -1,0 +1,21 @@
+# 10-local-20-*.rules - Device-specific rules with no implied order.
+# (Shared among systems within the same administrative domain).
+#
+# $HeadURL$
+# $Author$
+# $Date$
+# $Revision$
+#
+# Renaming of some key names (the old names still work):
+# BUS -> SUBSYSTEMS, ID -> KERNELS, SYSFS -> ATTRS, DRIVER -> DRIVERS.
+# With the new key names, we have a more consistent and simpler scheme.
+# We can match the properties of the event device only, with: KERNEL,
+# SUBSYSTEM, ATTR, DRIVER. Or include all the parent devices in the match,
+# with: KERNELS, SUBSYSTEMS, ATTRS, DRIVERS. ID, BUS, SYSFS, DRIVER are no
+# longer mentioned in the man page and should be switched in the rule
+# files.
+
+# HUAWEI E220 USB 3G Modem
+#WORKS: SUBSYSTEM=="tty", SUBSYSTEMS=="usb-serial", PROGRAM="/lib/udev/seq_node.sh %r %k HUAWEI_E220_3G_Modem", NAME="%c", SYMLINK+="usb/%c", OWNER="operator", GROUP="powerusers", MODE="0660"
+#SUBSYSTEM=="tty", SUBSYSTEMS=="usb-serial", SYMLINK+="HU%n", PROGRAM="/dev/xx", PROGRAM="/lib/udev/seq_node.sh %r %k %c", NAME="%c", SYMLINK+="usb/%c", OWNER="operator", GROUP="powerusers", MODE="0660"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1003", PROGRAM="/lib/udev/seq_node.sh %r %k HUAWEI_E220_3G_Modem", NAME="%c", SYMLINK+="usb/%c", OWNER="operator", GROUP="powerusers", MODE="0660"

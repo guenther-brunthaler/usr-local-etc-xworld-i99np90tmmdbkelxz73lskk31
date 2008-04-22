@@ -1,0 +1,13 @@
+#! /bin/false
+
+# This is a symlink dummy target.
+# It does absolutely nothing.
+#
+# Use it to temporarily remove special optimizations
+# from some target, without a need to remove the
+# target's symlink completely.
+#
+# $HeadURL: /caches/xsvn/uxadm/trunk/etc/portage/env/default $
+# $Author: root $
+# $Date: 2006-12-02T15:46:05.935100Z $
+# $Revision: 472 $

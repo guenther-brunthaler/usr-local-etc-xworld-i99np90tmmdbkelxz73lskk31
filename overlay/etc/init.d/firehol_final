@@ -1,0 +1,46 @@
+#!/sbin/runscript
+# FireHOL final startup script.
+#
+# This loads the actual rules.
+# The initial "firehol" script just allows DNS lookup and nothing else.
+#
+# Written in 2006 by Guenther Brunthaler.
+# $Id: firehol_final,v 1.11 2006/05/18 23:43:43 root Exp root $
+
+
+opts="info load list"
+
+#depend() {
+#	before xinetd sshd httpd timesync
+#	need firehol net
+#}
+
+load() {
+	/usr/sbin/firehol /etc/firehol/firehol_final.conf start
+}
+
+start() {
+	ebegin "Adding FireHOL runlevel 2+ permissions"
+	load > /dev/null
+	eend $? 
+}
+
+stop() {
+	ebegin "Restoring FireHOL pre-runlevel 2 permissions"
+		/usr/sbin/firehol /etc/firehol/firehol.conf start > /dev/null
+	eend $?
+}
+
+restart() {
+	einfo "Restarting firewall"
+	svc_stop
+	svc_start
+}
+
+info() {
+	/sbin/iptables -vnL
+}
+
+list() {
+	info | /usr/bin/less
+}

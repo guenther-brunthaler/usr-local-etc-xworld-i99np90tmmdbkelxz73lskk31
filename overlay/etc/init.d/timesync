@@ -1,0 +1,50 @@
+#!/sbin/runscript
+# Synchronize time with internet NTP time servers.
+# $Header: /etc/init.d/RCS/timesync,v 1.3 2005/08/05 01:50:55 root Exp $
+
+opts="$opts resync silentsync"
+
+depend() {
+	need net
+}
+
+silentsync() {
+	local servers line rc
+	[ "$UDP" ] && servers="udp $UDP"
+	[ "$TCP" ] && servers="$servers tcp $TCP"
+	netdate -l $TIMEOUT $servers &> /var/log/timesync
+	rc=$(
+		egrep -v '^[^ :]+[ ]+[-+.0-9]+[ ]+' /var/log/timesync | (
+			rc=0
+			while read line; do
+				logger -p local0.warning -t timesync "$line"
+				rc=1
+			done
+			echo $rc
+		)
+	)
+	return $rc
+}
+
+resync() {
+	ebegin "Synchronizing with time servers now"
+	silentsync
+	eend $?
+}
+
+start() {
+	ebegin "Starting periodic time server synchronization"
+	touch /var/run/ntp-resync-active
+	eend $?
+	resync
+}
+
+stop() {
+	ebegin "Disabling periodic time server synchronization"
+	if [ -f /var/run/ntp-resync-active ]; then
+		rm /var/run/ntp-resync-active
+	else
+		eerror "Time resynchronization not active!"
+	fi
+	eend $?
+}

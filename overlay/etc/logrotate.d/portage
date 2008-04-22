@@ -1,0 +1,4 @@
+# $Header: /etc/logrotate.d/RCS/portage,v 1.3 2005/07/01 14:26:42 root Exp root $
+#
+
+/var/log/emerge.log {}

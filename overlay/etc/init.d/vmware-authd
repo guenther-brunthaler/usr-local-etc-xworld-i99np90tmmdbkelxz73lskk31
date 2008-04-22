@@ -1,0 +1,27 @@
+#!/sbin/runscript
+
+SERVER_SYMLINK="/var/run/vmware/vmware%2Dserverd"
+
+depend() {
+	need localmount xinetd
+}
+
+start() {
+	ebegin "Starting VMWare console server support"
+	eend 0
+}
+
+notrunning() {
+	ebegin "Stopping VMware console server support"
+}
+
+stop() {
+	test -e "$SERVER_SYMLINK" || { notrunning; return; }
+	local PID="`readlink \"$SERVER_SYMLINK\"`"
+	PID="${PID##*/}"
+	test -e "/proc/$PID" || { notrunning; return; }
+	ebegin "Stopping VMware console server and support"
+	kill "$PID" || { eend $?; return; }
+	while [ -e "/proc/$PID" ]; do sleep 1; done
+	eend 0
+}

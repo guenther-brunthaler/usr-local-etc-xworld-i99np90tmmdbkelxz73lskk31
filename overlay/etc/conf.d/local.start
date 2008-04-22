@@ -1,0 +1,11 @@
+# /etc/conf.d/local.start
+
+# This is a good place to load any misc programs
+# on startup (use &>/dev/null to hide output)
+
+
+# Instead of adding actions directly here,
+# we call script snippets that match the local system.
+# The snippets should take care not to pollute the script namespace!
+
+. /usr/local/bin/xworld/functions/system-snippet.sh /usr/local/etc/conf.d/local.start

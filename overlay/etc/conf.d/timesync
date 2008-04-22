@@ -1,0 +1,14 @@
+# Time Server Synchronization Parameters.
+#
+# $Header: /etc/init.d/../conf.d/RCS/timesync,v 1.1 2005/08/05 01:24:37 root Exp $
+
+# Maximum number of seconds
+TIMEOUT=10
+
+# NTP Servers using UDP, best first.
+# UDP servers will be assumed to be better due to
+# lower latecy.
+UDP="ts2.univie.ac.at ntp1.fau.de ptbtime1.ptb.de"
+
+# NTP Servers using TCP, best first.
+TCP="ts1.univie.ac.at time.uni-ak.ac.at"

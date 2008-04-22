@@ -1,0 +1,6 @@
+PRELINK_PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt:/opt"
+# The following line used to be split into several lines.
+# However, due to multiple incidents when Portage was unable to
+# parse the file correctly (not always!), I finally gave up and
+# merged it back into a single line.
+PRELINK_PATH_MASK="/opt/doc:/opt/include:/opt/info:/opt/man:/usr/local/opt/doc:/usr/local/opt/include:/usr/local/opt/info:/usr/local/opt/man:/usr/kde"

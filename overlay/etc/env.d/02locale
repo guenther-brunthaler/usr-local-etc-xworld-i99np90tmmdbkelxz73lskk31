@@ -1,0 +1,22 @@
+# First of all: Let's assume we want to use the Latin-9 (a.k.a. ISO-8859-15) character set system-wide.
+# Latin-9 is mostly identical to Latin-1, but also includes the 'Euro' currency symbol.
+
+# $LANG provides a default value which is used by all $LC_* variables that have
+# not been defined.
+# Note that specific $LC_* options override the default from $LANG,
+# and that $LC_ALL overrides $LANG as well as any individual $LC_* settings.
+# POSIX says $LANG cannot contain @-modifier.
+# But I just cannot believe this also holds for Linux,
+# because without that modifier even de_AT.ISO-8859-15 will use "EUR" instead of the Euro-symbol.
+LANG="de_AT.utf8"
+
+# Used by catgets/gettext & friends only; overrides LANG and locale settings.
+LANGUAGE="de_AT.utf8:de_DE.utf8:en_US.utf8"
+
+# Search path template for translation catalogs.
+# %L is the effective value of LC_MESSAGES as reported by 'locale'.
+# %N is name of catalog file.
+NLSPATH="/usr/share/locale/%L/%N:/usr/share/locale/%L/LC_MESSAGES/%N"
+
+# And again for GNOME Desktop Manager.
+GDM_LANG="de_AT.utf8"

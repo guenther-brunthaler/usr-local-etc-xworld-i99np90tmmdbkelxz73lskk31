@@ -1,0 +1,20 @@
+# 10-local-20-*.rules - Device-specific rules with no implied order.
+# (Shared among systems within the same administrative domain).
+#
+# $HeadURL: /caches/xsvn/uxadm/trunk/etc/local/udev/rules.d/10-local-20-samsung_ml_2010_printer.rules $
+# $Author: root $
+# $Date: 2007-08-23T11:34:26.956976Z $
+# $Revision: 911 $
+#
+# Renaming of some key names (the old names still work):
+# BUS -> SUBSYSTEMS, ID -> KERNELS, SYSFS -> ATTRS, DRIVER -> DRIVERS.
+# With the new key names, we have a more consistent and simpler scheme.
+# We can match the properties of the event device only, with: KERNEL,
+# SUBSYSTEM, ATTR, DRIVER. Or include all the parent devices in the match,
+# with: KERNELS, SUBSYSTEMS, ATTRS, DRIVERS. ID, BUS, SYSFS, DRIVER are no
+# longer mentioned in the man page and should be switched in the rule
+# files.
+
+# SAMSUNG ML-2010 USB 1.1 Printer
+# WORKS: SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Samsung", ATTRS{product}=="Samsung ML-2010", NAME="%k", SYMLINK+="usb/Samsung_ML-2010_%n", OWNER="operator", MODE="0660", GROUP="usb"
+KERNEL=="lp[0-9]*", SUBSYSTEM=="usb", ATTRS{manufacturer}=="Samsung", ATTRS{product}=="Samsung ML-2010", PROGRAM="/usr/local/libexec/udev/seq_node.sh %r %k Samsung_ML-2010_Printer", NAME="%c", SYMLINK+="usb/%c", OWNER="operator", GROUP="usb", MODE="0660"

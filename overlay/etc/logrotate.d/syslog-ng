@@ -1,0 +1,134 @@
+# $Header: /etc/logrotate.d/RCS/syslog-ng,v 1.3 2005/07/16 01:21:40 root Exp root $
+#
+# Syslog-ng logrotate snippet for Gentoo Linux
+# contributed by Michael Sterrett
+#
+
+/var/log/messages {
+	sharedscripts
+	rotate 1
+	nocompress
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/debuginfo {
+	sharedscripts
+	rotate 1
+	nocompress
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/local0admin {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/local2sulog {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/local3audit {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/local4exposure {
+	sharedscripts
+	prerotate
+		nukeany() {
+			local N SHRED
+			test -f $1 || return
+			logger -p syslog.notice -t logrotate -i "Shredding old logfile \"$1\""
+			SHRED="/usr/bin/shred"
+			# We are running on a logged filesystem...
+			for ((N= 8; N--; )); do
+				$SHRED -n1 $1
+				# Let's hope sync writes back in-place!
+				sync
+			done
+			$SHRED -n0 -z $1
+			sync
+		}
+		nukeany /var/log/archive/local4exposure.1
+		unset -f nukeany
+	endscript
+	rotate 1
+	nocompress
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/local5iptables {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/local6ids {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/kernel {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/logger {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/cron {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/auth {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/daemon {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/critical {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}
+
+/var/log/master {
+	sharedscripts
+	postrotate
+		/etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+	endscript
+}

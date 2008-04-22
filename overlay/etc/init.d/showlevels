@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# $Header: /etc/init.d/RCS/showlevels,v 1.6 2005/08/13 11:41:54 root Exp root $
+
+depend() {
+	before xdm
+}
+
+start() {
+	/sbin/telinit b &> /dev/null
+}
+
+stop() {
+	true
+}

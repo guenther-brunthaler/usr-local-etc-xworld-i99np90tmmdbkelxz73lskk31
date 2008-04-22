@@ -1,0 +1,26 @@
+#! /bin/sh
+find /etc/env.d -mindepth 1 -maxdepth 1 -type l | while read SYMLINK; do
+	T=`readlink "$SYMLINK"`
+	if [ "x${T#/}" = "x$T" ]; then
+		T=`dirname "$SYMLINK"`/$T
+	fi
+	if [ ! -e "$T" ]; then
+		echo "Removing dead symlink '$SYMLINK'."
+		rm "$SYMLINK"
+	fi
+done
+HOSTNAME=`hostname`
+find /etc/env.d/host-variants \
+	-mindepth 1 -maxdepth 1 -type f \
+	-name '99local-*-'$HOSTNAME \
+| while read SNIPPET; do
+	GPARENT=${SNIPPET%/*}; GPARENT=${GPARENT%/*}
+	SNIPPET=${SNIPPET#$GPARENT/}; GPBNAME=${SNIPPET%%/*}
+	SYMLINK=${SNIPPET#$GPBNAME/}; SYMLINK=$GPARENT/${SYMLINK%-$HOSTNAME}
+	if [ ! -L "$SYMLINK" ] \
+		|| [ "x`readlink "$SYMLINK"`" != "x$SNIPPET" ]
+	then
+		echo "Creating symlink '$SYMLINK' to '$SNIPPET'!"
+		ln -snf "$SNIPPET" "$SYMLINK"
+	fi
+done

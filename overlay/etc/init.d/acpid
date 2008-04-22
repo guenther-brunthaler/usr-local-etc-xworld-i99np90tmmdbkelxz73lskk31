@@ -1,0 +1,55 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /etc/init.d/RCS/acpid,v 1.7 2006/02/28 10:04:33 root Exp root $
+
+opts="${opts} reload"
+
+depend() {
+	need localmount
+}
+
+needed_modules() {
+	local sw mod rc NEEDED
+	NEEDED=""
+	[ $1 == unload ] && sw=-r
+	rc=0
+	for mod in $NEEDED; do
+		/sbin/modprobe $sw $mod || {
+			eerror "Could not $1 module \"$mod\""
+			rc=1
+		}
+	done
+	return $rc
+}
+
+checkconfig() {
+	if [ ! -e /proc/acpi ]; then
+		eerror "ACPI support has not been compiled into the kernel"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting acpid"
+	needed_modules load || return 1
+	start-stop-daemon --start --pidfile /var/run/acpid.pid --exec /usr/sbin/acpid -- \
+		-c /etc/acpi/events
+	/bin/pidof -s /usr/sbin/acpid > /var/run/acpid.pid
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping acpid"
+	start-stop-daemon --stop --pidfile /var/run/acpid.pid --exec /usr/sbin/acpid
+	rm /var/run/acpid.socket
+	needed_modules unload
+	eend ${?}
+}
+
+reload() {
+	ebegin "Reloading acpid configuration"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/acpid --signal HUP
+	eend ${?}
+}

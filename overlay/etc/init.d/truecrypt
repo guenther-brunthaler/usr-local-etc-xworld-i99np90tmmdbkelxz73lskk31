@@ -1,0 +1,24 @@
+#!/sbin/runscript
+
+LSMOD="/sbin/lsmod"
+CUT="/usr/bin/cut"
+GREP="/bin/grep"
+TRUECRYPT="/usr/local/sbin/truecrypt"
+
+depend() {
+	after localmount
+	before pg_autovacuum postgresql
+}
+
+start() {
+	ebegin "Initializing truecrypt"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Cleaning up truecrypt"
+	if $LSMOD | $CUT -d' ' -f1 | $GREP truecrypt > /dev/null; then
+		$TRUECRYPT -d
+	fi
+	eend $?
+}

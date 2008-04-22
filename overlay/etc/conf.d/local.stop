@@ -1,0 +1,14 @@
+# /etc/conf.d/local.stop
+
+# This is a good place to unload any misc.
+# programs you started above.
+# For example, if you are using OSS and have
+# "/usr/local/bin/soundon" above, put
+# "/usr/local/bin/soundoff" here.
+
+
+# Instead of adding actions directly here,
+# we call script snippets that match the local system.
+# The snippets should take care not to pollute the script namespace!
+
+. /usr/local/bin/xworld/functions/system-snippet.sh /usr/local/etc/conf.d/local.stop

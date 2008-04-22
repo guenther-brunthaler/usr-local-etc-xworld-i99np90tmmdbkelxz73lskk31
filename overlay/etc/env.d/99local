@@ -1,0 +1,11 @@
+# IMPORTANT: The whole directory containing this file is part
+# of the $CONFIG_PROTECT_MASK, i. e all files can be overwritten
+# without any notice at any system update.
+#
+# Only this file is safe!
+#
+# The previous contents of this file has been
+# moved into separate files named "99local-*".
+
+
+CONFIG_PROTECT_MASK="/etc/env.d/host-variants/"

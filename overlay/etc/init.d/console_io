@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# This is the right place for scripts that
+# 1.) Need to be run before xdm (if xdm will be run).
+# 2.) Need console I/O and interactive user response.
+#
+# Don't add the script code directly here.
+# Instead, put scripts in the appropriate snippet directories.
+# They will be run then automatically.
+#
+# $HeadURL: /caches/xsvn/trunk/etc/init.d/console_io $
+# $Author: root $
+# $Date: 2006-08-23T08:15:12.201931Z $
+# $Revision: 290 $
+
+
+depend() {
+	after localmount
+	before xdm
+	use truecrypt
+}
+
+
+start() {
+	ebegin "Running console-based startup scripts"
+	. /usr/local/bin/xworld/functions/system-snippet.sh \
+		/usr/local/etc/conf.d/console_io.start
+	eend ${?}
+}
+
+
+stop() {
+	ebegin "Running console-based clean-up scripts"
+	. /usr/local/bin/xworld/functions/system-snippet.sh \
+		/usr/local/etc/conf.d/console_io.stop
+	eend $?
+}
