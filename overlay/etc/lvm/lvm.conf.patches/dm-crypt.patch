@@ -1,0 +1,17 @@
+Prefer crypto-related devices over alternative device names
+
+This especially applies to /dev/mapper/* devices.
+
+Index: lvm/lvm.conf
+===================================================================
+--- lvm.orig/lvm.conf
++++ lvm/lvm.conf
+@@ -23,7 +23,7 @@ devices {
+     # same block device and the tools need to display a name for device,
+     # all the pathnames are matched against each item in the following
+     # list of regular expressions in turn and the first match is used.
+-    preferred_names = [ ]
++    preferred_names = [ "^/dev/mapper/truecrypt" ]
+ 
+     # preferred_names = [ "^/dev/mpath/", "^/dev/[hs]d" ]
+ 
