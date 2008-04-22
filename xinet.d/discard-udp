@@ -1,0 +1,12 @@
+# This is the configuration for the udp/dgram discard service.
+
+service discard
+{
+# This is for quick on or off of the service
+	disable		= no
+	id		= discard-dgram
+	type		= INTERNAL
+	wait		= yes
+	socket_type	= dgram
+	only_from       = 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12 169.254.0.0/16 127.0.0.1
+}

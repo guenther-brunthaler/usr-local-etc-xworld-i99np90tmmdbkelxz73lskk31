@@ -1,0 +1,13 @@
+service telnet
+{
+	flags           = REUSE
+	# See RFC 1918.
+	only_from	= 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12 169.254.0.0/16 127.0.0.1
+	socket_type     = stream
+	wait            = no
+	user            = root
+	server          = /usr/sbin/in.telnetd
+	log_on_success += DURATION
+	log_on_failure += USERID
+	disable         = no
+}

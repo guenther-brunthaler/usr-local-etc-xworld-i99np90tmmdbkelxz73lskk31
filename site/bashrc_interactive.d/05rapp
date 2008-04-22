@@ -1,0 +1,13 @@
+# Run an application from the home directory in the
+# background with any output redirected to /dev/null.
+# If the -l or --local option is specified, the
+# local current directory is not changed.
+
+rapp() {
+	if [ ${#@} -eq 1 ]; then
+		(cd; "$@" &> /dev/null)&
+	else
+		test "$1" = "-l" -o "$1" = "--local" && shift
+		"$@" &> /dev/null &
+	fi
+}

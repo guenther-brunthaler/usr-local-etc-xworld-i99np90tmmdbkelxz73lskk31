@@ -1,0 +1,14 @@
+# description: The VMware remote access authentification daemon
+# This is a DUMMY. It is used to disable this service.
+service vmware-authd
+{
+    disable         = yes
+    port            = 902
+    bind            = localhost
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = root
+    server          = /bin/false
+    type            = unlisted
+}

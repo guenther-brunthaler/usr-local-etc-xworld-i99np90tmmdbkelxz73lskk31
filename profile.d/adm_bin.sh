@@ -1,0 +1,1 @@
+../../../share/xworld/local/etc/profile.d/adm_bin.sh

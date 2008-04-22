@@ -1,0 +1,14 @@
+# description: The netkit ftp daemon with optional SSL support.
+
+service ftp
+{
+	socket_type	= stream
+	# See RFC 1918.
+	only_from	= 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12 169.254.0.0/16 127.0.0.1
+	protocol	= tcp
+	wait		= no
+	user		= root
+	server		= /usr/bin/ftpd
+	server_args	= -A -l -l
+	disable		= no
+}

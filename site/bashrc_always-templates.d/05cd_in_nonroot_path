@@ -1,0 +1,7 @@
+# Adds the current directory at the end of the $PATH
+# but only if the current user is not the superuser.
+
+
+if [ "$EUID" != "0" ] && [ "$USER" != "root" ]; then
+	PATH="$PATH${PATH:+:}."
+fi

@@ -1,0 +1,14 @@
+#!/bin/sh
+# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/reclock.cron $
+# $Author: root(xtreme) $
+# $Date: 2006-08-23T03:52:22.370203Z $
+# $Revision: 220 $
+
+
+CLOCK="/etc/init.d/clock"
+
+
+if "$CLOCK" --quiet status; then
+	"$CLOCK" --quiet pause > /dev/null
+	"$CLOCK" --quiet start
+fi

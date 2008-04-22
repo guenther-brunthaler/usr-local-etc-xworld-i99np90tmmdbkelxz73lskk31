@@ -1,0 +1,117 @@
+#!/bin/false
+# (This file should be *sourced*, not executed.)
+#
+# Powerful plugin-extendible shell startup script
+#
+# Source this file from your .bashrc
+# if you like the features provided by it.
+#
+# $Id: bash-goodies,v 1.13 2006/07/28 01:35:22 root Exp root $
+
+# This script is intended to be sourced from within "$(HOME).bashrc"
+# (and, indirectly, also from "$(HOME)/.bash_profile").
+#
+# It operates in a simple yet powerful because highly extendible way:
+#
+# * For setup shell code to be always executed, it sources the contents
+#   of the "/usr/local/etc/site/bashrc_always.d" directory first. This
+#   contains system-wide presets. Then it also sources either the contents
+#   of file "$(HOME)/.bashrc_always" (if it exists and is a file).
+#   Or, if "$(HOME)/.bashrc_always" exists and is a directory,
+#   all regular files in this directory will be sourced as setup-scripts
+#   in alphabetical order.
+# * For setup shell code that only makes sense for interactive shells,
+#   such as "alias", it subsequently sources the contents of the
+#   "/usr/local/etc/site/bashrc_interactive.d" directory
+#   for such interactive shells.
+#   This contains system-wide presets.
+#   Then it also sources either the contents of file
+#   "$(HOME)/.bashrc_interactive" (if it exists and is a file).
+#   Or, if "$(HOME)/.bashrc_interactive" exists and is a directory,
+#   all regular files in this directory will be sourced as setup-scripts
+#   in alphabetical order.
+#
+# This script can also be manually sourced; in this case the option -v
+# can also be specified for verbose operation. Useful for debugging.
+
+warn() {
+	echo "WARNING: $1!" > /dev/stderr
+}
+
+include_file() {
+	test "$OPT_VERBOSE" && echo "Including startup-plugin file '$1'."
+	. "$1" || warn "Startup-plugin \"$1\" returned $?"
+}
+
+include_dir() {
+	local FILE
+	test "$OPT_VERBOSE" && echo "Including startup-plugin directory '$1'."
+	for FILE in $1/*; do
+		if [[ ! $FILE =~ '\.[^./]+$' ]]; then
+			test -f "$FILE" && include_file "$FILE"
+		fi
+	done
+}
+
+include_system_plugins(){
+	local INC_DIR="/usr/local/etc/site/$1"
+	test -d "$INC_DIR" || {
+		warn "Missing directory \"$INC_DIR\""
+		return
+	}
+	include_dir "$INC_DIR"
+}
+
+include_user_plugins() {
+	test -n "$HOME" || return
+	local INC="$HOME/$1"
+	test -e "$INC" || return
+	test -f "$INC" && { include_file "$INC"; return; }
+	test -d "$INC" && { include_dir "$INC"; return; }
+	warn "Cannot process \"$INC\" for shell startup"
+}
+
+cleanup_most() {
+	# Cleans up everything but itself.
+	unset OPT_VERBOSE NEXT_OPT
+	unset -f warn include_file include_dir
+	unset -f include_system_plugins include_user_plugins
+	OPTIND=1
+}
+
+OPT_VERBOSE=
+while getopts v NEXT_OPT; do
+	case "$NEXT_OPT" in
+		v) OPT_VERBOSE=1;;
+		*)
+			cleanup_most
+			unset -f cleanup_most
+			echo "Terminating."
+			return 1
+	esac
+done
+
+# Source goodies to be used always.
+include_system_plugins "bashrc_always.d"
+
+# Useful user macros for every case.
+include_user_plugins ".bashrc_always"
+
+if [[ $- != *i* ]]; then
+	# Shell is non-interactive. All done.
+	test "$OPT_VERBOSE" && echo "Shell is non-interactive."
+	cleanup_most
+	unset -f cleanup_most
+	return
+fi
+
+test "$OPT_VERBOSE" && echo "Shell is Interactive."
+
+# Source goodies to be used only for interactive shells.
+include_system_plugins "bashrc_interactive.d"
+
+# Finally, allow the user to overwrite all those settings!
+include_user_plugins ".bashrc_interactive"
+
+cleanup_most
+unset -f cleanup_most

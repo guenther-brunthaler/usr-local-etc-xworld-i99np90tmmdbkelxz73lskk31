@@ -1,0 +1,39 @@
+#!/bin/sh
+# $Header: /usr/local/etc/X11/xdm/RCS/X_0,v 1.5 2006/07/26 12:11:09 root Exp root $
+#
+# Actually, this would belong to the
+#
+# :0 local /usr/bin/X ...
+#
+# line of /usr/lib/X11/xdm/Xservers file, but xdm seems to crash when the
+# command line gets that long.
+#
+# So, let's call this script instead, which has a rather short name
+# but can internally exec a command line as long as necessary.
+#
+# xdm launches 2 child processes and keeps them running:
+# The first process is the X server itself,
+# the second process displays the login widget and
+# finally runs the session manager / windows manager.
+#
+# When the second process terminates, xdm resets the X server
+# and launches the second process again.
+#
+# Important: xdm also adds some arguments when calling this script;
+# it is important to put those through.
+#
+# Also, the same X server startup options are used as for startx,
+# except that xdm will also pass us a -auth option which we will
+# simply pass through.
+#
+# Especially important: The "-nolisten tcp" option which keeps
+# X from listening for X11 connections on port 6000 an all interfaces.
+# With this option, X only listens on the loopback interface, which
+# is sufficient for local or x11vnc connections.
+
+# -nolisten tcp: See above.
+# -br: Black root window background instead of standard weave pattern.
+# -deferglyphs 16: Loading of 16-bit fonts should be deferred.
+# vt7: Passed through (used for specifying virtual console 7 for X).
+# $*: Also passed through, will usually be "-auth <authfile>".
+exec /usr/bin/X -nolisten tcp -br -deferglyphs 16 vt7 $*

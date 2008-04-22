@@ -1,0 +1,14 @@
+service smtp
+{
+	protocol	= tcp
+	socket_type     = stream
+	wait            = no
+	user            = root
+	only_from       = 0.0.0.0
+	bind            = localhost
+	server          = /usr/sbin/exim
+	server_args     =  -bs
+	log_on_success += DURATION
+	log_on_failure += USERID
+	disable         = no
+}

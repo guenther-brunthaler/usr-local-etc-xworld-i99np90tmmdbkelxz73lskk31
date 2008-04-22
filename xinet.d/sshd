@@ -1,0 +1,15 @@
+service ssh
+{
+	type		= UNLISTED
+	port		= 875
+	protocol	= tcp
+	socket_type     = stream
+	wait            = no
+	user            = root
+	only_from       = 0.0.0.0
+	server          = /usr/sbin/sshd
+	server_args     =  -i
+	log_on_success += DURATION
+	log_on_failure += USERID
+	disable         = no
+}

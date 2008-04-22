@@ -1,0 +1,13 @@
+# description: The VMware remote access authentification daemon
+service vmware-authd-proxy
+{
+    disable         = no
+    port            = 902
+    bind            = localhost
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = root
+    server          = /usr/local/sbin/vmware-authd-proxy
+    type            = unlisted
+}

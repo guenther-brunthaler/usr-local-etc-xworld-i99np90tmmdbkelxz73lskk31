@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# Run this as cron job as a daily or hourly job,
+# depending on the co-domain of the configured UPDATE_HOURS.
+#
+# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/hourly/clamav-update.cron $
+# $Author: root(xtreme) $
+# $Date: 2006-08-23T03:52:22.370203Z $
+# $Revision: 220 $
+
+# Maximum age for the clamav antivirus signature files
+# before an update is attempted when this cron job is run.
+UPDATE_HOURS=8
+
+# Where the updates should be saved to.
+SIGNATURES_DIR=/var/lib/clamav
+
+OPT_VERBOSE=
+while getopts vu: OPT; do
+	case $OPT in
+		v) OPT_VERBOSE=1;;
+		u) UPDATE_HOURS=$OPTARG;;
+		?) exit 1;;
+	esac
+done
+test $(find "$SIGNATURES_DIR" -type f -mmin -$(($UPDATE_HOURS * 60)) | wc -l) -gt 0 && exit
+if /sbin/route | /bin/grep ^default > /dev/null; then
+	test "$OPT_VERBOSE" && /usr/bin/logger -p local6.info -t clamav-update 'Updating clamav'
+	/usr/bin/freshclam --datadir="$SIGNATURES_DIR" &> /dev/null
+else
+	/usr/bin/logger -p local6.warning -t clamav-update 'Internet connection is down - skipping update'
+fi

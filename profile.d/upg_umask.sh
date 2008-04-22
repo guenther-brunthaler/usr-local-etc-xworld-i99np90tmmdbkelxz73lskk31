@@ -1,0 +1,1 @@
+../../../share/xworld/local/etc/profile.d/upg_umask.sh

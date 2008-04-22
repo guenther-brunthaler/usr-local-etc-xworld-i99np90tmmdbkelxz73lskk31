@@ -1,0 +1,44 @@
+#!/bin/sh
+# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/esync.cron $
+# $Author: root $
+# $Date: 2007-08-06T20:10:37.817962Z $
+# $Revision: 880 $
+
+
+log() {
+	local severity=$1
+	shift
+	logger -p daemon.$severity -t esync.cron "$*"
+}
+
+
+# $1: minutes
+# $2: pathname
+# Returns true if <pathname> is older than <minutes>.
+older() {
+	test $(
+		find "$(dirname "$2")" -maxdepth 1 \
+			-name "$(basename "$2")" -mmin +"$1" \
+		| wc -l
+	) = 1
+}
+
+
+GLSACHECK=
+older 45 /var/log/emerge.log && GLSACHECK=1
+older 1440 /var/log/emerge-sync.log || exit 0
+emerge --sync --nocolor --nospinner --quiet > /dev/null 2>& 1 || {
+	log err 'Portage tree synchronization failed!'
+	exit 1
+}
+log info 'Portage tree has been updated'
+update-eix --quiet > /dev/null 2>& 1 || {
+	log err 'Error updating eix database!'
+	exit 1
+}
+log info 'eix index has been updated'
+test -n "$GLSACHECK" || exit 0
+log info 'Running glsa-check for incorporating any security updates'
+glsa-check --fix affected > /dev/null 2>& 1 || {
+	log warning 'Failure incorporating GLSA fixes'
+}

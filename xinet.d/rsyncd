@@ -1,0 +1,14 @@
+service rsyncd
+{
+	type		= UNLISTED
+	disable		= no
+	socket_type	= stream
+	wait		= no
+	user		= root
+	protocol	= tcp
+	port		= 873
+        log_on_success += DURATION
+	only_from	= 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12 169.254.0.0/16 127.0.0.1
+	server		= /usr/bin/rsync
+	server_args	=  rsyncd --daemon
+}

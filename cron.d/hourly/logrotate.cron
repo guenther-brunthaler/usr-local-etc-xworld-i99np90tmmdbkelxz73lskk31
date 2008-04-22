@@ -1,0 +1,9 @@
+#!/bin/sh
+# Check whether logs need rotating and rotate them if necessary.
+#
+# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/hourly/logrotate.cron $
+# $Author: root(xtreme) $
+# $Date: 2006-08-23T03:52:22.370203Z $
+# $Revision: 220 $
+
+/usr/sbin/logrotate /etc/logrotate.conf

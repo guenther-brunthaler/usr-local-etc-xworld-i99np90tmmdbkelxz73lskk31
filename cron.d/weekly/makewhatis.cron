@@ -1,0 +1,9 @@
+#!/bin/sh
+# Update the search database for manpages.
+#
+# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/weekly/makewhatis.cron $
+# $Author: root $
+# $Date: 2007-04-03T04:23:35.467052Z $
+# $Revision: 599 $
+
+exec nice makewhatis -u

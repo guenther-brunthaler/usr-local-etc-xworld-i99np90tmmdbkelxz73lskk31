@@ -1,0 +1,6 @@
+# If the user has a "~/bin"-directory, prepend it to the user's $PATH unless already there.
+[[
+	"$HOME" && -d /home && -d /home/shared && -d /home/shared/local
+	&& -e /home/shared/local/bin &&
+	"`stat -Lc '%A %u %g' /home/shared/local/bin`" == 'drwxr-s--- 0 412'
+]] && export PATH="$PATH:/home/shared/local/bin" || true

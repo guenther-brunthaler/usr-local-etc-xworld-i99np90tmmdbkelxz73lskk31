@@ -1,0 +1,11 @@
+# This is the configuration for the tcp/stream discard service.
+
+service discard
+{
+	disable		= no
+	id		= discard-stream
+	type		= INTERNAL
+	wait		= no
+	socket_type	= stream
+	only_from       = 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12 169.254.0.0/16 127.0.0.1
+}
