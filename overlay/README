@@ -1,0 +1,55 @@
+This directory tree contains shared patches
+for the XWORLD administrative realm.
+
+The directory containing this README file corresponds to the
+top-level (root) directory of the filesystem hierarchy.
+
+The verious subdirectories of this directory tree may contain
+arbitrary files or *.patches subdirectories.
+
+The arbitrary files will be used as overlays for the live
+directory tree, i. e. they will be copied out overwriting any
+existing local files of the same name when overlay processing is
+invoked by the administrator.
+
+The *.patches directories are special, however. They are assumed
+to contain a collection of 'quilt' patches each; i. e. a list of
+incremental patches and a "series" file specifying the order.
+
+The "series" file can be missing if a "series.guards" file
+exists instead. In this case, a machine-specific "series" file
+will be constructed from the machine-independent "series.guards"
+file by running
+
+$ guards symbol ... < series.guards > series
+
+where 'symbol' refers to the fully qualified hostname of the
+current machine and all of its superdomains.
+
+For instance, if the current machine has the FQDN
+"gateway2.mars.hyperspace.example.com", then the following
+symbols will be defined:
+
+* gateway2.mars.hyperspace.example.com
+* mars.hyperspace.example.com
+* hyperspace.example.com
+* example.com
+* com
+
+If there exists a "series.guards" file, the "series" file is a
+derived file and must be excluded from version control.
+
+The patches in a *.patches directory will be applied from the
+parent directory of the *.patches directory with "patch -p1".
+All files modified by the patches must also be present in the
+directory tree (although as plain files - and only those
+versions of the files before any of the patches have been
+applied).
+
+Note that the patches should never be applied directly within
+the overlay directory tree, but rather in the live directory
+tree when the overlay is processed.
+
+The overall idea is to generate machine-specific files by
+distributing shared files in the overlay tree and apply
+host-specific patches where necessary.

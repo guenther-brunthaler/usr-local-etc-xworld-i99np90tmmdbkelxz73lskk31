@@ -1,0 +1,16 @@
+This contains the host-specific changes
+for "host xtreme.xworld.mine.nu".
+
+Index: squid/squid.conf
+===================================================================
+--- squid.orig/squid.conf
++++ squid/squid.conf
+@@ -935,6 +935,8 @@ http_access deny all
+ # Squid normally listens to port 3128
+ #http_port 3128
+ http_port localhost:8080
++http_port xtreme.xworld.local:8080
++http_port 192.168.86.1:8080
+ 
+ #  TAG: https_port
+ #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]

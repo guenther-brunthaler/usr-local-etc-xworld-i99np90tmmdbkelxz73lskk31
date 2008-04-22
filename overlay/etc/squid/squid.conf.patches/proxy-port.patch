@@ -1,0 +1,16 @@
+Changes the Squid default proxy port to a realm-specific value.
+
+Index: squid/squid.conf
+===================================================================
+--- squid.orig/squid.conf
++++ squid/squid.conf
+@@ -932,7 +932,8 @@ http_access deny all
+ #	visible on the internal address.
+ #
+ # Squid normally listens to port 3128
+-http_port 3128
++#http_port 3128
++http_port localhost:8080
+ 
+ #  TAG: https_port
+ #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]

@@ -1,0 +1,20 @@
+# List of patches to be applied.
+#
+# In order to create the "series" file for quilt, run
+# $ guards _FQDN_ < series.guards > series
+#
+# In order to check this file for consistency, run
+# $ guards --check < series.guards
+
+# List of patches to be always included.
+lan.patch
+no_icp-access.patch
+proxy-port.patch
+cache-dir.patch
+ssh-ports.patch
+
+# Host-dependent patches.
++xtreme.xworld.mine.nu host_specific_xtreme.patch
+
+# Files that are not patches.
+- series.guards series
