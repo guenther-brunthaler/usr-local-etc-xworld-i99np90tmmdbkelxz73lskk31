@@ -1,0 +1,43 @@
+Changes options for running ntp on the local host,
+and additionally allow time queries by other LAN-only hosts.
+
+All requests from outside the LAN will be rejected.
+
+Index: etc/ntp.conf
+===================================================================
+--- etc.orig/ntp.conf
++++ etc/ntp.conf
+@@ -28,15 +28,22 @@ driftfile	/var/lib/ntp/ntp.drift
+ # Warning: Using default NTP settings will leave your NTP
+ # server accessible to all hosts on the Internet.
+ 
++# Look at the following web page for an explanation
++# if the "restrict" keyword:
++# http://support.ntp.org/bin/view/Support/AccessRestrictions
++
+ # If you want to deny all machines (including your own)
+ # from accessing the NTP server, uncomment:
+ #restrict default ignore
+ 
+ 
++# To deny other machines any access to your NTP server
++# unless overridden in a subsequent "restrict" statment:
++restrict default kod nomodify notrap nopeer noquery
++
+ # To deny other machines from changing the
+ # configuration but allow localhost:
+-restrict default nomodify nopeer
+-restrict 127.0.0.1
++restrict 127.0.0.1 nomodify
+ 
+ 
+ # To allow machines within your network to synchronize
+@@ -44,4 +51,7 @@ restrict 127.0.0.1
+ # not allowed to configure the server or used as peers
+ # to synchronize against, uncomment this line.
+ #
+-#restrict 192.168.0.0 mask 255.255.255.0 nomodify nopeer notrap
++restrict 192.168.0.0 mask 255.255.0.0 nomodify nopeer notrap
++restrict 10.0.0.0 mask 255.0.0.0 nomodify nopeer notrap
++restrict 172.16.0.0 mask 255.240.0.0 nomodify nopeer notrap
++restrict 169.254.0.0 mask 255.255.0.0 nomodify nopeer notrap
