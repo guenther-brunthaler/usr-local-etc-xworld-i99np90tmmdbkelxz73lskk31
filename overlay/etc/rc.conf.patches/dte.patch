@@ -1,0 +1,11 @@
+Override the default desktop environment by our favorite one
+
+Index: etc/rc.conf
+===================================================================
+--- etc.orig/rc.conf
++++ etc/rc.conf
+@@ -38,3 +38,4 @@ EDITOR="/usr/bin/joe"
+ # Xsession - will start a terminal and a few other nice apps
+ 
+ #XSESSION="Gnome"
++XSESSION="kde-3.5"

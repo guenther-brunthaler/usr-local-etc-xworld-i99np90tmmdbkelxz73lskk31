@@ -1,0 +1,16 @@
+Overrided default editor by our favorite one!
+
+Index: etc/rc.conf
+===================================================================
+--- etc.orig/rc.conf
++++ etc/rc.conf
+@@ -9,7 +9,8 @@ UNICODE="yes"
+ # Set EDITOR to your preferred editor.
+ # You may use something other than what is listed here.
+ 
+-EDITOR="/bin/nano"
++#EDITOR="/bin/nano"
++EDITOR="/usr/bin/joe"
+ #EDITOR="/usr/bin/vim"
+ #EDITOR="/usr/bin/emacs"
+ 
