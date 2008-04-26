@@ -1,0 +1,18 @@
+Do not use supplementary groups.
+
+We do not run the freshclam daemon, but just download the
+updates in a cron batch job.
+
+Index: etc/freshclam.conf
+===================================================================
+--- etc.orig/freshclam.conf
++++ etc/freshclam.conf
+@@ -52,7 +52,7 @@ DatabaseOwner clamav
+ 
+ # Initialize supplementary group access (freshclam must be started by root).
+ # Default: no
+-AllowSupplementaryGroups yes
++#AllowSupplementaryGroups yes
+ 
+ # Use DNS to verify virus database version. Freshclam uses DNS TXT records
+ # to verify database and software versions. With this directive you can change

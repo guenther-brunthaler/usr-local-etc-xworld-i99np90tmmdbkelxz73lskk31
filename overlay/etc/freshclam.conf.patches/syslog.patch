@@ -1,0 +1,25 @@
+Uses syslog for logging instead of directly using a plaintext
+log file.
+
+Index: etc/freshclam.conf
+===================================================================
+--- etc.orig/freshclam.conf
++++ etc/freshclam.conf
+@@ -14,7 +14,7 @@
+ 
+ # Path to the log file (make sure it has proper permissions)
+ # Default: disabled
+-UpdateLogFile /var/log/clamav/freshclam.log
++#UpdateLogFile /var/log/clamav/freshclam.log
+ 
+ # Maximum size of the log file.
+ # Value of 0 disables the limit.
+@@ -34,7 +34,7 @@ UpdateLogFile /var/log/clamav/freshclam.
+ 
+ # Use system logger (can work together with UpdateLogFile).
+ # Default: no
+-#LogSyslog yes
++LogSyslog yes
+ 
+ # Specify the type of syslog messages - please refer to 'man syslog'
+ # for facility names.

@@ -1,0 +1,14 @@
+Defines which database source mirror to use for updates
+
+Index: etc/freshclam.conf
+===================================================================
+--- etc.orig/freshclam.conf
++++ etc/freshclam.conf
+@@ -65,6 +65,7 @@ DatabaseOwner clamav
+ # Uncomment the following line and replace XY with your country
+ # code. See http://www.iana.org/cctld/cctld-whois.htm for the full list.
+ #DatabaseMirror db.XY.clamav.net
++DatabaseMirror db.at.clamav.net
+ 
+ # database.clamav.net is a round-robin record which points to our most 
+ # reliable mirrors. It's used as a fall back in case db.XY.clamav.net is 
