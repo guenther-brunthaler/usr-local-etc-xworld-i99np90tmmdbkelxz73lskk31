@@ -1,0 +1,13 @@
+Index: etc/man.conf
+===================================================================
+--- etc.orig/man.conf
++++ etc/man.conf
+@@ -96,7 +96,7 @@ TROFF		/usr/bin/groff -Tps -mandoc
+ NROFF		/usr/bin/nroff -mandoc
+ JNROFF		/usr/bin/groff -Tnippon -mandocj
+ EQN		/usr/bin/geqn -Tps
+-NEQN		/usr/bin/geqn -Tlatin1
++NEQN		/usr/bin/geqn
+ JNEQN		/usr/bin/geqn -Tnippon
+ TBL		/usr/bin/gtbl
+ # COL		/usr/bin/col
