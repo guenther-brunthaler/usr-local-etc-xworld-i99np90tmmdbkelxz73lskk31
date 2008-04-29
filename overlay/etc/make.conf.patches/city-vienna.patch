@@ -1,11 +1,11 @@
 Adds locale/location settings for hosts located in
 the city of Vienna in country Austria.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
-@@ -525,9 +525,9 @@ SSL_BITS="2048"
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -535,9 +535,9 @@ SSL_BITS="2048"
  SSL_COUNTRY="AT"
  SSL_DAYS="730"
  SSL_EMAIL="root@localhost"
@@ -16,4 +16,4 @@ Index: merging/make.conf
 +SSL_STATE="Vienna"
  SSL_UNIT="Preliminary usage"
  
- # This entry should be the last in /etc/make.conf!
+ # If you are using X11, setting this variable will restrict

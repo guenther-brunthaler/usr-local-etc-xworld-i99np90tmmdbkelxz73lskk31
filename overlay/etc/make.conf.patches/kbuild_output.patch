@@ -1,0 +1,25 @@
+Adapt for usage of the KBUILD_OUTPUT feature.
+
+This feature allows to separate the kernel source from the
+kernel build output object files, and the make.conf variable
+KBUILD_OUTPUT will be set to the directory containing the kernel
+object files (as well as the kernel configuration files) for the
+kernel to be used as a target for ebuilds to be emerged.
+
+Note that this can be a different kernel than is currently
+running, and it can also be different from the kernel the
+/usr/src/linux symlink points to.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -511,7 +511,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+ # kernel build directory (to be used when emerging kernel modules).
+ # Note: The /usr/src/linux symlink is *not* used
+ # when emerging kernel modules!
+-#KBUILD_OUTPUT="/usr/src/linux"
++KBUILD_OUTPUT="/usr/src/kbuild"
+ 
+ # We consider here those packages using 'GNU Gettext' internally, and for
+ # which the installers did not disable translation at _configure_ time.

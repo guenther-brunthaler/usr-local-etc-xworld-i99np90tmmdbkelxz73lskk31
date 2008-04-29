@@ -4,14 +4,19 @@ typically defined in later patches.
 This patch primarily adds the documentation comments for those
 new sections and also gives example values.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
-@@ -462,6 +462,72 @@ FEATURES="
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -462,6 +462,87 @@ FEATURES="
  # Locally added configuration settings. #
  #########################################
  
++# If you are using ALSA, this variable must be set to the names
++# of the sound cards to be supported. See the "ALSA Sound Matrix"
++# decription in the Internet for a list of possible names.
++#ALSA_CARDS=""
++
 +# Add files and directories here which should be put under
 +# Gentoo's config protection. Such files will never be
 +# overwritten by an update without giving the admin
@@ -26,6 +31,11 @@ Index: merging/make.conf
 +# User and e-mail for Gentoo's changelog authoring tool.
 +# Only required if you are actually using that tool.
 +#ECHANGELOG_USER=""
++
++# If you are using X11, setting this variable will restrict
++# the set of input device drivers to be compiled in.
++# Otherwise, all supported input drivers will be included.
++#INPUT_DEVICES="evdev keyboard mouse"
 +
 +# The directory containing kernel the target kernel sources.
 +# Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
@@ -77,6 +87,11 @@ Index: merging/make.conf
 +#SSL_ORGANIZATION="My Company"
 +#SSL_STATE="State"
 +#SSL_UNIT="Preliminary usage"
++
++# If you are using X11, setting this variable will restrict
++# the video adapter cards to be compiled in.
++# Otherwise, all supported video adapter cards will be included.
++#VIDEO_CARDS="fbdev vesa vga"
 +
  # This entry should be the last in /etc/make.conf!
  #

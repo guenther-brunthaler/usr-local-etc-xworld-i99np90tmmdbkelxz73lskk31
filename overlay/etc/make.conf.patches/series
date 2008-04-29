@@ -9,3 +9,4 @@ ssh-friendly.patch
 default-features.patch
 layman-support.patch
 getdelta.patch
+kbuild_output.patch

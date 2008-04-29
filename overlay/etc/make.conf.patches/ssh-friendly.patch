@@ -1,9 +1,9 @@
 Optimize settings for system administration via SSH.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
+--- etc.orig/make.conf
++++ etc/make.conf
 @@ -279,7 +279,7 @@ PORT_LOGDIR="/var/log/ebuilds"
  #     specified on every run. Useful options include --ask, --verbose,
  #     --usepkg and many others. Options that are not useful, such as --help,

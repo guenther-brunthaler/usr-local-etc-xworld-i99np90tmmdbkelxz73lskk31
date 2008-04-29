@@ -1,9 +1,9 @@
 Adds support for Portage's "getdelta" incremental update client.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
+--- etc.orig/make.conf
++++ etc/make.conf
 @@ -198,7 +198,7 @@ source /usr/portage/local/layman/make.co
  # will be available.
  #

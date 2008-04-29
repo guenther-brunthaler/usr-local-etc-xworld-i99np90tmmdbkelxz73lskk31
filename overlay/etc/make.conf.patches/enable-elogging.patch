@@ -1,10 +1,10 @@
 Enable logging the emerge output as well as any special messages
 displayed by the ebuild scripts themselves.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
+--- etc.orig/make.conf
++++ etc/make.conf
 @@ -177,7 +177,7 @@ CXXFLAGS="${CFLAGS}"
  #     If the direcory does not exist, it will be created automatically and
  #     group permissions will be applied to it.  If the directory already

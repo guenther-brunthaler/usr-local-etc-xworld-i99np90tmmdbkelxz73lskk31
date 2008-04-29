@@ -1,10 +1,10 @@
 Define some common default settings typically used on most
 systems.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
+--- etc.orig/make.conf
++++ etc/make.conf
 @@ -296,6 +296,7 @@ PORT_LOGDIR="/var/log/ebuilds"
  #     Note: This is an increment. Running emerge in a niced environment will
  #     reduce it further. Default is unset.
@@ -21,7 +21,7 @@ Index: merging/make.conf
  #
  # CCACHE_DIR sets the ccache path.  If not specified, portage will default
  #     to "${PORTAGE_TMPDIR}/ccache".
-@@ -466,12 +468,12 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -471,12 +473,12 @@ PORTAGE_ELOG_SYSTEM="save"
  # Gentoo's config protection. Such files will never be
  # overwritten by an update without giving the admin
  # a chance to merge the old and new file contents.
@@ -36,7 +36,7 @@ Index: merging/make.conf
  
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
-@@ -510,7 +512,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -520,7 +522,7 @@ PORTAGE_ELOG_SYSTEM="save"
  # Override the working directory permissions when Portage
  # unpacks and compiles source files.
  # By default, no other users can look into the working directory.
@@ -45,7 +45,7 @@ Index: merging/make.conf
  
  # Several packages create digital X.509 PKI preset certificates when they
  # are installed.
-@@ -518,15 +520,15 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -528,15 +530,15 @@ PORTAGE_ELOG_SYSTEM="save"
  # You can specify default settings for such certificates here. Note that
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.
@@ -63,5 +63,5 @@ Index: merging/make.conf
 -#SSL_UNIT="Preliminary usage"
 +SSL_UNIT="Preliminary usage"
  
- # This entry should be the last in /etc/make.conf!
- #
+ # If you are using X11, setting this variable will restrict
+ # the video adapter cards to be compiled in.
