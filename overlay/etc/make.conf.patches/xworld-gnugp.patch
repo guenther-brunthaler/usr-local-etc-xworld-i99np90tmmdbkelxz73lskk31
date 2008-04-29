@@ -1,0 +1,16 @@
+Enables Portage's GnuPG support and changes default paths so
+that they match the xworld.mine.nu pathname layout.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -527,7 +527,7 @@ LINGUAS="de"
+ # The keys in that keyring will then be used for cryptographic
+ # verification of any signed files in the Portage tree when emerging a
+ # package.
+-#PORTAGE_GPG_DIR="/path/to/user/root's/homedir/.gnupg"
++PORTAGE_GPG_DIR="/home/users/root/.gnupg"
+ 
+ # Override the working directory permissions when Portage
+ # unpacks and compiles source files.

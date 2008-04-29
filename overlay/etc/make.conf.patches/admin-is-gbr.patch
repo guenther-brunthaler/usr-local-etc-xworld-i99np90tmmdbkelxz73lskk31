@@ -1,0 +1,31 @@
+Changes settings regarding the administrative contact to refer
+to the person "Guenther Brunthaler".
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -492,7 +492,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+ 
+ # User and e-mail for Gentoo's changelog authoring tool.
+ # Only required if you are actually using that tool.
+-#ECHANGELOG_USER=""
++ECHANGELOG_USER="Guenther Brunthaler <gb_about_gnu@gmx.net>"
+ 
+ # If you are using X11, setting this variable will restrict
+ # the set of input device drivers to be compiled in.
+@@ -541,12 +541,12 @@ PORTAGE_WORKDIR_MODE="0705"
+ # in the absence of appropriate default settings here, cryptographically
+ # weak algorithms or key lengths might be chosen by the installer.
+ SSL_BITS="2048"
+-#SSL_COMMONNAME="First Last"
++SSL_COMMONNAME="Guenther Brunthaler"
+ SSL_COUNTRY="AT"
+ SSL_DAYS="730"
+ SSL_EMAIL="root@localhost"
+ SSL_LOCALITY="Vienna"
+-#SSL_ORGANIZATION="My Company"
++SSL_ORGANIZATION="Guenther Brunthaler EDV-Dienstleistungen"
+ SSL_STATE="Vienna"
+ SSL_UNIT="Preliminary usage"
+ 

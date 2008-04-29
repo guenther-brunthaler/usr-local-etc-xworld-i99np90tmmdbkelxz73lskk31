@@ -10,3 +10,6 @@ default-features.patch
 layman-support.patch
 getdelta.patch
 kbuild_output.patch
+xworld-gnugp.patch
+admin-is-gbr.patch
+host-nu.mine.xworld.xtreme-basic.patch
