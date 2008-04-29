@@ -1,0 +1,67 @@
+Define some common default settings typically used on most
+systems.
+
+Index: merging/make.conf
+===================================================================
+--- merging.orig/make.conf
++++ merging/make.conf
+@@ -296,6 +296,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+ #     Note: This is an increment. Running emerge in a niced environment will
+ #     reduce it further. Default is unset.
+ #PORTAGE_NICENESS=3
++PORTAGE_NICENESS="10"
+ #
+ # AUTOCLEAN enables portage to automatically clean out older or overlapping
+ #     packages from the system after every successful merge. This is the
+@@ -379,6 +380,7 @@ FEATURES="
+ #     "2G", or 2 gigabytes.  Units are specified with 'G', 'M', or 'K'.
+ #
+ #CCACHE_SIZE="512M"
++CCACHE_SIZE="2G"
+ #
+ # CCACHE_DIR sets the ccache path.  If not specified, portage will default
+ #     to "${PORTAGE_TMPDIR}/ccache".
+@@ -466,12 +468,12 @@ PORTAGE_ELOG_SYSTEM="save"
+ # Gentoo's config protection. Such files will never be
+ # overwritten by an update without giving the admin
+ # a chance to merge the old and new file contents.
+-#CONFIG_PROTECT=""
++CONFIG_PROTECT="/usr/local/etc"
+ 
+ # Where to install HTML documentation symlinks.
+ # Those links will be free of a version number and therefore
+ # stay the same for all package versions.
+-#DOC_SYMLINKS_DIR=""
++DOC_SYMLINKS_DIR="/usr/share/doc/html"
+ 
+ # User and e-mail for Gentoo's changelog authoring tool.
+ # Only required if you are actually using that tool.
+@@ -510,7 +512,7 @@ PORTAGE_ELOG_SYSTEM="save"
+ # Override the working directory permissions when Portage
+ # unpacks and compiles source files.
+ # By default, no other users can look into the working directory.
+-#PORTAGE_WORKDIR_MODE="0705"
++PORTAGE_WORKDIR_MODE="0705"
+ 
+ # Several packages create digital X.509 PKI preset certificates when they
+ # are installed.
+@@ -518,15 +520,15 @@ PORTAGE_ELOG_SYSTEM="save"
+ # You can specify default settings for such certificates here. Note that
+ # in the absence of appropriate default settings here, cryptographically
+ # weak algorithms or key lengths might be chosen by the installer.
+-#SSL_BITS="2048"
++SSL_BITS="2048"
+ #SSL_COMMONNAME="First Last"
+ #SSL_COUNTRY="AT"
+-#SSL_DAYS="730"
+-#SSL_EMAIL="root@localhost"
++SSL_DAYS="730"
++SSL_EMAIL="root@localhost"
+ #SSL_LOCALITY="City"
+ #SSL_ORGANIZATION="My Company"
+ #SSL_STATE="State"
+-#SSL_UNIT="Preliminary usage"
++SSL_UNIT="Preliminary usage"
+ 
+ # This entry should be the last in /etc/make.conf!
+ #

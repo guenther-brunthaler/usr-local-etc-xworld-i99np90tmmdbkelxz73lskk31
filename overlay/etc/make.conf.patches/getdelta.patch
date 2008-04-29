@@ -1,0 +1,15 @@
+Adds support for Portage's "getdelta" incremental update client.
+
+Index: merging/make.conf
+===================================================================
+--- merging.orig/make.conf
++++ merging/make.conf
+@@ -198,7 +198,7 @@ source /usr/portage/local/layman/make.co
+ # will be available.
+ #
+ # Default fetch command (5 tries, passive ftp for firewall compatibility)
+-#FETCHCOMMAND="/usr/bin/wget -t 5 -T 60 --passive-ftp \${URI} -P \${DISTDIR}"
++FETCHCOMMAND="/usr/bin/getdelta.sh \${URI}"
+ #RESUMECOMMAND="/usr/bin/wget -c -t 5 -T 60 --passive-ftp \${URI} -P \${DISTDIR}"
+ #
+ # Using wget, ratelimiting downloads

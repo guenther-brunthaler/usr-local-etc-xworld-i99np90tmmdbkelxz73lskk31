@@ -1,0 +1,25 @@
+Sets the FEATURES variable with good default options.
+
+Later patches can then add/remove specific features to/from it.
+
+Index: merging/make.conf
+===================================================================
+--- merging.orig/make.conf
++++ merging/make.conf
+@@ -371,6 +371,16 @@ PORTAGE_NICENESS="10"
+ #FEATURES="sandbox ccache distcc distlocks"
+ # FEATURES sorted alphabetically for easier maintenance.
+ FEATURES="
++ ccache
++ notitles
++ parallel-fetch
++ prelink
++ sandbox
++ sfperms
++ unmerge-orphans
++ userfetch"
++ userpriv
++ usersandbox
+ "
+ 
+ # CCACHE_SIZE and CCACHE_DIR are used to control the behavior of ccache, and

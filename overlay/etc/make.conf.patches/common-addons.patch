@@ -1,0 +1,83 @@
+Add several commented-out sections containing presets which are
+typically defined in later patches.
+
+This patch primarily adds the documentation comments for those
+new sections and also gives example values.
+
+Index: merging/make.conf
+===================================================================
+--- merging.orig/make.conf
++++ merging/make.conf
+@@ -462,6 +462,72 @@ FEATURES="
+ # Locally added configuration settings. #
+ #########################################
+ 
++# Add files and directories here which should be put under
++# Gentoo's config protection. Such files will never be
++# overwritten by an update without giving the admin
++# a chance to merge the old and new file contents.
++#CONFIG_PROTECT=""
++
++# Where to install HTML documentation symlinks.
++# Those links will be free of a version number and therefore
++# stay the same for all package versions.
++#DOC_SYMLINKS_DIR=""
++
++# User and e-mail for Gentoo's changelog authoring tool.
++# Only required if you are actually using that tool.
++#ECHANGELOG_USER=""
++
++# The directory containing kernel the target kernel sources.
++# Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
++#KERNEL_DIR="/usr/src/linux"
++
++# This is passed on commandline, or can be set from the kernel makefile. This
++# contains the directory which is to be used as the kernel object directory.
++# The .config file is also kept here, and not in $KERNEL_DIR (if different).
++# Defaults to $KERNEL_DIR.
++# This is a symlink: Change it with "ln -snf" to point to the correct
++# kernel build directory (to be used when emerging kernel modules).
++# Note: The /usr/src/linux symlink is *not* used
++# when emerging kernel modules!
++#KBUILD_OUTPUT="/usr/src/linux"
++
++# We consider here those packages using 'GNU Gettext' internally, and for
++# which the installers did not disable translation at _configure_ time.
++# Then, users only have to set the 'LANG' environment variable to the
++# appropriate 'LL_CC' combination prior to using the programs in the
++# package.
++#LANG=""
++
++# Packages like OOo use this to select the language to be hardcoded.
++#LINGUAS=""
++
++# If this is set, it should contain the path to a GnuPG public key ring.
++# The keys in that keyring will then be used for cryptographic
++# verification of any signed files in the Portage tree when emerging a
++# package.
++#PORTAGE_GPG_DIR="/path/to/user/root's/homedir/.gnupg"
++
++# Override the working directory permissions when Portage
++# unpacks and compiles source files.
++# By default, no other users can look into the working directory.
++#PORTAGE_WORKDIR_MODE="0705"
++
++# Several packages create digital X.509 PKI preset certificates when they
++# are installed.
++#
++# You can specify default settings for such certificates here. Note that
++# in the absence of appropriate default settings here, cryptographically
++# weak algorithms or key lengths might be chosen by the installer.
++#SSL_BITS="2048"
++#SSL_COMMONNAME="First Last"
++#SSL_COUNTRY="AT"
++#SSL_DAYS="730"
++#SSL_EMAIL="root@localhost"
++#SSL_LOCALITY="City"
++#SSL_ORGANIZATION="My Company"
++#SSL_STATE="State"
++#SSL_UNIT="Preliminary usage"
++
+ # This entry should be the last in /etc/make.conf!
+ #
+ # Run "mirrorselect -s10 -b10" in order to update the next line.
