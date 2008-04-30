@@ -15,6 +15,7 @@ ssh-ports.patch
 
 # Host-dependent patches.
 +xtreme.xworld.mine.nu host_specific_xtreme.patch
++xvaio.xworld.mine.nu host_specific_xvaio.patch
 
 # Files that are not patches.
 - series.guards series
