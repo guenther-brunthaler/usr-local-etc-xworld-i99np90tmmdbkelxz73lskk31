@@ -1,0 +1,48 @@
+# /etc/crontab for fcron
+#
+# $Header: /etc/RCS/crontab,v 1.7 2005/08/18 09:41:24 root Exp root $
+#
+# This is a template for root's crontab, adapted for fcron.
+#
+# This is NOT the system crontab! fcron and dcron do not support a system crontab.
+# to get /etc/cron.{hourly|daily|weekly|montly} working with fcron or dcron do
+# crontab /etc/crontab
+# as root.
+# NOTE: This will REPLACE root's current crontab!!
+#
+# After this crontab has been imported for the first time, better use
+# # crontab -e
+# in order to edit root's *current* version of the crontab.
+
+# check scripts in cron.hourly, cron.daily, cron.weekly and cron.monthly
+
+!serialonce(true),lavgonce,serial(true),lavg5(0.3)
+!mail(false),nice(5),strict(false),timezone(Europe/Vienna)
+
+# Field matching: <values>/<frequency>~<exceptions>
+# <values>: "*" or <from>-<to> or <value1>,<value2>,...
+
+# "%" - Run periodical jobs within some interval.
+# hourly, daily, monthly, weekly: Only once during interval at matching time.
+# midhourly, mid..., nightly: Same but from middle of interval to next middle.
+# mins, hours, days, mons, dow: Once each interval at matching time.
+# Order of fields for %-formats:
+# Interval,Options()	Minutes	Hours	Days	Months	Weekday	Command
+%hourly,until(15)	15-45					/usr/local/sbin/xworld/run-specific-crons hourly
+%daily			*/15	*				/usr/local/sbin/xworld/run-specific-crons daily
+%weekly			*	*/2				/usr/local/sbin/xworld/run-specific-crons weekly
+%monthly		*	1-23/2	*			/usr/local/sbin/xworld/run-specific-crons monthly
+
+# "&" - Run jobs based on date/time (standard CRON semantics).
+# Order of fields for &-formats:
+# Options()		Minute	Hour	Day	Month	Weekday	Command
+#&			30	2	*/2~1	*	*	/usr/local/etc/cron.d/esync.cron
+
+# "@" - Jobs based on system up time.
+# Order of fields for @-formats:
+# Options()		Frequency		Command
+#@			7			/usr/local/etc/cron.d/reclock.cron
+#@first(10)		50h			/usr/local/etc/cron.d/esync.cron
+# where
+# Frequency: <int><multiplier>
+# Multipliers: m (month), w(week), d(day), h(hour), <nothing> (minute)
