@@ -1,0 +1,22 @@
+Changes settings regarding the administrative contact to refer
+to the person "Guenther Brunthaler".
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -541,12 +541,12 @@ PORTAGE_WORKDIR_MODE="0705"
+ # in the absence of appropriate default settings here, cryptographically
+ # weak algorithms or key lengths might be chosen by the installer.
+ SSL_BITS="2048"
+-#SSL_COMMONNAME="First Last"
++SSL_COMMONNAME="Peter Sauer"
+ SSL_COUNTRY="AT"
+ SSL_DAYS="730"
+ SSL_EMAIL="root@localhost"
+ SSL_LOCALITY="Vienna"
+-#SSL_ORGANIZATION="My Company"
++SSL_ORGANIZATION="ScienceSoft"
+ SSL_STATE="Vienna"
+ SSL_UNIT="Preliminary usage"
+ 

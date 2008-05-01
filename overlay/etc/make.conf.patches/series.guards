@@ -17,10 +17,13 @@ default-features.patch
 +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu getdelta.patch
 kbuild_output.patch
 +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
++vmware.sciencesoft.at admin-is-ps.patch
 +xworld.mine.nu +xternal.mine.nu admin-is-gbr.patch
 +xternal.mine.nu +xvaio.xworld.mine.nu grub-nomount.patch
 
 # Strictly host-specific patches.
++vmware.sciencesoft.at host-at.sciencesoft.vmware-basic.patch
++vmware.sciencesoft.at host-at.sciencesoft.vmware-uses.patch
 +xternal.mine.nu host-nu.mine.xternal-basic.patch
 +xternal.mine.nu host-nu.mine.xternal-uses.patch
 +xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-basic.patch
