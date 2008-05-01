@@ -17,7 +17,7 @@ Index: etc/make.conf
 + sandbox
 + sfperms
 + unmerge-orphans
-+ userfetch"
++ userfetch
 + userpriv
 + usersandbox
  "

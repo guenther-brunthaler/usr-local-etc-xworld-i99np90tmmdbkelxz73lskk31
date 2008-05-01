@@ -14,8 +14,11 @@ default-features.patch
 kbuild_output.patch
 +xworld.mine.nu xworld-gnugp.patch
 +xworld.mine.nu admin-is-gbr.patch
++xvaio.xworld.mine.nu grub-nomount.patch
 +xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-basic.patch
 +xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-uses.patch
++xvaio.xworld.mine.nu host-nu.mine.xworld.xvaio-basic.patch
++xvaio.xworld.mine.nu host-nu.mine.xworld.xvaio-uses.patch
 
 # Non-patch files.
 - series.guards series
