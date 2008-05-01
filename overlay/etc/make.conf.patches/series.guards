@@ -1,5 +1,6 @@
 # Process with 'guards' tool to create "series".
 
+# Generic patches.
 clear-presets.patch
 local-section.patch
 common-addons.patch
@@ -9,12 +10,19 @@ country-austria.patch
 city-vienna.patch
 ssh-friendly.patch
 default-features.patch
-+xworld.mine.nu layman-support.patch
+
+# Conditional patches possibly applying to different hosts.
++xternal.mine.nu portage-overlay-only.patch
++xtreme.xworld.mine.nu +xvaio.xworld.mine.nu layman-support.patch
 +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu getdelta.patch
 kbuild_output.patch
-+xworld.mine.nu xworld-gnugp.patch
-+xworld.mine.nu admin-is-gbr.patch
-+xvaio.xworld.mine.nu grub-nomount.patch
++xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
++xworld.mine.nu +xternal.mine.nu admin-is-gbr.patch
++xternal.mine.nu +xvaio.xworld.mine.nu grub-nomount.patch
+
+# Strictly host-specific patches.
++xternal.mine.nu host-nu.mine.xternal-basic.patch
++xternal.mine.nu host-nu.mine.xternal-uses.patch
 +xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-basic.patch
 +xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-uses.patch
 +xvaio.xworld.mine.nu host-nu.mine.xworld.xvaio-basic.patch

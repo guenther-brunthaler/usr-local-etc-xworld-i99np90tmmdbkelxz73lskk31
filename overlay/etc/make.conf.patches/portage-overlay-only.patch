@@ -1,0 +1,15 @@
+Adds /usr/local/portage as Portage overlay, but no layman support.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -182,7 +182,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+ # PORTDIR_OVERLAY is a directory where local ebuilds may be stored without
+ #     concern that they will be deleted by rsync updates. Default is not
+ #     defined.
+-#PORTDIR_OVERLAY=/usr/local/portage
++PORTDIR_OVERLAY="/usr/local/portage"
+ # Add more overlays (from "layman").
+ #source /usr/portage/local/layman/make.conf
+ 
