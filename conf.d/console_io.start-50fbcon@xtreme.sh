@@ -23,6 +23,6 @@ setup() {
 }
 
 
-setup
+#setup
 unset -f setup
 unalias setup
