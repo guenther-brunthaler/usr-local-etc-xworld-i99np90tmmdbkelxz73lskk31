@@ -8,6 +8,6 @@ service vmware-authd-proxy
     protocol        = tcp
     wait            = no
     user            = root
-    server          = /usr/local/sbin/vmware-authd-proxy
+    server          = /usr/local/sbin/xworld/vmware-authd-proxy
     type            = unlisted
 }
