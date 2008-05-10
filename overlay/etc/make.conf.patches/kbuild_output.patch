@@ -19,7 +19,7 @@ Index: etc/make.conf
  # Note: The /usr/src/linux symlink is *not* used
  # when emerging kernel modules!
 -#KBUILD_OUTPUT="/usr/src/linux"
-+KBUILD_OUTPUT="/usr/src/kbuild"
++KBUILD_OUTPUT="/var/tmp/kernel-output/kbuild"
  
  # We consider here those packages using 'GNU Gettext' internally, and for
  # which the installers did not disable translation at _configure_ time.
