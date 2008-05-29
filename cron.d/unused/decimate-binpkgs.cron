@@ -6,8 +6,8 @@
 # $Date: 2006-08-23T03:52:22.370203Z $
 # $Revision: 220 $
 
-. /usr/local/bin/functions/lookup.sh --version 1 \
+. /usr/local/bin/xworld/functions/lookup.sh --version 1 \
 	--namespace decimate-binpkgs_t96tkd6t8t5gmmb86t293kayt \
 	BINPKG_KEEP_SIZE
-/usr/local/bin/decimate-files -f daemon -ad 1 \
+/usr/local/bin/xworld/decimate-files -f daemon -ad 1 \
 	/usr/portage/packages/All "$BINPKG_KEEP_SIZE"

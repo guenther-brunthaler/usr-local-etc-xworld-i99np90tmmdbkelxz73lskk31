@@ -6,8 +6,8 @@
 # $Date: 2006-08-23T03:52:22.370203Z $
 # $Revision: 220 $
 
-. /usr/local/bin/functions/lookup.sh --version 1 \
+. /usr/local/bin/xworld/functions/lookup.sh --version 1 \
 	--namespace decimate-logfiles_fl8bnlzry000fvzqtjg4bu8m0 \
 	LOGSIZE_EBUILDS LOGSIZE_ELOGS
-/usr/local/bin/decimate-files -f daemon /var/log/ebuilds "$LOGSIZE_EBUILDS"
-/usr/local/bin/decimate-files -f daemon /var/log/ebuilds/elog "$LOGSIZE_ELOGS"
+/usr/local/bin/xworld/decimate-files -f daemon /var/log/ebuilds "$LOGSIZE_EBUILDS"
+/usr/local/bin/xworld/decimate-files -f daemon /var/log/ebuilds/elog "$LOGSIZE_ELOGS"

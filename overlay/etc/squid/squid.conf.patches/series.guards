@@ -14,6 +14,7 @@ cache-dir.patch
 ssh-ports.patch
 
 # Host-dependent patches.
++xquad.xworld.mine.nu host_specific_xquad.patch
 +xtreme.xworld.mine.nu host_specific_xtreme.patch
 +xvaio.xworld.mine.nu host_specific_xvaio.patch
 
