@@ -1,5 +1,1 @@
-# If the user has a "~/bin"-directory, prepend it to the user's $PATH unless already there.
-[[
-	"$HOME" && -e "$HOME/bin" &&
-	"`stat -Lc '%A %u %g' "$HOME/bin" | cut -c1,4-`" == "dx------ `id -u` `id -g`"
-]] && export PATH="$HOME/bin:$PATH" || true
+../bashrc_always-templates.d/10per-user-bin

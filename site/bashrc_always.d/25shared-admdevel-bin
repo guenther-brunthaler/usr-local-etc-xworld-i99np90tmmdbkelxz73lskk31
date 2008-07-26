@@ -1,5 +1,1 @@
-export PATH
-if [ -d /home/groups/admdevel/bin ]; then
-	PATH="$PATH${PATH:+:}/home/groups/admdevel/bin"
-fi
-true
+../bashrc_always-templates.d/25shared-admdevel-bin

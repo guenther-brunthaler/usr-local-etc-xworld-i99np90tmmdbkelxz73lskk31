@@ -1,4 +1,4 @@
-#!/bin/false
+#! /bin/false
 # (This file should be *sourced*, not executed.)
 #
 # Powerful plugin-extendible shell startup script
