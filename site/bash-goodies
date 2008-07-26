@@ -5,6 +5,7 @@
 #
 # Source this file from your .bashrc
 # if you like the features provided by it.
+# (This may also be done globally for all users by the administrator.)
 #
 # $Id: bash-goodies,v 1.13 2006/07/28 01:35:22 root Exp root $
 
@@ -35,7 +36,7 @@
 # can also be specified for verbose operation. Useful for debugging.
 
 warn() {
-	echo "WARNING: $1!" > /dev/stderr
+	echo "WARNING: $*!" >& 2
 }
 
 include_file() {
@@ -47,14 +48,19 @@ include_dir() {
 	local FILE
 	test "$OPT_VERBOSE" && echo "Including startup-plugin directory '$1'."
 	for FILE in $1/*; do
-		if [[ ! $FILE =~ '\.[^./]+$' ]]; then
+		if test x`
+			printf '%s\n' "$FILE" \
+				| sed -e '\,\.[^./][^./]*$,p;d' \
+				| wc -l
+		` = x0; then
 			test -f "$FILE" && include_file "$FILE"
 		fi
 	done
 }
 
 include_system_plugins(){
-	local INC_DIR="/usr/local/etc/site/$1"
+	local INC_DIR
+	INC_DIR=/usr/local/etc/site/$1
 	test -d "$INC_DIR" || {
 		warn "Missing directory \"$INC_DIR\""
 		return
@@ -64,7 +70,8 @@ include_system_plugins(){
 
 include_user_plugins() {
 	test -n "$HOME" || return
-	local INC="$HOME/$1"
+	local INC
+	INC=$HOME/$1
 	test -e "$INC" || return
 	test -f "$INC" && { include_file "$INC"; return; }
 	test -d "$INC" && { include_dir "$INC"; return; }
@@ -81,7 +88,7 @@ cleanup_most() {
 
 OPT_VERBOSE=
 while getopts v NEXT_OPT; do
-	case "$NEXT_OPT" in
+	case $NEXT_OPT in
 		v) OPT_VERBOSE=1;;
 		*)
 			cleanup_most
@@ -92,12 +99,12 @@ while getopts v NEXT_OPT; do
 done
 
 # Source goodies to be used always.
-include_system_plugins "bashrc_always.d"
+include_system_plugins "bashrc_always-presets"
 
 # Useful user macros for every case.
 include_user_plugins ".bashrc_always"
 
-if [[ $- != *i* ]]; then
+if test x"${-%i*}" = x"$-"; then
 	# Shell is non-interactive. All done.
 	test "$OPT_VERBOSE" && echo "Shell is non-interactive."
 	cleanup_most
@@ -108,7 +115,7 @@ fi
 test "$OPT_VERBOSE" && echo "Shell is Interactive."
 
 # Source goodies to be used only for interactive shells.
-include_system_plugins "bashrc_interactive.d"
+include_system_plugins "bashrc_interactive-presets"
 
 # Finally, allow the user to overwrite all those settings!
 include_user_plugins ".bashrc_interactive"
