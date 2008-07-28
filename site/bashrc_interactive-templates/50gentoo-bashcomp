@@ -1,0 +1,3 @@
+#! /bin/false
+test -f /etc/profile.d/bash-completion \
+	&& . /etc/profile.d/bash-completion
