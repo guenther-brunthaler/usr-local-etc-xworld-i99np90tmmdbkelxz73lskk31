@@ -1,4 +1,0 @@
-#! /bin/false
-if test -z "$BASH_COMPLETION" && test -f /etc/profile.d/bash-completion; then
-	. /etc/profile.d/bash-completion
-fi
