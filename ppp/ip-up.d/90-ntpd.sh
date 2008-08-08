@@ -5,7 +5,7 @@
 	log() {
 		local CATEGORY TOPIC
 		CATEGORY=$1; shift
-		TOPIC="`readlink -f \"$SCRIPT\"`"
+		TOPIC="`pwd`/$SCRIPT"
 		logger -p daemon.$CATEGORY -t "$TOPIC" "$*"
 	}
 
