@@ -951,11 +951,6 @@
 *.am
 -autoindent
 -syntax conf
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
 
  Mail file
 *tmp/mutt-*

@@ -99,7 +99,7 @@
 		'backpath' and the 'path', no trailing spaces or comments
 		after the path).
  # *** BEGIN CHANGES BLOCK
--backpath /home/users/root/.editor-backups
+-backpath /home/user/root/.editor-backups
  # *** END CHANGES BLOCK
 
  -floatmouse	Clicking past end of line moves the cursor past the end
