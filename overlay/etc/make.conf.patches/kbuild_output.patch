@@ -14,12 +14,28 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -511,7 +511,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -511,7 +511,23 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  # kernel build directory (to be used when emerging kernel modules).
  # Note: The /usr/src/linux symlink is *not* used
  # when emerging kernel modules!
 -#KBUILD_OUTPUT="/usr/src/linux"
-+KBUILD_OUTPUT="/var/tmp/kernel-output/kbuild"
++KBUILD_OUTPUT="/usr/src/kbuild/target"
++# Note: The matching initramfs/initrd and built kernel image files can be
++# found at:
++#BOOT_IMAGES="/boot/image/target"
++# (Note that this is not an official Gentoo environment variable, so it is
++# commented out here.)
++# The "target"-path component here is also a symlink pointing to the actual
++# image directory currently used. (There may be multiple versions around.)
++# Also note that the directories above the "target" symlink in the above paths
++# are typically also symlinks, pointing to somewhere below "/var/tmp".
++# For instance, the following choices are currently popular:
++# $ ln -snf  -> ../../var/tmp/kernel-output /usr/src/kbuild
++# $ ln -snf ../var/tmp/boot_image /boot/image
++# Hint: *Always* use relative symlinks! In contrary to absolute symlinks,
++# they will continue to work even if the volume containing the partition
++# is mounted into an unfamiliar place. This typically happens during an
++# emergency recovery session launched from some Live CD.
  
  # We consider here those packages using 'GNU Gettext' internally, and for
  # which the installers did not disable translation at _configure_ time.

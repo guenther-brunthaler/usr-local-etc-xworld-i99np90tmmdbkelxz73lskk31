@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -198,7 +198,7 @@ source /usr/portage/local/layman/make.co
+@@ -198,7 +198,7 @@ PORTDIR_OVERLAY="/usr/local/portage"
  # will be available.
  #
  # Default fetch command (5 tries, passive ftp for firewall compatibility)

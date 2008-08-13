@@ -1,11 +1,11 @@
 Add a section to the end of the file for obtaining
 locally-added settings.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
-@@ -457,3 +457,28 @@ FEATURES="
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -457,3 +457,36 @@ FEATURES="
  #                               ${PACKAGE} - see description of PORTAGE_ELOG_COMMAND
  #                               ${HOST} - FQDN of the host portage is running on
  #PORTAGE_ELOG_MAILSUBJECT="package \${PACKAGE} merged on \${HOST} with notice"
@@ -21,16 +21,24 @@ Index: merging/make.conf
 +#
 +# As an example, you might have set up the following directories
 +# as local mirror directories to be included within GENTOO_MIRRORS:
-+# * /usr/local/portage/distfiles/precious
++#
++# * /usr/portage/local/overlay/distfiles/precious
 +# Contains manually-downloaded fetch-restricted files.
 +# That way they will not be purged when you clean up your
 +# regular /usr/portage/distfiles directory.
-+# * /usr/local/portage/distfiles
++#
++# * /usr/portage/local/overlay/distfiles
 +# Files required by your private ebuilds, replicated or shared across
 +# multiple machines under your administrative control.
-+# * /usr/local/portage/distfiles/local
++#
++# * /usr/portage/local/overlay/distfiles/local
 +# Files required by your private ebuilds, local machine specific only.
-+# * /usr/local/portage/distfiles/mnt
++# These files shall not be replicated to other machines.
++#
++# * /usr/portage/local/overlay/distfiles/mnt
 +# Network-mounted "/usr/portage/distfiles" from some different machine
-+# in the LAN; looking there first before downloading from the internet.
++# in the LAN; looking there first before downloading from the Internet.
++# This will typically be the /usr/portage/distfiles directory of some
++# other machine, exported as a network share.
++#
 +#GENTOO_MIRRORS=""
