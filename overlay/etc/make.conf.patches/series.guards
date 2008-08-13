@@ -13,10 +13,10 @@ default-features.patch
 
 # Conditional patches possibly applying to different hosts.
 +xqrescue.xworld.mine.nu +xternal.mine.nu portage-overlay-only.patch
-+xtreme.xworld.mine.nu +xvaio.xworld.mine.nu layman-support.patch
-+xqrescue.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu getdelta.patch
++xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu layman-support.patch
++xworld.mine.nu getdelta.patch
 kbuild_output.patch
-+xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
++xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
 +vmware.sciencesoft.at admin-is-ps.patch
 +xworld.mine.nu +xternal.mine.nu admin-is-gbr.patch
 +xternal.mine.nu +xworld.mine.nu grub-nomount.patch
@@ -24,6 +24,8 @@ kbuild_output.patch
 # Strictly host-specific patches.
 +vmware.sciencesoft.at host-at.sciencesoft.vmware-basic.patch
 +vmware.sciencesoft.at host-at.sciencesoft.vmware-uses.patch
++xquad.xworld.mine.nu host-nu.mine.xworld.xquad-basic.patch
++xquad.xworld.mine.nu host-nu.mine.xworld.xquad-uses.patch
 +xqrescue.xworld.mine.nu host-nu.mine.xworld.xqrescue-basic.patch
 +xqrescue.xworld.mine.nu host-nu.mine.xworld.xqrescue-uses.patch
 +xternal.mine.nu host-nu.mine.xternal-basic.patch

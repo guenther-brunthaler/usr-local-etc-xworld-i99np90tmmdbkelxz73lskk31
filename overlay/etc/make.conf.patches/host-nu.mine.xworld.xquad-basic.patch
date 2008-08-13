@@ -1,4 +1,4 @@
-Define basic settings for "xrescue.xworld.mine.nu".
+Define basic settings for "xquad.xworld.mine.nu".
 
 Index: etc/make.conf
 ===================================================================
@@ -37,15 +37,7 @@ Index: etc/make.conf
  #
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
-@@ -371,7 +374,6 @@ PORTAGE_NICENESS="10"
- #FEATURES="sandbox ccache distcc distlocks"
- # FEATURES sorted alphabetically for easier maintenance.
- FEATURES="
-- ccache
-  notitles
-  parallel-fetch
-  prelink
-@@ -477,7 +479,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -477,7 +480,7 @@ PORTAGE_ELOG_SYSTEM="save"
  # If you are using ALSA, this variable must be set to the names
  # of the sound cards to be supported. See the "ALSA Sound Matrix"
  # decription in the Internet for a list of possible names.
@@ -54,7 +46,7 @@ Index: etc/make.conf
  
  # Add files and directories here which should be put under
  # Gentoo's config protection. Such files will never be
-@@ -500,7 +502,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
+@@ -500,7 +503,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.
  # Otherwise, all supported input drivers will be included.
@@ -63,7 +55,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -572,7 +574,7 @@ SSL_UNIT="Preliminary usage"
+@@ -572,7 +575,7 @@ SSL_UNIT="Preliminary usage"
  # If you are using X11, setting this variable will restrict
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
@@ -72,7 +64,7 @@ Index: etc/make.conf
  
  # This entry should be the last in /etc/make.conf!
  #
-@@ -601,4 +603,4 @@ SSL_UNIT="Preliminary usage"
+@@ -601,4 +604,4 @@ SSL_UNIT="Preliminary usage"
  # This will typically be the /usr/portage/distfiles directory of some
  # other machine, exported as a network share.
  #
