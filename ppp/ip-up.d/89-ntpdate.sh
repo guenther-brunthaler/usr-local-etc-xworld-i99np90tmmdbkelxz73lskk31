@@ -32,4 +32,4 @@
 	fi
 	log notice "Setting CMOS clock to obtained NTP time"
 	run /etc/init.d/clock --quiet save
-)
+) || exit

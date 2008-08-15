@@ -35,4 +35,4 @@
 				-- -p /var/run/ntpd.pid ${NTPD_OPTS}
 		}
 	fi
-)
+) || exit

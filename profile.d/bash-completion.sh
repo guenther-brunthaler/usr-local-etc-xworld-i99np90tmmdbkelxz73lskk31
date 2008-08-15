@@ -1,1 +1,0 @@
-../../../share/xworld/local/etc/profile.d/bash-completion.sh
