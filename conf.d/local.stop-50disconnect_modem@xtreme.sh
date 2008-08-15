@@ -5,23 +5,23 @@
 # and disconnects if this is the case.
 
 
-cleanup_l5urjd8tqdsx1ujh89hz02pxj() {
-	local PIDFILE PID
-	for PIDFILE in /var/run/ppp-hui-umts.pid /var/run/ppp-hui-gsm.pid; do
-		if [ -f "$PIDFILE" ]; then
+(
+	for PIDFILE in huiconnect ppp-hui-umts ppp-hui-gsm; do
+		PIDFILE=/var/run/$PIDFILE.pid
+		if test -f "$PIDFILE"; then
 			PID=`head -n1 "$PIDFILE"`
-			if [ -d "/proc/$PID" ]; then
+			if test -d "/proc/$PID"; then
 				ebegin "Disconnecting modem"
-				kill -HUP $PID
-				while [ -e "$PIDFILE" ]; do
+				kill -HUP $PID 2> /dev/null
+				while test -e "$PIDFILE"; do
 					sleep 1
 				done
 				eend $?
+			else
+				# Obviously, the server died.
+				# Clean up the PID file.
+				rm "$PIDFILE"
 			fi
 		fi
 	done
-}
-
-
-cleanup_l5urjd8tqdsx1ujh89hz02pxj
-unset -f cleanup_l5urjd8tqdsx1ujh89hz02pxj
+)
