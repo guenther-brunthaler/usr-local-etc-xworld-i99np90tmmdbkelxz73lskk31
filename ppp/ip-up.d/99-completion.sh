@@ -22,6 +22,6 @@
 	}
 	
 
-	log info "PPP link $1 has been established on $2"
-	run date +'%s' > "/var/run/ppp-huiconnect.established"
+	log info "PPP link $LINKNAME ($1) has been established on $2"
+	run date +'%s' > "/var/run/ppp-$LINKNAME.established"
 ) || exit

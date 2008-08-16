@@ -6,7 +6,7 @@
 
 
 (
-	for PIDFILE in huiconnect ppp-hui-umts ppp-hui-gsm; do
+	for PIDFILE in huiconnect ppp-one-hui; do
 		PIDFILE=/var/run/$PIDFILE.pid
 		if test -f "$PIDFILE"; then
 			PID=`head -n1 "$PIDFILE"`

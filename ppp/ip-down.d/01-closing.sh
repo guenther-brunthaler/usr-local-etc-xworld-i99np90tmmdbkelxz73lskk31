@@ -22,6 +22,6 @@
 	}
 	
 
-	log info "PPP link $1 closing down"
-	run rm "/var/run/ppp-huiconnect.established"
+	log info "PPP link $LINKNAME ($1) closing down"
+	run rm "/var/run/ppp-$LINKNAME.established"
 )
