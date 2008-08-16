@@ -4,16 +4,16 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -727,7 +727,7 @@ http_access deny all
+@@ -726,7 +726,7 @@ http_access deny all
  # icp_access deny all
  #
- #Allow ICP queries from everyone
--icp_access allow all
-+#icp_access allow all
+ #Allow ICP queries from local networks only
+-icp_access allow localnet
++#icp_access allow localnet
+ icp_access deny all
  
  #  TAG: htcp_access
- #	Allowing or Denying access to the HTCP port based on defined
-@@ -3877,6 +3877,7 @@ broken_vary_encoding allow apache
+@@ -3878,6 +3878,7 @@ broken_vary_encoding allow apache
  #
  #Default:
  # icp_port 3130
