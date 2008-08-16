@@ -6,7 +6,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -574,7 +574,16 @@
+@@ -599,7 +599,16 @@
  acl all src 0.0.0.0/0.0.0.0
  acl manager proto cache_object
  acl localhost src 127.0.0.1/255.255.255.255
@@ -20,10 +20,10 @@ Index: squid/squid.conf
 +acl from_lan src 10.0.0.0/8
 +acl from_lan src 172.16.0.0/12
 +acl from_lan src 169.254.0.0/16
- acl SSL_ports port 443
- acl Safe_ports port 80		# http
- acl Safe_ports port 21		# ftp
-@@ -614,10 +623,13 @@ acl CONNECT method CONNECT
+ #
+ # Example rule allowing access from your local networks.
+ # Adapt to list your (internal) IP networks from where browsing
+@@ -647,10 +656,13 @@ acl CONNECT method CONNECT
  #Recommended minimum configuration:
  #
  # Only allow cachemgr access from localhost
@@ -39,7 +39,7 @@ Index: squid/squid.conf
  http_access deny purge
  # Deny requests to unknown ports
  http_access deny !Safe_ports
-@@ -628,6 +640,7 @@ http_access deny CONNECT !SSL_ports
+@@ -661,6 +673,7 @@ http_access deny CONNECT !SSL_ports
  # web applications running on the proxy server who think the only
  # one who can access services on "localhost" is a local user
  #http_access deny to_localhost
@@ -47,7 +47,7 @@ Index: squid/squid.conf
  #
  # INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
  
-@@ -638,7 +651,9 @@ http_access deny CONNECT !SSL_ports
+@@ -671,7 +684,9 @@ http_access deny CONNECT !SSL_ports
  #http_access allow our_networks
  
  # Allow the localhost to have access by default
@@ -58,7 +58,7 @@ Index: squid/squid.conf
  
  # And finally deny all other access to this proxy
  http_access deny all
-@@ -3983,6 +3998,7 @@ broken_vary_encoding allow apache
+@@ -4327,6 +4342,7 @@ broken_vary_encoding allow apache
  #
  #Default:
  # none
