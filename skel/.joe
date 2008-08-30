@@ -936,11 +936,6 @@
 *.m4
 -autoindent
 -syntax m4
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
 
  Automake file
 *.am
