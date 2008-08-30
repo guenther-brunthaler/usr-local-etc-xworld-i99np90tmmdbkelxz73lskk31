@@ -30,7 +30,7 @@ Index: etc/make.conf
 +# Also note that the directories above the "target" symlink in the above paths
 +# are typically also symlinks, pointing to somewhere below "/var/tmp".
 +# For instance, the following choices are currently popular:
-+# $ ln -snf  -> ../../var/tmp/kernel-output /usr/src/kbuild
++# $ ln -snf ../../var/tmp/kernel-output /usr/src/kbuild
 +# $ ln -snf ../var/tmp/boot_image /boot/image
 +# Hint: *Always* use relative symlinks! In contrary to absolute symlinks,
 +# they will continue to work even if the volume containing the partition

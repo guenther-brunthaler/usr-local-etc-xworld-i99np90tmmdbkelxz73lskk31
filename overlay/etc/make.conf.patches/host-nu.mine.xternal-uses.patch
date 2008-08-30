@@ -4,13 +4,14 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,105 @@
+@@ -24,6 +24,108 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
 + 3dnow
 + 3dnowext
 + aalib
++ -acl
 + apache2
 + arts
 + bash-completion
@@ -55,6 +56,7 @@ Index: etc/make.conf
 + ldap
 + libcaca
 + libclamav
++ -mailwrapper
 + matroska
 + mmx
 + mmxext
@@ -62,6 +64,7 @@ Index: etc/make.conf
 + -motif
 + mp3
 + mpeg
++ -mysql
 + nls
 + nptl
 + nsplugin
