@@ -1,0 +1,14 @@
+Defines the most popular GENTOO_MIRRORS setting throughout the
+administrative realm, enabling multiple sites to use them
+as a shared patch.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -598,4 +598,4 @@ SSL_UNIT="Preliminary usage"
+ # This will typically be the /usr/portage/distfiles directory of some
+ # other machine, exported as a network share.
+ #
+-#GENTOO_MIRRORS=""
++GENTOO_MIRRORS="/usr/portage/local/overlay/distfiles/local /usr/portage/local/overlay/distfiles /usr/portage/local/overlay/distfiles/precious /usr/portage/local/overlay/distfiles/mnt ftp://130.208.16.31/pub/gentoo/ ftp://mirrors.64hosting.com/pub/mirrors/gentoo/ http://ftp.cs.pu.edu.tw/Linux/Gentoo/ ftp://ftp.cs.pu.edu.tw/Linux/Gentoo/ ftp://ftp.linux.ee/pub/gentoo/distfiles/ http://gentoo.netnitco.net ftp://gentoo.netnitco.net/pub/mirrors/gentoo/source/ ftp://gentoo.mirrors.tds.net/gentoo http://gentoo-euetib.upc.es/mirror/gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/"

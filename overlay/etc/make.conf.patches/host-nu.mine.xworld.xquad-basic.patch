@@ -64,9 +64,3 @@ Index: etc/make.conf
  
  # This entry should be the last in /etc/make.conf!
  #
-@@ -601,4 +604,4 @@ SSL_UNIT="Preliminary usage"
- # This will typically be the /usr/portage/distfiles directory of some
- # other machine, exported as a network share.
- #
--#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/portage/local/overlay/distfiles/local /usr/portage/local/overlay/distfiles /usr/portage/local/overlay/distfiles/precious /usr/portage/local/overlay/distfiles/mnt ftp://130.208.16.31/pub/gentoo/ http://140.127.177.17/pub/Linux/Gentoo ftp://140.127.177.17/pub/Linux/Gentoo http://gentoo.mirrors.easynews.com/linux/gentoo/ ftp://140.127.177.15/pub/Linux/Gentoo http://140.127.177.15/pub/Linux/Gentoo http://ftp.udc.es/gentoo/ http://mirrors.64hosting.com/pub/mirrors/gentoo/ http://gentoo.netnitco.net ftp://mirrors.64hosting.com/pub/mirrors/gentoo/"

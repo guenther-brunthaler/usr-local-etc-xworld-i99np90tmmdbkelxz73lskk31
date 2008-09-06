@@ -19,6 +19,7 @@ kbuild_output.patch
 +xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
 +vmware.sciencesoft.at admin-is-ps.patch
 +xworld.mine.nu +xternal.mine.nu admin-is-gbr.patch
++xworld.mine.nu popular-gentoo-mirrors.patch
 +xternal.mine.nu +xworld.mine.nu grub-nomount.patch
 
 # Strictly host-specific patches.
