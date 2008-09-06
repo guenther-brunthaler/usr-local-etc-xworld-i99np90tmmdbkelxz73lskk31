@@ -113,11 +113,11 @@ Index: etc/make.conf
 + pdf
 + pic
 + png
-+ postgres
++ -postgres
 + ppds
 + qt
 + qt4
-+ samba
++ -samba
 + sasl
 + screen
 + sharedmem

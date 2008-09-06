@@ -46,7 +46,7 @@ Index: etc/make.conf
  
  # Add files and directories here which should be put under
  # Gentoo's config protection. Such files will never be
-@@ -497,7 +500,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
+@@ -500,7 +503,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.
  # Otherwise, all supported input drivers will be included.
@@ -55,7 +55,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -554,6 +557,7 @@ SSL_UNIT="Preliminary usage"
+@@ -573,6 +576,7 @@ SSL_UNIT="Preliminary usage"
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
  #VIDEO_CARDS="fbdev vesa vga"
@@ -63,8 +63,3 @@ Index: etc/make.conf
  
  # This entry should be the last in /etc/make.conf!
  #
-@@ -575,3 +579,4 @@ SSL_UNIT="Preliminary usage"
- # Network-mounted "/usr/portage/distfiles" from some different machine
- # in the LAN; looking there first before downloading from the internet.
- #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/precious /usr/local/portage/distfiles /usr/local/portage/distfiles/local /usr/local/portage/distfiles/mnt ftp://130.208.16.31/pub/gentoo/ http://140.127.177.17/pub/Linux/Gentoo ftp://140.127.177.17/pub/Linux/Gentoo http://gentoo.mirrors.easynews.com/linux/gentoo/ ftp://140.127.177.15/pub/Linux/Gentoo http://140.127.177.15/pub/Linux/Gentoo http://ftp.udc.es/gentoo/ http://mirrors.64hosting.com/pub/mirrors/gentoo/ http://gentoo.netnitco.net ftp://mirrors.64hosting.com/pub/mirrors/gentoo/"
