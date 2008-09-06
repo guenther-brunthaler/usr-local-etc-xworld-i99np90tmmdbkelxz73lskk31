@@ -13,5 +13,5 @@ Index: lvm/lvm.conf
 -    preferred_names = [ ]
 +    preferred_names = [ "^/dev/mapper/truecrypt" ]
  
-     # preferred_names = [ "^/dev/mpath/", "^/dev/[hs]d" ]
- 
+     # Try to avoid using undescriptive /dev/dm-N names, if present.
+     # preferred_names = [ "^/dev/mpath/", "^/dev/mapper/mpath", "^/dev/[hs]d" ]
