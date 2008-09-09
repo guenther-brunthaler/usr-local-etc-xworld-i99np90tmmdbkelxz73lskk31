@@ -5,11 +5,12 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -935,6 +935,7 @@ http_access deny all
+@@ -1090,6 +1090,8 @@ icp_access deny all
  # Squid normally listens to port 3128
  #http_port 3128
  http_port localhost:8080
-+http_port xvaio.xworld.local:8080
++http_port xquad.xworld.1394.local:8080
++http_port xquad.xworld.eth.local:8080
  
  #  TAG: https_port
  #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]

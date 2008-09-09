@@ -51,20 +51,15 @@ Index: etc/make.conf
  # the set of input device drivers to be compiled in.
  # Otherwise, all supported input drivers will be included.
 -#INPUT_DEVICES="evdev keyboard mouse"
-+INPUT_DEVICES="evdev keyboard mouse synaptics joystick"
++INPUT_DEVICES="evdev joystick keyboard mouse synaptics"
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -557,6 +560,7 @@ SSL_UNIT="Preliminary usage"
+@@ -573,6 +576,7 @@ SSL_UNIT="Preliminary usage"
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
  #VIDEO_CARDS="fbdev vesa vga"
-+VIDEO_CARDS="fbdev vesa vga radeon"
++VIDEO_CARDS="fbdev radeon vesa vga"
  
  # This entry should be the last in /etc/make.conf!
  #
-@@ -578,3 +582,4 @@ SSL_UNIT="Preliminary usage"
- # Network-mounted "/usr/portage/distfiles" from some different machine
- # in the LAN; looking there first before downloading from the internet.
- #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/precious /usr/local/portage/distfiles /usr/local/portage/distfiles/local /usr/local/portage/distfiles/mnt http://ftp.rhnet.is/pub/gentoo/ ftp://ftp.rhnet.is/pub/gentoo/ http://mirrors.ludost.net/gentoo/ http://mirror.fslutd.org/linux/distributions/gentoo/ ftp://mirror.fslutd.org/linux/distributions/gentoo/ ftp://gentoo.netnitco.net/pub/mirrors/gentoo/source/ http://gentoo.netnitco.net http://cesium.di.uminho.pt/pub/gentoo/ http://140.127.177.15/pub/Linux/Gentoo http://140.127.177.17/pub/Linux/Gentoo"
