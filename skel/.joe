@@ -647,6 +647,35 @@
 -istep 3
 -spaces
  # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+ JavaScript / ECMAScript
+*.js
+-autoindent
+-syntax java
+-smarthome
+-smartbacks
+-purify
+-cpara >#!;*/%
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+ JavaScript / ECMAScript
+*
++#!\+\[ 	]\+\[a-z/]/env kjscmd\>
+-autoindent
+-syntax java
+-smarthome
+-smartbacks
+-purify
+-cpara >#!;*/%
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
 
  Hypertext preprocessor file
 *.php
@@ -985,9 +1014,9 @@
 *jpicorc.in
 -syntax joerc
  # *** BEGIN CHANGES BLOCK
- 
+
  Completely new entries.
- 
+
  TCL via shabang
  (According to FHS 2.3, the following
  executables must at least have a symlink in
