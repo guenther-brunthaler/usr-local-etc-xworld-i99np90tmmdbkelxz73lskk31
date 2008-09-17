@@ -1,14 +1,15 @@
 Adds xworld-specific overlay list paths to default layman.cfg.
 
-Index: xworld_layman/layman.cfg
+Index: layman/layman.cfg
 ===================================================================
---- xworld_layman.orig/layman.cfg
-+++ xworld_layman/layman.cfg
-@@ -32,6 +32,8 @@ make_conf : %(storage)s/make.conf
+--- layman.orig/layman.cfg
++++ layman/layman.cfg
+@@ -32,6 +32,9 @@ make_conf : %(storage)s/make.conf
  #            file:///usr/portage/local/layman/my-list.xml
  
  overlays  : http://www.gentoo.org/proj/en/overlays/layman-global.txt
 +            file:///usr/portage/local/xworld_layman/xworld-overlays.xml
++            file:///usr/portage/local/xworld_layman/hosted-overlays.xml
 +            file:///usr/portage/local/xworld_layman/foreign-overlays.xml
  
  #-----------------------------------------------------------
