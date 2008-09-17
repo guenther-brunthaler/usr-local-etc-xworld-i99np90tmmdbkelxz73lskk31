@@ -67,4 +67,4 @@ Index: etc/make.conf
  # other machine, exported as a network share.
  #
  #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/portage/local/overlay/distfiles/precious /usr/portage/local/overlay/distfiles /usr/portage/local/overlay/distfiles/local /usr/portage/local/overlay/distfiles/mnt ftp://gd.tuwien.ac.at/opsys/linux/gentoo/ http://gentoo.netnitco.net http://gentoo.cites.uiuc.edu/pub/gentoo/"
++GENTOO_MIRRORS="/usr/portage/local/distfiles/precious /usr/portage/local/distfiles /usr/portage/local/distfiles/local /usr/portage/local/distfiles/mnt ftp://gd.tuwien.ac.at/opsys/linux/gentoo/ http://gentoo.netnitco.net http://gentoo.cites.uiuc.edu/pub/gentoo/"
