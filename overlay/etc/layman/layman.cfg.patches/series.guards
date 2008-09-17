@@ -1,0 +1,12 @@
+# Process with 'guards' tool to create "series".
+
+# Generic patches.
+
+# Conditional patches possibly applying to different hosts.
++xworld.mine.nu domain-nu.mine.xworld-layman.patch
+
+# Strictly host-specific patches.
++xternal.mine.nu host-nu.mine.xternal-layman.patch
+
+# Non-patch files.
+- series.guards series

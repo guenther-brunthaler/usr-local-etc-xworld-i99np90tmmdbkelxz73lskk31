@@ -12,8 +12,8 @@ ssh-friendly.patch
 default-features.patch
 
 # Conditional patches possibly applying to different hosts.
-+xqrescue.xworld.mine.nu +xternal.mine.nu portage-overlay-only.patch
-+xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu layman-support.patch
+- portage-overlay-only.patch
++xternal.mine.nu +xworld.mine.nu layman-support.patch
 +xworld.mine.nu getdelta.patch
 kbuild_output.patch
 +xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
