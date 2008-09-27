@@ -13,13 +13,12 @@ Index: net-misc/dropbear-0.49
  #endif
  
  #ifndef DROPBEAR_DEFADDRESS
-@@ -37,13 +37,13 @@
-  *
+@@ -38,12 +38,12 @@
   * Both of these flags can be defined at once, don't compile without at least
   * one of them. */
--#define NON_INETD_MODE
-+/*#define NON_INETD_MODE*/
- #define INETD_MODE
+ #define NON_INETD_MODE
+-#define INETD_MODE
++/*#define INETD_MODE*/
  
  /* Setting this disables the fast exptmod bignum code. It saves ~5kB, but is
   * perhaps 20% slower for pubkey operations (it is probably worth experimenting
@@ -29,7 +28,14 @@ Index: net-misc/dropbear-0.49
  
  /* Set this if you want to use the DROPBEAR_SMALL_CODE option. This can save
  several kB in binary size, however will make the symmetrical ciphers (AES, DES
-@@ -57,25 +57,25 @@ etc) slower (perhaps by 50%). Recommende
+@@ -51,31 +51,31 @@ etc) slower (perhaps by 50%). Recommende
+ #define DROPBEAR_SMALL_CODE
+ 
+ /* Enable X11 Forwarding - server only */
+-#define ENABLE_X11FWD
++/*#define ENABLE_X11FWD*/
+ 
+ /* Enable TCP Fowarding */
  /* 'Local' is "-L" style (client listening port forwarded via server)
   * 'Remote' is "-R" style (server listening port forwarded via client) */
  
@@ -142,6 +148,15 @@ Index: net-misc/dropbear-0.49
  #endif
  
  /* This is used by the scp binary when used as a client binary. If you're
+@@ -235,7 +235,7 @@ etc) slower (perhaps by 50%). Recommende
+ #endif
+ /* Close connections to clients which haven't authorised after AUTH_TIMEOUT */
+ #ifndef AUTH_TIMEOUT
+-#define AUTH_TIMEOUT 300 /* we choose 5 minutes */
++#define AUTH_TIMEOUT 60 /* we choose 5 minutes */
+ #endif
+ 
+ /* Minimum key sizes for DSS and RSA */
 @@ -243,7 +243,7 @@ etc) slower (perhaps by 50%). Recommende
  #define MIN_DSS_KEYLEN 512
  #endif
