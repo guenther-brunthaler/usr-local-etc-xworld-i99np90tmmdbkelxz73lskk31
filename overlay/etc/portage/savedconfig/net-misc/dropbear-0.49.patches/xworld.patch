@@ -1,0 +1,153 @@
+Apply realm-specific patches for xworld.mine.nu domain.
+
+Index: net-misc/dropbear-0.49
+===================================================================
+--- net-misc.orig/dropbear-0.49
++++ net-misc/dropbear-0.49
+@@ -11,7 +11,7 @@
+  ******************************************************************/
+ 
+ #ifndef DROPBEAR_DEFPORT
+-#define DROPBEAR_DEFPORT "22"
++#define DROPBEAR_DEFPORT "877"
+ #endif
+ 
+ #ifndef DROPBEAR_DEFADDRESS
+@@ -37,13 +37,13 @@
+  *
+  * Both of these flags can be defined at once, don't compile without at least
+  * one of them. */
+-#define NON_INETD_MODE
++/*#define NON_INETD_MODE*/
+ #define INETD_MODE
+ 
+ /* Setting this disables the fast exptmod bignum code. It saves ~5kB, but is
+  * perhaps 20% slower for pubkey operations (it is probably worth experimenting
+  * if you want to use this) */
+-/*#define NO_FAST_EXPTMOD*/
++#define NO_FAST_EXPTMOD
+ 
+ /* Set this if you want to use the DROPBEAR_SMALL_CODE option. This can save
+ several kB in binary size, however will make the symmetrical ciphers (AES, DES
+@@ -57,25 +57,25 @@ etc) slower (perhaps by 50%). Recommende
+ /* 'Local' is "-L" style (client listening port forwarded via server)
+  * 'Remote' is "-R" style (server listening port forwarded via client) */
+ 
+-#define ENABLE_CLI_LOCALTCPFWD
+-#define ENABLE_CLI_REMOTETCPFWD
++/*#define ENABLE_CLI_LOCALTCPFWD*/
++/*#define ENABLE_CLI_REMOTETCPFWD*/
+ 
+-#define ENABLE_SVR_LOCALTCPFWD
+-#define ENABLE_SVR_REMOTETCPFWD
++/*#define ENABLE_SVR_LOCALTCPFWD*/
++/*#define ENABLE_SVR_REMOTETCPFWD*/
+ 
+ /* Enable Authentication Agent Forwarding - server only for now */
+-#define ENABLE_AGENTFWD
++/*#define ENABLE_AGENTFWD*/
+ 
+ /* Encryption - at least one required.
+  * RFC Draft requires 3DES and recommends AES128 for interoperability.
+  * Including multiple keysize variants the same cipher 
+  * (eg AES256 as well as AES128) will result in a minimal size increase.*/
+-#define DROPBEAR_AES128_CBC
+-#define DROPBEAR_3DES_CBC
+-#define DROPBEAR_AES256_CBC
+-#define DROPBEAR_BLOWFISH_CBC
++/*#define DROPBEAR_AES128_CBC*/
++/*#define DROPBEAR_3DES_CBC*/
++/*#define DROPBEAR_AES256_CBC*/
++/*#define DROPBEAR_BLOWFISH_CBC*/
+ #define DROPBEAR_TWOFISH256_CBC
+-#define DROPBEAR_TWOFISH128_CBC
++/*#define DROPBEAR_TWOFISH128_CBC*/
+ 
+ /* Message Integrity - at least one required.
+  * RFC Draft requires sha1 and recommends sha1-96.
+@@ -90,15 +90,15 @@ etc) slower (perhaps by 50%). Recommende
+  * If you disable MD5, Dropbear will fall back to SHA1 fingerprints,
+  * which are not the standard form. */
+ #define DROPBEAR_SHA1_HMAC
+-#define DROPBEAR_SHA1_96_HMAC
+-#define DROPBEAR_MD5_HMAC
++/*#define DROPBEAR_SHA1_96_HMAC*/
++/*#define DROPBEAR_MD5_HMAC*/
+ 
+ /* Hostkey/public key algorithms - at least one required, these are used
+  * for hostkey as well as for verifying signatures with pubkey auth.
+  * Removing either of these won't save very much space.
+  * SSH2 RFC Draft requires dss, recommends rsa */
+ #define DROPBEAR_RSA
+-#define DROPBEAR_DSS
++/*#define DROPBEAR_DSS*/
+ 
+ /* RSA can be vulnerable to timing attacks which use the time required for
+  * signing to guess the private key. Blinding avoids this attack, though makes
+@@ -112,11 +112,11 @@ etc) slower (perhaps by 50%). Recommende
+ /* #define DSS_PROTOK */
+ 
+ /* Whether to do reverse DNS lookups. */
+-#define DO_HOST_LOOKUP
++/*#define DO_HOST_LOOKUP*/
+ 
+ /* Whether to print the message of the day (MOTD). This doesn't add much code
+  * size */
+-#define DO_MOTD
++/*#define DO_MOTD*/
+ 
+ /* The MOTD file path */
+ #ifndef MOTD_FILENAME
+@@ -132,13 +132,13 @@ etc) slower (perhaps by 50%). Recommende
+  * but there's an interface via a PAM module - don't bother using it otherwise.
+  * You can't enable both PASSWORD and PAM. */
+ 
+-#define ENABLE_SVR_PASSWORD_AUTH
++/*#define ENABLE_SVR_PASSWORD_AUTH*/
+ /*#define ENABLE_SVR_PAM_AUTH */ /* requires ./configure --enable-pam */
+ #define ENABLE_SVR_PUBKEY_AUTH
+ 
+-#define ENABLE_CLI_PASSWORD_AUTH
++/*#define ENABLE_CLI_PASSWORD_AUTH*/
+ #define ENABLE_CLI_PUBKEY_AUTH
+-#define ENABLE_CLI_INTERACT_AUTH
++/*#define ENABLE_CLI_INTERACT_AUTH*/
+ 
+ /* Define this (as well as ENABLE_CLI_PASSWORD_AUTH) to allow the use of
+  * a helper program for the ssh client. The helper program should be
+@@ -166,7 +166,7 @@ etc) slower (perhaps by 50%). Recommende
+ 
+ /* If the normal random source would block for a while, fall back to 
+  * the urandom source so that connections don't hang forever. */
+-#define DROPBEAR_URANDOM_DEV "/dev/urandom"
++/*#define DROPBEAR_URANDOM_DEV "/dev/urandom"*/
+ 
+ /* Specify the number of clients we will allow to be connected but
+  * not yet authenticated. After this limit, connections are rejected */
+@@ -178,7 +178,7 @@ etc) slower (perhaps by 50%). Recommende
+ /* And then a global limit to avoid chewing memory if connections 
+  * come from many IPs */
+ #ifndef MAX_UNAUTH_CLIENTS
+-#define MAX_UNAUTH_CLIENTS 30
++#define MAX_UNAUTH_CLIENTS 15
+ #endif
+ 
+ /* Maximum number of failed authentication tries (server option) */
+@@ -202,7 +202,7 @@ etc) slower (perhaps by 50%). Recommende
+  * OpenSSH), set the path below. If the path isn't defined, sftp will not
+  * be enabled */
+ #ifndef SFTPSERVER_PATH
+-#define SFTPSERVER_PATH "/usr/lib/misc/sftp-server"
++/*#define SFTPSERVER_PATH "/usr/lib/misc/sftp-server"*/
+ #endif
+ 
+ /* This is used by the scp binary when used as a client binary. If you're
+@@ -243,7 +243,7 @@ etc) slower (perhaps by 50%). Recommende
+ #define MIN_DSS_KEYLEN 512
+ #endif
+ #ifndef MIN_RSA_KEYLEN
+-#define MIN_RSA_KEYLEN 512
++#define MIN_RSA_KEYLEN 2048
+ #endif
+ 
+ #define MAX_BANNER_SIZE 2000 /* this is 25*80 chars, any more is foolish */
