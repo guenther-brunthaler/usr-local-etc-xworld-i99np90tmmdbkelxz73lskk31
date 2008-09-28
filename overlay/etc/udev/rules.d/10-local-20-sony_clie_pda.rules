@@ -1,0 +1,3 @@
+# Rules for SONY Clié PDA (USB connected).
+SUBSYSTEMS=="usb-serial",KERNEL=="ttyUSB[0-9]*",DRIVERS=="visor",ATTRS{port_number}=="0",SYMLINK:="Sony_Clie_HotSync Sony_Clie_$attr{port_number}"
+SUBSYSTEMS=="usb-serial",KERNEL=="ttyUSB[0-9]*",DRIVERS=="visor",SYMLINK:="Sony_Clie_$attr{port_number}",GROUP:="plugdev"
