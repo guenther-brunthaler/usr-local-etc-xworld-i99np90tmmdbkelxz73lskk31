@@ -11,7 +11,7 @@ Index: sys-apps/busybox-1.11.1
  # Automatically generated make config: don't edit
  # Busybox version: 1.11.1
 -# Sat Sep 27 19:36:50 2008
-+# Sat Sep 27 20:59:47 2008
++# Tue Sep 30 21:19:54 2008
  #
  CONFIG_HAVE_DOT_CONFIG=y
  
@@ -108,7 +108,7 @@ Index: sys-apps/busybox-1.11.1
  CONFIG_FEATURE_TAR_GNU_EXTENSIONS=y
  CONFIG_FEATURE_TAR_LONG_OPTIONS=y
  CONFIG_FEATURE_TAR_UNAME_GNAME=y
-@@ -135,27 +135,23 @@ CONFIG_UNZIP=y
+@@ -135,13 +135,9 @@ CONFIG_UNZIP=y
  #
  # Common options for cpio and tar
  #
@@ -125,10 +125,9 @@ Index: sys-apps/busybox-1.11.1
  
  #
  # Coreutils
- #
+@@ -149,13 +145,13 @@ CONFIG_FEATURE_DEB_TAR_LZMA=y
  CONFIG_BASENAME=y
--CONFIG_CAL=y
-+# CONFIG_CAL is not set
+ CONFIG_CAL=y
  CONFIG_CAT=y
 -CONFIG_CATV=y
 +# CONFIG_CATV is not set
