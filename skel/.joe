@@ -814,6 +814,17 @@
 -istep 3
 -spaces
  # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#!\+\[ 	]\+\[a-z/]/tinyscheme\>
+-autoindent
+-syntax lisp
+-semi_comment
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
 
 *.lsp
 -autoindent

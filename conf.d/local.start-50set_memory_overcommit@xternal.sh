@@ -1,1 +1,1 @@
-local.start-50set_memory_overcommit@xtreme.sh
+local.start-50set_memory_overcommit.sh
