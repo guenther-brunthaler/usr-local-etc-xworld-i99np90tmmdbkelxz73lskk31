@@ -810,6 +810,7 @@
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
+-tab 3
 -indentc 32
 -istep 3
 -spaces
@@ -817,10 +818,11 @@
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\+\[a-z/]/tinyscheme\>
++#!\+\[ 	]\+\[a-z/]/env\+\[ 	]tinyscheme\>
 -autoindent
 -syntax lisp
 -semi_comment
+-tab 3
 -indentc 32
 -istep 3
 -spaces
@@ -831,6 +833,7 @@
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
+-tab 3
 -indentc 32
 -istep 3
 -spaces
@@ -841,6 +844,7 @@
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
+-tab 3
 -indentc 32
 -istep 3
 -spaces
