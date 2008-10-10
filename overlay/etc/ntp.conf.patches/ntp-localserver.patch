@@ -7,7 +7,7 @@ Index: etc/ntp.conf
 ===================================================================
 --- etc.orig/ntp.conf
 +++ etc/ntp.conf
-@@ -28,15 +28,22 @@ driftfile	/var/lib/ntp/ntp.drift
+@@ -35,15 +35,22 @@ driftfile	/var/lib/ntp/ntp.drift
  # Warning: Using default NTP settings will leave your NTP
  # server accessible to all hosts on the Internet.
  
@@ -32,7 +32,7 @@ Index: etc/ntp.conf
  
  
  # To allow machines within your network to synchronize
-@@ -44,4 +51,7 @@ restrict 127.0.0.1
+@@ -51,4 +58,7 @@ restrict 127.0.0.1
  # not allowed to configure the server or used as peers
  # to synchronize against, uncomment this line.
  #

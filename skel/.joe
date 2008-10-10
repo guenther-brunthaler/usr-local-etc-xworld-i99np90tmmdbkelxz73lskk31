@@ -693,15 +693,25 @@
  Python
 *
 +#!\+\[ 	]\+\[a-z/]/python\>
- # *** BEGIN CHANGES BLOCK
-+#!\+\[ 	]\+\[a-z/]/env\+\[ 	]python\>
- # *** END CHANGES BLOCK
 -autoindent
 -syntax python
 -smarthome
 -smartbacks
 -purify
  # *** BEGIN CHANGES BLOCK
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#!\+\[ 	]\+\[a-z/]/env\+\[ 	]python\>
+-autoindent
+-syntax python
+-smarthome
+-smartbacks
+-purify
 -indentc 32
 -istep 3
 -spaces
@@ -810,21 +820,33 @@
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
--tab 3
+-tab 2
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\+\[a-z/]/env\+\[ 	]tinyscheme\>
++#!\+\[ 	]\+\[a-z/]/env\+\[ 	]\+\[a-z0-9/]scheme\>
 -autoindent
 -syntax lisp
 -semi_comment
--tab 3
+-tab 2
 -indentc 32
--istep 3
+-istep 2
+-spaces
+ # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#!\+\[ 	]\+\[a-z0-9/]scheme\>
+-autoindent
+-syntax lisp
+-semi_comment
+-tab 2
+-indentc 32
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
@@ -833,9 +855,9 @@
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
--tab 3
+-tab 2
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
@@ -844,9 +866,9 @@
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
--tab 3
+-tab 2
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
