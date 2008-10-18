@@ -61,7 +61,7 @@ Index: squid/squid.conf
  
  # And finally deny all other access to this proxy
  http_access deny all
-@@ -4328,6 +4343,7 @@ broken_vary_encoding allow apache
+@@ -4330,6 +4345,7 @@ broken_vary_encoding allow apache
  #
  #Default:
  # none
