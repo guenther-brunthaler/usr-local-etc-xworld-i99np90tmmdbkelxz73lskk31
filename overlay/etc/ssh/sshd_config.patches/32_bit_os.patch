@@ -1,0 +1,17 @@
+Modifications for 32-bit Linux installations.
+
+Default is for 64 bit installations.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -127,7 +127,7 @@ Protocol 2
+ #Banner none
+ 
+ # override default of no subsystems
+-Subsystem	sftp	/usr/lib64/misc/sftp-server
++Subsystem	sftp	/usr/lib/misc/sftp-server
+ 
+ # Example of overriding settings on a per-user basis
+ #Match User anoncvs
