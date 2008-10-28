@@ -1,0 +1,15 @@
+Allow SSH access to the local machine only for members
+of group "sshlogin".
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -139,6 +139,7 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
+ 
+ # anchor_1i2w6k7g8dtsxb62ev3eliju4_16
+ # Non-default options that have been added to the config file
++AllowGroups=sshlogin
+ # ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_17
+ # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
+ # EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_19

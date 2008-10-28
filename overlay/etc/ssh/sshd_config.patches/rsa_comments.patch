@@ -1,0 +1,16 @@
+Enhance comments for RSA key types.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -47,7 +47,9 @@ Protocol 2
+ #MaxSessions 10
+ 
+ # anchor_1i2w6k7g8dtsxb62ev3eliju4_4
++# Pure RSAAuthentication is used for V1 only
+ #RSAAuthentication yes
++# PubkeyAuthentication is used for V2 only
+ #PubkeyAuthentication yes
+ #AuthorizedKeysFile	.ssh/authorized_keys
+ 

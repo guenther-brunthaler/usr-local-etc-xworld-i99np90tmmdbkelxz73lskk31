@@ -1,0 +1,15 @@
+Disable S/KEY authentication for this server.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -70,7 +70,7 @@ PasswordAuthentication no
+ 
+ # anchor_1i2w6k7g8dtsxb62ev3eliju4_6
+ # Change to no to disable s/key passwords
+-#ChallengeResponseAuthentication yes
++ChallengeResponseAuthentication no
+ 
+ # Kerberos options
+ #KerberosAuthentication no

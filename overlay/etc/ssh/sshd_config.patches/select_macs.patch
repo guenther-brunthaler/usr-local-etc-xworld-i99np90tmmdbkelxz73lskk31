@@ -1,0 +1,12 @@
+Select MAC algorithms allowed for this SSH server.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -143,4 +143,5 @@ AllowGroups=sshlogin
+ # ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_17
+ Ciphers=blowfish-cbc
+ # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
++MACs=hmac-ripemd160,hmac-sha1
+ # EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_19

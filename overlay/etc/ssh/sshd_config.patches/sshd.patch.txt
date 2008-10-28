@@ -1,0 +1,65 @@
+Diff is cool.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -11,6 +11,8 @@
+ # default value.
+ 
+ #Port 22
++Port 875
++Port 992
+ #AddressFamily any
+ #ListenAddress 0.0.0.0
+ #ListenAddress ::
+@@ -38,12 +40,16 @@ Protocol 2
+ # Authentication:
+ 
+ #LoginGraceTime 2m
+-#PermitRootLogin yes
++# Root login is dangerous only if weak passwords as used.
++# As we only allow RSA logins, this danger does not apply.
++PermitRootLogin yes
+ #StrictModes yes
+ #MaxAuthTries 6
+ #MaxSessions 10
+ 
++# Pure RSAAuthentication is used for V1 only
+ #RSAAuthentication yes
++# PubkeyAuthentication is used for V2 only
+ #PubkeyAuthentication yes
+ #AuthorizedKeysFile	.ssh/authorized_keys
+ 
+@@ -58,11 +64,11 @@ Protocol 2
+ #IgnoreRhosts yes
+ 
+ # To disable tunneled clear text passwords, change to no here!
+-#PasswordAuthentication yes
++PasswordAuthentication no
+ #PermitEmptyPasswords no
+ 
+ # Change to no to disable s/key passwords
+-#ChallengeResponseAuthentication yes
++ChallengeResponseAuthentication no
+ 
+ # Kerberos options
+ #KerberosAuthentication no
+@@ -88,7 +94,7 @@ Protocol 2
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes
+ #GatewayPorts no
+-#X11Forwarding no
++X11Forwarding yes
+ #X11DisplayOffset 10
+ #X11UseLocalhost yes
+ #PrintMotd yes
+@@ -117,3 +123,8 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
+ #	X11Forwarding no
+ #	AllowTcpForwarding no
+ #	ForceCommand cvs server
++
++# Non-default options that have been added to the config file
++AllowGroups=sshlogin
++Ciphers=blowfish-cbc
++MACs=hmac-ripemd160,hmac-sha1

@@ -1,0 +1,13 @@
+Select encryption algorithms supported by this server.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -141,5 +141,6 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
+ # Non-default options that have been added to the config file
+ AllowGroups=sshlogin
+ # ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_17
++Ciphers=blowfish-cbc
+ # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
+ # EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
