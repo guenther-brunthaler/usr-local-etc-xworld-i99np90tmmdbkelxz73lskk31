@@ -1068,5 +1068,13 @@
 -indentc 32
 -istep 3
 -spaces
+
+ Simplicity source file
+*
++#!\+\[ 	]\+\[a-z/]/env simple\>
+-tab 3
+-indentc 32
+-istep 3
+-spaces
  # *** END CHANGES BLOCK
 

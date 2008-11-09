@@ -20,4 +20,4 @@
 	if test -e "$TAGFILE"; then
 		test ! -f "$TAGFILE" || test -s "$TAGFILE"
 	fi
-) && . /etc/profile.d/bash-completion
+) && . /etc/profile.d/bash-completion || true
