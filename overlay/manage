@@ -111,8 +111,18 @@ sub ensure_dir($) {
 
 sub reconcile_file {
    my($orig, $ovl, $pchd, $live, $pfd)= @_;
+   my $arch;
+   if (defined $cfg_archive) {
+      my($vol, $dirs1, $dirs2);
+      ($vol, $dirs1)= File::Spec->splitpath($cfg_archive, 1);
+      (undef, $dirs2, $arch)= File::Spec->splitpath($live);
+      $arch= File::Spec->catpath(
+         $vol, File::Spec->catdir($dirs1, $dirs2), $arch
+      );
+   }
    01 && print
         qq'ORIG "$orig", OVL "$ovl", PATCHED "$pchd", '
+      . 'ARCHIVE "', $arch || '(null)' , '", '
       . qq'LIVE "$live", PATCHFILEDIR "$pfd".\n'
    ;
    undef $pfd if -l $pfd || ! -f _;
@@ -141,7 +151,9 @@ sub manage {
                         ;
                      } pristine_tree, undef, patched_tree
                   )
-               , File::Spec->catdir($ROOT, $rpath)
+               , File::Spec->catfile(
+                    File::Spec->catdir($ROOT, $rpath), $entry
+                 )
                , "$path.patches"
             ;
          } elsif (-d _) {
@@ -175,7 +187,13 @@ $ROOT= qx{eval "$ROOT" && printf '%s' \$ROOT} || File::Spec->rootdir;
       my $cfg= new file('<', $cfg);
       while (defined($_= $cfg->readline)) {
          $cfg_RCS= 1 if /^use-rcs\s*=\s*yes\s*$/i;
-         $cfg_archive= $1 if /^archive-dir\s*=\s*(.+?)\s*$/i;
+         if (/^archive-dir\s*=\s*(.+?)\s*$/i) {
+            (undef, $cfg_archive)= File::Spec->splitpath($1, 1);
+            my($vol, $root)= File::Spec->splitpath($ROOT, 1);
+            $cfg_archive= File::Spec->catpath(
+               $vol, File::Spec->catdir($root, $cfg_archive), ''
+            );
+         }
       }
    }
 }
