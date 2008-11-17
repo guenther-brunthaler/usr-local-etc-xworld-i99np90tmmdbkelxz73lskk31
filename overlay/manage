@@ -10,9 +10,6 @@ use constant patched_tree => "patched";
 use constant more_toplevel_excludes => qw/README usr/;
 
 
-our $basedir;
-
-
 {
    package directory;
    use Carp;
@@ -53,31 +50,47 @@ our $basedir;
 }
 
 
-sub manage($\%) {
-   my($dir, $exclusions)= @_;
-   my(@d, $entry, $path, $rpath);
-   $rpath= File::Spec->abs2rel($dir, $basedir);
+sub ensure_dir($) {
+   my($rpath)= @_;
+   -d $rpath && return;
+   mkdir $rpath or die qq'Could not create directory "$rpath": $!';
+   -d $rpath or die $!;
+}
+
+
+sub manage($$\%) {
+   my($basedir, $rpath, $exclusions)= @_;
+   my(@d, $entry, $path, $abspath);
+   $abspath= File::Spec->catdir($basedir, $rpath);
    {
-      my $dh= new directory($dir);
+      my $dh= new directory($abspath);
       while (defined($entry= $dh->read)) {
          next if exists $exclusions->{$entry};
          next unless File::Spec->no_upwards($entry);
-         $path= File::Spec->catfile($rpath, $entry);
+         $path= File::Spec->catfile($abspath, $entry);
          if (-f $path) {
-            print "$path\n";
+            print "FILE: $path\n";
          } elsif (-d _) {
             push @d, $entry unless $entry =~ /.+\.patches$/;
          }
       }
    }
    foreach $entry (@d) {
-      &manage(File::Spec->catfile($rpath, $entry), $exclusions);
+      $path= File::Spec->catdir($rpath, $entry);
+      foreach (patched_tree, pristine_tree) {
+         ensure_dir +File::Spec->catdir($basedir, $_, $path);
+      }
+      &manage($basedir, $path, $exclusions);
    }
 }
 
 
+my $basedir= $FindBin::Bin;
+foreach (pristine_tree, patched_tree) {
+   ensure_dir +File::Spec->catdir($basedir, $_);
+}
 manage
-     $FindBin::Bin
+     $basedir, File::Spec->curdir
      , %{{
         map {$_, undef}
           $FindBin::Script, more_toplevel_excludes
