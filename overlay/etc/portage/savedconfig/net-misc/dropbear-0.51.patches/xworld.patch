@@ -1,9 +1,9 @@
 Apply realm-specific patches for xworld.mine.nu domain.
 
-Index: net-misc/dropbear-0.49
+Index: net-misc/dropbear-0.51
 ===================================================================
---- net-misc.orig/dropbear-0.49
-+++ net-misc/dropbear-0.49
+--- net-misc.orig/dropbear-0.51
++++ net-misc/dropbear-0.51
 @@ -11,7 +11,7 @@
   ******************************************************************/
  
@@ -119,18 +119,18 @@ Index: net-misc/dropbear-0.49
 -#define ENABLE_CLI_INTERACT_AUTH
 +/*#define ENABLE_CLI_INTERACT_AUTH*/
  
- /* Define this (as well as ENABLE_CLI_PASSWORD_AUTH) to allow the use of
-  * a helper program for the ssh client. The helper program should be
-@@ -166,7 +166,7 @@ etc) slower (perhaps by 50%). Recommende
+ /* This variable can be used to set a password for client
+  * authentication on the commandline. Beware of platforms
+@@ -165,7 +165,7 @@ etc) slower (perhaps by 50%). Recommende
+ /* We'll use /dev/urandom by default, since /dev/random is too much hassle.
+  * If system developers aren't keeping seeds between boots nor getting
+  * any entropy from somewhere it's their own fault. */
+-#define DROPBEAR_RANDOM_DEV "/dev/urandom"
++#define DROPBEAR_RANDOM_DEV "/dev/random"
  
- /* If the normal random source would block for a while, fall back to 
-  * the urandom source so that connections don't hang forever. */
--#define DROPBEAR_URANDOM_DEV "/dev/urandom"
-+/*#define DROPBEAR_URANDOM_DEV "/dev/urandom"*/
- 
- /* Specify the number of clients we will allow to be connected but
-  * not yet authenticated. After this limit, connections are rejected */
-@@ -178,7 +178,7 @@ etc) slower (perhaps by 50%). Recommende
+ /* prngd must be manually set up to produce output */
+ /*#define DROPBEAR_PRNGD_SOCKET "/var/run/dropbear-rng"*/
+@@ -180,7 +180,7 @@ etc) slower (perhaps by 50%). Recommende
  /* And then a global limit to avoid chewing memory if connections 
   * come from many IPs */
  #ifndef MAX_UNAUTH_CLIENTS
@@ -139,7 +139,7 @@ Index: net-misc/dropbear-0.49
  #endif
  
  /* Maximum number of failed authentication tries (server option) */
-@@ -202,7 +202,7 @@ etc) slower (perhaps by 50%). Recommende
+@@ -204,7 +204,7 @@ etc) slower (perhaps by 50%). Recommende
   * OpenSSH), set the path below. If the path isn't defined, sftp will not
   * be enabled */
  #ifndef SFTPSERVER_PATH
@@ -148,7 +148,7 @@ Index: net-misc/dropbear-0.49
  #endif
  
  /* This is used by the scp binary when used as a client binary. If you're
-@@ -235,7 +235,7 @@ etc) slower (perhaps by 50%). Recommende
+@@ -256,7 +256,7 @@ be overridden at runtime with -K. 0 disa
  #endif
  /* Close connections to clients which haven't authorised after AUTH_TIMEOUT */
  #ifndef AUTH_TIMEOUT
@@ -157,7 +157,7 @@ Index: net-misc/dropbear-0.49
  #endif
  
  /* Minimum key sizes for DSS and RSA */
-@@ -243,7 +243,7 @@ etc) slower (perhaps by 50%). Recommende
+@@ -264,7 +264,7 @@ be overridden at runtime with -K. 0 disa
  #define MIN_DSS_KEYLEN 512
  #endif
  #ifndef MIN_RSA_KEYLEN
