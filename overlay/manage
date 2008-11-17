@@ -58,7 +58,13 @@ sub ensure_dir($) {
 }
 
 
-sub manage($$\%) {
+sub reconcile_file {
+   my($orig, $ovl, $pch)= @_;
+   print qq'ORIG "$orig", OVL "$ovl", PATCHED "$pch".\n';
+}
+
+
+sub manage {
    my($basedir, $rpath, $exclusions)= @_;
    my(@d, $entry, $path, $abspath);
    $abspath= File::Spec->catdir($basedir, $rpath);
@@ -69,7 +75,16 @@ sub manage($$\%) {
          next unless File::Spec->no_upwards($entry);
          $path= File::Spec->catfile($abspath, $entry);
          if (-f $path) {
-            print "FILE: $path\n";
+            reconcile_file
+               map {
+                    defined()
+                  ? File::Spec->catfile(
+                       File::Spec->catdir($basedir, $_, $rpath), $entry
+                    )
+                  : $path
+                  ;
+               } pristine_tree, undef, patched_tree
+            ;
          } elsif (-d _) {
             push @d, $entry unless $entry =~ /.+\.patches$/;
          }
@@ -89,11 +104,11 @@ my $basedir= $FindBin::Bin;
 foreach (pristine_tree, patched_tree) {
    ensure_dir +File::Spec->catdir($basedir, $_);
 }
-manage
+&manage(
      $basedir, File::Spec->curdir
-     , %{{
+     , {
         map {$_, undef}
           $FindBin::Script, more_toplevel_excludes
         , pristine_tree, patched_tree
-     }}
-;
+     }
+);
