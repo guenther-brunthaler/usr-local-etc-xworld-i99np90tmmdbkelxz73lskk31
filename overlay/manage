@@ -7,7 +7,7 @@ use File::Spec;
 
 use constant pristine_tree => "vendor";
 use constant patched_tree => "patched";
-use constant more_toplevel_excludes => qw/README/;
+use constant more_toplevel_excludes => qw/README usr/;
 
 
 our $basedir;
@@ -48,42 +48,39 @@ our $basedir;
    
    
    sub read {
-      my $me= shift;
-      my $read;
-      $!= 0;
-      unless (defined($read= readdir $me->{dh})) {
-         $me->fail("Could not read entry from") if $!;
-      }
-      return $read;
+      return readdir shift->{dh};
    }
 }
 
 
-sub manage($;@) {
-   my($dir, @exclusions)= @_;
+sub manage($\%) {
+   my($dir, $exclusions)= @_;
    my(@d, $entry, $path, $rpath);
    $rpath= File::Spec->abs2rel($dir, $basedir);
    {
       my $dh= new directory($dir);
       while (defined($entry= $dh->read)) {
+         next if exists $exclusions->{$entry};
          next unless File::Spec->no_upwards($entry);
          $path= File::Spec->catfile($rpath, $entry);
          if (-f $path) {
             print "$path\n";
          } elsif (-d _) {
-            push @d, $entry;
+            push @d, $entry unless $entry =~ /.+\.patches$/;
          }
       }
+   }
+   foreach $entry (@d) {
+      &manage(File::Spec->catfile($rpath, $entry), $exclusions);
    }
 }
 
 
-my $binname;
-{
-   my($vol);
-   ($vol, $basedir, $binname)= File::Spec->splitpath($FindBin::Bin);
-   $basedir= File::Spec->catdir(File::Spec->catpath($vol, $basedir, ""));
-}
 manage
-   $basedir, $binname, more_toplevel_excludes, pristine_tree, patched_tree
+     $FindBin::Bin
+     , %{{
+        map {$_, undef}
+          $FindBin::Script, more_toplevel_excludes
+        , pristine_tree, patched_tree
+     }}
 ;
