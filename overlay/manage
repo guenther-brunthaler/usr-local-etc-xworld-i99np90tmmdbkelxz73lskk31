@@ -1,0 +1,89 @@
+#! /usr/bin/perl -w
+
+
+use FindBin;
+use File::Spec;
+
+
+use constant pristine_tree => "vendor";
+use constant patched_tree => "patched";
+use constant more_toplevel_excludes => qw/README/;
+
+
+our $basedir;
+
+
+{
+   package directory;
+   use Carp;
+   
+   
+   sub name {
+      return shift->{name};
+   }
+
+
+   sub fail {
+      my($me, $msg)= @_;
+      croak qq'$msg directory "' . $me->name . qq'": $!';
+   }   
+
+   
+   sub new {
+      my(undef, $name)= @_;
+      my $me= bless {};
+      local *DIR;
+      opendir DIR, $me->{name}= $name or $me->fail("Could not open");
+      $me->{dh}= *DIR{IO};
+      return $me;
+   }
+   
+   
+   DESTROY {
+      my $me= shift;
+      if (my $dh= $me->{dh}) {
+         closedir $dh or $me->fail("Could not close");
+      }
+   }
+   
+   
+   sub read {
+      my $me= shift;
+      my $read;
+      $!= 0;
+      unless (defined($read= readdir $me->{dh})) {
+         $me->fail("Could not read entry from") if $!;
+      }
+      return $read;
+   }
+}
+
+
+sub manage($;@) {
+   my($dir, @exclusions)= @_;
+   my(@d, $entry, $path, $rpath);
+   $rpath= File::Spec->abs2rel($dir, $basedir);
+   {
+      my $dh= new directory($dir);
+      while (defined($entry= $dh->read)) {
+         next unless File::Spec->no_upwards($entry);
+         $path= File::Spec->catfile($rpath, $entry);
+         if (-f $path) {
+            print "$path\n";
+         } elsif (-d _) {
+            push @d, $entry;
+         }
+      }
+   }
+}
+
+
+my $binname;
+{
+   my($vol);
+   ($vol, $basedir, $binname)= File::Spec->splitpath($FindBin::Bin);
+   $basedir= File::Spec->catdir(File::Spec->catpath($vol, $basedir, ""));
+}
+manage
+   $basedir, $binname, more_toplevel_excludes, pristine_tree, patched_tree
+;
