@@ -10,6 +10,9 @@ use constant patched_tree => "patched";
 use constant more_toplevel_excludes => qw/README usr/;
 
 
+our($ROOT, $cfg_archive, $cfg_RCS);
+
+
 {
    package directory;
    use Carp;
@@ -45,7 +48,55 @@ use constant more_toplevel_excludes => qw/README usr/;
    
    
    sub read {
+      die if wantarray;
       return readdir shift->{dh};
+   }
+}
+
+
+{
+   package file;
+   use Carp;
+   
+   
+   sub name {
+      return shift->{name};
+   }
+
+
+   sub fail {
+      my($me, $msg)= @_;
+      croak qq'$msg file "' . $me->name . qq'": $!';
+   }   
+
+   
+   sub new {
+      my(undef, $mode, $name)= @_;
+      my $me= bless {};
+      local *FILE;
+      open FILE, $mode, $me->{name}= $name or $me->fail("Could not open");
+      $me->{fh}= *FILE{IO};
+      return $me;
+   }
+   
+   
+   DESTROY {
+      my $me= shift;
+      if (my $fh= $me->{fh}) {
+         close $fh or $me->fail("Could not close");
+      }
+   }
+   
+   
+   sub readline {
+      my $me= shift;
+      my $line;
+      die if wantarray;
+      undef $!;
+      unless (defined($line= readline $me->{fh})) {
+         $me->fail("Error while reading from") if $!;
+      }
+      return $line;
    }
 }
 
@@ -59,8 +110,12 @@ sub ensure_dir($) {
 
 
 sub reconcile_file {
-   my($orig, $ovl, $pch)= @_;
-   print qq'ORIG "$orig", OVL "$ovl", PATCHED "$pch".\n';
+   my($orig, $ovl, $pchd, $live, $pfd)= @_;
+   01 && print
+        qq'ORIG "$orig", OVL "$ovl", PATCHED "$pchd", '
+      . qq'LIVE "$live", PATCHFILEDIR "$pfd".\n'
+   ;
+   undef $pfd if -l $pfd || ! -f _;
 }
 
 
@@ -74,16 +129,20 @@ sub manage {
          next if exists $exclusions->{$entry};
          next unless File::Spec->no_upwards($entry);
          $path= File::Spec->catfile($abspath, $entry);
-         if (-f $path) {
+         if (-l $path || -f _) {
             reconcile_file
-               map {
-                    defined()
-                  ? File::Spec->catfile(
-                       File::Spec->catdir($basedir, $_, $rpath), $entry
-                    )
-                  : $path
-                  ;
-               } pristine_tree, undef, patched_tree
+                  +(
+                     map {
+                          defined()
+                        ? File::Spec->catfile(
+                             File::Spec->catdir($basedir, $_, $rpath), $entry
+                          )
+                        : $path
+                        ;
+                     } pristine_tree, undef, patched_tree
+                  )
+               , File::Spec->catdir($ROOT, $rpath)
+               , "$path.patches"
             ;
          } elsif (-d _) {
             push @d, $entry unless $entry =~ /.+\.patches$/;
@@ -100,6 +159,26 @@ sub manage {
 }
 
 
+# Honor the ROOT variable from "/etc/make.conf".
+$ROOT= qx{emerge --info | grep '^ROOT='};
+$ROOT= qx{eval "$ROOT" && printf '%s' \$ROOT} || File::Spec->rootdir;
+{
+   # Determine config file path.
+   use constant cfg_path => '/etc/dispatch-conf.conf';
+   my($vol, $subdirs, $file)= File::Spec->splitpath(cfg_path);
+   my $cfg= File::Spec->catfile(
+        File::Spec->catdir(File::Spec->catpath($vol, $ROOT, ''), $subdirs)
+      , $file
+   );
+   if (-f $cfg) {
+      # Read config file.
+      my $cfg= new file('<', $cfg);
+      while (defined($_= $cfg->readline)) {
+         $cfg_RCS= 1 if /^use-rcs\s*=\s*yes\s*$/i;
+         $cfg_archive= $1 if /^archive-dir\s*=\s*(.+?)\s*$/i;
+      }
+   }
+}
 my $basedir= $FindBin::Bin;
 foreach (pristine_tree, patched_tree) {
    ensure_dir +File::Spec->catdir($basedir, $_);
