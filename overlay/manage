@@ -178,6 +178,7 @@ sub reconcile_file {
          $sh->call(qw"cp -af --", $arch, $vendor);
       }
    }
+   reexamine:
    -f $ovl or die qq'File "$ovl" has to exist';
    $t= mtime; # mtime of overlay file.
    if (defined $psd) {
@@ -326,6 +327,35 @@ sub reconcile_file {
          updating($cache, $ovl);
          $sh->call(qw'cp -af --', $ovl, $cache);
       }
+   }
+   # Reconcile live-cache files with live filesystem files.
+   die qq'"$live" is a symbolic link rather than a plain file' if -l $live;
+   $t= mtime if $x= -e _;
+   die qq'"$cache" must exist as "$live" also exists' unless -e $cache;
+   if (mtime > $t) {
+      # Live-cache file is newer than live filesystem counterpart.
+      if ($sh->call(qw'cmp -s --', $live, $cache) == 0) {
+         # Special case: File contents are the same, just the
+         # mtime differs. In this case, we just update the mtime.
+         updating($live, $cache);
+         $sh->call('touch', '--reference=' . $cache, '--', $live);
+      } else {
+         # File contents are also different.
+         # We cannot resolve this automatically - let the user do it.
+         die
+              qq'Please reconcile the changes in live filesystem '
+            . qq'file "$live" with the contents of the cached '
+            . qq'file "$cache", which has been derived from '
+            . qq'the overlay file "$ovl"'
+            . ($psd ? qq' (in directory "$psd")' : '')
+         ;
+      }
+   } else {
+      # Live filesystem file is newer than live-cache counterpart.
+      # Update cache.
+      updating($cache, $live);
+      $sh->call(qw'cp -a --', $live, $cache);
+      goto reexamine;
    }
 }
 
