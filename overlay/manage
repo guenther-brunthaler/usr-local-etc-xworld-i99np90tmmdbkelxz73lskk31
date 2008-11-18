@@ -8,7 +8,7 @@ use ShellCmd_1A7E54C0_9EFF_11D9_BFF3_00A0C9EF1631;
 
 
 use constant pristine_tree => "vendor";
-use constant patched_tree => "patched";
+use constant live_cache_tree => "live-cache";
 use constant more_toplevel_excludes => qw/README usr/;
 use constant DEBUGGING => 0;
 
@@ -126,7 +126,7 @@ sub updating($;$) {
 
 
 sub reconcile_file {
-   my($vendor, $ovl, $pchd, $live, $psd)= @_;
+   my($vendor, $ovl, $cache, $live, $psd)= @_;
    my($arch, $t, $x);
    if (defined $cfg_archive) {
       my($vol, $dirs1, $dirs2);
@@ -163,11 +163,11 @@ sub reconcile_file {
          $sh->call(qw"cp -af --", $arch, $vendor);
       }
    }
-   # Reconcile overlay template file and vendor file.
-   # This is only done if the overlay file is actually a template.
+   -f $ovl or die qq'File "$ovl" has to exist';
+   $t= mtime; # mtime of overlay file.
    if (defined $psd) {
-      -f $ovl or die qq'File "$ovl" has to exist';
-      $t= mtime;
+      # The overlay file is actually a template.
+      # Reconcile overlay template file and vendor file.
       if (($x= -f $vendor) && mtime > $t) {
          # Vendor file exists and is newer. Update overlay template.
          if (-s $vendor) {
@@ -185,6 +185,19 @@ sub reconcile_file {
          # Update vendor file.
          updating($vendor, $ovl);
          $sh->call(qw'cp -af --', $ovl, $vendor);
+      }
+   } else {
+      # The overlay file is a literal file to be distributed.
+      # Reconcile overlay file and cache file.
+      if (($x= -f $cache) && mtime > $t) {
+         # Cache file exists and is newer. Update overlay file.
+         updating($ovl, $cache);
+         $sh->call(qw'cp -af --', $cache, $ovl);
+      } elsif (!$x || $t > mtime) {
+         # Overlay file is newer or cache file does not exist.
+         # Update cache file.
+         updating($cache, $ovl);
+         $sh->call(qw'cp -af --', $ovl, $cache);
       }
    }
 }
@@ -210,7 +223,7 @@ sub manage {
                           )
                         : $path
                         ;
-                     } pristine_tree, undef, patched_tree
+                     } pristine_tree, undef, live_cache_tree
                   )
                , File::Spec->catfile(
                     File::Spec->catdir($ROOT, $rpath), $entry
@@ -224,7 +237,7 @@ sub manage {
    }
    foreach $entry (@d) {
       $path= File::Spec->catdir($rpath, $entry);
-      foreach (patched_tree, pristine_tree) {
+      foreach (live_cache_tree, pristine_tree) {
          ensure_dir +File::Spec->catdir($basedir, $_, $path);
       }
       &manage($basedir, $path, $exclusions);
@@ -263,7 +276,7 @@ $ROOT= qx{eval "$ROOT" && printf '%s' \$ROOT} || File::Spec->rootdir;
    }
 }
 my $basedir= $FindBin::Bin;
-foreach (pristine_tree, patched_tree) {
+foreach (pristine_tree, live_cache_tree) {
    ensure_dir +File::Spec->catdir($basedir, $_);
 }
 &manage(
@@ -271,6 +284,6 @@ foreach (pristine_tree, patched_tree) {
      , {
         map {$_, undef}
           $FindBin::Script, more_toplevel_excludes
-        , pristine_tree, patched_tree
+        , pristine_tree, live_cache_tree
      }
 );
