@@ -127,7 +127,7 @@ sub updating($;$) {
 
 sub reconcile_file {
    my($vendor, $ovl, $pchd, $live, $psd)= @_;
-   my($arch, $t);
+   my($arch, $t, $x);
    if (defined $cfg_archive) {
       my($vol, $dirs1, $dirs2);
       ($vol, $dirs1)= File::Spec->splitpath($cfg_archive, 1);
@@ -163,13 +163,30 @@ sub reconcile_file {
          $sh->call(qw"cp -af --", $arch, $vendor);
       }
    }
-   0 && print
-        qq'VENDOR "$vendor", OVL "$ovl", PATCHED "$pchd", '
-      . 'ARCHIVE "', $arch || '(null)' , '", '
-      . qq'LIVE "$live", PATCH_SERIES_DIR "'
-      . ($psd || '(null)') . qq'".\n'
-   ;
-   
+   # Reconcile overlay template file and vendor file.
+   # This is only done if the overlay file is actually a template.
+   if (defined $psd) {
+      -f $ovl or die qq'File "$ovl" has to exist';
+      $t= mtime;
+      if (($x= -f $vendor) && mtime > $t) {
+         # Vendor file exists and is newer. Update overlay template.
+         if (-s $vendor) {
+            # Vendor file is not empty.
+            updating($ovl, $vendor);
+            $sh->call(qw'cp -af --', $vendor, $ovl);
+         } else {
+            warn
+                 qq'Empty vendor file "$vendor" '
+               . qq'is newer than overlay file "$ovl"'
+            ;
+         }
+      } elsif (!$x || $t > mtime) {
+         # Overlay template is newer or vendor file does not exist.
+         # Update vendor file.
+         updating($vendor, $ovl);
+         $sh->call(qw'cp -af --', $ovl, $vendor);
+      }
+   }
 }
 
 
