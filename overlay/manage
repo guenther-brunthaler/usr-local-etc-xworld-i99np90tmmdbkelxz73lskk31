@@ -3,14 +3,17 @@
 
 use FindBin;
 use File::Spec;
+use File::Temp;
+use ShellCmd_1A7E54C0_9EFF_11D9_BFF3_00A0C9EF1631;
 
 
 use constant pristine_tree => "vendor";
 use constant patched_tree => "patched";
 use constant more_toplevel_excludes => qw/README usr/;
+use constant DEBUGGING => 0;
 
 
-our($ROOT, $cfg_archive, $cfg_RCS);
+our($ROOT, $cfg_archive, $cfg_RCS, $tmpname, $sh);
 
 
 {
@@ -109,9 +112,22 @@ sub ensure_dir($) {
 }
 
 
+# Returns the file modification time from status in variable '_'.
+sub mtime() {
+   return +(stat _)[9];
+}
+
+
+sub updating($;$) {
+   my($to, $from)= @_;
+   $from||= "(without contents)";
+   print STDERR qq'Updating file "$to" from file "$from".\n';
+}
+
+
 sub reconcile_file {
-   my($orig, $ovl, $pchd, $live, $pfd)= @_;
-   my $arch;
+   my($vendor, $ovl, $pchd, $live, $psd)= @_;
+   my($arch, $t);
    if (defined $cfg_archive) {
       my($vol, $dirs1, $dirs2);
       ($vol, $dirs1)= File::Spec->splitpath($cfg_archive, 1);
@@ -119,13 +135,41 @@ sub reconcile_file {
       $arch= File::Spec->catpath(
          $vol, File::Spec->catdir($dirs1, $dirs2), $arch
       );
+      $arch.= ',v' if $cfg_RCS;
    }
-   01 && print
-        qq'ORIG "$orig", OVL "$ovl", PATCHED "$pchd", '
+   undef $psd if -l $psd || ! -d _;
+   # Update vendor file from archive.
+   if (
+         defined($arch) && -f $arch && ($t= mtime , 1)
+      && (!-f $vendor || mtime < $t)
+   ) {
+      if ($cfg_RCS) {
+         $sh->try_next;
+         if ($sh->call(qq{rlog "$arch" | grep -q '^branches:'}) == 0) {
+            # Vendor branch is present.
+            updating($vendor, $arch);
+            $sh->call(qq'co -p -r1.1.1 "$arch" > "$tmpname" 2> /dev/null');
+         } else {
+            # No vendor branch, create an empty file.
+            # This avoids looking up the vendor branch over and over again
+            # in later runs.
+            updating($vendor);
+            $sh->call(qq': > "$tmpname"');
+         }
+         $sh->call('touch', '--reference=' . $arch, '--', $tmpname);
+         $sh->call(qw"mv -f --", $tmpname, $vendor);
+      } else {
+         updating($vendor, $arch);
+         $sh->call(qw"cp -af --", $arch, $vendor);
+      }
+   }
+   0 && print
+        qq'VENDOR "$vendor", OVL "$ovl", PATCHED "$pchd", '
       . 'ARCHIVE "', $arch || '(null)' , '", '
-      . qq'LIVE "$live", PATCHFILEDIR "$pfd".\n'
+      . qq'LIVE "$live", PATCH_SERIES_DIR "'
+      . ($psd || '(null)') . qq'".\n'
    ;
-   undef $pfd if -l $pfd || ! -f _;
+   
 }
 
 
@@ -171,6 +215,10 @@ sub manage {
 }
 
 
+$tmpname= File::Spec->catfile(File::Temp::tempdir(CLEANUP => 1), "tmp");
+$sh= new Lib::ShellCmd(
+   -log => DEBUGGING ? *STDOUT{IO} : undef, -noop => !!DEBUGGING
+);
 # Honor the ROOT variable from "/etc/make.conf".
 $ROOT= qx{emerge --info | grep '^ROOT='};
 $ROOT= qx{eval "$ROOT" && printf '%s' \$ROOT} || File::Spec->rootdir;
