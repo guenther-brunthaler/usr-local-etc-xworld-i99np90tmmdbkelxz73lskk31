@@ -13,7 +13,7 @@ use constant more_toplevel_excludes => qw/README usr/;
 use constant DEBUGGING => 0;
 
 
-our($ROOT, $cfg_archive, $cfg_RCS, $tmpname, $sh);
+our($ROOT, $cfg_archive, $cfg_RCS, $tmpfile, $sh);
 
 
 {
@@ -76,8 +76,23 @@ our($ROOT, $cfg_archive, $cfg_RCS, $tmpname, $sh);
    sub new {
       my(undef, $mode, $name)= @_;
       my $me= bless {};
+      if (defined $name) {
+         $me->{name}= $name;
+      } else {
+         my $n= $mode;
+         if ($n =~ s/^\s*[|]\s*//) {
+            $n= qq'pipe to command "$mode"';
+         } elsif ($n =~ s/\s*[|]\s*$//) {
+            $n= qq'pipe from command "$mode"';
+         } else {
+            croak qq'"$n" must be a pipe-command specifyer';
+         }
+         $me->{name}= $n;
+      }
       local *FILE;
-      open FILE, $mode, $me->{name}= $name or $me->fail("Could not open");
+      $name ? open(FILE, $mode, $name) : open(FILE, $mode)
+         or $me->fail("Could not open")
+      ;
       $me->{fh}= *FILE{IO};
       return $me;
    }
@@ -148,16 +163,16 @@ sub reconcile_file {
          if ($sh->call(qq{rlog "$arch" | grep -q '^branches:'}) == 0) {
             # Vendor branch is present.
             updating($vendor, $arch);
-            $sh->call(qq'co -p -r1.1.1 "$arch" > "$tmpname" 2> /dev/null');
+            $sh->call(qq'co -p -r1.1.1 "$arch" > "$tmpfile" 2> /dev/null');
          } else {
             # No vendor branch, create an empty file.
             # This avoids looking up the vendor branch over and over again
             # in later runs.
             updating($vendor);
-            $sh->call(qq': > "$tmpname"');
+            $sh->call(qq': > "$tmpfile"');
          }
-         $sh->call('touch', '--reference=' . $arch, '--', $tmpname);
-         $sh->call(qw"mv -f --", $tmpname, $vendor);
+         $sh->call('touch', '--reference=' . $arch, '--', $tmpfile);
+         $sh->call(qw"mv -f --", $tmpfile, $vendor);
       } else {
          updating($vendor, $arch);
          $sh->call(qw"cp -af --", $arch, $vendor);
@@ -185,6 +200,118 @@ sub reconcile_file {
          # Update vendor file.
          updating($vendor, $ovl);
          $sh->call(qw'cp -af --', $ovl, $vendor);
+      }
+      # Reconcile expanded overlay template file and live-cache file.
+      {
+         my $expand= sub {
+            # Expand overlay template to temporary file.
+            my $series= File::Spec->catfile($psd, 'series');
+            # Acquire series file.
+            {
+               my $guards= "$series.guards";
+               if (-e $guards) {
+                  # Expand "series" file from "series.guards" file.
+                  if (-e $series) {
+                     die
+                          qq'Expanded patch series file "$series" '
+                        . qq'must not exist because patch series template '
+                        . qq'file "$guards" also exists. '
+                        . qq'Please remove "$series" and/or update "$guards" '
+                        . qq'from it before running this script again'
+                     ;
+                  }
+                  if (-l $guards || !-f _) {
+                     die qq'"$guards" must be a normal file';
+                  }
+                  # We expand the 'series' file to a temporary location.
+                  $series= "$tmpfile.series";
+                  $sh->call(
+                       qw'expand-series.guards --series-file', $series
+                     , '--series-guards-file', $guards
+                  );
+                  die unless -f $series;
+               } else {
+                  # There must be a "series" file then.
+                  if (-l $series || !-f $series) {
+                     die
+                          qq[Patch 'series' file "$series" must exist ]
+                        . 'and be a plain text file'
+                     ;
+                  }
+               }
+            }
+            # Copy template file to temporary storage for subsequent patching.
+            $sh->call(qw'cp --', $ovl, $tmpfile);
+            # Read series file.
+            {
+               my $sfh= new file('<', $series);
+               my($patch, $pipe, $file, $ctr, $listed);
+               (undef, undef, $listed)= File::Spec->splitpath($ovl);
+               while (defined($patch= $sfh->readline)) {
+                  $patch =~ s/^\s*(#.*)?|\s*$//sg;
+                  next if $patch eq '';
+                  $patch= File::Spec->catfile($psd, $patch);
+                  unless (-f $patch) {
+                     die
+                          qq[Patch "$patch" is referenced in 'series' file ]
+                        . 'but that patch file does not exist'
+                     ;
+                  }
+                  $pipe= new file(qq'lsdiff --strip=1 "$patch" |');
+                  $ctr= 0;
+                  while (defined($file= $pipe->readline)) {
+                     chomp $file;
+                     if ($file ne $listed) {
+                        die
+                             qq'Patch "$patch" wants to modify file "$file" '
+                           . qq'instead of file "$listed" as required'
+                        ;
+                     }
+                     ++$ctr;
+                  }
+                  undef $pipe; # Close it via destructor.
+                  if ($ctr != 1) {
+                     die
+                          qq'Patch "$patch" wants contains multiple patches '
+                        . qq'for file "$listed" instead a single patch '
+                        . qq'as required'
+                     ;
+                  }
+                  # Apply patch.
+                  $sh->call(
+                       qw'patch --strip=1 --quiet --no-backup-if-mismatch --'
+                     , $tmpfile, $patch
+                  );
+               }
+            }
+            # All patches from the 'series' file have been applied.
+            $sh->call('touch', '--reference=' . $ovl, '--', $tmpfile);
+         };
+         if (($x= -f $cache) && mtime > $t) {
+            # Cache file exists and is newer than overlay template file.
+            &$expand;
+            $sh->try_next;
+            if ($sh->call(qw'cmp -s --', $tmpfile, $cache) == 0) {
+               # Special case: File contents are the same, just the
+               # mtime differs. In this case, we just update the mtime.
+               updating($ovl, $cache);
+               $sh->call('touch', '--reference=' . $tmpfile, '--', $ovl);
+            } else {
+               # File contents are also different.
+               # We cannot resolve this automatically - let the user do it.
+               die
+                    qq'Please update the patches for file "$ovl" '
+                  . qq'(in directory "$psd") in order to match '
+                  . qq'the contents of file "$cache"'
+               ;
+            }
+         } elsif (!$x || $t > mtime) {
+            # Overlay template is newer or cache file does not exist.
+            # Update cache file from expanded template.
+            &$expand;
+            updating($cache, $ovl);
+            $sh->call(qw'cp -af --', $tmpfile, $cache);
+         }
       }
    } else {
       # The overlay file is a literal file to be distributed.
@@ -214,6 +341,14 @@ sub manage {
          next unless File::Spec->no_upwards($entry);
          $path= File::Spec->catfile($abspath, $entry);
          if (-l $path || -f _) {
+            if ($path =~ /~/) {
+               die
+                    qq[File "$path" contains a '~'-character. ]
+                  . 'This is not allowed and will most likely '
+                  . 'be a backup file. '
+                  . 'Please remove that file before running this script'
+               ;
+            }
             reconcile_file
                   +(
                      map {
@@ -232,6 +367,14 @@ sub manage {
             ;
          } elsif (-d _) {
             push @d, $entry unless $entry =~ /.+\.patches$/;
+            foreach (qw/.pc/) {
+               if ($entry eq $_) {
+                  die
+                       qq'Directory "$path" exists! '
+                     . 'It must be removed before this script can be run'
+                  ;
+               }
+            }
          }
       }
    }
@@ -245,7 +388,14 @@ sub manage {
 }
 
 
-$tmpname= File::Spec->catfile(File::Temp::tempdir(CLEANUP => 1), "tmp");
+if (exists $ENV{QUILT_PATCHES}) {
+   die
+        'Environment variable $QUILT_PATCHES is currently defined '
+      . qq[as 'exported' and is set to the value "$ENV{QUILT_PATCHES}". ]
+      . 'Please unset this variable before running this script.'
+   ;
+}
+$tmpfile= File::Spec->catfile(File::Temp::tempdir(CLEANUP => 1), "tmp");
 $sh= new Lib::ShellCmd(
    -log => DEBUGGING ? *STDOUT{IO} : undef, -noop => !!DEBUGGING
 );
