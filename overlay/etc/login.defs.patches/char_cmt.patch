@@ -1,0 +1,14 @@
+Add comments about the ERASE etc. character definitions.
+
+Index: etc/login.defs
+===================================================================
+--- etc.orig/login.defs
++++ etc/login.defs
+@@ -178,6 +178,7 @@ TTYPERM		0600
+ #
+ # Prefix these values with "0" to get octal, "0x" to get hexadecimal.
+ #
++# Hint: 0x7f = DEL, 0x15 = Ctrl-U
+ ERASECHAR	0177
+ KILLCHAR	025
+ UMASK		022

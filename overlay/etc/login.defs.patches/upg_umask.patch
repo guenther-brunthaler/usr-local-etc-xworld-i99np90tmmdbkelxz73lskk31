@@ -1,0 +1,19 @@
+Change the default umask to be appropriate for the UPG model.
+
+Index: etc/login.defs
+===================================================================
+--- etc.orig/login.defs
++++ etc/login.defs
+@@ -181,7 +181,11 @@ TTYPERM		0600
+ # Hint: 0x7f = DEL, 0x15 = Ctrl-U
+ ERASECHAR	0177
+ KILLCHAR	025
+-UMASK		022
++# Although the UMASK is typically changed in the shell startup
++# scripts, this value is used when creating the user's home directory
++# with "useradd -m". It does *not* change the permissions of the skeleton
++# files which will be copied along with the contents of the skeleton files.
++UMASK		077
+ #ULIMIT		2097152	(NOT SUPPORTED WITH PAM)
+ 
+ #

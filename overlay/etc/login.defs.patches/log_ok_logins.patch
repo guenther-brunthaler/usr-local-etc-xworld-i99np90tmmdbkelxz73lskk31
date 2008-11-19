@@ -1,0 +1,15 @@
+Log OK logins also.
+
+Index: etc/login.defs
+===================================================================
+--- etc.orig/login.defs
++++ etc/login.defs
+@@ -22,7 +22,7 @@ LOG_UNKFAIL_ENAB	no
+ #
+ # Enable logging of successful logins
+ #
+-LOG_OK_LOGINS		no
++LOG_OK_LOGINS		yes
+ 
+ #
+ # Enable logging and display of /var/log/lastlog login time info.

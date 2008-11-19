@@ -1,7 +1,7 @@
 #
 # /etc/login.defs - Configuration control definitions for the shadow package.
 #
-#	$Id: /caches/xsvn/uxadm/trunk/etc/login.defs 408 2006-11-16T06:06:20.293762Z root  $
+#	$Id: login.defs,v 1.9 2006/07/16 09:00:20 kloczek Exp $
 #
 
 #
@@ -22,7 +22,7 @@ LOG_UNKFAIL_ENAB	no
 #
 # Enable logging of successful logins
 #
-LOG_OK_LOGINS		yes
+LOG_OK_LOGINS		no
 
 #
 # Enable logging and display of /var/log/lastlog login time info.
@@ -178,14 +178,9 @@ TTYPERM		0600
 #
 # Prefix these values with "0" to get octal, "0x" to get hexadecimal.
 #
-# Hint: 0x7f = DEL, 0x15 = Ctrl-U
-ERASECHAR	0x7f
-KILLCHAR	0x15
-# Although the UMASK is typically changed in the shell startup
-# scripts, this value is used when creating the user's home directory
-# with "useradd -m". It does *not* change the permissions of the skeleton
-# files which will be copied along with the contents of the skeleton files.
-UMASK		077
+ERASECHAR	0177
+KILLCHAR	025
+UMASK		022
 #ULIMIT		2097152	(NOT SUPPORTED WITH PAM)
 
 #
@@ -212,7 +207,7 @@ PASS_WARN_AGE	7
 #
 # If compiled with cracklib support, where are the dictionaries
 #
-#CRACKLIB_DICTPATH	/usr/lib/cracklib_dict	(NOT SUPPORTED WITH PAM)
+#CRACKLIB_DICTPATH	/usr/lib64/cracklib_dict	(NOT SUPPORTED WITH PAM)
 
 #
 # Min/max values for automatic uid selection in useradd
@@ -292,7 +287,7 @@ CHFN_RESTRICT		rwh
 # access to these groups, even when not logged in on the console.
 # How to do it is left as an exercise for the reader...
 #
-#CONSOLE_GROUPS		powerusers
+#CONSOLE_GROUPS		floppy:audio:cdrom
 
 #
 # Should login be allowed if we can't cd to the home directory?
