@@ -317,6 +317,7 @@ sub reconcile_file {
    } else {
       # The overlay file is a literal file to be distributed.
       # Reconcile overlay file and cache file.
+      # $t is overlay file mtime.
       if (($x= -f $cache) && mtime > $t) {
          # Cache file exists and is newer. Update overlay file.
          updating($ovl, $cache);
@@ -332,6 +333,7 @@ sub reconcile_file {
    die qq'"$live" is a symbolic link rather than a plain file' if -l $live;
    $t= mtime if $x= -e _;
    die qq'"$cache" must exist as "$live" also exists' unless -e $cache;
+   # $t is mtime of $live, mtime() gets the mtime of $cache.
    if (mtime > $t) {
       # Live-cache file is newer than live filesystem counterpart.
       if ($sh->call(qw'cmp -s --', $live, $cache) == 0) {
@@ -350,7 +352,7 @@ sub reconcile_file {
             . ($psd ? qq' (in directory "$psd")' : '')
          ;
       }
-   } else {
+   } elsif (mtime < $t) {
       # Live filesystem file is newer than live-cache counterpart.
       # Update cache.
       updating($cache, $live);
