@@ -4,4 +4,4 @@
 # builtin SCSI CDROM emulation, which will flood the system logs
 # with status change error messages.
 
-modprobe -qr sr_mod
+modprobe -qr sr_mod || rmmod sr_mod 2> /dev/null
