@@ -330,7 +330,16 @@ sub reconcile_file {
       }
    }
    # Reconcile live-cache files with live filesystem files.
-   die qq'"$live" is a symbolic link rather than a plain file' if -l $live;
+   if (-l $live) {
+      # If live filesystem contains a symlink, follow it.
+      my $actual= qx[readlink -f "$live"]
+         or die "Could not resolve symlink '$live': $!"
+      ;
+      chomp $actual;
+      die "Symlink '$live' refers to non-file '$actual'" unless -f $actual;
+      die "Recursive symlink '$live' encountered!" if $actual eq $live;
+      $live= $actual;
+   }
    $t= mtime if $x= -e _;
    die qq'"$cache" must exist as "$live" also exists' unless -e $cache;
    # $t is mtime of $live, mtime() gets the mtime of $cache.
