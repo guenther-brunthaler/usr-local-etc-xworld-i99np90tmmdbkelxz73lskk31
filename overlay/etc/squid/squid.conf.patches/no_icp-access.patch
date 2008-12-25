@@ -13,7 +13,7 @@ Index: squid/squid.conf
  icp_access deny all
  
  #  TAG: htcp_access
-@@ -3880,6 +3880,7 @@ broken_vary_encoding allow apache
+@@ -3896,6 +3896,7 @@ broken_vary_encoding allow apache
  #
  #Default:
  # icp_port 3130
