@@ -1,0 +1,8 @@
+http_proxy="http://proxy:8080"
+ftp_proxy="http://proxy:8080"
+no_proxy="localhost 192.168.0.0/16"
+
+HTTP_PROXY="http://proxy:8080"
+HTTPS_PROXY="http://proxy:8080"
+FTP_PROXY="http://proxy:8080"
+NO_PROXY="localhost 192.168.0.0/16"

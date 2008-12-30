@@ -11,7 +11,7 @@ find /etc/env.d -mindepth 1 -maxdepth 1 -type l | while read SYMLINK; do
 done
 HOSTNAME=`hostname`
 find /etc/env.d/host-variants \
-	-mindepth 1 -maxdepth 1 -type f \
+	-mindepth 1 -maxdepth 1 \( -type f -o -type l \) \
 	-name '99local-*-'$HOSTNAME \
 | while read SNIPPET; do
 	GPARENT=${SNIPPET%/*}; GPARENT=${GPARENT%/*}
