@@ -172,11 +172,3 @@ Index: etc/make.conf
  "
  
  # Host Setting
-@@ -375,6 +536,7 @@ PORTAGE_NICENESS="10"
- # FEATURES sorted alphabetically for easier maintenance.
- FEATURES="
-  ccache
-+ -metadata-transfer
-  notitles
-  parallel-fetch
-  prelink
