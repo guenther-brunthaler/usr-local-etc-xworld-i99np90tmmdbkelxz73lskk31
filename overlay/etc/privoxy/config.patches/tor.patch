@@ -1,0 +1,44 @@
+Add settings to work together with TOR
+
+Index: privoxy/config
+===================================================================
+--- privoxy.orig/config
++++ privoxy/config
+@@ -130,7 +130,7 @@
+ #          If set, this option should be the first option in the config
+ #          file, because it is used while the config file is being read.
+ #
+-#user-manual http://www.privoxy.org/user-manual/
++user-manual /usr/share/doc/html/net-proxy/privoxy/user-manual
+ #
+ #
+ #  1.2. trust-info-url
+@@ -465,7 +465,7 @@ filterfile default.filter
+ #      Any log files must be writable by whatever user Privoxy is
+ #      being run as (on Unix, default user id is "privoxy").
+ #
+-logfile privoxy.log
++#logfile privoxy.log
+ #
+ #
+ #  2.7. jarfile
+@@ -635,8 +635,8 @@ logfile privoxy.log
+ #      problem on your own.
+ #
+ #debug      1 # log each request destination (and the crunch reason if Privoxy intercepted the request)
+-#debug   4096 # Startup banner and warnings
+-#debug   8192 # Non-fatal errors
++debug   4096 # Startup banner and warnings
++debug   8192 # Non-fatal errors
+ #
+ #
+ #  3.2. single-threaded
+@@ -1250,7 +1250,7 @@ buffer-limit 4096
+ #
+ #       forward           localhost/     .
+ #
+-#
++forward-socks4a / 127.0.0.1:9050 .
+ #
+ #
+ #  5.3. forwarded-connect-retries
