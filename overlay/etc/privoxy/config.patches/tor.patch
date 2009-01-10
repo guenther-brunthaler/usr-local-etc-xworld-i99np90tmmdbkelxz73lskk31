@@ -13,15 +13,6 @@ Index: privoxy/config
  #
  #
  #  1.2. trust-info-url
-@@ -465,7 +465,7 @@ filterfile default.filter
- #      Any log files must be writable by whatever user Privoxy is
- #      being run as (on Unix, default user id is "privoxy").
- #
--logfile privoxy.log
-+#logfile privoxy.log
- #
- #
- #  2.7. jarfile
 @@ -635,8 +635,8 @@ logfile privoxy.log
  #      problem on your own.
  #
