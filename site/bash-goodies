@@ -6,8 +6,7 @@
 # Source this file from your .bashrc
 # if you like the features provided by it.
 # (This may also be done globally for all users by the administrator.)
-#
-# $Id: bash-goodies,v 1.13 2006/07/28 01:35:22 root Exp root $
+
 
 # This script is intended to be sourced from within "$(HOME).bashrc"
 # (and, indirectly, also from "$(HOME)/.bash_profile").
@@ -35,90 +34,115 @@
 # This script can also be manually sourced; in this case the option -v
 # can also be specified for verbose operation. Useful for debugging.
 
-warn() {
+warn_p96zf6unm4ijvvxw5a678k0dy() {
 	echo "WARNING: $*!" >& 2
 }
 
-include_file() {
-	test "$OPT_VERBOSE" && echo "Including startup-plugin file '$1'."
-	. "$1" || warn "Startup-plugin \"$1\" returned $?"
+include_file_p96zf6unm4ijvvxw5a678k0dy() {
+	test "$OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy" \
+		&& echo "Including startup-plugin file '$1'."
+	. "$1" \
+		|| warn_p96zf6unm4ijvvxw5a678k0dy \
+			"Startup-plugin \"$1\" returned $?"
 }
 
-include_dir() {
-	local FILE
-	test "$OPT_VERBOSE" && echo "Including startup-plugin directory '$1'."
-	for FILE in $1/*; do
+include_dir_p96zf6unm4ijvvxw5a678k0dy() {
+	local FILE_p96zf6unm4ijvvxw5a678k0dy
+	test "$OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy" \
+		&& echo "Including startup-plugin directory '$1'."
+	for FILE_p96zf6unm4ijvvxw5a678k0dy in $1/*; do
 		if test x`
-			printf '%s\n' "$FILE" \
+			printf '%s\n' "$FILE_p96zf6unm4ijvvxw5a678k0dy" \
 				| sed -e '\,\.[^./][^./]*$,p;d' \
 				| wc -l
 		` = x0; then
-			test -f "$FILE" && include_file "$FILE"
+			test -f "$FILE_p96zf6unm4ijvvxw5a678k0dy" \
+				&& include_file_p96zf6unm4ijvvxw5a678k0dy \
+					"$FILE_p96zf6unm4ijvvxw5a678k0dy"
 		fi
 	done
 }
 
-include_system_plugins(){
-	local INC_DIR
-	INC_DIR=/usr/local/etc/site/$1
-	test -d "$INC_DIR" || {
-		warn "Missing directory \"$INC_DIR\""
+include_system_plugins_p96zf6unm4ijvvxw5a678k0dy(){
+	local INC_DIR_p96zf6unm4ijvvxw5a678k0dy
+	INC_DIR_p96zf6unm4ijvvxw5a678k0dy=/usr/local/etc/site/$1
+	test -d "$INC_DIR_p96zf6unm4ijvvxw5a678k0dy" || {
+		warn_p96zf6unm4ijvvxw5a678k0dy \
+			"Missing directory" \
+			"\"$INC_DIR_p96zf6unm4ijvvxw5a678k0dy\""
 		return
 	}
-	include_dir "$INC_DIR"
+	include_dir_p96zf6unm4ijvvxw5a678k0dy \
+		"$INC_DIR_p96zf6unm4ijvvxw5a678k0dy"
 }
 
-include_user_plugins() {
+include_user_plugins_p96zf6unm4ijvvxw5a678k0dy() {
 	test -n "$HOME" || return
-	local INC
-	INC=$HOME/$1
-	test -e "$INC" || return
-	test -f "$INC" && { include_file "$INC"; return; }
-	test -d "$INC" && { include_dir "$INC"; return; }
-	warn "Cannot process \"$INC\" for shell startup"
+	local INC_p96zf6unm4ijvvxw5a678k0dy
+	INC_p96zf6unm4ijvvxw5a678k0dy=$HOME/$1
+	test -e "$INC_p96zf6unm4ijvvxw5a678k0dy" || return
+	test -f "$INC_p96zf6unm4ijvvxw5a678k0dy" && {
+		include_file_p96zf6unm4ijvvxw5a678k0dy \
+			"$INC_p96zf6unm4ijvvxw5a678k0dy"
+		return
+	}
+	test -d "$INC_p96zf6unm4ijvvxw5a678k0dy" && {
+		include_dir_p96zf6unm4ijvvxw5a678k0dy \
+			"$INC_p96zf6unm4ijvvxw5a678k0dy"
+		return
+	}
+	warn_p96zf6unm4ijvvxw5a678k0dy \
+		"Cannot process " \
+		"\"$INC_p96zf6unm4ijvvxw5a678k0dy\" for shell startup"
 }
 
-cleanup_most() {
+cleanup_most_p96zf6unm4ijvvxw5a678k0dy() {
 	# Cleans up everything but itself.
-	unset OPT_VERBOSE NEXT_OPT
-	unset -f warn include_file include_dir
-	unset -f include_system_plugins include_user_plugins
+	unset OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy \
+		NEXT_OPT_p96zf6unm4ijvvxw5a678k0dy
+	unset -f warn_p96zf6unm4ijvvxw5a678k0dy \
+		include_file_p96zf6unm4ijvvxw5a678k0dy \
+		include_dir_p96zf6unm4ijvvxw5a678k0dy \
+		include_system_plugins_p96zf6unm4ijvvxw5a678k0dy \
+		include_user_plugins_p96zf6unm4ijvvxw5a678k0dy
 	OPTIND=1
 }
 
-OPT_VERBOSE=
-while getopts v NEXT_OPT; do
-	case $NEXT_OPT in
-		v) OPT_VERBOSE=1;;
+OPTIND=1
+OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy=
+while getopts v NEXT_OPT_p96zf6unm4ijvvxw5a678k0dy; do
+	case $NEXT_OPT_p96zf6unm4ijvvxw5a678k0dy in
+		v) OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy=1;;
 		*)
-			cleanup_most
-			unset -f cleanup_most
+			cleanup_most_p96zf6unm4ijvvxw5a678k0dy
+			unset -f cleanup_most_p96zf6unm4ijvvxw5a678k0dy
 			echo "Terminating."
 			return 1
 	esac
 done
 
 # Source goodies to be used always.
-include_system_plugins "bashrc_always-presets"
+include_system_plugins_p96zf6unm4ijvvxw5a678k0dy "bashrc_always-presets"
 
 # Useful user macros for every case.
-include_user_plugins ".bashrc_always"
+include_user_plugins_p96zf6unm4ijvvxw5a678k0dy ".bashrc_always"
 
 if test x"${-%i*}" = x"$-"; then
 	# Shell is non-interactive. All done.
-	test "$OPT_VERBOSE" && echo "Shell is non-interactive."
-	cleanup_most
-	unset -f cleanup_most
+	test "$OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy" \
+		&& echo "Shell is non-interactive."
+	cleanup_most_p96zf6unm4ijvvxw5a678k0dy
+	unset -f cleanup_most_p96zf6unm4ijvvxw5a678k0dy
 	return
 fi
 
-test "$OPT_VERBOSE" && echo "Shell is Interactive."
+test "$OPT_VERBOSE_p96zf6unm4ijvvxw5a678k0dy" && echo "Shell is Interactive."
 
 # Source goodies to be used only for interactive shells.
-include_system_plugins "bashrc_interactive-presets"
+include_system_plugins_p96zf6unm4ijvvxw5a678k0dy "bashrc_interactive-presets"
 
 # Finally, allow the user to overwrite all those settings!
-include_user_plugins ".bashrc_interactive"
+include_user_plugins_p96zf6unm4ijvvxw5a678k0dy ".bashrc_interactive"
 
-cleanup_most
-unset -f cleanup_most
+cleanup_most_p96zf6unm4ijvvxw5a678k0dy
+unset -f cleanup_most_p96zf6unm4ijvvxw5a678k0dy
