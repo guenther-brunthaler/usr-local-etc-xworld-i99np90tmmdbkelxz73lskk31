@@ -34,8 +34,9 @@
 			;;
 	*)		(
 				sleep 5
-				ddclient -daemon=0 -syslog -use=if -if=$1 >/dev/null 2>&1
+				ddclient -daemon=0 -syslog -use=if -if=$1 \
+					> /dev/null 2>& 1
 			) &
 			;;
 	esac
-) || exit
+)
