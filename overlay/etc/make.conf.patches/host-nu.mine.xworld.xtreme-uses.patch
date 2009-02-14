@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,156 @@
+@@ -24,6 +24,155 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -18,8 +18,8 @@ Index: etc/make.conf
 + alsa
 + apache2
 + arts
++ aspell
 + audiofile
-+ avahi
 + bash-completion
 + bzip2
 + cairo
@@ -29,8 +29,8 @@ Index: etc/make.conf
 + css
 + curl
 + custom-cflags
++ custom-cxxflags
 + dbus
-+ directfb
 + dts
 + dv
 + dvd
@@ -44,7 +44,6 @@ Index: etc/make.conf
 + exif
 + expat
 + -fam
-+ fbcon
 + ffmpeg
 + fftw
 + firefox
@@ -60,6 +59,7 @@ Index: etc/make.conf
 + gmp
 + -gnome
 + gphoto2
++ -gstreamer
 + gtk
 + gtk2
 + hal
@@ -73,7 +73,6 @@ Index: etc/make.conf
 + java6
 + javascript
 + jbig
-+ jikes
 + jp2
 + jpeg2k
 + kde
@@ -87,6 +86,7 @@ Index: etc/make.conf
 + libcaca
 + libclamav
 + logrotate
++ lzma
 + lzo
 + mad
 + matroska
@@ -157,7 +157,6 @@ Index: etc/make.conf
 + xv
 + xvid
 + xvmc
-+ zeroconf
  "
  
  # Host Setting
