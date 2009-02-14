@@ -18,8 +18,8 @@ Index: etc/make.conf
 + alsa
 + apache2
 + arts
++ aspell
 + audiofile
-+ avahi
 + bash-completion
 + -bluetooth
 + bzip2
@@ -30,6 +30,7 @@ Index: etc/make.conf
 + css
 + curl
 + custom-cflags
++ custom-cxxflags
 + dbus
 + dts
 + dv
@@ -44,7 +45,6 @@ Index: etc/make.conf
 + exif
 + expat
 + -fam
-+ fbcon
 + ffmpeg
 + fftw
 + firefox
@@ -60,6 +60,7 @@ Index: etc/make.conf
 + gmp
 + -gnome
 + gphoto2
++ -gstreamer
 + gtk
 + gtk2
 + hal
@@ -73,7 +74,6 @@ Index: etc/make.conf
 + java6
 + javascript
 + jbig
-+ jikes
 + jp2
 + jpeg2k
 + kde
@@ -89,6 +89,7 @@ Index: etc/make.conf
 + libclamav
 + libsamplerate
 + logrotate
++ lzma
 + lzo
 + mad
 + matroska
@@ -168,7 +169,6 @@ Index: etc/make.conf
 + xv
 + xvid
 + xvmc
-+ zeroconf
  "
  
  # Host Setting

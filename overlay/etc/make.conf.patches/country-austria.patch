@@ -4,10 +4,10 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -508,10 +508,10 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
- # Then, users only have to set the 'LANG' environment variable to the
- # appropriate 'LL_CC' combination prior to using the programs in the
- # package.
+@@ -505,10 +505,10 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+ # which the installers did not disable translation at _configure_ time. Then,
+ # users only have to set the 'LANG' environment variable to the appropriate
+ # 'LL_CC' combination prior to using the programs in the package.
 -#LANG=""
 +LANG="de_AT.utf8"
  
@@ -15,9 +15,9 @@ Index: etc/make.conf
 -#LINGUAS=""
 +LINGUAS="de"
  
- # If this is set, it should contain the path to a GnuPG public key ring.
- # The keys in that keyring will then be used for cryptographic
-@@ -532,7 +532,7 @@ PORTAGE_WORKDIR_MODE="0705"
+ # The command used to compress documentation during the install phase.
+ PORTAGE_COMPRESS="lzma"
+@@ -573,7 +573,7 @@ PORTAGE_WORKDIR_MODE="0705"
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"
  #SSL_COMMONNAME="First Last"

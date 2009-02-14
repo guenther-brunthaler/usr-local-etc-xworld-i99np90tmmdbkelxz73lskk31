@@ -14,7 +14,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -511,7 +511,23 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -509,7 +509,23 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  # kernel build directory (to be used when emerging kernel modules).
  # Note: The /usr/src/linux symlink is *not* used
  # when emerging kernel modules!
@@ -38,4 +38,4 @@ Index: etc/make.conf
 +# emergency recovery session launched from some Live CD.
  
  # We consider here those packages using 'GNU Gettext' internally, and for
- # which the installers did not disable translation at _configure_ time.
+ # which the installers did not disable translation at _configure_ time. Then,

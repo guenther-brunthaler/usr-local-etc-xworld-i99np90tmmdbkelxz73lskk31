@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -457,3 +457,36 @@ FEATURES="
+@@ -457,3 +457,12 @@ FEATURES="
  #                               ${PACKAGE} - see description of PORTAGE_ELOG_COMMAND
  #                               ${HOST} - FQDN of the host portage is running on
  #PORTAGE_ELOG_MAILSUBJECT="package \${PACKAGE} merged on \${HOST} with notice"
@@ -17,28 +17,4 @@ Index: etc/make.conf
 +# This entry should be the last in /etc/make.conf!
 +#
 +# Run "mirrorselect -s10 -b10" in order to update the next line.
-+# Then insert local mirrors just before first mirror.
-+#
-+# As an example, you might have set up the following directories
-+# as local mirror directories to be included within GENTOO_MIRRORS:
-+#
-+# * /usr/portage/local/overlay/distfiles/precious
-+# Contains manually-downloaded fetch-restricted files.
-+# That way they will not be purged when you clean up your
-+# regular /usr/portage/distfiles directory.
-+#
-+# * /usr/portage/local/overlay/distfiles
-+# Files required by your private ebuilds, replicated or shared across
-+# multiple machines under your administrative control.
-+#
-+# * /usr/portage/local/overlay/distfiles/local
-+# Files required by your private ebuilds, local machine specific only.
-+# These files shall not be replicated to other machines.
-+#
-+# * /usr/portage/local/overlay/distfiles/mnt
-+# Network-mounted "/usr/portage/distfiles" from some different machine
-+# in the LAN; looking there first before downloading from the Internet.
-+# This will typically be the /usr/portage/distfiles directory of some
-+# other machine, exported as a network share.
-+#
 +#GENTOO_MIRRORS=""

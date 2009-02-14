@@ -6,9 +6,9 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -598,4 +598,4 @@ SSL_UNIT="Preliminary usage"
- # This will typically be the /usr/portage/distfiles directory of some
- # other machine, exported as a network share.
+@@ -615,4 +615,4 @@ SSL_UNIT="Preliminary usage"
+ # This entry should be the last in /etc/make.conf!
  #
+ # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/portage/local/distfiles/local /usr/portage/local/distfiles /usr/portage/local/distfiles/precious /usr/portage/local/distfiles/mnt http://mirrors.evolva.ro/gentoo/ ftp://mirrors.evolva.ro/gentoo/ ftp://ftp.join.uni-muenster.de/pub/linux/distributions/gentoo ftp://gentoo.chem.wisc.edu/gentoo/ ftp://gentoo.mirrors.tds.net/gentoo http://gentoo.in.th/ http://gentoo.mirrors.tds.net/gentoo ftp://gentoo.in.th/ ftp://ftp.twaren.net/Linux/Gentoo/ ftp://ftp.join.uni-muenster.de/pub/linux/distributions/gentoo"
++GENTOO_MIRRORS="http://lug.mtu.edu/gentoo/ ftp://gentoo.mirrors.tds.net/gentoo http://gentoo.mirrors.tds.net/gentoo http://gentoo.chem.wisc.edu/gentoo/ http://gentoo-euetib.upc.es/mirror/gentoo/ ftp://gentoo.chem.wisc.edu/gentoo/ ftp://distro.ibiblio.org/pub/linux/distributions/gentoo/ ftp://gentoo.in.th/ http://ftp.twaren.net/Linux/Gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/"
