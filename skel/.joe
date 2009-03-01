@@ -133,6 +133,7 @@
 -istep 2
  # *** BEGIN CHANGES BLOCK
 -syntax ocaml
+-tab 2
 -indentc 32
 -istep 2
 -spaces
@@ -147,6 +148,7 @@
 -smartbacks
 -istep 2
 -syntax ocaml
+-tab 2
 -indentc 32
 -istep 2
 -spaces
@@ -161,6 +163,7 @@
 -smartbacks
 -istep 2
 -syntax ocaml
+-tab 2
 -indentc 32
 -istep 2
 -spaces
@@ -175,6 +178,7 @@
 -istep 2
  # *** BEGIN CHANGES BLOCK
 -syntax ocaml
+-tab 2
 -indentc 32
 -istep 2
 -spaces
@@ -189,6 +193,7 @@
 -istep 2
  # *** BEGIN CHANGES BLOCK
 -syntax ocaml
+-tab 2
 -indentc 32
 -istep 2
 -spaces
