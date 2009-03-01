@@ -132,8 +132,37 @@
 -smartbacks
 -istep 2
  # *** BEGIN CHANGES BLOCK
+-syntax ocaml
 -indentc 32
--istep 3
+-istep 2
+-spaces
+ # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#!\+\[ 	]\+\[a-z/]/env\+\[ 	]\+\[a-z0-9/]ocaml\>
+-autoindent
+-syntax sml
+-smarthome
+-smartbacks
+-istep 2
+-syntax ocaml
+-indentc 32
+-istep 2
+-spaces
+ # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#!\+\[ 	]\+\[a-z0-9/]ocaml\>
+-autoindent
+-syntax sml
+-smarthome
+-smartbacks
+-istep 2
+-syntax ocaml
+-indentc 32
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
@@ -145,8 +174,9 @@
 -smartbacks
 -istep 2
  # *** BEGIN CHANGES BLOCK
+-syntax ocaml
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
@@ -158,8 +188,9 @@
 -smartbacks
 -istep 2
  # *** BEGIN CHANGES BLOCK
+-syntax ocaml
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
