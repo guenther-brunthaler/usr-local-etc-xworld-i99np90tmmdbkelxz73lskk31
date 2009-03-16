@@ -23,7 +23,7 @@ debugging_filter_ncm9q70alywv346gx4ug8hwrq() {
 				esac
 				SET=
 				case $S2 in
-					1 | 2) SET="-O1 -DDEBUG -ggdb3 -feliminate-unused-debug-symbols -fno-omit-frame-pointer -fstack-check";;
+					1 | 2) SET="-O1 -g -feliminate-unused-debug-symbols -fno-omit-frame-pointer";;
 					3) SET="noclean nostrip keepwork";;
 					4) SET="debug";;
 				esac
@@ -88,5 +88,5 @@ debugging_filter_ncm9q70alywv346gx4ug8hwrq() {
 }
 debugging_filter_ncm9q70alywv346gx4ug8hwrq
 unset -f debugging_filter_ncm9q70alywv346gx4ug8hwrq
-echo "OVERRIDING FLAGS: debugging"
+echo "OVERRIDING FLAGS: debugging-lite"
 #echo "CFLAGS=$CFLAGS"; echo "CXXFLAGS=$CXXFLAGS"; echo "FEATURES=$FEATURES"; echo "USE=$USE"

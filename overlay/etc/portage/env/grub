@@ -1,0 +1,3 @@
+#! /bin/false
+# Used by GRUB to avoid auto-installing files into /boot.
+DONT_MOUNT_BOOT="1"

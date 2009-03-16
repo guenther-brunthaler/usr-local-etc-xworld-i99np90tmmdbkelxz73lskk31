@@ -27,7 +27,7 @@ then
 else
 	unset -f contains_ncm9q70alywv346gx4ug8hwrq
 	optimizer_filter_ncm9q70alywv346gx4ug8hwrq() {
-		local S1 S2 OLD NEW T REST M SET
+		local S1 S2 OLD NEW TT REST M SET
 		S1=1; S2=1
 		while true; do
 			case $S1 in
@@ -55,14 +55,14 @@ else
 					fi
 					REST="${OLD#* }"
 					if [ "$OLD" = "$REST" ]; then
-						T="$OLD"; OLD=
+						TT="$OLD"; OLD=
 					else
-						T="${OLD%$REST}"; T="${T% }"; OLD="$REST"
+						TT="${OLD%$REST}"; TT="${TT% }"; OLD="$REST"
 					fi
 					M=
 					case $S2 in
 						1 | 2)
-							case "$T" in
+							case "$TT" in
 								-O[0-9]) M=1;;
 								-g*) M=1;;
 								-DNDEBUG | -DDEBUG | -D_DEBUG) M=1;;
@@ -72,22 +72,22 @@ else
 							esac
 							;;
 						3)
-							case "$T" in
+							case "$TT" in
 								nostrip | keeptemp | keepwork | noclean) M=1;;
 							esac
 							;;
 						4)
-							case "$T" in
+							case "$TT" in
 								debug) M=1;;
 							esac
 							;;
 					esac
 					if [ -n "$M" ]; then
-						# $T matches a debugging-relevant token.
+						# $TT matches a debugging-relevant token.
 						test -z "$SET" && continue
-						T="$SET"; SET=
+						TT="$SET"; SET=
 					fi
-					NEW="$NEW${NEW:+ }$T"
+					NEW="$NEW${NEW:+ }$TT"
 					;;
 				3) # Complete variable modification.
 					case $S2 in
