@@ -1,5 +1,11 @@
 Adds support for Portage's "getdelta" incremental update client.
 
+Also disables FEATURES option "parallel-fetch" because slow
+connections which use "getdelta" usually also prefetch sources
+before starting to recompile, as bandwidth allocation has to
+be monitored manually in order to avoid race conditions with
+other downloads.
+
 Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
@@ -13,3 +19,12 @@ Index: etc/make.conf
  #RESUMECOMMAND="/usr/bin/wget -c -t 5 -T 60 --passive-ftp \${URI} -P \${DISTDIR}"
  #
  # Using wget, ratelimiting downloads
+@@ -372,7 +372,7 @@ PORTAGE_NICENESS="10"
+ FEATURES="
+  ccache
+  notitles
+- parallel-fetch
++ -parallel-fetch
+  prelink
+  sandbox
+  sfperms
