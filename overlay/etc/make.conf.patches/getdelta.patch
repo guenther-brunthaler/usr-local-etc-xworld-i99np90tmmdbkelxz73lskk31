@@ -19,12 +19,3 @@ Index: etc/make.conf
  #RESUMECOMMAND="/usr/bin/wget -c -t 5 -T 60 --passive-ftp \${URI} -P \${DISTDIR}"
  #
  # Using wget, ratelimiting downloads
-@@ -372,7 +372,7 @@ PORTAGE_NICENESS="10"
- FEATURES="
-  ccache
-  notitles
-- parallel-fetch
-+ -parallel-fetch
-  prelink
-  sandbox
-  sfperms
