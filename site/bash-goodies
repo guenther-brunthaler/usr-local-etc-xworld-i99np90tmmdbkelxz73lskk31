@@ -3,36 +3,41 @@
 #
 # Powerful plugin-extendible shell startup script
 #
-# Source this file from your .bashrc
-# if you like the features provided by it.
+# Source this file from your .bashrc if you like the features provided by it.
 # (This may also be done globally for all users by the administrator.)
 
 
-# This script is intended to be sourced from within "$(HOME).bashrc"
-# (and, indirectly, also from "$(HOME)/.bash_profile").
+# This script is intended to be sourced from within "${HOME}.bashrc" (and,
+# indirectly, also from "${HOME}/.bash_profile").
 #
 # It operates in a simple yet powerful because highly extendible way:
 #
-# * For setup shell code to be always executed, it sources the contents
-#   of the "/usr/local/etc/site/bashrc_always.d" directory first. This
-#   contains system-wide presets. Then it also sources either the contents
-#   of file "$(HOME)/.bashrc_always" (if it exists and is a file).
-#   Or, if "$(HOME)/.bashrc_always" exists and is a directory,
-#   all regular files in this directory will be sourced as setup-scripts
-#   in alphabetical order.
-# * For setup shell code that only makes sense for interactive shells,
-#   such as "alias", it subsequently sources the contents of the
-#   "/usr/local/etc/site/bashrc_interactive.d" directory
-#   for such interactive shells.
-#   This contains system-wide presets.
-#   Then it also sources either the contents of file
-#   "$(HOME)/.bashrc_interactive" (if it exists and is a file).
-#   Or, if "$(HOME)/.bashrc_interactive" exists and is a directory,
-#   all regular files in this directory will be sourced as setup-scripts
-#   in alphabetical order.
+# * For setup shell code to be always executed, it sources the contents of the
+#   "/usr/local/etc/site/bashrc_always_presets" directory first. This contains
+#   system-wide presets. Then it also sources either the contents of file
+#   "${HOME}/.bashrc_always" (if it exists and is a file). Or, if
+#   "${HOME}/.bashrc_always" exists and is a directory, all regular files in
+#   this directory will be sourced as setup-scripts in alphabetical order.
 #
-# This script can also be manually sourced; in this case the option -v
-# can also be specified for verbose operation. Useful for debugging.
+# * For setup shell code that only makes sense for interactive shells, such as
+#   "alias", it subsequently sources the contents of the
+#   "/usr/local/etc/site/bashrc_interactive_presets" directory for such
+#   interactive shells. This contains system-wide presets. Then it also
+#   sources either the contents of file "${HOME}/.bashrc_interactive" (if it
+#   exists and is a file). Or, if "${HOME}/.bashrc_interactive" exists and is
+#   a directory, all regular files in this directory will be sourced as
+#   setup-scripts in alphabetical order.
+#
+# * Although the actual shell snippets to be sourced can be script files with
+#   arbitrary contents, there are two template directories containing useful
+#   pre-canned snippets which can be symlinked directly. Look in
+#   "/usr/local/etc/site/bashrc_always-templates" for snippets to be symlinked
+#   into "${HOME}/.bashrc_always", or look in
+#   "/usr/local/etc/site/bashrc_interactive-templates" for snippets to be
+#   symlinked into "${HOME}/.bashrc_interactive".
+#
+# This script can also be manually sourced; in this case the option -v can
+# also be specified for verbose operation. Useful for debugging.
 
 warn_p96zf6unm4ijvvxw5a678k0dy() {
 	echo "WARNING: $*!" >& 2

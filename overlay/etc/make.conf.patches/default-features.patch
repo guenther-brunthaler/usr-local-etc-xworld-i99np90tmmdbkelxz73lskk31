@@ -21,7 +21,7 @@ Index: etc/make.conf
  FEATURES="
 + ccache
 + notitles
-+ parallel-fetch
++ -parallel-fetch
 + prelink
 + sandbox
 + sfperms
