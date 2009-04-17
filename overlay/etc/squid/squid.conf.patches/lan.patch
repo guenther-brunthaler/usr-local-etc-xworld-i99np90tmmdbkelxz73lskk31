@@ -6,8 +6,8 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -601,7 +601,16 @@
- acl all src all
+@@ -580,7 +580,16 @@
+ #Recommended minimum configuration:
  acl manager proto cache_object
  acl localhost src 127.0.0.1/32
 +acl from_localhost src 127.0.0.1/32
@@ -23,7 +23,7 @@ Index: squid/squid.conf
  #
  # Example rule allowing access from your local networks.
  # Adapt to list your (internal) IP networks from where browsing
-@@ -649,10 +658,13 @@ acl CONNECT method CONNECT
+@@ -628,10 +637,13 @@ acl CONNECT method CONNECT
  #Recommended minimum configuration:
  #
  # Only allow cachemgr access from localhost
@@ -39,7 +39,7 @@ Index: squid/squid.conf
  http_access deny purge
  # Deny requests to unknown ports
  http_access deny !Safe_ports
-@@ -663,16 +675,19 @@ http_access deny CONNECT !SSL_ports
+@@ -642,16 +654,19 @@ http_access deny CONNECT !SSL_ports
  # web applications running on the proxy server who think the only
  # one who can access services on "localhost" is a local user
  #http_access deny to_localhost
@@ -61,7 +61,7 @@ Index: squid/squid.conf
  
  # And finally deny all other access to this proxy
  http_access deny all
-@@ -4355,6 +4370,7 @@ broken_vary_encoding allow apache
+@@ -3992,6 +4007,7 @@ icp_port 3130
  #
  #Default:
  # none

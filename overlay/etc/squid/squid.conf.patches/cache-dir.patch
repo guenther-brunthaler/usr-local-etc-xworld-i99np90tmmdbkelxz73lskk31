@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -1921,6 +1921,7 @@ hierarchy_stoplist cgi-bin ?
+@@ -1729,6 +1729,7 @@ hierarchy_stoplist cgi-bin ?
  #
  #Default:
  # cache_dir ufs /var/cache/squid 100 16 256
