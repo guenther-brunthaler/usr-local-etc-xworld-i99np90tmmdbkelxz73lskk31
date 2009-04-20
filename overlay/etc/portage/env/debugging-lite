@@ -29,7 +29,6 @@ debugging_filter_ncm9q70alywv346gx4ug8hwrq() {
 				esac
 				OLD="$(echo "$OLD" | tr -s '[[:space:]]' ' ' | sed -e 's/^ *//; s/ *$//')"
 				NEW=
-				S3=1
 				S1=2
 				;;
 			2) # Modify next token if necessary.
