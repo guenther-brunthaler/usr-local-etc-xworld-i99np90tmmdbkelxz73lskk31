@@ -54,10 +54,10 @@ expand_command() {
 		*)
 			system print_indent "$1" "$2"
 			case $2 in
-				setters) expand "$SETTER" "$REPLY" Y;;
-				unsetters) expand "$UNSETTER" "$REPLY" Y;;
-				reconfig) expand "$RECONFIG" "$REPLY" Y;;
-				*) expand "$2.tpl" "$REPLY" Y;;
+				setters) expand "$SETTER" "$REPLY";;
+				unsetters) expand "$UNSETTER" "$REPLY" true;;
+				reconfig) expand "$RECONFIG" "$REPLY" true;;
+				*) expand "$2.tpl" "$REPLY";;
 			esac
 			;;
 	esac
