@@ -29,7 +29,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -291,6 +293,7 @@ EMERGE_DEFAULT_OPTS="--nospinner"
+@@ -291,6 +293,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
  #     the number of parallel makes (-j) to perform. The suggested number
  #     for parallel makes is CPUs+1.
  #MAKEOPTS="-j2"
@@ -60,7 +60,7 @@ Index: etc/make.conf
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
 -#VIDEO_CARDS="fbdev vesa vga"
-+VIDEO_CARDS="apm dummy radeon v4l vesa vga"
++VIDEO_CARDS="dummy radeon v4l vesa vga"
  
  # This entry should be the last in /etc/make.conf!
  #

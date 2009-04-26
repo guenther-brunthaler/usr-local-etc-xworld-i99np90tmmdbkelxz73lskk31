@@ -85,20 +85,20 @@ Index: etc/make.conf
 +# As an example, you might have set up the following directories
 +# as local mirror directories to be included within PORTAGE_RO_DISTDIRS:
 +#
-+# * /usr/portage/local/overlay/distfiles/precious
++# * /usr/portage/local/distfiles/precious
 +# Contains manually-downloaded fetch-restricted files.
 +# That way they will not be purged when you clean up your
 +# regular /usr/portage/distfiles directory.
 +#
-+# * /usr/portage/local/overlay/distfiles
++# * /usr/portage/local/distfiles
 +# Files required by your private ebuilds, replicated or shared across
 +# multiple machines under your administrative control.
 +#
-+# * /usr/portage/local/overlay/distfiles/local
++# * /usr/portage/local/distfiles/local
 +# Files required by your private ebuilds, local machine specific only.
 +# These files shall not be replicated to other machines.
 +#
-+# * /usr/portage/local/overlay/distfiles/mnt
++# * /usr/portage/local/distfiles/mnt
 +# Network-mounted "/usr/portage/distfiles" from some different machine
 +# in the LAN; looking there first before downloading from the Internet.
 +# This will typically be the /usr/portage/distfiles directory of some
