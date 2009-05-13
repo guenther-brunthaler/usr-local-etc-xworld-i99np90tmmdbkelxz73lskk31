@@ -15,7 +15,7 @@ Index: etc/make.conf
  #
  # Default fetch command (5 tries, passive ftp for firewall compatibility)
 -#FETCHCOMMAND="/usr/bin/wget -t 5 -T 60 --passive-ftp \${URI} -P \${DISTDIR}"
-+FETCHCOMMAND="/usr/bin/getdelta.sh \${URI}"
++FETCHCOMMAND="/usr/bin/getdelta.sh \${URI} \# \${FILE}"
  #RESUMECOMMAND="/usr/bin/wget -c -t 5 -T 60 --passive-ftp \${URI} -P \${DISTDIR}"
  #
  # Using wget, ratelimiting downloads
