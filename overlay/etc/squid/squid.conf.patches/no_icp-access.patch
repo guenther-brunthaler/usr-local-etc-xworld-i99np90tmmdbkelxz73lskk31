@@ -13,7 +13,7 @@ Index: squid/squid.conf
  icp_access deny all
  
  #  TAG: htcp_access
-@@ -3564,7 +3564,7 @@ refresh_pattern .		0	20%	4320
+@@ -3565,7 +3565,7 @@ refresh_pattern .		0	20%	4320
  #Default:
  # icp_port 0
  #

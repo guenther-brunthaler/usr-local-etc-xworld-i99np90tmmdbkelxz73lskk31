@@ -61,7 +61,7 @@ Index: squid/squid.conf
  
  # And finally deny all other access to this proxy
  http_access deny all
-@@ -3992,6 +4007,7 @@ icp_port 3130
+@@ -3993,6 +4008,7 @@ icp_port 3130
  #
  #Default:
  # none
