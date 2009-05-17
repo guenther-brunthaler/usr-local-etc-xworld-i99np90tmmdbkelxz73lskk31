@@ -6,9 +6,9 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -615,4 +615,4 @@ SSL_UNIT="Preliminary usage"
+@@ -610,4 +610,4 @@ SSL_UNIT="Preliminary usage"
  # This entry should be the last in /etc/make.conf!
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="http://lug.mtu.edu/gentoo/ ftp://gentoo.mirrors.tds.net/gentoo http://gentoo.mirrors.tds.net/gentoo http://gentoo.chem.wisc.edu/gentoo/ http://gentoo-euetib.upc.es/mirror/gentoo/ ftp://gentoo.chem.wisc.edu/gentoo/ ftp://distro.ibiblio.org/pub/linux/distributions/gentoo/ ftp://gentoo.in.th/ http://ftp.twaren.net/Linux/Gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/"
++GENTOO_MIRRORS="/usr/portage/local/distfiles/local /usr/portage/local/distfiles /usr/portage/local/distfiles/precious /usr/portage/local/distfiles/mnt http://lug.mtu.edu/gentoo/ ftp://gentoo.mirrors.tds.net/gentoo http://gentoo.mirrors.tds.net/gentoo http://gentoo.chem.wisc.edu/gentoo/ http://gentoo-euetib.upc.es/mirror/gentoo/ ftp://gentoo.chem.wisc.edu/gentoo/ ftp://distro.ibiblio.org/pub/linux/distributions/gentoo/ ftp://gentoo.in.th/ http://ftp.twaren.net/Linux/Gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/"

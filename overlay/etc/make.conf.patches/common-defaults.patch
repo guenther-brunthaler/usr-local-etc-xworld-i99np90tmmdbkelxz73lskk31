@@ -60,17 +60,12 @@ Index: etc/make.conf
  
  # When a given file does not exist in DISTDIR, search for the file in this
  # list of directories. Search order is from left to right.
-@@ -553,12 +553,17 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -553,12 +553,12 @@ PORTAGE_ELOG_SYSTEM="save"
  # in the LAN; looking there first before downloading from the Internet.
  # This will typically be the /usr/portage/distfiles directory of some
  # other machine, exported as a network share.
 -#PORTAGE_RO_DISTDIRS="/usr/local/portage/distfiles"
-+PORTAGE_RO_DISTDIRS="
-+ /usr/portage/local/distfiles/local
-+ /usr/portage/local/distfiles
-+ /usr/portage/local/distfiles/precious
-+ /usr/portage/local/distfiles/mnt
-+"
++#PORTAGE_RO_DISTDIRS="/usr/portage/local/distfiles"
  
  # Override the working directory permissions when Portage
  # unpacks and compiles source files.
@@ -80,7 +75,7 @@ Index: etc/make.conf
  
  # Several packages create digital X.509 PKI preset certificates when they
  # are installed.
-@@ -566,15 +571,15 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -566,15 +566,15 @@ PORTAGE_ELOG_SYSTEM="save"
  # You can specify default settings for such certificates here. Note that
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.

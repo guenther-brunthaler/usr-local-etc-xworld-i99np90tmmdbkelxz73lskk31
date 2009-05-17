@@ -17,7 +17,7 @@ Index: etc/make.conf
  
  # The command used to compress documentation during the install phase.
  PORTAGE_COMPRESS="lzma"
-@@ -573,7 +573,7 @@ PORTAGE_WORKDIR_MODE="0705"
+@@ -568,7 +568,7 @@ PORTAGE_WORKDIR_MODE="0705"
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"
  #SSL_COMMONNAME="First Last"
