@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,154 @@
+@@ -24,6 +24,155 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -98,6 +98,7 @@ Index: etc/make.conf
 + musepack
 + musicbrainz
 + nls
++ nodrm
 + nptl
 + nsplugin
 + oav
