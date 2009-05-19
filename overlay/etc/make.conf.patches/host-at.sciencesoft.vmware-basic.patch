@@ -21,7 +21,7 @@ Index: etc/make.conf
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
-@@ -259,7 +260,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+@@ -259,7 +260,7 @@ source /usr/portage/local/layman/make.co
  #     Instructions for setting up a local rsync server are available here:
  #     http://www.gentoo.org/doc/en/rsync.xml
  #
@@ -30,7 +30,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -279,7 +280,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+@@ -279,7 +280,7 @@ source /usr/portage/local/layman/make.co
  #     specified on every run. Useful options include --ask, --verbose,
  #     --usepkg and many others. Options that are not useful, such as --help,
  #     are not filtered.
@@ -48,17 +48,8 @@ Index: etc/make.conf
  #
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
-@@ -372,7 +373,7 @@ PORTAGE_NICENESS="10"
- FEATURES="
-  ccache
-  notitles
-- parallel-fetch
-+ -parallel-fetch
-  prelink
-  sandbox
-  sfperms
-@@ -616,3 +617,4 @@ SSL_UNIT="Preliminary usage"
+@@ -611,3 +612,4 @@ SSL_UNIT="Preliminary usage"
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
  #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="http://212.219.56.134/sites/www.ibiblio.org/gentoo/ ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo ftp://linux.rz.ruhr-uni-bochum.de/gentoo-mirror/ http://linux.rz.ruhr-uni-bochum.de/download/gentoo-mirror/ ftp://212.219.56.135/sites/www.ibiblio.org/gentoo/ http://212.219.56.135/sites/www.ibiblio.org/gentoo/ http://ftp.heanet.ie/pub/gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/ http://mirror.uni-c.dk/pub/gentoo/ ftp://140.127.177.15/pub/Linux/Gentoo"
++GENTOO_MIRRORS="/usr/portage/local/distfiles/local /usr/portage/local/distfiles /usr/portage/local/distfiles/precious /usr/portage/local/distfiles/mnt ftp://gentoo.in.th/ http://mirror.jamit.de/gentoo/ ftp://ftp.snt.utwente.nl/pub/os/linux/gentoo http://ftp-stud.fht-esslingen.de/pub/Mirrors/gentoo/ http://mirror.its.uidaho.edu/pub/gentoo/ ftp://mirror.its.uidaho.edu/gentoo/ ftp://mirror.pacific.net.au/linux/Gentoo ftp://mirror.iawnet.sandia.gov/pub/gentoo/ ftp://mirror.mdfnet.se/gentoo http://mirrors.xservers.ro/gentoo/"
