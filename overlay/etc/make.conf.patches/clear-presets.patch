@@ -1,10 +1,10 @@
 Change entries which will most likely be changed by later
 patches into remarks or empty assignments.
 
-Index: merging/make.conf
+Index: etc/make.conf
 ===================================================================
---- merging.orig/make.conf
-+++ merging/make.conf
+--- etc.orig/make.conf
++++ etc/make.conf
 @@ -22,6 +22,9 @@
  #
  # Example:
@@ -42,7 +42,7 @@ Index: merging/make.conf
  #     defined.
  #PORTDIR_OVERLAY=/usr/local/portage
 +# Add more overlays (from "layman").
-+#source /usr/portage/local/layman/make.conf
++#source /usr/local/portage/layman/make.conf
  
  # Fetching files 
  # ==============

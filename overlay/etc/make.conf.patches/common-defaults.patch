@@ -60,13 +60,7 @@ Index: etc/make.conf
  
  # When a given file does not exist in DISTDIR, search for the file in this
  # list of directories. Search order is from left to right.
-@@ -553,12 +553,12 @@ PORTAGE_ELOG_SYSTEM="save"
- # in the LAN; looking there first before downloading from the Internet.
- # This will typically be the /usr/portage/distfiles directory of some
- # other machine, exported as a network share.
--#PORTAGE_RO_DISTDIRS="/usr/local/portage/distfiles"
-+#PORTAGE_RO_DISTDIRS="/usr/portage/local/distfiles"
- 
+@@ -558,7 +558,7 @@ PORTAGE_ELOG_SYSTEM="save"
  # Override the working directory permissions when Portage
  # unpacks and compiles source files.
  # By default, no other users can look into the working directory.

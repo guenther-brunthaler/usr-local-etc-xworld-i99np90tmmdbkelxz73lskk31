@@ -1,10 +1,10 @@
 Adds xworld-specific overlay list paths to default layman.cfg.
 
-Index: xworld_layman/layman.cfg
+Index: layman/layman.cfg
 ===================================================================
---- xworld_layman.orig/layman.cfg
-+++ xworld_layman/layman.cfg
-@@ -32,6 +32,9 @@
+--- layman.orig/layman.cfg
++++ layman/layman.cfg
+@@ -32,6 +32,9 @@ make_conf : %(storage)s/make.conf
  #            file:///usr/portage/local/layman/my-list.xml
  
  overlays  : http://www.gentoo.org/proj/en/overlays/layman-global.txt
@@ -14,3 +14,12 @@ Index: xworld_layman/layman.cfg
  
  #-----------------------------------------------------------
  # Proxy support
+@@ -45,7 +48,7 @@ overlays  : http://www.gentoo.org/proj/e
+ # warnings if an overlay definition is missing either 
+ # description or contact information.
+ #
+-nocheck  : yes
++nocheck  : no
+ 
+ #-----------------------------------------------------------
+ # Umask settings

@@ -8,9 +8,18 @@ Index: layman/layman.cfg
  #            file:///usr/portage/local/layman/my-list.xml
  
  overlays  : http://www.gentoo.org/proj/en/overlays/layman-global.txt
-+            file:///usr/portage/local/xworld_layman/xworld-overlays.xml
-+            file:///usr/portage/local/xworld_layman/hosted-overlays.xml
-+            file:///usr/portage/local/xworld_layman/foreign-overlays.xml
++            file:///usr/local/portage/xworld_layman/xworld-overlays.xml
++            file:///usr/local/portage/xworld_layman/hosted-overlays.xml
++            file:///usr/local/portage/xworld_layman/foreign-overlays.xml
  
  #-----------------------------------------------------------
  # Proxy support
+@@ -45,7 +48,7 @@ overlays  : http://www.gentoo.org/proj/e
+ # warnings if an overlay definition is missing either 
+ # description or contact information.
+ #
+-nocheck  : yes
++nocheck  : no
+ 
+ #-----------------------------------------------------------
+ # Umask settings

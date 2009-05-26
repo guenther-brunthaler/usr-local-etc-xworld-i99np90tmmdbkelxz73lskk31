@@ -9,7 +9,7 @@ Index: etc/make.conf
  #     concern that they will be deleted by rsync updates. Default is not
  #     defined.
 -#PORTDIR_OVERLAY=/usr/local/portage
-+PORTDIR_OVERLAY="/usr/portage/local/overlay"
++PORTDIR_OVERLAY="/usr/local/portage/overlay"
  # Add more overlays (from "layman").
- #source /usr/portage/local/layman/make.conf
+ #source /usr/local/portage/layman/make.conf
  
