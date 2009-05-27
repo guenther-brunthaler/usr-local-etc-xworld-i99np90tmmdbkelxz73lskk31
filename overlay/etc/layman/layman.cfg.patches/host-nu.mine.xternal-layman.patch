@@ -14,12 +14,3 @@ Index: layman/layman.cfg
  
  #-----------------------------------------------------------
  # Proxy support
-@@ -45,7 +48,7 @@ overlays  : http://www.gentoo.org/proj/e
- # warnings if an overlay definition is missing either 
- # description or contact information.
- #
--nocheck  : yes
-+nocheck  : no
- 
- #-----------------------------------------------------------
- # Umask settings
