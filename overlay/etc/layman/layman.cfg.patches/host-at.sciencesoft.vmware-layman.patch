@@ -1,3 +1,5 @@
+Adds overlay list paths specific to host vmware.sciencesoft.at.
+
 Index: layman/layman.cfg
 ===================================================================
 --- layman.orig/layman.cfg

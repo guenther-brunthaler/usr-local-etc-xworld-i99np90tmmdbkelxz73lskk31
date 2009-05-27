@@ -1,4 +1,4 @@
-Adds xworld-specific overlay list paths to default layman.cfg.
+Adds overlay list paths specific to host xternal.mine.nu.
 
 Index: layman/layman.cfg
 ===================================================================
