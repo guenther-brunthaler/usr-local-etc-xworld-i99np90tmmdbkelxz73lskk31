@@ -8,7 +8,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -462,6 +462,125 @@ FEATURES="
+@@ -462,6 +462,128 @@ FEATURES="
  # Locally added configuration settings. #
  #########################################
  
@@ -57,7 +57,10 @@ Index: etc/make.conf
 +# 'LL_CC' combination prior to using the programs in the package.
 +#LANG=""
 +
-+# Packages like OOo use this to select the language to be hardcoded.
++# For GNU gettext based packages, this selects which of the available
++# translation files of a package should be installed. Some packages like OOo
++# also use this to select the language to be hardcoded. See
++# >>>info "(gettext)po/LINGUAS"<<< for details.
 +#LINGUAS=""
 +
 +# The command used to compress documentation during the install phase.

@@ -38,7 +38,7 @@ Index: etc/make.conf
  
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
-@@ -511,10 +511,10 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -514,10 +514,10 @@ PORTAGE_ELOG_SYSTEM="save"
  #LINGUAS=""
  
  # The command used to compress documentation during the install phase.
@@ -51,7 +51,7 @@ Index: etc/make.conf
  
  # If this is set, it should contain the path to a GnuPG public key ring.
  # The keys in that keyring will then be used for cryptographic
-@@ -527,7 +527,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -530,7 +530,7 @@ PORTAGE_ELOG_SYSTEM="save"
  # place-holder that will be substituted with an integer pid. For example, a
  # value of "ionice -c 3 -p \${PID}" will set idle io priority. For more
  # information about ionice, see ionice(1). This variable is unset by default.
@@ -60,7 +60,7 @@ Index: etc/make.conf
  
  # When a given file does not exist in DISTDIR, search for the file in this
  # list of directories. Search order is from left to right.
-@@ -558,7 +558,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -561,7 +561,7 @@ PORTAGE_ELOG_SYSTEM="save"
  # Override the working directory permissions when Portage
  # unpacks and compiles source files.
  # By default, no other users can look into the working directory.
@@ -69,7 +69,7 @@ Index: etc/make.conf
  
  # Several packages create digital X.509 PKI preset certificates when they
  # are installed.
-@@ -566,15 +566,15 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -569,15 +569,15 @@ PORTAGE_ELOG_SYSTEM="save"
  # You can specify default settings for such certificates here. Note that
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.

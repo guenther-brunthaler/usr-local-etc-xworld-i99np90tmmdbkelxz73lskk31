@@ -4,20 +4,23 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -505,10 +505,10 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -505,13 +505,13 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  # which the installers did not disable translation at _configure_ time. Then,
  # users only have to set the 'LANG' environment variable to the appropriate
  # 'LL_CC' combination prior to using the programs in the package.
 -#LANG=""
 +LANG="de_AT.utf8"
  
- # Packages like OOo use this to select the language to be hardcoded.
+ # For GNU gettext based packages, this selects which of the available
+ # translation files of a package should be installed. Some packages like OOo
+ # also use this to select the language to be hardcoded. See
+ # >>>info "(gettext)po/LINGUAS"<<< for details.
 -#LINGUAS=""
 +LINGUAS="de"
  
  # The command used to compress documentation during the install phase.
  PORTAGE_COMPRESS="lzma"
-@@ -568,7 +568,7 @@ PORTAGE_WORKDIR_MODE="0705"
+@@ -571,7 +571,7 @@ PORTAGE_WORKDIR_MODE="0705"
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"
  #SSL_COMMONNAME="First Last"
