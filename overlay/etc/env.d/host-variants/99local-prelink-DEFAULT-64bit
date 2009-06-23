@@ -5,3 +5,15 @@ PRELINK_PATH="/usr/local/bin:/usr/local/sbin:/usr/local/opt:/opt:/usr/kde/3.5/li
 # parse the file correctly (not always!), I finally gave up and
 # merged it back into a single line.
 PRELINK_PATH_MASK="/opt/doc:/opt/include:/opt/info:/opt/man:/usr/local/opt/doc:/usr/local/opt/include:/usr/local/opt/info:/usr/local/opt/man"
+
+# Overrides the setting from /etc/env.d/*kdepaths* which would
+# be updated by the Gentoo prelink cron job, but will not be run by us.
+KDE_IS_PRELINKED="true"
+
+# Spawn ioslave processes directly from the requesting application
+# rather than from klauncher/kdeinit via a spawn request.
+KDE_FORK_SLAVES="true"
+
+# Assume all filenames are encoded as UTF-8, even if the current locale
+# is set to "C".
+KDE_UTF8_FILENAMES="true"

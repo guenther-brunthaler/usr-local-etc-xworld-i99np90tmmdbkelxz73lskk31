@@ -1,1 +1,3 @@
+LESSCHARSET="utf-8"
+LESSCOLOR=yes
 LESS="-R -M --shift 5 -S -i"
