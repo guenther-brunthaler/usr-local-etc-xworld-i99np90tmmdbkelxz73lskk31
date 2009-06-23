@@ -16,7 +16,7 @@ Index: etc/make.conf
  # also use this to select the language to be hardcoded. See
  # >>>info "(gettext)po/LINGUAS"<<< for details.
 -#LINGUAS=""
-+LINGUAS="de"
++LINGUAS="de en@boldquot en@quot"
  
  # The command used to compress documentation during the install phase.
  PORTAGE_COMPRESS="lzma"
