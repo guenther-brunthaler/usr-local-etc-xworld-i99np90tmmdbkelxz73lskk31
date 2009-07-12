@@ -24,23 +24,33 @@ older() {
 }
 
 
+true; SUCCESS=$?
 GLSACHECK=
 older 45 /var/log/emerge.log && GLSACHECK=1
-older 1440 /var/log/emerge-sync.log || exit 0
+older 1440 /var/log/emerge-sync.log || {
+	exit $SUCCESS
+}
 EMERGE_DEFAULT_OPTS=
 export EMERGE_DEFAULT_OPTS
 emerge --sync --color=n --nospinner --quiet > /dev/null 2>& 1 || {
 	log err 'Portage tree synchronization failed!'
-	exit 1
+	false; exit
 }
 log info 'Portage tree has been updated'
+layman --quietness=0 --sync-all > /dev/null 2>& 1 || {
+	log err 'Could not update all of the installed layman overlays!'
+	false; SUCCESS=$?
+}
 update-eix --quiet > /dev/null 2>& 1 || {
 	log err 'Error updating eix database!'
-	exit 1
+	false; SUCCESS=$?
 }
-log info 'eix index has been updated'
-test -n "$GLSACHECK" || exit 0
-log info 'Running glsa-check for incorporating any security updates'
-glsa-check --fix affected > /dev/null 2>& 1 || {
-	log warning 'Failure incorporating GLSA fixes'
-}
+if test -n "$GLSACHECK"
+then
+	log info 'Running glsa-check for incorporating any security updates'
+	glsa-check --fix affected > /dev/null 2>& 1 || {
+		log warning 'Failure incorporating GLSA fixes'
+	}
+	false; SUCCESS=$?
+fi
+exit $SUCCESS
