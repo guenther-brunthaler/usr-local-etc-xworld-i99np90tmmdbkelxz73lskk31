@@ -29,7 +29,7 @@ older 45 /var/log/emerge.log && GLSACHECK=1
 older 1440 /var/log/emerge-sync.log || exit 0
 EMERGE_DEFAULT_OPTS=
 export EMERGE_DEFAULT_OPTS
-emerge --sync --nocolor --nospinner --quiet > /dev/null 2>& 1 || {
+emerge --sync --color=n --nospinner --quiet > /dev/null 2>& 1 || {
 	log err 'Portage tree synchronization failed!'
 	exit 1
 }
