@@ -1,0 +1,3 @@
+# Re-initialize shell from current global environment.
+alias reload-env="echo 'Sourcing \"/etc/profile\" and \"~/.bashrc\"...'; \
+. /etc/profile; . ~/.bashrc"
