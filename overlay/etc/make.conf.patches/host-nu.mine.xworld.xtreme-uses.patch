@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,155 @@
+@@ -24,6 +24,162 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -43,6 +43,8 @@ Index: etc/make.conf
 + -esd
 + exif
 + expat
++ faac
++ faad
 + -fam
 + ffmpeg
 + fftw
@@ -63,6 +65,7 @@ Index: etc/make.conf
 + gtk
 + gtk2
 + hal
++ id3tag
 + idea
 + ieee1394
 + imlib
@@ -80,6 +83,9 @@ Index: etc/make.conf
 + kdexdeltas
 + -kerberos
 + kipi
++ ladspa
++ lame
++ lash
 + lcms
 + ldap
 + libcaca
@@ -149,6 +155,7 @@ Index: etc/make.conf
 + X
 + x264
 + xft
++ xinetd
 + xml
 + xosd
 + xpm
