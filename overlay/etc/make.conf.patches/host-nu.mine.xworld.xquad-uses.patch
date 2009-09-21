@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,180 @@
+@@ -24,6 +24,192 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -17,12 +17,13 @@ Index: etc/make.conf
 + acpi
 + agg
 + alsa
-+ apache2
++ -apache2
 + arts
 + aspell
 + audiofile
 + bash-completion
 + -bluetooth
++ branding
 + bzip2
 + cairo
 + caps
@@ -54,6 +55,7 @@ Index: etc/make.conf
 + firefox
 + flac
 + foomaticdb
++ -fortran
 + freetype
 + ftp
 + fuse
@@ -64,7 +66,7 @@ Index: etc/make.conf
 + glut
 + gmp
 + -gnome
-+ gphoto2
++ -gphoto2
 + -gstreamer
 + gtk
 + gtk2
@@ -81,8 +83,9 @@ Index: etc/make.conf
 + javascript
 + jbig
 + jp2
++ jpeg
 + jpeg2k
-+ kde
++ -kde
 + kdeenablefinal
 + kdehiddenvisibility
 + kdexdeltas
@@ -102,11 +105,13 @@ Index: etc/make.conf
 + lzo
 + mad
 + matroska
++ mikmod
 + mmap
 + mmx
 + mmxext
 + mng
 + mp3
++ mp4
 + mpeg
 + mule
 + musepack
@@ -126,16 +131,21 @@ Index: etc/make.conf
 + -oss
 + pcre
 + pdf
++ -perl
 + pic
 + png
 + -postgres
 + ppds
 + pulseaudio
++ -python
 + qt
++ qt3
 + qt4
++ quicktime
 + samba
 + sasl
 + screen
++ sdl 
 + sharedmem
 + slang
 + smartcard
@@ -148,16 +158,18 @@ Index: etc/make.conf
 + sse2
 + sse3
 + sse4a
++ startup-notification
 + svg
 + -svga
-+ tcltk
++ -tcltk
 + -tcpd
 + tetex
 + theora
 + threads
 + threadsafe
++ -thunar
 + tiff
-+ tk
++ -tk
 + truetype
 + unicode
 + usb
