@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,109 @@
+@@ -24,6 +24,113 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -12,10 +12,11 @@ Index: etc/make.conf
 + 3dnowext
 + aalib
 + -acl
-+ apache2
++ -apache2
 + arts
 + aspell
 + bash-completion
++ branding
 + bzip2
 + cairo
 + caps
@@ -32,6 +33,7 @@ Index: etc/make.conf
 + -fam
 + ffmpeg
 + firefox
++ -fortran
 + freetype
 + ftp
 + gd
@@ -75,12 +77,14 @@ Index: etc/make.conf
 + -oss
 + pcre
 + pdf
-+ perl
++ -perl
 + pic
 + png
 + postgres
 + ppds
++ -python
 + -qt
++ qt3
 + qt4
 + -samba
 + sharedmem

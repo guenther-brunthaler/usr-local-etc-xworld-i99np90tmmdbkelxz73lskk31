@@ -17,11 +17,11 @@ Index: etc/make.conf
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
-+CFLAGS="-march=nocona -O2 -DNDEBUG -pipe -fno-stack-check"
++CFLAGS="-march=nocona -O3 -DNDEBUG -pipe -fomit-frame-pointer -fno-stack-check"
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
-@@ -260,6 +261,7 @@ source /usr/portage/local/layman/make.co
+@@ -260,6 +261,7 @@ source /usr/local/portage/layman/make.co
  #     http://www.gentoo.org/doc/en/rsync.xml
  #
  #SYNC="rsync://rsync.gentoo.org/gentoo-portage"
@@ -29,7 +29,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -270,7 +272,7 @@ source /usr/portage/local/layman/make.co
+@@ -270,7 +272,7 @@ source /usr/local/portage/layman/make.co
  #     command used by `emerge --sync`. This will not change the default options
  #     which are set by PORTAGE_RSYNC_OPTS (don't change those unless you know 
  #     exactly what you're doing).
@@ -55,7 +55,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -609,8 +612,10 @@ SSL_UNIT="Preliminary usage"
+@@ -612,8 +615,10 @@ SSL_UNIT="Preliminary usage"
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
  #VIDEO_CARDS="fbdev vesa vga"
