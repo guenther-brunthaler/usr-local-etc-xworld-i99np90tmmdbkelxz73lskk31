@@ -65,4 +65,4 @@ Index: etc/make.conf
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
  #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="http://mirror.switch.ch/ftp/mirror/gentoo/ http://mirror.muntinternet.net/pub/gentoo/ ftp://mirror.muntinternet.net/pub/gentoo/ http://mirror.leaseweb.com/gentoo/ ftp://mirror.leaseweb.com/gentoo/ ftp://ftp.free.fr/mirrors/ftp.gentoo.org/ http://mirror.netcologne.de/gentoo/ ftp://mirror.netcologne.de/gentoo/ ftp://distro.ibiblio.org/pub/linux/distributions/gentoo/ http://ftp.twaren.net/Linux/Gentoo/"
++GENTOO_MIRRORS="ftp://mirror.bih.net.ba/gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/ http://ftp.twaren.net/Linux/Gentoo/ ftp://de-mirror.org/distro/gentoo/ http://ftp.spline.inf.fu-berlin.de/mirrors/gentoo/ ftp://mirror.netcologne.de/gentoo/ ftp://mirror.icis.pcz.pl/gentoo/ http://mirror.averse.net/pub/gentoo/ http://mirror.its.uidaho.edu/pub/gentoo/ http://mirror.switch.ch/ftp/mirror/gentoo/"
