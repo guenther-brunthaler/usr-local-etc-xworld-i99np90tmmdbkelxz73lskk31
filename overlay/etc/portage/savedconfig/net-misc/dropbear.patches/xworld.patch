@@ -1,9 +1,9 @@
 Apply realm-specific patches for xworld.mine.nu domain.
 
-Index: net-misc/dropbear-0.51
+Index: net-misc/dropbear
 ===================================================================
---- net-misc.orig/dropbear-0.51
-+++ net-misc/dropbear-0.51
+--- net-misc.orig/dropbear
++++ net-misc/dropbear
 @@ -11,7 +11,7 @@
   ******************************************************************/
  
@@ -28,7 +28,7 @@ Index: net-misc/dropbear-0.51
  
  /* Set this if you want to use the DROPBEAR_SMALL_CODE option. This can save
  several kB in binary size, however will make the symmetrical ciphers (AES, DES
-@@ -51,31 +51,31 @@ etc) slower (perhaps by 50%). Recommende
+@@ -51,20 +51,20 @@ etc) slower (perhaps by 50%). Recommende
  #define DROPBEAR_SMALL_CODE
  
  /* Enable X11 Forwarding - server only */
@@ -53,25 +53,34 @@ Index: net-misc/dropbear-0.51
 -#define ENABLE_AGENTFWD
 +/*#define ENABLE_AGENTFWD*/
  
+ 
+ /* Note: Both ENABLE_CLI_PROXYCMD and ENABLE_CLI_NETCAT must be set to
+@@ -76,18 +76,18 @@ etc) slower (perhaps by 50%). Recommende
+ 
+ /* Enable "Netcat mode" option. This will forward standard input/output
+  * to a remote TCP-forwarded connection */
+-#define ENABLE_CLI_NETCAT
++/*#define ENABLE_CLI_NETCAT*/
+ 
  /* Encryption - at least one required.
-  * RFC Draft requires 3DES and recommends AES128 for interoperability.
+  * Protocol RFC requires 3DES and recommends AES128 for interoperability.
   * Including multiple keysize variants the same cipher 
   * (eg AES256 as well as AES128) will result in a minimal size increase.*/
--#define DROPBEAR_AES128_CBC
--#define DROPBEAR_3DES_CBC
--#define DROPBEAR_AES256_CBC
--#define DROPBEAR_BLOWFISH_CBC
-+/*#define DROPBEAR_AES128_CBC*/
-+/*#define DROPBEAR_3DES_CBC*/
-+/*#define DROPBEAR_AES256_CBC*/
-+/*#define DROPBEAR_BLOWFISH_CBC*/
- #define DROPBEAR_TWOFISH256_CBC
--#define DROPBEAR_TWOFISH128_CBC
-+/*#define DROPBEAR_TWOFISH128_CBC*/
+-#define DROPBEAR_AES128
+-#define DROPBEAR_3DES
+-#define DROPBEAR_AES256
+-#define DROPBEAR_BLOWFISH
++/*#define DROPBEAR_AES128*/
++/*#define DROPBEAR_3DES*/
++/*#define DROPBEAR_AES256*/
++/*#define DROPBEAR_BLOWFISH*/
+ #define DROPBEAR_TWOFISH256
+-#define DROPBEAR_TWOFISH128
++/*#define DROPBEAR_TWOFISH128*/
  
- /* Message Integrity - at least one required.
-  * RFC Draft requires sha1 and recommends sha1-96.
-@@ -90,15 +90,15 @@ etc) slower (perhaps by 50%). Recommende
+ /* Enable "Counter Mode" for ciphers. This is more secure than normal
+  * CBC mode against certain attacks. This adds around 1kB to binary 
+@@ -107,15 +107,15 @@ etc) slower (perhaps by 50%). Recommende
   * If you disable MD5, Dropbear will fall back to SHA1 fingerprints,
   * which are not the standard form. */
  #define DROPBEAR_SHA1_HMAC
@@ -90,7 +99,7 @@ Index: net-misc/dropbear-0.51
  
  /* RSA can be vulnerable to timing attacks which use the time required for
   * signing to guess the private key. Blinding avoids this attack, though makes
-@@ -112,11 +112,11 @@ etc) slower (perhaps by 50%). Recommende
+@@ -129,11 +129,11 @@ etc) slower (perhaps by 50%). Recommende
  /* #define DSS_PROTOK */
  
  /* Whether to do reverse DNS lookups. */
@@ -104,14 +113,18 @@ Index: net-misc/dropbear-0.51
  
  /* The MOTD file path */
  #ifndef MOTD_FILENAME
-@@ -132,13 +132,13 @@ etc) slower (perhaps by 50%). Recommende
+@@ -149,7 +149,7 @@ etc) slower (perhaps by 50%). Recommende
   * but there's an interface via a PAM module - don't bother using it otherwise.
   * You can't enable both PASSWORD and PAM. */
  
 -#define ENABLE_SVR_PASSWORD_AUTH
 +/*#define ENABLE_SVR_PASSWORD_AUTH*/
- /*#define ENABLE_SVR_PAM_AUTH */ /* requires ./configure --enable-pam */
+ /* PAM requires ./configure --enable-pam */
+ /*#define ENABLE_SVR_PAM_AUTH*/
  #define ENABLE_SVR_PUBKEY_AUTH
+@@ -159,9 +159,9 @@ etc) slower (perhaps by 50%). Recommende
+ #define ENABLE_SVR_PUBKEY_OPTIONS
+ #endif
  
 -#define ENABLE_CLI_PASSWORD_AUTH
 +/*#define ENABLE_CLI_PASSWORD_AUTH*/
@@ -121,7 +134,16 @@ Index: net-misc/dropbear-0.51
  
  /* This variable can be used to set a password for client
   * authentication on the commandline. Beware of platforms
-@@ -165,7 +165,7 @@ etc) slower (perhaps by 50%). Recommende
+@@ -169,7 +169,7 @@ etc) slower (perhaps by 50%). Recommende
+  * note that it will be provided for all "hidden" client-interactive
+  * style prompts - if you want something more sophisticated, use 
+  * SSH_ASKPASS instead. Comment out this var to remove this functionality.*/
+-#define DROPBEAR_PASSWORD_ENV "DROPBEAR_PASSWORD"
++/*#define DROPBEAR_PASSWORD_ENV "DROPBEAR_PASSWORD"*/
+ 
+ /* Define this (as well as ENABLE_CLI_PASSWORD_AUTH) to allow the use of
+  * a helper program for the ssh client. The helper program should be
+@@ -188,7 +188,7 @@ etc) slower (perhaps by 50%). Recommende
  /* We'll use /dev/urandom by default, since /dev/random is too much hassle.
   * If system developers aren't keeping seeds between boots nor getting
   * any entropy from somewhere it's their own fault. */
@@ -130,7 +152,7 @@ Index: net-misc/dropbear-0.51
  
  /* prngd must be manually set up to produce output */
  /*#define DROPBEAR_PRNGD_SOCKET "/var/run/dropbear-rng"*/
-@@ -180,7 +180,7 @@ etc) slower (perhaps by 50%). Recommende
+@@ -203,7 +203,7 @@ etc) slower (perhaps by 50%). Recommende
  /* And then a global limit to avoid chewing memory if connections 
   * come from many IPs */
  #ifndef MAX_UNAUTH_CLIENTS
@@ -139,7 +161,7 @@ Index: net-misc/dropbear-0.51
  #endif
  
  /* Maximum number of failed authentication tries (server option) */
-@@ -204,7 +204,7 @@ etc) slower (perhaps by 50%). Recommende
+@@ -227,7 +227,7 @@ etc) slower (perhaps by 50%). Recommende
   * OpenSSH), set the path below. If the path isn't defined, sftp will not
   * be enabled */
  #ifndef SFTPSERVER_PATH
@@ -148,21 +170,3 @@ Index: net-misc/dropbear-0.51
  #endif
  
  /* This is used by the scp binary when used as a client binary. If you're
-@@ -256,7 +256,7 @@ be overridden at runtime with -K. 0 disa
- #endif
- /* Close connections to clients which haven't authorised after AUTH_TIMEOUT */
- #ifndef AUTH_TIMEOUT
--#define AUTH_TIMEOUT 300 /* we choose 5 minutes */
-+#define AUTH_TIMEOUT 60 /* we choose 5 minutes */
- #endif
- 
- /* Minimum key sizes for DSS and RSA */
-@@ -264,7 +264,7 @@ be overridden at runtime with -K. 0 disa
- #define MIN_DSS_KEYLEN 512
- #endif
- #ifndef MIN_RSA_KEYLEN
--#define MIN_RSA_KEYLEN 512
-+#define MIN_RSA_KEYLEN 2048
- #endif
- 
- #define MAX_BANNER_SIZE 2000 /* this is 25*80 chars, any more is foolish */

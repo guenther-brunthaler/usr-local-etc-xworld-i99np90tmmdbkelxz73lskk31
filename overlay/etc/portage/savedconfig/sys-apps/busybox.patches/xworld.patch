@@ -3,10 +3,10 @@ Customizations for the xworld.mine.nu realm.
 This is for using BusyBox in an initrd.
 
 
-Index: sys-apps/busybox-1.13.2
+Index: sys-apps/busybox
 ===================================================================
---- sys-apps.orig/busybox-1.13.2
-+++ sys-apps/busybox-1.13.2
+--- sys-apps.orig/busybox
++++ sys-apps/busybox
 @@ -1,7 +1,7 @@
  #
  # Automatically generated make config: don't edit
