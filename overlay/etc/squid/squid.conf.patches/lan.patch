@@ -10,8 +10,9 @@ Index: squid/squid.conf
  #Recommended minimum configuration:
  acl manager proto cache_object
  acl localhost src 127.0.0.1/32
+-acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
 +acl from_localhost src 127.0.0.1/32
- acl to_localhost dst 127.0.0.0/8
++acl to_localhost dst 127.0.0.0/8
 +acl to_lan dst 192.168.0.0/16
 +acl to_lan dst 10.0.0.0/8
 +acl to_lan dst 172.16.0.0/12
