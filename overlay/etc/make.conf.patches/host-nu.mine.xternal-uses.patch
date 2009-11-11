@@ -84,7 +84,7 @@ Index: etc/make.conf
 + ppds
 + -python
 + -qt
-+ qt3
++ qt3support
 + qt4
 + -samba
 + sharedmem
