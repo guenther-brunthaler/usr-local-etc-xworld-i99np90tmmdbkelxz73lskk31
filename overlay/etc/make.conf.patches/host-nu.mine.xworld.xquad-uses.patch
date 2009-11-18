@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,195 @@
+@@ -24,6 +24,197 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -18,7 +18,7 @@ Index: etc/make.conf
 + agg
 + alsa
 + -apache2
-+ arts
++ -arts
 + aspell
 + audiofile
 + bash-completion
@@ -76,6 +76,7 @@ Index: etc/make.conf
 + ieee1394
 + imagemagick
 + imlib
++ inotify
 + -ipv6
 + jack
 + -java
@@ -116,10 +117,10 @@ Index: etc/make.conf
 + mule
 + musepack
 + musicbrainz
++ -mysql
 + nls
 + nodrm
 + nptl
-+ nsplugin
 + oav
 + ocamlopt
 + odbc
@@ -132,6 +133,7 @@ Index: etc/make.conf
 + pcre
 + pdf
 + -perl
++ -phonon
 + pic
 + png
 + -postgres
@@ -139,14 +141,14 @@ Index: etc/make.conf
 + pulseaudio
 + -python
 + qt
-+ qt3
++ qt3support
 + qt4
 + quicktime
 + quotas
 + samba
 + sasl
 + screen
-+ sdl 
++ sdl
 + sharedmem
 + slang
 + smartcard
