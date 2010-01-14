@@ -19,7 +19,7 @@ Index: etc/make.conf
  #                          info, warn, error, log, qa, *
  #                       Warning: commenting this will disable elog
 -#PORTAGE_ELOG_CLASSES="warn error log"
-+PORTAGE_ELOG_CLASSES="warn error log info"
++PORTAGE_ELOG_CLASSES="warn error log"
  
  # PORTAGE_ELOG_SYSTEM: selects the module(s) to process the log messages. Modules
  #                      included in portage are (empty means logging is disabled):
@@ -28,7 +28,7 @@ Index: etc/make.conf
  #                      for this module (e.g.
  #                        PORTAGE_ELOG_SYSTEM="mail:warn,error syslog:* save")
 -#PORTAGE_ELOG_SYSTEM="save mail"
-+PORTAGE_ELOG_SYSTEM="save"
++PORTAGE_ELOG_SYSTEM="save_summary"
  
  # PORTAGE_ELOG_COMMAND: only used with the "custom" logging module. Specifies a command
  #                      to process log messages. Two variables are expanded:
