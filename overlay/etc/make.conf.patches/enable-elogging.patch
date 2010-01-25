@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -177,7 +177,7 @@ CXXFLAGS="${CFLAGS}"
+@@ -144,7 +144,7 @@ CXXFLAGS="${CFLAGS}"
  #     If the direcory does not exist, it will be created automatically and
  #     group permissions will be applied to it.  If the directory already
  #     exists, portage will not modify it's permissions.
@@ -14,7 +14,7 @@ Index: etc/make.conf
  #
  # PORTDIR_OVERLAY is a directory where local ebuilds may be stored without
  #     concern that they will be deleted by rsync updates. Default is not
-@@ -397,7 +397,7 @@ FEATURES="
+@@ -313,7 +313,7 @@ FEATURES="
  # PORTAGE_ELOG_CLASSES: selects messages to be logged, possible values are:
  #                          info, warn, error, log, qa, *
  #                       Warning: commenting this will disable elog
@@ -23,7 +23,7 @@ Index: etc/make.conf
  
  # PORTAGE_ELOG_SYSTEM: selects the module(s) to process the log messages. Modules
  #                      included in portage are (empty means logging is disabled):
-@@ -419,7 +419,7 @@ FEATURES="
+@@ -335,7 +335,7 @@ FEATURES="
  #                      separated list of loglevels to override PORTAGE_ELOG_CLASSES
  #                      for this module (e.g.
  #                        PORTAGE_ELOG_SYSTEM="mail:warn,error syslog:* save")

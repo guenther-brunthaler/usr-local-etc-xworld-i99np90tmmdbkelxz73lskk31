@@ -5,16 +5,16 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -295,7 +295,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+@@ -263,7 +263,7 @@ PORT_LOGDIR="/var/log/ebuilds"
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
  #     reduce it further. Default is unset.
 -#PORTAGE_NICENESS=3
 +PORTAGE_NICENESS="10"
  #
- # AUTOCLEAN enables portage to automatically clean out older or overlapping
- #     packages from the system after every successful merge. This is the
-@@ -378,7 +378,7 @@ FEATURES="
+ # PORTAGE_IONICE_COMMAND provides a command for portage to call in order to
+ #     adjust the io priority of portage and it's subprocesses. Default is
+@@ -294,7 +294,7 @@ FEATURES="
  # CCACHE_SIZE sets the space limitations for ccache. The default size is
  #     "2G", or 2 gigabytes.  Units are specified with 'G', 'M', or 'K'.
  #
@@ -23,7 +23,7 @@ Index: etc/make.conf
  #
  # CCACHE_DIR sets the ccache path.  If not specified, portage will default
  #     to "${PORTAGE_TMPDIR}/ccache".
-@@ -471,12 +471,12 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -387,12 +387,12 @@ PORTAGE_ELOG_SYSTEM="save_summary"
  # Gentoo's config protection. Such files will never be
  # overwritten by an update without giving the admin
  # a chance to merge the old and new file contents.
@@ -38,7 +38,7 @@ Index: etc/make.conf
  
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
-@@ -514,10 +514,10 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -430,10 +430,10 @@ PORTAGE_ELOG_SYSTEM="save_summary"
  #LINGUAS=""
  
  # The command used to compress documentation during the install phase.
@@ -51,7 +51,7 @@ Index: etc/make.conf
  
  # If this is set, it should contain the path to a GnuPG public key ring.
  # The keys in that keyring will then be used for cryptographic
-@@ -530,7 +530,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -446,7 +446,7 @@ PORTAGE_ELOG_SYSTEM="save_summary"
  # place-holder that will be substituted with an integer pid. For example, a
  # value of "ionice -c 3 -p \${PID}" will set idle io priority. For more
  # information about ionice, see ionice(1). This variable is unset by default.
@@ -60,7 +60,7 @@ Index: etc/make.conf
  
  # When a given file does not exist in DISTDIR, search for the file in this
  # list of directories. Search order is from left to right.
-@@ -561,7 +561,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -477,7 +477,7 @@ PORTAGE_ELOG_SYSTEM="save_summary"
  # Override the working directory permissions when Portage
  # unpacks and compiles source files.
  # By default, no other users can look into the working directory.
@@ -69,7 +69,7 @@ Index: etc/make.conf
  
  # Several packages create digital X.509 PKI preset certificates when they
  # are installed.
-@@ -569,15 +569,15 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -485,15 +485,15 @@ PORTAGE_ELOG_SYSTEM="save_summary"
  # You can specify default settings for such certificates here. Note that
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.

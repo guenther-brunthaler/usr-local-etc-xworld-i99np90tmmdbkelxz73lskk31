@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -22,6 +22,9 @@
+@@ -22,11 +22,14 @@
  #
  # Example:
  #USE="X gtk gnome -alsa"
@@ -15,17 +15,14 @@ Index: etc/make.conf
  
  # Host Setting
  # ============
-@@ -30,7 +33,7 @@
- # Change this line as appropriate (i686, i586, i486 or i386).
- # All modern systems (even Athlons) should use "i686-pc-linux-gnu".
- # All K6's are i586.
+ #
 -CHOST="i686-pc-linux-gnu"
 +#CHOST="i686-pc-linux-gnu"
  
  # Host and optimization settings 
  # ==============================
-@@ -100,10 +103,12 @@ CHOST="i686-pc-linux-gnu"
- # Decent examples:
+@@ -66,10 +69,12 @@ CHOST="i686-pc-linux-gnu"
+ #
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
 +# Avoid -O0 and -s in CFLAGS.
@@ -37,7 +34,7 @@ Index: etc/make.conf
  
  # Advanced Masking
  # ================
-@@ -178,6 +183,8 @@ CHOST="i686-pc-linux-gnu"
+@@ -145,6 +150,8 @@ CHOST="i686-pc-linux-gnu"
  #     concern that they will be deleted by rsync updates. Default is not
  #     defined.
  #PORTDIR_OVERLAY=/usr/local/portage
@@ -46,21 +43,21 @@ Index: etc/make.conf
  
  # Fetching files 
  # ==============
-@@ -361,6 +368,9 @@ CHOST="i686-pc-linux-gnu"
- #  'usersandbox' enables sandboxing while portage is running under userpriv.
- #FEATURES="sandbox buildpkg ccache distcc userpriv usersandbox notitles noauto"
- #FEATURES="sandbox ccache distcc distlocks"
+@@ -277,6 +284,9 @@ CHOST="i686-pc-linux-gnu"
+ # values and their respective meanings.
+ #FEATURES="ccache distcc installsources \
+ # splitdebug test userpriv usersandbox"
 +# FEATURES sorted alphabetically for easier maintenance.
 +FEATURES="
 +"
  
  # CCACHE_SIZE and CCACHE_DIR are used to control the behavior of ccache, and
  #     and are only used if "ccache" is in FEATURES.
-@@ -387,7 +397,7 @@ CHOST="i686-pc-linux-gnu"
+@@ -303,7 +313,7 @@ CHOST="i686-pc-linux-gnu"
  # PORTAGE_ELOG_CLASSES: selects messages to be logged, possible values are:
  #                          info, warn, error, log, qa, *
  #                       Warning: commenting this will disable elog
--PORTAGE_ELOG_CLASSES="warn error log"
+-PORTAGE_ELOG_CLASSES="log warn error"
 +#PORTAGE_ELOG_CLASSES="warn error log"
  
  # PORTAGE_ELOG_SYSTEM: selects the module(s) to process the log messages. Modules

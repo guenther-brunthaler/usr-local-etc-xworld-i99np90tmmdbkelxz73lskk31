@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -488,6 +488,9 @@ CONFIG_PROTECT="/usr/local/etc"
+@@ -404,6 +404,9 @@ CONFIG_PROTECT="/usr/local/etc"
  # stay the same for all package versions.
  DOC_SYMLINKS_DIR="/usr/share/doc/html"
  

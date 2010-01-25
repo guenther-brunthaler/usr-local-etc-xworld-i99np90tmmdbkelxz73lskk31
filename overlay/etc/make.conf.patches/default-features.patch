@@ -6,7 +6,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -279,7 +279,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+@@ -247,7 +247,7 @@ PORT_LOGDIR="/var/log/ebuilds"
  #     specified on every run. Useful options include --ask, --verbose,
  #     --usepkg and many others. Options that are not useful, such as --help,
  #     are not filtered.
@@ -15,8 +15,8 @@ Index: etc/make.conf
  #
  # INSTALL_MASK allows certain files to not be installed into your file system.
  #     This is useful when you wish to filter out a certain set of files from
-@@ -370,6 +370,16 @@ PORTAGE_NICENESS="10"
- #FEATURES="sandbox ccache distcc distlocks"
+@@ -286,6 +286,16 @@ PORTAGE_NICENESS="10"
+ # splitdebug test userpriv usersandbox"
  # FEATURES sorted alphabetically for easier maintenance.
  FEATURES="
 + ccache

@@ -5,10 +5,10 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -457,3 +457,12 @@ FEATURES="
+@@ -373,3 +373,12 @@ FEATURES="
  #                               ${PACKAGE} - see description of PORTAGE_ELOG_COMMAND
  #                               ${HOST} - FQDN of the host portage is running on
- #PORTAGE_ELOG_MAILSUBJECT="package \${PACKAGE} merged on \${HOST} with notice"
+ #PORTAGE_ELOG_MAILSUBJECT="[portage] ebuild log for \${PACKAGE} on \${HOST}"
 +
 +#########################################
 +# Locally added configuration settings. #

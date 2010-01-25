@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -182,9 +182,9 @@ PORT_LOGDIR="/var/log/ebuilds"
+@@ -149,9 +149,9 @@ PORT_LOGDIR="/var/log/ebuilds"
  # PORTDIR_OVERLAY is a directory where local ebuilds may be stored without
  #     concern that they will be deleted by rsync updates. Default is not
  #     defined.
