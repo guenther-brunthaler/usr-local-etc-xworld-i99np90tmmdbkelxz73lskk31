@@ -4,16 +4,16 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -33,7 +33,7 @@ USE="
- # Change this line as appropriate (i686, i586, i486 or i386).
- # All modern systems (even Athlons) should use "i686-pc-linux-gnu".
- # All K6's are i586.
+@@ -29,7 +29,7 @@ USE="
+ # Host Setting
+ # ============
+ #
 -#CHOST="i686-pc-linux-gnu"
 +CHOST="i686-pc-linux-gnu"
  
  # Host and optimization settings 
  # ==============================
-@@ -104,6 +104,7 @@ USE="
+@@ -70,6 +70,7 @@ USE="
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
@@ -21,7 +21,7 @@ Index: etc/make.conf
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
-@@ -260,6 +261,7 @@ source /usr/local/portage/layman/make.co
+@@ -228,6 +229,7 @@ source /usr/local/portage/layman/make.co
  #     http://www.gentoo.org/doc/en/rsync.xml
  #
  #SYNC="rsync://rsync.gentoo.org/gentoo-portage"
@@ -29,7 +29,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -270,7 +272,7 @@ source /usr/local/portage/layman/make.co
+@@ -238,7 +240,7 @@ source /usr/local/portage/layman/make.co
  #     command used by `emerge --sync`. This will not change the default options
  #     which are set by PORTAGE_RSYNC_OPTS (don't change those unless you know 
  #     exactly what you're doing).
@@ -38,7 +38,7 @@ Index: etc/make.conf
  #
  # Advanced Features
  # =================
-@@ -291,6 +293,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
+@@ -259,6 +261,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
  #     the number of parallel makes (-j) to perform. The suggested number
  #     for parallel makes is CPUs+1.
  #MAKEOPTS="-j2"
@@ -46,7 +46,7 @@ Index: etc/make.conf
  #
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
-@@ -498,7 +501,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
+@@ -414,7 +417,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.
  # Otherwise, all supported input drivers will be included.
@@ -55,7 +55,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -607,8 +610,10 @@ SSL_UNIT="Preliminary usage"
+@@ -523,8 +526,10 @@ SSL_UNIT="Preliminary usage"
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
  #VIDEO_CARDS="fbdev vesa vga"
