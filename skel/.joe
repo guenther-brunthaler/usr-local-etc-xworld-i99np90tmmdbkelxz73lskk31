@@ -1135,6 +1135,32 @@
 -istep 3
 -spaces
 
+ Vala source file
+*.gir
+-autoindent
+-smartbacks
+-smarthome
+-tab 3
+-indentc 32
+-istep 3
+-spaces
+*.vala
+-autoindent
+-smartbacks
+-smarthome
+-tab 3
+-indentc 32
+-istep 3
+-spaces
+*.vapi
+-autoindent
+-smartbacks
+-smarthome
+-tab 3
+-indentc 32
+-istep 3
+-spaces
+
  Simplicity source file
 *
 +#!\+\[ 	]\+\[a-z/]/env simple\>
