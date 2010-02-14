@@ -1017,6 +1017,7 @@
  # *** END CHANGES BLOCK
  # *** BEGIN CHANGES BLOCK
 
+*
 +#!\+\[ 	]\+\[a-z/]/lua\>
 -autoindent
 -syntax lua
