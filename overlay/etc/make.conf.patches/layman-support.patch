@@ -12,7 +12,7 @@ Index: etc/make.conf
 +PORTDIR_OVERLAY="/usr/local/portage/overlay"
  # Add more overlays (from "layman").
 -#source /usr/local/portage/layman/make.conf
-+source /usr/local/portage/layman/make.conf
++source /var/lib/layman/make.conf
  
  # Fetching files 
  # ==============
