@@ -8,7 +8,7 @@
 # are supported in this file; relative paths will be
 # interpreted relative to $HOME).
 
-PYTHONPATH=`PYTHONPATH= perl -e '
+PYTHONPATH=`PERL5LIB= PERLLIB= perl -e '
 	$h= $ENV{HOME} or die;
 	$h =~ s!/*$!!;
 	if (open PERSONAL, "<", "$h/.bashrc_etc/pythonpaths") {
