@@ -70,13 +70,24 @@
 
  -nobackups	If you don't want backup files to be created
 
- -break_links	Delete file before writing, to break hard links
+ -break_hardlinks
+		Delete file before writing, to break hard links
+		(but don't break symbolic links).
+ # *** BEGIN CHANGES BLOCK
+ This is exactly what we want: Break hard links, but not symlinks.
+-break_hardlinks
+ # *** END CHANGES BLOCK
+
+ -break_links
+		Delete file before writing, to break hard links
+		and symbolic links.
  # *** BEGIN CHANGES BLOCK
  Although this would be nice in order to break hard links,
  it unfortunately also breaks symlinks, rendering this
  feature rather useless.
 --break_links
  # *** END CHANGES BLOCK
+
 
  -lightoff	Turn off highlighting after block copy or move
 
@@ -227,6 +238,11 @@
   %M  Macro recording message
   %y  Syntax
   %x  Context (first non-indented line going backwards)
+  %dd day
+  %dm month
+  %dY year
+  %Ename%  value of environment variable
+  %Tname%  value of option (ON or OFF for boolean options)
 
  These formatting escape sequences may also be given:
  
@@ -293,6 +309,8 @@
 
 	-wordwrap		Wordwrap
 
+	-nobackup		If you don't want backup file to be created
+
 	-autoindent		Auto indent
 
 	-overwrite		Overtype mode
@@ -302,6 +320,9 @@
 	-lmargin nnn		Left margin
 
 	-rmargin nnn		Right margin
+
+	-flowed			Put one space after intermediate paragraph lines
+				for support of flowed text.
 
 
 	-french			One space after '.', '?' and '!' for wordwrap
@@ -340,6 +361,9 @@
 				not good for regular text since ' is
 				normally used alone as an apostrophe)
 
+	-no_double_quoted	Text between " " should not be ignored (useful
+				for TeX).
+
 	-c_comment		Text between /* */ should be ignored
 
 	-cpp_comment		Text after // should be ignored
@@ -373,9 +397,127 @@
 
  -mfirst if,"rdonly && joe(sys,\"p4 edit \",name,rtn)",then,mode,"o",msg,"executed \"p4 edit ",name,"\"",rtn,endif
 
+ -mfirst if,"rdonly && joe(sys,\"p4 edit \",name,rtn)",then,reload,msg,"executed \"p4 edit ",name,"\"",rtn,endif
+
  File type table is now in a separate file.  You can copy this file to ~/.joe and customize it.
 
 :include ftyperc
+
+ SECOND and 1/2 SECTION: Option menu layout
+
+	:defmenu name	Defines a menu.
+
+	macro string comment
+			A menu entry.  Macro is any JOE macro- see "Macros:"
+			below. String is the label to be used for the macro
+			in the menu.  It is in the same format as the -lmsg
+			and -rmsg options above.
+
+			Two whitespace characters in a row begins a comment.
+			Use '% ' for a leading space in the string.
+
+:defmenu root
+mode,"overwrite",rtn	T Overtype %Zoverwrite%
+mode,"hex",rtn	% % Hex edit mode
+mode,"autoindent",rtn	I Autoindent %Zautoindent%
+mode,"wordwrap",rtn	W Word wrap %Zwordwrap%
+mode,"tab",rtn	D Tab width %Ztab%
+mode,"lmargin",rtn	L Left margin %Zlmargin%
+mode,"rmargin",rtn	R Right margin %Zrmargin%
+mode,"square",rtn	X Rectangle mode %Zsquare%
+mode,"indentc",rtn	% % Indent char %Zindentc%
+mode,"istep",rtn	% % Indent step %Zistep%
+mode,"highlight",rtn	H Highlighting %Zhighlight%
+mode,"crlf",rtn	Z CR-LF (MS-DOS) %Zcrlf%
+mode,"linums",rtn	N Line numbers %Zlinums%
+mode,"beep",rtn	B Beep %Zbeep%
+mode,"rdonly",rtn	O Read only %Zrdonly%
+mode,"syntax",rtn	Y Syntax
+mode,"encoding",rtn	E Encoding
+mode,"asis",rtn	% % Meta chars as-is
+mode,"language",rtn	V Language
+mode,"picture",rtn	P picture %Zpicture%
+menu,"more-options",rtn	  % % More options...
+
+:defmenu more-options
+menu,"^G",rtn	% % ^G options
+menu,"search",rtn	% % search options
+menu,"paragraph",rtn	% % paragraph options
+menu,"file",rtn	% % file options
+menu,"menu",rtn	% % menu options
+menu,"global",rtn	% % global options
+menu,"cursor",rtn	% % cursor options
+menu,"marking",rtn	% % marking options
+menu,"tab",rtn	% % tab/indent options
+
+:defmenu menu
+mode,"menu_explorer",rtn	% % Menu explorer %Zmenu_explorer%
+mode,"menu_above",rtn	% % Menu position %Zmenu_above%
+mode,"menu_jump",rtn	% % Jump into menu %Zmenu_jump%
+mode,"transpose",rtn	% % Transpose menus %Ztranspose%
+
+:defmenu ^G
+mode,"single_quoted",rtn	% % ^G ignores '...' %Zsingle_quoted%
+mode,"no_double_quoted",rtn	% % ^G no ignore "..." %Zno_double_quoted%
+mode,"c_comment",rtn	% % ^G ignores /*...*/ %Zc_comment%
+mode,"cpp_comment",rtn	% % ^G ignores //... %Zcpp_comment%
+mode,"pound_comment",rtn	% % ^G ignores #... %Zpound_comment%
+mode,"vhdl_comment",rtn	% % ^G ignores --... %Zvhdl_comment%
+mode,"semi_comment",rtn	% % ^G ignores ;... %Zsemi_comment%
+mode,"tex_comment",rtn % % ^G ignores %... %Ztex_comment%
+mode,"text_delimiters",rtn % % Text delimiters %Ztext_delimiters%
+
+:defmenu search
+mode,"icase",rtn	% % Case insensitivity %Zicase%
+mode,"wrap",rtn	% % Search wraps %Zwrap%
+mode,"search_prompting",rtn	% % Search prompting %Zsearch_prompting%
+mode,"csmode",rtn	% % Continued search %Zcsmode%
+
+:defmenu paragraph
+mode,"french",rtn	% % French spacing %Zfrench%
+mode,"flowed",rtn	% % Flowed text %Zflowed%
+mode,"cpara",rtn	% % Paragraph indent chars %Zcpara%
+
+:defmenu file
+mode,"restore",rtn	% % Restore cursor %Zrestore%
+mode,"guess_crlf",rtn	% % Auto detect CR-LF %Zguess_crlf%
+mode,"guess_indent",rtn	% % Guess indent %Zguess_indent%
+mode,"guess_non_utf8",rtn	% % Guess non-UTF-8 %Zguess_non_utf8%
+mode,"guess_utf8",rtn	% % Guess UTF-8 %Zguess_utf8%
+mode,"force",rtn	% % Force last NL %Zforce%
+mode,"nobackup",rtn	% % No backup %Znobackup%
+
+:defmenu global
+mode,"nolocks",rtn	% % Disable locks %Znolocks%
+mode,"nobackups",rtn	% % Disable backups %Znobackups%
+mode,"nomodcheck",rtn	% % Disable mtime check %Znomodcheck%
+mode,"nocurdir",rtn	% % Disable current dir %Znocurdir%
+mode,"exask",rtn	% % Exit ask %Zexask%
+mode,"nosta",rtn	% % Disable status line %Znosta%
+mode,"keepup",rtn	% % Fast status line %Zkeepup%
+mode,"break_hardlinks",rtn	% % Break hard links %Zbreak_hardlinks%
+mode,"break_links",rtn	% % Break links %Zbreak_links%
+mode,"joe_state",rtn	% % Joe_state file %Zjoe_state%
+mode,"undo_keep",rtn	% % No. undo records %Zundo_keep%
+mode,"backpath",rtn	% % Path to backup files %Zbackpath%
+
+:defmenu cursor
+mode,"pg",rtn	% % No. PgUp/PgDn lines %Zpg%
+mode,"mid",rtn	C Center on scroll %Zmid%
+mode,"floatmouse",rtn	% % Click past end %Zfloatmouse%
+mode,"rtbutton",rtn	% % Right button %Zrtbutton%
+
+:defmenu marking
+mode,"autoswap",rtn	% % Autoswap mode %Zautoswap%
+mode,"marking",rtn	% % Marking %Zmarking%
+mode,"lightoff",rtn	% % Auto unmask %Zlightoff%
+
+:defmenu tab
+mode,"smarthome",rtn	% % Smart home key %Zsmarthome%
+mode,"smartbacks",rtn	% % Smart backspace %Zsmartbacks%
+mode,"indentfirst",rtn	% % To indent first %Zindentfirst%
+mode,"purify",rtn	% % Clean up indents %Zpurify%
+mode,"spaces",rtn	% % No tabs %Zspaces%
 
  THIRD SECTION: Named help screens:
 
@@ -430,9 +572,9 @@
 \i \i\|\uGOTO\u                 \|\uINDENT\u   \|\uCOMPILING\u          \uQUICK\u                       \|\i \i
 \i \i\|^G  Matching ( [ {   \|^K, less \|^[C Compile & parse ^G  find word under cursor \|\i \i
 \i \i\|^K- Previous place   \|^K. more \|^[G Grep & parse    ^[ENTER complete word      \|\i \i
-\i \i\|^K= Next place         \|       \|^[= To next error   ^[Y paste deleted text     \|\i \i
-\i \i\|^K; Tags file search   \|       \|^[- To prev. error  ^[^Y cycle through deleted \|\i \i
-\i \i\|                       \|       \|^[ SP Jump to error                            \|\i \i
+\i \i\|^K= Next place       \|\uFILE\u     \|^[= To next error   ^[Y paste deleted text     \|\i \i
+\i \i\|^K; Tags file search \|^K `     \|^[- To prev. error  ^[^Y cycle through deleted \|\i \i
+\i \i\|                     \| revert  \|^[ SP Jump to error                            \|\i \i
 }
 
 {Search
@@ -491,11 +633,26 @@
 }
 
 {Joe
-\i   Help Screen    \|turn off with ^KH    prev. screen ^[,                        \i
+\i   Help Screen    \|turn off with ^KH    prev. screen ^[,    next screen ^[.     \i
 \i \i Send bug reports to: http://sourceforge.net/projects/joe-editor \|\i \i
 \i \i \|\i \i
 \i \i  default joerc file is here /etc/joe/joerc \|\i \i
-\i \i  additional documentation can be found here /etc/joe/doc \|\i \i
+\i \i  default syntax and i18n files are here /usr/share/joe \|\i \i
+\i \i  additional documentation can be found here /usr/share/doc/joe-3.7-r1 \|\i \i
+}
+
+{CharTable
+\i   Help Screen    \|turn off with ^KH    prev. screen ^[,                        \i
+\i \i\| Dec  \u 0123 4567  8901 2345    0123 4567  8901 2345 \u  Dec \|\i \i
+\i \i\|     |                                              |     \|\i \i
+\i \i\|   0 | \u@ABC\u \uDEFG\u  \uHIJK\u \uLMNO\u    \i\u@ABC\u\i \i\uDEFG\u\i  \i\uHIJK\u\i \i\uLMNO\u\i | 128 \|\i \i
+\i \i\|  16 | \uPQRS\u \uTUVW\u  \uXYZ[\u \u\\]^_\u    \i\uPQRS\u\i \i\uTUVW\u\i  \i\uXYZ[\u\i \i\u\\]^_\u\i | 144 \|\i \i
+\i \i\|  32 |  !"# $%&'  ()*+ ,-./     ¡¢£ ¤¥¦§  ¨©ª« ¬­®¯ | 160 \|\i \i
+\i \i\|  48 | 0123 4567  89:; <=>?    °±²³ ´µ¶·  ¸¹º» ¼½¾¿ | 176 \|\i \i
+\i \i\|  64 | @ABC DEFG  HIJK LMNO    ÀÁÂÃ ÄÅÆÇ  ÈÉÊË ÌÍÎÏ | 192 \|\i \i
+\i \i\|  80 | PQRS TUVW  XYZ[ \\]^_    ÐÑÒÓ ÔÕÖ×  ØÙÚÛ ÜÝÞß | 208 \|\i \i
+\i \i\|  96 | `abc defg  hijk lmno    àáâã äåæç  èéêë ìíîï | 224 \|\i \i
+\i \i\| 112 | pqrs tuvw  xyz{ |}~    ðñòó ôõö÷  øùúû üýþÿ | 240 \|\i \i
 }
 
  FOURTH SECTION: Key bindings:
@@ -877,12 +1034,14 @@ markb		^K b
 markk		^K K		Set end of marked block
 markk		^K ^K
 markk		^K k
-mode		^T		Options menu
+ mode		^T		Options menu
+menu,"root",rtn	^T
 nextpos		^K =		Goto next position in position history
 nextword	^X		Goto next word
 open		^]		Split line
 prevpos		^K -		Previous position in history
 prevword	^Z		Previous word
+reload		^K `		Revert file
 redo		^^		Redo changes
 rindent		^K .		Indent to right
 rtarw		.kr		Go right

@@ -23,6 +23,28 @@
 +\[1-9]\+\[0-9]\[cda]
 -syntax diff
 
+*.diff
+-syntax diff
+
+*.patch
+-syntax diff
+
+*
++Only in
+-syntax diff
+
+*
++Nur in
+-syntax diff
+
+*
++Index: \[A-Za-z]
+-syntax diff
+
+*
++? \[A-Za-z]
+-syntax diff
+
  Troff
 *.1
 -wordwrap
@@ -36,6 +58,8 @@
 *.tex
 -wordwrap
 -syntax tex
+-tex_comment
+-no_double_quoted
  # *** BEGIN CHANGES BLOCK
 --wordwrap
 -indentc 32
@@ -46,6 +70,8 @@
 *.sty
 -wordwrap
 -syntax tex
+-tex_comment
+-no_double_quoted
  # *** BEGIN CHANGES BLOCK
 --wordwrap
 -indentc 32
@@ -623,6 +649,7 @@
 -purify
 -vhdl_comment
 -text_delimiters entity|ENTITY|if|IF|component|COMPONENT|loop|LOOP|configuration|CONFIGURATION|units|UNITS|record|RECORD|case|CASE|function|FUNCTION|package|PACKAGE|architecture|ARCHITECTURE|block|BLOCK|process|PROCESS|generate|GENERATE=end|END
+-cpara >#!;*-/%
  # *** BEGIN CHANGES BLOCK
 -indentc 32
 -istep 3
@@ -713,6 +740,15 @@
 -spaces
  # *** END CHANGES BLOCK
 
+ Javascript
+*.js
+-autoindent
+-syntax java
+-smarthome
+-smartbacks
+-purify
+-cpara >#!;*/%
+
  Hypertext preprocessor file
 *.php
 -autoindent
@@ -728,30 +764,12 @@
 
  Python
 *
-+#!\+\[ 	]\+\[a-z/]/python\>
++#!\+\[ 	]\+\[a-z/]\+\[ 	]python\>
 -autoindent
 -syntax python
 -smarthome
 -smartbacks
 -purify
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*
-+#!\+\[ 	]\+\[a-z/]/env\+\[ 	]python\>
--autoindent
--syntax python
--smarthome
--smartbacks
--purify
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
 
 *.py
 -autoindent
@@ -1054,11 +1072,14 @@
  Joe Syntax File
 *.jsf
 -autoindent
--syntax conf
+-syntax jsf
+-smarthome
+
 
 *.jsf.in
 -autoindent
--syntax conf
+-syntax jsf
+-smarthome
 
  Autoconfig file
 *.ac
@@ -1069,6 +1090,11 @@
 *.m4
 -autoindent
 -syntax m4
+
+ Matlab file
+*.m
+-wordwrap
+-syntax matlab
 
  Automake file
 *.am
