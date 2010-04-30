@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,203 @@
+@@ -24,6 +24,204 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -79,6 +79,7 @@ Index: etc/make.conf
 + imagemagick
 + imlib
 + inotify
++ iptc
 + -ipv6
 + jack
 + -java
