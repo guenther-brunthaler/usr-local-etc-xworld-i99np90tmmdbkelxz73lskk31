@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,204 @@
+@@ -24,6 +24,205 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -13,6 +13,7 @@ Index: etc/make.conf
 + a52
 + aac
 + aalib
++ accessibility
 + -acl
 + acpi
 + agg
@@ -66,9 +67,7 @@ Index: etc/make.conf
 + glade
 + glut
 + gmp
-+ -gnome
 + -gphoto2
-+ -gstreamer
 + gtk
 + gtk2
 + hal
@@ -94,7 +93,7 @@ Index: etc/make.conf
 + kdehiddenvisibility
 + kdexdeltas
 + -kerberos
-+ kipi
++ -kipi
 + kpathsea
 + ladspa
 + lame
@@ -135,7 +134,9 @@ Index: etc/make.conf
 + opengl
 + -oss
 + pango
++ pch
 + pcre
++ pda
 + pdf
 + -perl
 + -phonon
@@ -170,13 +171,13 @@ Index: etc/make.conf
 + startup-notification
 + svg
 + -svga
++ taglib
 + -tcltk
 + -tcpd
 + tetex
 + theora
 + threads
 + threadsafe
-+ -thunar
 + tiff
 + -tk
 + truetype
