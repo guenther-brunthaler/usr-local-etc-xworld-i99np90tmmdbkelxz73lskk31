@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,6 +24,205 @@
+@@ -24,6 +24,208 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -31,11 +31,13 @@ Index: etc/make.conf
 + cddb
 + cdr
 + cleartype
++ -consolekit
 + css
 + curl
 + custom-cflags
 + custom-cxxflags
 + dbus
++ device-mapper
 + dts
 + dv
 + dvd
@@ -68,6 +70,7 @@ Index: etc/make.conf
 + glut
 + gmp
 + -gphoto2
++ -gstreamer
 + gtk
 + gtk2
 + hal
@@ -144,7 +147,6 @@ Index: etc/make.conf
 + png
 + -postgres
 + ppds
-+ pulseaudio
 + -python
 + qt
 + qt3support
@@ -178,6 +180,7 @@ Index: etc/make.conf
 + theora
 + threads
 + threadsafe
++ -thunar
 + tiff
 + -tk
 + truetype
