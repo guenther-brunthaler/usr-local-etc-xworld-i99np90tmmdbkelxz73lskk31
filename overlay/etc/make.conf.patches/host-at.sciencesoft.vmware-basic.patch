@@ -4,16 +4,16 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -33,7 +33,7 @@ USE="
- # Change this line as appropriate (i686, i586, i486 or i386).
- # All modern systems (even Athlons) should use "i686-pc-linux-gnu".
- # All K6's are i586.
+@@ -29,7 +29,7 @@ USE="
+ # Host Setting
+ # ============
+ #
 -#CHOST="i686-pc-linux-gnu"
 +CHOST="x86_64-pc-linux-gnu"
  
  # Host and optimization settings 
  # ==============================
-@@ -104,6 +104,7 @@ USE="
+@@ -70,6 +70,7 @@ USE="
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
@@ -21,7 +21,7 @@ Index: etc/make.conf
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
-@@ -259,7 +260,7 @@ source /usr/portage/local/layman/make.co
+@@ -227,7 +228,7 @@ source /var/lib/layman/make.conf
  #     Instructions for setting up a local rsync server are available here:
  #     http://www.gentoo.org/doc/en/rsync.xml
  #
@@ -30,7 +30,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -279,7 +280,7 @@ source /usr/portage/local/layman/make.co
+@@ -247,7 +248,7 @@ source /var/lib/layman/make.conf
  #     specified on every run. Useful options include --ask, --verbose,
  #     --usepkg and many others. Options that are not useful, such as --help,
  #     are not filtered.
@@ -39,7 +39,7 @@ Index: etc/make.conf
  #
  # INSTALL_MASK allows certain files to not be installed into your file system.
  #     This is useful when you wish to filter out a certain set of files from
-@@ -290,7 +291,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
+@@ -258,7 +259,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
  #     program is compiled. Presently the only use is for specifying
  #     the number of parallel makes (-j) to perform. The suggested number
  #     for parallel makes is CPUs+1.
@@ -48,7 +48,7 @@ Index: etc/make.conf
  #
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
-@@ -611,3 +612,4 @@ SSL_UNIT="Preliminary usage"
+@@ -525,3 +526,4 @@ SSL_UNIT="Preliminary usage"
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
  #GENTOO_MIRRORS=""

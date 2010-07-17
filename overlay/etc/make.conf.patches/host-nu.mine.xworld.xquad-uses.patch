@@ -73,7 +73,7 @@ Index: etc/make.conf
 + -gstreamer
 + gtk
 + gtk2
-+ hal
++ -hal
 + icu
 + id3tag
 + idea
