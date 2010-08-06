@@ -1,0 +1,46 @@
+Reconcile template with x86 version.
+
+The problem is that Gentoo provided different templates for
+make.conf, one for each hardware platform. Which means the
+templates for x86 and amd64 are not the same!
+
+Therefore, this patch normalizes the templates to those of
+the x86 version, so that all following patches can be
+applied independent of the platform.
+
+This patch also adds a comment to the beginning of the file
+where to find the template file which should always
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -26,7 +26,7 @@
+ # Host Setting
+ # ============
+ #
+-CHOST="x86_64-pc-linux-gnu"
++CHOST="i686-pc-linux-gnu"
+ 
+ # Host and optimization settings 
+ # ==============================
+@@ -64,8 +64,8 @@ CHOST="x86_64-pc-linux-gnu"
+ #
+ # Decent examples:
+ #
+-#CFLAGS="-mtune=k8 -O2 -pipe"
+-#CFLAGS="-march=athlon64 -O2 -pipe"
++#CFLAGS="-mcpu=athlon-xp -O2 -pipe"
++#CFLAGS="-march=pentium3 -O2 -pipe"
+ 
+ # If you set a CFLAGS above, then this line will set your default C++ flags to
+ # the same settings.
+@@ -91,7 +91,7 @@ CHOST="x86_64-pc-linux-gnu"
+ # DO NOT PUT ANYTHING BUT YOUR SPECIFIC ~ARCHITECTURE IN THE LIST.
+ # IF YOU ARE UNSURE OF YOUR ARCH, OR THE IMPLICATIONS, DO NOT MODIFY THIS.
+ #
+-#ACCEPT_KEYWORDS="~amd64"
++#ACCEPT_KEYWORDS="~x86"
+ 
+ # Portage Directories
+ # ===================

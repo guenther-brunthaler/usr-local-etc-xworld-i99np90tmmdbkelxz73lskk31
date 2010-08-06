@@ -1,6 +1,10 @@
 # Process with 'guards' tool to create "series".
 
+# Normalize basic templates from amd64 to x86 platform.
++vmware.sciencesoft.at +xquad.xworld.mine.nu amd64_template-to-x86.patch
+
 # Generic patches.
+template_origin.patch
 clear-presets.patch
 local-section.patch
 common-addons.patch
