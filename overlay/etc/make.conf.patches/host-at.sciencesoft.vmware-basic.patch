@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -29,7 +29,7 @@ USE="
+@@ -31,7 +31,7 @@ USE="
  # Host Setting
  # ============
  #
@@ -13,7 +13,7 @@ Index: etc/make.conf
  
  # Host and optimization settings 
  # ==============================
-@@ -70,6 +70,7 @@ USE="
+@@ -72,6 +72,7 @@ USE="
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
@@ -21,7 +21,7 @@ Index: etc/make.conf
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
-@@ -227,7 +228,7 @@ source /var/lib/layman/make.conf
+@@ -229,7 +230,7 @@ source /var/lib/layman/make.conf
  #     Instructions for setting up a local rsync server are available here:
  #     http://www.gentoo.org/doc/en/rsync.xml
  #
@@ -30,7 +30,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -258,7 +259,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
+@@ -260,7 +261,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
  #     program is compiled. Presently the only use is for specifying
  #     the number of parallel makes (-j) to perform. The suggested number
  #     for parallel makes is CPUs+1.
@@ -39,7 +39,7 @@ Index: etc/make.conf
  #
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
-@@ -525,3 +526,4 @@ SSL_UNIT="Preliminary usage"
+@@ -527,3 +528,4 @@ SSL_UNIT="Preliminary usage"
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
  #GENTOO_MIRRORS=""
