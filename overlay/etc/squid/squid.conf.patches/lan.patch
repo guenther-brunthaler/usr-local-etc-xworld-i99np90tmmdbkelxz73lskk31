@@ -6,11 +6,16 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -580,7 +580,16 @@
- #Recommended minimum configuration:
+@@ -5595,12 +5595,16 @@
+ 
  acl manager proto cache_object
- acl localhost src 127.0.0.1/32
--acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
+ acl localhost src 127.0.0.1/32 ::1
+-acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
+-acl localnet src 10.0.0.0/8	# RFC1918 possible internal network
+-acl localnet src 172.16.0.0/12	# RFC1918 possible internal network
+-acl localnet src 192.168.0.0/16	# RFC1918 possible internal network
+-acl localnet src fc00::/7       # RFC 4193 local private network range
+-acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
 +acl from_localhost src 127.0.0.1/32
 +acl to_localhost dst 127.0.0.0/8
 +acl to_lan dst 192.168.0.0/16
@@ -21,52 +26,29 @@ Index: squid/squid.conf
 +acl from_lan src 10.0.0.0/8
 +acl from_lan src 172.16.0.0/12
 +acl from_lan src 169.254.0.0/16
- #
- # Example rule allowing access from your local networks.
- # Adapt to list your (internal) IP networks from where browsing
-@@ -628,10 +637,13 @@ acl CONNECT method CONNECT
- #Recommended minimum configuration:
- #
- # Only allow cachemgr access from localhost
+ 
+ acl SSL_ports port 443
+ acl Safe_ports port 80		# http
+@@ -5616,15 +5620,18 @@ acl Safe_ports port 777		# multiling htt
+ acl Safe_ports port 901		# SWAT
+ acl CONNECT method CONNECT
+ 
 -http_access allow manager localhost
-+#http_access allow manager localhost
 +http_access allow manager from_localhost
 +http_access allow ssh_ports
- http_access deny manager
- # Only allow purge requests from localhost
--http_access allow purge localhost
-+#http_access allow purge localhost
-+http_access allow purge from_localhost
- http_access deny purge
- # Deny requests to unknown ports
- http_access deny !Safe_ports
-@@ -642,16 +654,19 @@ http_access deny CONNECT !SSL_ports
- # web applications running on the proxy server who think the only
- # one who can access services on "localhost" is a local user
- #http_access deny to_localhost
 +http_access deny to_localhost
- #
- # INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
- 
- # Example rule allowing access from your local networks.
- # Adapt localnet in the ACL section to list your (internal) IP networks
- # from where browsing should be allowed
+ http_access deny manager
+ http_access deny !Safe_ports
+ http_access deny CONNECT !SSL_ports
 -http_access allow localnet
-+#http_access allow localnet
- 
- # Allow the localhost to have access by default
 -http_access allow localhost
-+#http_access allow localhost
+-http_access allow localhost
 +http_access allow from_localhost
 +http_access allow from_lan
- 
- # And finally deny all other access to this proxy
  http_access deny all
-@@ -4022,6 +4037,7 @@ icp_port 3130
- #
- #Default:
- # none
-+always_direct allow from_localhost to_localhost
  
- #  TAG: never_direct
- #	Usage: never_direct allow|deny [!]aclname ...
++always_direct allow from_localhost to_localhost
++
+ http_port 3128
+ 
+ hierarchy_stoplist cgi-bin ?

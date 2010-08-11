@@ -7,8 +7,10 @@
 # $ guards --check < series.guards
 
 # List of patches to be always included.
+preprocessing_script.patch
+focus_uncommented_upstream.patch
+restructure_focused.patch
 lan.patch
-no_icp-access.patch
 proxy-port.patch
 cache-dir.patch
 ssh-ports.patch

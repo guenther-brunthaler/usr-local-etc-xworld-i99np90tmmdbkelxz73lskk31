@@ -1,0 +1,91 @@
+Add a script "preprocess_new_version" for creating an updated version of the
+file which should result from the *next* patch in the series.
+
+Run that script before applying the next patch from the series in order to
+create the intended output *after* applying it!
+
+The script does not modify any files; it just created new ones.
+
+It is only possible to run the script if dispatch_config shows there is an
+update pending.
+
+Index: squid/preprocess_new_version
+===================================================================
+--- /dev/null
++++ squid/preprocess_new_version
+@@ -0,0 +1,75 @@
++#! /bin/sh
++# Create a transformed version of the new template file where all non-comments
++# have been copied to the end of the file before having been commented out in
++# the original places. Also, a diff will be emitted between the same
++# tranformations having been applied to the local file and the transformed
++# template. A copy of the new template file is also deposited.
++
++
++LOCAL=squid.conf
++DIFF_EXT=changes
++ONEW_EXT=new_upstream
++XNEW_EXT=new_focused
++
++
++die() {
++	echo "ERROR: $*" >& 2
++	false; exit
++}
++
++fail() {
++	die "Could not execute >>>$*<<<: Return code ${?}!"
++}
++
++run() {
++	"$@" || fail "$@"
++}
++
++runx() {
++	local MAX_RC RC
++	MAX_RC=$1; shift
++	"$@"; RC=$?
++	test $RC -le $MAX_RC && return $RC
++	(return $RC); fail "$@"
++}
++
++system() {
++	REPLY=`run "$@"` || exit
++}
++
++print_tpl() {
++	run find "/etc/${LOCAL%.*}" -maxdepth 1 \
++		-regex '.*/._cfg[0-9][0-9][0-9][0-9]_'"$LOCAL"'$' \
++		| LC_ALL=C run sort \
++		| run tail -n1
++}
++
++filter() {
++	run grep -v '^#\|^ *$' "$1" > "$2"
++}
++
++uncomment() {
++	{
++		run sed -e '
++			/^#\|^ *$/ b
++			s,^,###,
++		' "$1"
++		run echo
++		run echo "# Actual configuration"
++		run echo "# ===================="
++		run echo
++		run cat "$2"
++	} > "$3"
++}
++
++T=${LOCAL}_${$}
++system print_tpl; NEWTPL=$REPLY
++run test -f "$LOCAL"
++run test -f "$NEWTPL"
++run cat "$NEWTPL" > "$LOCAL.$ONEW_EXT"
++run filter "$LOCAL" "$T.oa.tmp"
++run filter "$NEWTPL" "$T.na.tmp"
++run uncomment "$LOCAL" "$T.oa.tmp" "$T.ou.tmp"
++run uncomment "$NEWTPL" "$T.na.tmp" "$LOCAL.$XNEW_EXT"
++runx 1 diff -u "$T.ou.tmp" "$LOCAL.$XNEW_EXT" > "$LOCAL.$DIFF_EXT"
++run rm "$T.oa.tmp" "$T.na.tmp" "$T.ou.tmp"
