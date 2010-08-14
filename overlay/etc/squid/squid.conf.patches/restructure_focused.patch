@@ -7,29 +7,29 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5601,6 +5601,7 @@ acl localnet src 172.16.0.0/12	# RFC1918
+@@ -4823,6 +4823,7 @@ acl to_localhost dst 127.0.0.0/8 0.0.0.0
+ acl localnet src 10.0.0.0/8	# RFC1918 possible internal network
+ acl localnet src 172.16.0.0/12	# RFC1918 possible internal network
  acl localnet src 192.168.0.0/16	# RFC1918 possible internal network
- acl localnet src fc00::/7       # RFC 4193 local private network range
- acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
 +
  acl SSL_ports port 443
  acl Safe_ports port 80		# http
  acl Safe_ports port 21		# ftp
-@@ -5614,6 +5615,7 @@ acl Safe_ports port 591		# filemaker
- acl Safe_ports port 777		# multiling http
+@@ -4837,6 +4838,7 @@ acl Safe_ports port 777		# multiling htt
  acl Safe_ports port 901		# SWAT
+ acl purge method PURGE
  acl CONNECT method CONNECT
 +
  http_access allow manager localhost
  http_access deny manager
- http_access deny !Safe_ports
-@@ -5622,7 +5624,9 @@ http_access allow localnet
- http_access allow localhost
- http_access allow localhost
- http_access deny all
+ http_access allow purge localhost
+@@ -4850,7 +4852,9 @@ icp_access allow localnet
+ icp_access deny all
+ htcp_access allow localnet
+ htcp_access deny all
 +
  http_port 3128
 +
  hierarchy_stoplist cgi-bin ?
- coredump_dir /var/cache/squid
+ access_log /var/log/squid/access.log squid
  refresh_pattern ^ftp:		1440	20%	10080

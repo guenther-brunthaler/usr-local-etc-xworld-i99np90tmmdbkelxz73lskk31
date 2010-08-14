@@ -10,6 +10,8 @@
 preprocessing_script.patch
 focus_uncommented_upstream.patch
 restructure_focused.patch
+custom_documentation.patch
+no_icp-access.patch
 lan.patch
 proxy-port.patch
 cache-dir.patch
