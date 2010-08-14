@@ -28,27 +28,31 @@ Index: squid/squid.conf
  
  acl SSL_ports port 443
  acl Safe_ports port 80		# http
-@@ -4894,17 +4899,19 @@ acl Safe_ports port 901		# SWAT
+@@ -4894,18 +4899,22 @@ acl Safe_ports port 901		# SWAT
  acl purge method PURGE
  acl CONNECT method CONNECT
  
 -http_access allow manager localhost
 +http_access allow manager from_localhost
  http_access deny manager
+-http_access allow purge localhost
 +http_access allow ssh_ports
 +http_access deny to_localhost
- http_access allow purge localhost
++http_access allow purge from_localhost
  http_access deny purge
 -http_access deny !Safe_ports
 +http_access deny !Safe_ports !SSL_ports
  http_access deny CONNECT !SSL_ports
 -http_access allow localnet
 -http_access allow localhost
++http_access allow from_localhost
++http_access allow from_lan
  http_access deny all
  icp_access deny all
  htcp_access deny all
-+  
-+always_direct allow from_localhost to_localhost
  
++always_direct allow from_localhost to_localhost
++
  http_port 3128
  
+ hierarchy_stoplist cgi-bin ?

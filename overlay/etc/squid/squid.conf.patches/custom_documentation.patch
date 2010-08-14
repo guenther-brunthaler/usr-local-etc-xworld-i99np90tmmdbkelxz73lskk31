@@ -1,0 +1,68 @@
+Add customized documentation comments.
+
+Index: squid/squid.conf
+===================================================================
+--- squid.orig/squid.conf
++++ squid/squid.conf
+@@ -4817,6 +4817,61 @@
+ # Actual configuration
+ # ====================
+ 
++# Reconfiguring Squid after configuation changes:
++# /usr/sbin/squid -k reconfigure -f /etc/squid/squid.conf
++#
++# An access list rule consists of an allow or deny keyword, followed by a list
++# of ACL element names.
++#
++# An access list consists of one or more access list rules.
++#
++# Access list rules are checked in the order they are written. List searching
++# terminates as soon as one of the rules is a match.
++#
++# If a rule has multiple ACL elements, it uses AND logic. In other words, all
++# ACL elements of the rule must be a match in order for the rule to be a
++# match. This means that it is possible to write a rule that can never be
++# matched. For example, a port number can never be equal to both 80 AND 8000
++# at the same time.
++#
++# To summarize the ACL logics can be described as: (note: AND/OR below is just
++# for illustration, not part of the syntax)
++#
++# http_access allow|deny acl AND acl AND ...
++#        OR
++# http_access allow|deny acl AND acl AND ...
++#        OR
++# ...
++#
++# If none of the rules are matched, then the default action is the opposite of
++# the last rule in the list. Its a good idea to be explicit with the default
++# action. The best way is to use the all ACL. For example:
++#
++# http_access deny all
++#
++# If ACLs are giving you problems and you don't know why they aren't working,
++# you can use this tip to debug them.
++#
++# In squid.conf enable debugging for section 33 at level 2. For example:
++#
++# debug_options ALL,1 33,2
++#
++# Then restart or reconfigure squid.
++#
++# From now on, your cache.log should contain a line for every request that
++# explains if it was allowed, or denied, and which ACL was the last one that
++# it matched.
++#
++# If this does not give you sufficient information to nail down the problem
++# you can also enable detailed debug information on ACL processing
++#
++# debug_options ALL,1 33,2 28,9
++#
++# Then restart or reconfigure squid as above.
++#
++# From now on, your cache.log should contain detailed traces of all access
++# list processing. Be warned that this can be quite some lines per request.
++
+ acl manager proto cache_object
+ acl localhost src 127.0.0.1/32
+ acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
