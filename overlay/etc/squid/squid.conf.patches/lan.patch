@@ -6,15 +6,17 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -4873,11 +4873,16 @@
+@@ -5649,13 +5649,16 @@
  # list processing. Be warned that this can be quite some lines per request.
  
  acl manager proto cache_object
--acl localhost src 127.0.0.1/32
--acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
+-acl localhost src 127.0.0.1/32 ::1
+-acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 -acl localnet src 10.0.0.0/8	# RFC1918 possible internal network
 -acl localnet src 172.16.0.0/12	# RFC1918 possible internal network
 -acl localnet src 192.168.0.0/16	# RFC1918 possible internal network
+-acl localnet src fc00::/7       # RFC 4193 local private network range
+-acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
 +acl from_localhost src 127.0.0.1/32
 +acl to_localhost dst 127.0.0.0/8
 +acl to_lan dst 192.168.0.0/16
@@ -28,28 +30,24 @@ Index: squid/squid.conf
  
  acl SSL_ports port 443
  acl Safe_ports port 80		# http
-@@ -4894,18 +4899,22 @@ acl Safe_ports port 901		# SWAT
- acl purge method PURGE
+@@ -5671,15 +5674,18 @@ acl Safe_ports port 777		# multiling htt
+ acl Safe_ports port 901		# SWAT
  acl CONNECT method CONNECT
  
 -http_access allow manager localhost
 +http_access allow manager from_localhost
  http_access deny manager
--http_access allow purge localhost
+-http_access deny !Safe_ports
 +http_access allow ssh_ports
 +http_access deny to_localhost
-+http_access allow purge from_localhost
- http_access deny purge
--http_access deny !Safe_ports
 +http_access deny !Safe_ports !SSL_ports
  http_access deny CONNECT !SSL_ports
 -http_access allow localnet
 -http_access allow localhost
+-http_access allow localhost
 +http_access allow from_localhost
 +http_access allow from_lan
  http_access deny all
- icp_access deny all
- htcp_access deny all
  
 +always_direct allow from_localhost to_localhost
 +

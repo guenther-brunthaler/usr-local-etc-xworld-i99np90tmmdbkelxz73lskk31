@@ -6,24 +6,26 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -578,31 +578,31 @@
- # acl all src all
+@@ -639,32 +639,32 @@
  #
- #Recommended minimum configuration:
+ # Recommended minimum configuration:
+ #
 -acl manager proto cache_object
--acl localhost src 127.0.0.1/32
--acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
+-acl localhost src 127.0.0.1/32 ::1
+-acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 +###acl manager proto cache_object
-+###acl localhost src 127.0.0.1/32
-+###acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
- #
++###acl localhost src 127.0.0.1/32 ::1
++###acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
+ 
  # Example rule allowing access from your local networks.
  # Adapt to list your (internal) IP networks from where browsing
  # should be allowed
 -acl localnet src 10.0.0.0/8	# RFC1918 possible internal network
 -acl localnet src 172.16.0.0/12	# RFC1918 possible internal network
 -acl localnet src 192.168.0.0/16	# RFC1918 possible internal network
--#
+-acl localnet src fc00::/7       # RFC 4193 local private network range
+-acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
+-
 -acl SSL_ports port 443
 -acl Safe_ports port 80		# http
 -acl Safe_ports port 21		# ftp
@@ -36,12 +38,13 @@ Index: squid/squid.conf
 -acl Safe_ports port 591		# filemaker
 -acl Safe_ports port 777		# multiling http
 -acl Safe_ports port 901		# SWAT
--acl purge method PURGE
 -acl CONNECT method CONNECT
 +###acl localnet src 10.0.0.0/8	# RFC1918 possible internal network
 +###acl localnet src 172.16.0.0/12	# RFC1918 possible internal network
 +###acl localnet src 192.168.0.0/16	# RFC1918 possible internal network
-+#
++###acl localnet src fc00::/7       # RFC 4193 local private network range
++###acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
++
 +###acl SSL_ports port 443
 +###acl Safe_ports port 80		# http
 +###acl Safe_ports port 21		# ftp
@@ -54,39 +57,37 @@ Index: squid/squid.conf
 +###acl Safe_ports port 591		# filemaker
 +###acl Safe_ports port 777		# multiling http
 +###acl Safe_ports port 901		# SWAT
-+###acl purge method PURGE
 +###acl CONNECT method CONNECT
  
- #  TAG: http_access
- #	Allowing or Denying access based on defined access lists
-@@ -628,15 +628,15 @@ acl CONNECT method CONNECT
- #Recommended minimum configuration:
+ #  TAG: follow_x_forwarded_for
+ #	Allowing or Denying the X-Forwarded-For header to be followed to
+@@ -763,14 +763,14 @@ acl CONNECT method CONNECT
+ # Recommended minimum Access Permission configuration:
  #
  # Only allow cachemgr access from localhost
 -http_access allow manager localhost
 -http_access deny manager
 +###http_access allow manager localhost
 +###http_access deny manager
- # Only allow purge requests from localhost
--http_access allow purge localhost
--http_access deny purge
-+###http_access allow purge localhost
-+###http_access deny purge
- # Deny requests to unknown ports
+ 
+ # Deny requests to certain unsafe ports
 -http_access deny !Safe_ports
 +###http_access deny !Safe_ports
- # Deny CONNECT to other than SSL ports
+ 
+ # Deny CONNECT to other than secure SSL ports
 -http_access deny CONNECT !SSL_ports
 +###http_access deny CONNECT !SSL_ports
- #
+ 
  # We strongly recommend the following be uncommented to protect innocent
  # web applications running on the proxy server who think the only
-@@ -648,13 +648,13 @@ http_access deny CONNECT !SSL_ports
+@@ -784,14 +784,14 @@ http_access deny CONNECT !SSL_ports
  # Example rule allowing access from your local networks.
  # Adapt localnet in the ACL section to list your (internal) IP networks
  # from where browsing should be allowed
 -http_access allow localnet
+-http_access allow localhost
 +###http_access allow localnet
++###http_access allow localhost
  
  # Allow the localhost to have access by default
 -http_access allow localhost
@@ -96,113 +97,66 @@ Index: squid/squid.conf
 -http_access deny all
 +###http_access deny all
  
- #  TAG: http_reply_access
- #	Allow replies to client requests. This is complementary to http_access.
-@@ -683,8 +683,8 @@ http_access deny all
- # icp_access deny all
+ #  TAG: adapted_http_access
+ #	Allowing or Denying access based on defined access lists
+@@ -1076,7 +1076,7 @@ http_access deny all
  #
- #Allow ICP queries from local networks only
--icp_access allow localnet
--icp_access deny all
-+###icp_access allow localnet
-+###icp_access deny all
  
- #  TAG: htcp_access
- #	Allowing or Denying access to the HTCP port based on defined
-@@ -702,8 +702,8 @@ icp_access deny all
- # htcp_access deny all
- #
- #Allow HTCP queries from local networks only
--htcp_access allow localnet
--htcp_access deny all
-+###htcp_access allow localnet
-+###htcp_access deny all
- 
- #  TAG: htcp_clr_access
- #	Allowing or Denying access to purge content using HTCP based
-@@ -880,7 +880,7 @@ htcp_access deny all
- #	visible on the internal address.
- #
  # Squid normally listens to port 3128
 -http_port 3128
 +###http_port 3128
  
  #  TAG: https_port
  #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]
-@@ -1502,7 +1502,7 @@ http_port 3128
- #	list this option multiple times.
- #	Note: never_direct overrides this option.
- #We recommend you to use at least the following line.
+@@ -1872,7 +1872,7 @@ http_port 3128
+ #
+ 
+ # We recommend you to use at least the following line.
 -hierarchy_stoplist cgi-bin ?
 +###hierarchy_stoplist cgi-bin ?
  
- 
  # MEMORY CACHE OPTIONS
-@@ -1875,7 +1875,7 @@ hierarchy_stoplist cgi-bin ?
+ # -----------------------------------------------------------------------------
+@@ -2595,7 +2595,7 @@ hierarchy_stoplist cgi-bin ?
  #
- #	And priority could be any of:
- #	err, warning, notice, info, debug.
--access_log /var/log/squid/access.log squid
-+###access_log /var/log/squid/access.log squid
  
- #  TAG: log_access	allow|deny acl acl...
- #	This options allows you to control which requests gets logged
-@@ -2349,10 +2349,10 @@ access_log /var/log/squid/access.log squ
- #	used.
- #
- #Suggested default:
--refresh_pattern ^ftp:		1440	20%	10080
--refresh_pattern ^gopher:	1440	0%	1440
--refresh_pattern (cgi-bin|\?)	0	0%	0
--refresh_pattern .		0	20%	4320
-+###refresh_pattern ^ftp:		1440	20%	10080
-+###refresh_pattern ^gopher:	1440	0%	1440
-+###refresh_pattern (cgi-bin|\?)	0	0%	0
-+###refresh_pattern .		0	20%	4320
- 
- #  TAG: quick_abort_min	(KB)
- #  TAG: quick_abort_max	(KB)
-@@ -3579,7 +3579,7 @@ refresh_pattern .		0	20%	4320
- #Default:
- # icp_port 0
- #
--icp_port 3130
-+###icp_port 3130
- 
- #  TAG: htcp_port
- #	The port number where Squid sends and receives HTCP queries to
-@@ -4560,7 +4560,7 @@ icp_port 3130
- #Default:
- # forwarded_for on
- #
--forwarded_for off
-+###forwarded_for off
- 
- #  TAG: cachemgr_passwd
- #	Specify passwords for cachemgr operations.
-@@ -4728,7 +4728,7 @@ forwarded_for off
- # coredump_dir none
- #
  # Leave coredumps in the first cache dir
 -coredump_dir /var/cache/squid
 +###coredump_dir /var/cache/squid
  
- #  TAG: chroot
- #	Specifies a directiry where Squid should do a chroot() while
-@@ -4813,3 +4813,50 @@ coredump_dir /var/cache/squid
+ # OPTIONS FOR FTP GATEWAYING
+ # -----------------------------------------------------------------------------
+@@ -2923,10 +2923,10 @@ coredump_dir /var/cache/squid
+ #
+ 
+ # Add any of your own refresh_pattern entries above these.
+-refresh_pattern ^ftp:		1440	20%	10080
+-refresh_pattern ^gopher:	1440	0%	1440
+-refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
+-refresh_pattern .		0	20%	4320
++###refresh_pattern ^ftp:		1440	20%	10080
++###refresh_pattern ^gopher:	1440	0%	1440
++###refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
++###refresh_pattern .		0	20%	4320
+ 
+ #  TAG: quick_abort_min	(KB)
+ #  TAG: quick_abort_max	(KB)
+@@ -5589,3 +5589,43 @@ refresh_pattern .		0	20%	4320
  #Default:
- # windows_ipaddrchangemonitor on
+ # max_filedescriptors 0
  
 +
 +# Actual configuration
 +# ====================
 +
 +acl manager proto cache_object
-+acl localhost src 127.0.0.1/32
-+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
++acl localhost src 127.0.0.1/32 ::1
++acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 +acl localnet src 10.0.0.0/8	# RFC1918 possible internal network
 +acl localnet src 172.16.0.0/12	# RFC1918 possible internal network
 +acl localnet src 192.168.0.0/16	# RFC1918 possible internal network
++acl localnet src fc00::/7       # RFC 4193 local private network range
++acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
 +acl SSL_ports port 443
 +acl Safe_ports port 80		# http
 +acl Safe_ports port 21		# ftp
@@ -215,28 +169,19 @@ Index: squid/squid.conf
 +acl Safe_ports port 591		# filemaker
 +acl Safe_ports port 777		# multiling http
 +acl Safe_ports port 901		# SWAT
-+acl purge method PURGE
 +acl CONNECT method CONNECT
 +http_access allow manager localhost
 +http_access deny manager
-+http_access allow purge localhost
-+http_access deny purge
 +http_access deny !Safe_ports
 +http_access deny CONNECT !SSL_ports
 +http_access allow localnet
 +http_access allow localhost
++http_access allow localhost
 +http_access deny all
-+icp_access allow localnet
-+icp_access deny all
-+htcp_access allow localnet
-+htcp_access deny all
 +http_port 3128
 +hierarchy_stoplist cgi-bin ?
-+access_log /var/log/squid/access.log squid
++coredump_dir /var/cache/squid
 +refresh_pattern ^ftp:		1440	20%	10080
 +refresh_pattern ^gopher:	1440	0%	1440
-+refresh_pattern (cgi-bin|\?)	0	0%	0
++refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
 +refresh_pattern .		0	20%	4320
-+icp_port 3130
-+forwarded_for off
-+coredump_dir /var/cache/squid

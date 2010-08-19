@@ -4,9 +4,9 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -4898,6 +4898,7 @@ acl Safe_ports port 777		# multiling htt
+@@ -5673,6 +5673,7 @@ acl Safe_ports port 591		# filemaker
+ acl Safe_ports port 777		# multiling http
  acl Safe_ports port 901		# SWAT
- acl purge method PURGE
  acl CONNECT method CONNECT
 +acl ssh_ports port 22 874-877 992
  

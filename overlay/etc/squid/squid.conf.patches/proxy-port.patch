@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -4915,7 +4915,7 @@ htcp_access deny all
+@@ -5686,7 +5686,7 @@ http_access deny all
  
  always_direct allow from_localhost to_localhost
  
@@ -12,4 +12,4 @@ Index: squid/squid.conf
 +http_port localhost:8080
  
  hierarchy_stoplist cgi-bin ?
- access_log /var/log/squid/access.log squid
+ coredump_dir /var/cache/squid

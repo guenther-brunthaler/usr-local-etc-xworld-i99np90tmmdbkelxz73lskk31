@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -4817,6 +4817,61 @@
+@@ -5593,6 +5593,61 @@
  # Actual configuration
  # ====================
  
@@ -64,5 +64,5 @@ Index: squid/squid.conf
 +# list processing. Be warned that this can be quite some lines per request.
 +
  acl manager proto cache_object
- acl localhost src 127.0.0.1/32
- acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
+ acl localhost src 127.0.0.1/32 ::1
+ acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
