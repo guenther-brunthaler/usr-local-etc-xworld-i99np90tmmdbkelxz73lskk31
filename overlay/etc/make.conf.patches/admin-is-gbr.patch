@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -408,7 +408,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -442,7 +442,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
@@ -14,7 +14,7 @@ Index: etc/make.conf
  
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.
-@@ -509,12 +509,12 @@ PORTAGE_WORKDIR_MODE="0705"
+@@ -543,12 +543,12 @@ PORTAGE_WORKDIR_MODE="0705"
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"

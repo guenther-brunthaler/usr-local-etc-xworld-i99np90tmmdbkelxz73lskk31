@@ -8,7 +8,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -380,6 +380,128 @@ FEATURES="
+@@ -414,6 +414,128 @@ FEATURES="
  # Locally added configuration settings. #
  #########################################
  

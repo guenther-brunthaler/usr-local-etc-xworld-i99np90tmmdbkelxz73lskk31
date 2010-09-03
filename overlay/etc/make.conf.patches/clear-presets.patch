@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -24,11 +24,14 @@
+@@ -24,6 +24,9 @@
  #
  # Example:
  #USE="X gtk gnome -alsa"
@@ -15,14 +15,17 @@ Index: etc/make.conf
  
  # Host Setting
  # ============
- #
+@@ -32,7 +35,7 @@
+ # Change this line as appropriate (i686, i586, i486 or i386).
+ # All modern systems (even Athlons) should use "i686-pc-linux-gnu".
+ # All K6's are i586.
 -CHOST="i686-pc-linux-gnu"
 +#CHOST="i686-pc-linux-gnu"
  
  # Host and optimization settings 
  # ==============================
-@@ -68,10 +71,12 @@ CHOST="i686-pc-linux-gnu"
- #
+@@ -102,10 +105,12 @@ CHOST="i686-pc-linux-gnu"
+ # Decent examples:
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
 +# Avoid -O0 and -s in CFLAGS.
@@ -34,7 +37,7 @@ Index: etc/make.conf
  
  # Advanced Masking
  # ================
-@@ -147,6 +152,8 @@ CHOST="i686-pc-linux-gnu"
+@@ -181,6 +186,8 @@ CHOST="i686-pc-linux-gnu"
  #     concern that they will be deleted by rsync updates. Default is not
  #     defined.
  #PORTDIR_OVERLAY=/usr/local/portage
@@ -43,7 +46,7 @@ Index: etc/make.conf
  
  # Fetching files 
  # ==============
-@@ -279,6 +286,9 @@ CHOST="i686-pc-linux-gnu"
+@@ -313,6 +320,9 @@ CHOST="i686-pc-linux-gnu"
  # values and their respective meanings.
  #FEATURES="ccache distcc installsources \
  # splitdebug test userpriv usersandbox"
@@ -53,7 +56,7 @@ Index: etc/make.conf
  
  # CCACHE_SIZE and CCACHE_DIR are used to control the behavior of ccache, and
  #     and are only used if "ccache" is in FEATURES.
-@@ -305,7 +315,7 @@ CHOST="i686-pc-linux-gnu"
+@@ -339,7 +349,7 @@ CHOST="i686-pc-linux-gnu"
  # PORTAGE_ELOG_CLASSES: selects messages to be logged, possible values are:
  #                          info, warn, error, log, qa, *
  #                       Warning: commenting this will disable elog

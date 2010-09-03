@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -249,7 +249,7 @@ PORT_LOGDIR="/var/log/ebuilds"
+@@ -283,7 +283,7 @@ PORT_LOGDIR="/var/log/ebuilds"
  #     specified on every run. Useful options include --ask, --verbose,
  #     --usepkg and many others. Options that are not useful, such as --help,
  #     are not filtered.
