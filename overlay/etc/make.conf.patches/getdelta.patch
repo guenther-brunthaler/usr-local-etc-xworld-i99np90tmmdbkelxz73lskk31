@@ -10,7 +10,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -168,7 +168,7 @@ source /var/lib/layman/make.conf
+@@ -202,7 +202,7 @@ source /var/lib/layman/make.conf
  # at \${DISTDIR}/\${FILE}.
  #
  # Default fetch command (5 tries, passive ftp for firewall compatibility)
