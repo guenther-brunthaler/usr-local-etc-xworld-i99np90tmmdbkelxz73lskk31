@@ -82,6 +82,9 @@
  Text file.
 *.txt
 -wordwrap
+ # *** BEGIN CHANGES BLOCK
+--wordwrap
+ # *** END CHANGES BLOCK
 
  News/mail files.
 *.article*
