@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5673,6 +5673,7 @@ acl Safe_ports port 591		# filemaker
+@@ -5680,6 +5680,7 @@ acl Safe_ports port 591		# filemaker
  acl Safe_ports port 777		# multiling http
  acl Safe_ports port 901		# SWAT
  acl CONNECT method CONNECT

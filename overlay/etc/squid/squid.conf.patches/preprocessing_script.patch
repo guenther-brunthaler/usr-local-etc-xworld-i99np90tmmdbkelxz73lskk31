@@ -13,13 +13,21 @@ Index: squid/preprocess_new_version
 ===================================================================
 --- /dev/null
 +++ squid/preprocess_new_version
-@@ -0,0 +1,75 @@
+@@ -0,0 +1,83 @@
 +#! /bin/sh
 +# Create a transformed version of the new template file where all non-comments
 +# have been copied to the end of the file before having been commented out in
 +# the original places. Also, a diff will be emitted between the same
 +# tranformations having been applied to the local file and the transformed
 +# template. A copy of the new template file is also deposited.
++#
++# How to use:
++# $ quilt push # Has already been done if you can read this!
++# $ sh preprocess_new_version
++# $ cat squid.conf.new_upstream > squid.conf
++# $ quilt push -f
++# $ cat squid.conf.new_focused > squid.conf
++# $ quilt refresh
 +
 +
 +LOCAL=squid.conf

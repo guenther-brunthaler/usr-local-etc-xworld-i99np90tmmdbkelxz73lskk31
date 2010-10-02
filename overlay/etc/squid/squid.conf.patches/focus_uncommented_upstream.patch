@@ -108,7 +108,7 @@ Index: squid/squid.conf
  
  #  TAG: https_port
  #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]
-@@ -1872,7 +1872,7 @@ http_port 3128
+@@ -1876,7 +1876,7 @@ http_port 3128
  #
  
  # We recommend you to use at least the following line.
@@ -117,7 +117,7 @@ Index: squid/squid.conf
  
  # MEMORY CACHE OPTIONS
  # -----------------------------------------------------------------------------
-@@ -2595,7 +2595,7 @@ hierarchy_stoplist cgi-bin ?
+@@ -2599,7 +2599,7 @@ hierarchy_stoplist cgi-bin ?
  #
  
  # Leave coredumps in the first cache dir
@@ -126,7 +126,7 @@ Index: squid/squid.conf
  
  # OPTIONS FOR FTP GATEWAYING
  # -----------------------------------------------------------------------------
-@@ -2923,10 +2923,10 @@ coredump_dir /var/cache/squid
+@@ -2927,10 +2927,10 @@ coredump_dir /var/cache/squid
  #
  
  # Add any of your own refresh_pattern entries above these.
@@ -141,7 +141,7 @@ Index: squid/squid.conf
  
  #  TAG: quick_abort_min	(KB)
  #  TAG: quick_abort_max	(KB)
-@@ -5589,3 +5589,43 @@ refresh_pattern .		0	20%	4320
+@@ -5596,3 +5596,43 @@ refresh_pattern .		0	20%	4320
  #Default:
  # max_filedescriptors 0
  

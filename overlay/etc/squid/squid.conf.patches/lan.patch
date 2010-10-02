@@ -6,7 +6,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5649,13 +5649,16 @@
+@@ -5656,13 +5656,16 @@
  # list processing. Be warned that this can be quite some lines per request.
  
  acl manager proto cache_object
@@ -30,7 +30,7 @@ Index: squid/squid.conf
  
  acl SSL_ports port 443
  acl Safe_ports port 80		# http
-@@ -5671,15 +5674,18 @@ acl Safe_ports port 777		# multiling htt
+@@ -5678,15 +5681,18 @@ acl Safe_ports port 777		# multiling htt
  acl Safe_ports port 901		# SWAT
  acl CONNECT method CONNECT
  
