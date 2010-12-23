@@ -20,9 +20,9 @@ Index: etc/make.conf
  # FEATURES sorted alphabetically for easier maintenance.
  FEATURES="
 + ccache
++ metadata-transfer
 + notitles
 + -parallel-fetch
-+ prelink
 + sandbox
 + sfperms
 + unmerge-orphans
