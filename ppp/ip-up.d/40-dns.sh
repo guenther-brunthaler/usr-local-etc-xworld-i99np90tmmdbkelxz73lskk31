@@ -7,14 +7,11 @@
 # $DNS1 and $DNS2 - DNS servers reported by peer
 
 
-lookup_hosts() {
-	REPLY=`fgrep "$1" /etc/hosts | cut -f1`
-}
-
 if [ "$USEPEERDNS" ]; then
-	if [ x"$DNS1" = x"10.11.12.13"]; then
-		lookup_hosts resolver1.opendns.com; DNS1=$REPLY
-		lookup_hosts resolver2.opendns.com; DNS2=$REPLY
+	if [ x"$DNS1" = x"10.11.12.13" ]; then
+		DNS1=`fgrep resolver1.opendns.com /etc/hosts | cut -f1`
+		DNS2=`fgrep resolver2.opendns.com /etc/hosts | cut -f1`
+		logger -p daemon.warning -t "`pwd`/$SCRIPT" "Overriding bad DNS address!"
 	fi
 
 	if [ -x /sbin/resolvconf ]; then

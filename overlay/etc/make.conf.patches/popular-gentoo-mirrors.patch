@@ -11,4 +11,4 @@ Index: etc/make.conf
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt http://mirror.its.uidaho.edu/pub/gentoo/ http://ftp.vectranet.pl/gentoo/ ftp://mirror.its.uidaho.edu/gentoo/ ftp://mirror.iawnet.sandia.gov/pub/gentoo/ ftp://ftp.kaist.ac.kr/gentoo/ http://gd.tuwien.ac.at/opsys/linux/gentoo/ ftp://mirrors.sohu.com/gentoo/ http://mirrors.sohu.com/gentoo/ ftp://ftp.swin.edu.au/gentoo ftp://cesium.di.uminho.pt/pub/gentoo/"
++GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt http://gentoo.c3sl.ufpr.br/ http://mirror.its.uidaho.edu/pub/gentoo/ ftp://gentoo.c3sl.ufpr.br/gentoo/ rsync://gd.tuwien.ac.at/opsys/linux/gentoo/ rsync://gentoo.c3sl.ufpr.br/gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ http://mirrors.xservers.ro/gentoo/ http://gentoo.iteam.net.ua/ ftp://mirror.its.uidaho.edu/gentoo/ http://ftp.vectranet.pl/gentoo/"
