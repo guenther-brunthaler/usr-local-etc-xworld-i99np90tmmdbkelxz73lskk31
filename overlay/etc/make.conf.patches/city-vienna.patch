@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -526,9 +526,9 @@ SSL_BITS="2048"
+@@ -542,9 +542,9 @@ SSL_BITS="2048"
  SSL_COUNTRY="AT"
  SSL_DAYS="730"
  SSL_EMAIL="root@localhost"

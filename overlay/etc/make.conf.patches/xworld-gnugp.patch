@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -496,7 +496,7 @@ PORTAGE_COMPRESS_FLAGS="-9"
+@@ -512,7 +512,7 @@ PORTAGE_COMPRESS_FLAGS="-9"
  # The keys in that keyring will then be used for cryptographic
  # verification of any signed files in the Portage tree when emerging a
  # package.

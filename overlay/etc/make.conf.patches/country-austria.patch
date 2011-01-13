@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -457,13 +457,13 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -457,13 +457,29 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  # which the installers did not disable translation at _configure_ time. Then,
  # users only have to set the 'LANG' environment variable to the appropriate
  # 'LL_CC' combination prior to using the programs in the package.
@@ -16,11 +16,27 @@ Index: etc/make.conf
  # also use this to select the language to be hardcoded. See
  # >>>info "(gettext)po/LINGUAS"<<< for details.
 -#LINGUAS=""
-+LINGUAS="de en@boldquot en@quot"
++LINGUAS="
++ de_AT@boldquot
++ de_AT@quot
++ de_AT
++ de_DE@boldquot
++ de_DE@quot
++ de_DE
++ de@boldquot
++ de@quot
++ de
++ en_US@boldquot
++ en_US@quot
++ en_US
++ en@boldquot
++ en@quot
++ en
++"
  
  # The command used to compress documentation during the install phase.
  PORTAGE_COMPRESS="lzma"
-@@ -523,7 +523,7 @@ PORTAGE_WORKDIR_MODE="0705"
+@@ -523,7 +539,7 @@ PORTAGE_WORKDIR_MODE="0705"
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"
  #SSL_COMMONNAME="First Last"
