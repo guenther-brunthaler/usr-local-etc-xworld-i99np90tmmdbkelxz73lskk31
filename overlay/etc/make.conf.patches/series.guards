@@ -24,7 +24,7 @@ kbuild_output.patch
 +vmware.sciencesoft.at admin-is-ps.patch
 +xworld.mine.nu +xternal.mine.nu admin-is-gbr.patch
 +xworld.mine.nu popular-gentoo-mirrors.patch
-+xternal.mine.nu +xworld.mine.nu grub-nomount.patch
++vmware.sciencesoft.at +xternal.mine.nu +xworld.mine.nu grub-nomount.patch
 
 # Strictly host-specific patches.
 +vmware.sciencesoft.at host-at.sciencesoft.vmware-basic.patch
