@@ -55,7 +55,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -559,8 +562,10 @@ SSL_UNIT="Preliminary usage"
+@@ -575,8 +578,10 @@ SSL_UNIT="Preliminary usage"
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
  #VIDEO_CARDS="fbdev vesa vga"
