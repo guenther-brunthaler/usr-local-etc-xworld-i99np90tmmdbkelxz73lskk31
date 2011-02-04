@@ -1,1 +1,1 @@
-1 | 2) SET="-O3 -fno-omit-frame-pointer -fno-strict-aliasing -fno-stack-check";;
+1 | 2) SET="-O3 -fno-strict-aliasing -fno-stack-check";;

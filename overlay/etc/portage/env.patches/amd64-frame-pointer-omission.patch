@@ -1,0 +1,50 @@
+Drop explicit -fomit-frame-pointer for AMD-64 targets
+
+"-fomit-frame-pointer" is part of the AMD-64 default calling conventions, so
+there is no use in explicitly specifying it.
+
+It can even be counter-productive to care about the frame pointer omission
+setting in amd64, such as when x86-32 versions use the inverted flag
+"-fno-omit-frame-pointer" is used for debugging code, because in amd64 this is
+*not* what would be expected.
+
+This patch therefore drops any explict frame pointer handling options from the
+unpatched original 32-bit versions of the template files and reverts to using
+the compiler's default setting instead.
+
+Index: env/set-heavily-optimized-gcc3.tpl
+===================================================================
+--- env.orig/set-heavily-optimized-gcc3.tpl
++++ env/set-heavily-optimized-gcc3.tpl
+@@ -1 +1 @@
+-1 | 2) SET="-O3 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
++1 | 2) SET="-O3 -DNDEBUG -fno-stack-check";;
+Index: env/set-heavily-optimized.tpl
+===================================================================
+--- env.orig/set-heavily-optimized.tpl
++++ env/set-heavily-optimized.tpl
+@@ -1 +1 @@
+-1 | 2) SET="-O3 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
++1 | 2) SET="-O3 -DNDEBUG -fno-stack-check";;
+Index: env/set-no-ndebug-optimized.tpl
+===================================================================
+--- env.orig/set-no-ndebug-optimized.tpl
++++ env/set-no-ndebug-optimized.tpl
+@@ -1 +1 @@
+-1 | 2) SET="-O3 -fomit-frame-pointer -fno-stack-check";;
++1 | 2) SET="-O3 -fno-stack-check";;
+Index: env/set-not-optimized.tpl
+===================================================================
+--- env.orig/set-not-optimized.tpl
++++ env/set-not-optimized.tpl
+@@ -1 +1 @@
+-1 | 2) SET="-O0 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
++1 | 2) SET="-O0 -DNDEBUG -fno-stack-check";;
+Index: env/set-splitdebug-optimized.tpl
+===================================================================
+--- env.orig/set-splitdebug-optimized.tpl
++++ env/set-splitdebug-optimized.tpl
+@@ -1,2 +1,2 @@
+-1 | 2) SET="-O3 -DNDEBUG -fomit-frame-pointer -fno-stack-check -g -feliminate-unused-debug-symbols";;
++1 | 2) SET="-O3 -DNDEBUG -fno-stack-check -g -feliminate-unused-debug-symbols";;
+ 3) SET="splitdebug";;

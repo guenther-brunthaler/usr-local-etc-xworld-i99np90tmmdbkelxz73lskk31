@@ -1,1 +1,1 @@
-1 | 2) SET="-O0 -DNDEBUG -fno-omit-frame-pointer -fno-stack-check";;
+1 | 2) SET="-O0 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
