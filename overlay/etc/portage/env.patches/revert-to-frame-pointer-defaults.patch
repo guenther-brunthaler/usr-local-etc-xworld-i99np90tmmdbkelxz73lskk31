@@ -1,7 +1,10 @@
-Drop explicit -fomit-frame-pointer for AMD-64 targets
+Drop explicit -fomit-frame-pointer instructions
 
-"-fomit-frame-pointer" is part of the AMD-64 default calling conventions, so
-there is no use in explicitly specifying it.
+"-fomit-frame-pointer" is part of the amd-64 default calling conventions, so
+there is no use in explicitly specifying it on that platform.
+
+The flag might also create larger (although faster) executables, so it might
+be undesired to use on installations with a rather limited amount of memory.
 
 It can even be counter-productive to care about the frame pointer omission
 setting in amd64, such as when x86-32 versions use the inverted flag

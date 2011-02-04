@@ -1,7 +1,7 @@
 # Process with 'guards' tool to create "series".
 
 # Conditional patches possibly applying to different hosts.
-+x86_64 amd64-frame-pointer-omission.patch
++x86_64 revert-to-frame-pointer-defaults.patch
 
 # Non-patch files.
 - series.guards series
