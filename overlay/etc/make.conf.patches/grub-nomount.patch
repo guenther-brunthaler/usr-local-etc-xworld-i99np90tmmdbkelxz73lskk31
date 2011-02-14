@@ -13,4 +13,4 @@ Index: etc/make.conf
 +
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
- #ECHANGELOG_USER=""
+ ECHANGELOG_USER="Guenther Brunthaler <gb_about_gnu@gmx.net>"
