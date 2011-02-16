@@ -1,0 +1,13 @@
+Index: ssh/ssh_config
+===================================================================
+--- ssh.orig/ssh_config
++++ ssh/ssh_config
+@@ -36,7 +36,7 @@
+ #   IdentityFile ~/.ssh/id_dsa
+ #   Port 22
+ # protocol: anchor_1i2w6k7g8dtsxb62ev3eliju4_1
+-#   Protocol 2,1
++Protocol 2
+ # ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_2
+ #   Cipher 3des
+ #   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc

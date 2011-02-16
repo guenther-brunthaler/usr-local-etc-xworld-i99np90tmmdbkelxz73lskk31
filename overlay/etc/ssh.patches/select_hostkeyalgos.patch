@@ -1,0 +1,12 @@
+Index: ssh/ssh_config
+===================================================================
+--- ssh.orig/ssh_config
++++ ssh/ssh_config
+@@ -41,6 +41,7 @@ Protocol 2
+ Cipher 3des
+ Ciphers blowfish-cbc,3des-cbc
+ # hkalgos: anchor_1i2w6k7g8dtsxb62ev3eliju4_3
++HostKeyAlgorithms ssh-rsa
+ # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_4
+ MACs hmac-ripemd160,hmac-sha1
+ # kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_5

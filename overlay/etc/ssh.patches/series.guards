@@ -8,15 +8,18 @@
 
 # List of patches to be always included.
 add_sections.patch
+select_protocol.patch
 rsa_comments.patch
 -xquad.xworld.mine.nu 32_bit_os.patch
 no_pwd_auth.patch
-no_skey_auth.patch
+- no_skey_auth.patch
 root_login.patch
 x11_fwd.patch
 ssh_group.patch
 select_ciphers.patch
 select_macs.patch
+select_kex.patch
+select_hostkeyalgos.patch
 listen_ports.patch
 
 # Host-dependent patches.

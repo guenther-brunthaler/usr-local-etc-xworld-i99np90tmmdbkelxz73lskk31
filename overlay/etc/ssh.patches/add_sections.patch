@@ -13,9 +13,9 @@ Index: ssh/sshd_config
  #Port 22
  #AddressFamily any
  #ListenAddress 0.0.0.0
-@@ -20,8 +21,10 @@
- # activation of protocol 1
- Protocol 2
+@@ -18,8 +19,10 @@
+ # The default requires explicit activation of protocol 1
+ #Protocol 2
  
 +# anchor_1i2w6k7g8dtsxb62ev3eliju4_2
  # HostKey for protocol version 1
@@ -24,7 +24,7 @@ Index: ssh/sshd_config
  # HostKeys for protocol version 2
  #HostKey /etc/ssh/ssh_host_rsa_key
  #HostKey /etc/ssh/ssh_host_dsa_key
-@@ -43,6 +46,7 @@ Protocol 2
+@@ -42,6 +45,7 @@
  #MaxAuthTries 6
  #MaxSessions 10
  
@@ -32,7 +32,7 @@ Index: ssh/sshd_config
  #RSAAuthentication yes
  #PubkeyAuthentication yes
  #AuthorizedKeysFile	.ssh/authorized_keys
-@@ -57,10 +61,12 @@ Protocol 2
+@@ -56,10 +60,12 @@
  # Don't read the user's ~/.rhosts and ~/.shosts files
  #IgnoreRhosts yes
  
@@ -45,7 +45,7 @@ Index: ssh/sshd_config
  # Change to no to disable s/key passwords
  #ChallengeResponseAuthentication yes
  
-@@ -74,6 +80,7 @@ Protocol 2
+@@ -73,6 +79,7 @@
  #GSSAPIAuthentication no
  #GSSAPICleanupCredentials yes
  
@@ -53,7 +53,7 @@ Index: ssh/sshd_config
  # Set this to 'yes' to enable PAM authentication, account processing, 
  # and session processing. If this is enabled, PAM authentication will 
  # be allowed through the ChallengeResponseAuthentication and
-@@ -85,9 +92,12 @@ Protocol 2
+@@ -84,9 +91,12 @@
  # and ChallengeResponseAuthentication to 'no'.
  #UsePAM no
  
@@ -66,7 +66,7 @@ Index: ssh/sshd_config
  #X11Forwarding no
  #X11DisplayOffset 10
  #X11UseLocalhost yes
-@@ -95,17 +105,22 @@ Protocol 2
+@@ -94,17 +104,22 @@
  #PrintLastLog yes
  #TCPKeepAlive yes
  #UseLogin no
@@ -89,7 +89,7 @@ Index: ssh/sshd_config
  # no default banner path
  #Banner none
  
-@@ -117,3 +132,9 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
+@@ -130,3 +145,10 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
  #	X11Forwarding no
  #	AllowTcpForwarding no
  #	ForceCommand cvs server
@@ -98,4 +98,29 @@ Index: ssh/sshd_config
 +# Non-default options that have been added to the config file
 +# ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_17
 +# macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
-+# EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
++# kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
++# EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_20
+Index: ssh/ssh_config
+===================================================================
+--- ssh.orig/ssh_config
++++ ssh/ssh_config
+@@ -35,13 +35,19 @@
+ #   IdentityFile ~/.ssh/id_rsa
+ #   IdentityFile ~/.ssh/id_dsa
+ #   Port 22
++# protocol: anchor_1i2w6k7g8dtsxb62ev3eliju4_1
+ #   Protocol 2,1
++# ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_2
+ #   Cipher 3des
+ #   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc
++# hkalgos: anchor_1i2w6k7g8dtsxb62ev3eliju4_3
++# macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_4
+ #   MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160
++# kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_5
+ #   EscapeChar ~
+ #   Tunnel no
+ #   TunnelDevice any:any
+ #   PermitLocalCommand no
+ #   VisualHostKey no
+ #   ProxyCommand ssh -q -W %h:%p gateway.example.com
++# EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_6

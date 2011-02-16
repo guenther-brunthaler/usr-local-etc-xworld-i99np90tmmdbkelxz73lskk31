@@ -4,7 +4,7 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -47,7 +47,9 @@ Protocol 2
+@@ -46,7 +46,9 @@
  #MaxSessions 10
  
  # anchor_1i2w6k7g8dtsxb62ev3eliju4_4

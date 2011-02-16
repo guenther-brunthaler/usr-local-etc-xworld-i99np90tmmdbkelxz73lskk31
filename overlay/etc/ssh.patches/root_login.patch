@@ -4,7 +4,7 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -41,7 +41,9 @@ Protocol 2
+@@ -40,7 +40,9 @@
  # Authentication:
  
  #LoginGraceTime 2m

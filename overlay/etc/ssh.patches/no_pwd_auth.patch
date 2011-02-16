@@ -4,7 +4,7 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -65,7 +65,7 @@ Protocol 2
+@@ -64,7 +64,7 @@
  
  # anchor_1i2w6k7g8dtsxb62ev3eliju4_5
  # To disable tunneled clear text passwords, change to no here!

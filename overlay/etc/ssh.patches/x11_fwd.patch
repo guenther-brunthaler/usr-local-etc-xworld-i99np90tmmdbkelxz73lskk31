@@ -4,7 +4,7 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -102,7 +102,7 @@ ChallengeResponseAuthentication no
+@@ -101,7 +101,7 @@ ChallengeResponseAuthentication no
  #AllowTcpForwarding yes
  #GatewayPorts no
  # anchor_1i2w6k7g8dtsxb62ev3eliju4_10
