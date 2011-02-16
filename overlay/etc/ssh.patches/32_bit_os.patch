@@ -6,12 +6,12 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -127,7 +127,7 @@ Protocol 2
+@@ -126,7 +126,7 @@
  #Banner none
  
  # override default of no subsystems
 -Subsystem	sftp	/usr/lib64/misc/sftp-server
 +Subsystem	sftp	/usr/lib/misc/sftp-server
  
- # Example of overriding settings on a per-user basis
- #Match User anoncvs
+ # the following are HPN related configuration options
+ # tcp receive buffer polling. disable in non autotuning kernels
