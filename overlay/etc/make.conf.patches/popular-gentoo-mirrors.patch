@@ -11,4 +11,4 @@ Index: etc/make.conf
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt http://gentoo.c3sl.ufpr.br/ http://mirror.its.uidaho.edu/pub/gentoo/ ftp://gentoo.c3sl.ufpr.br/gentoo/ rsync://gd.tuwien.ac.at/opsys/linux/gentoo/ rsync://gentoo.c3sl.ufpr.br/gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ http://mirrors.xservers.ro/gentoo/ http://gentoo.iteam.net.ua/ ftp://mirror.its.uidaho.edu/gentoo/ http://ftp.vectranet.pl/gentoo/"
++GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt ftp://cesium.di.uminho.pt/pub/gentoo/ rsync://gentoo.c3sl.ufpr.br/gentoo/ http://ftp.twaren.net/Linux/Gentoo/ ftp://mirror.its.uidaho.edu/gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ ftp://gentoo.wheel.sk/pub/linux/gentoo/ ftp://ftp.swin.edu.au/gentoo http://ftp.swin.edu.au/gentoo http://gentoo-euetib.upc.es/mirror/gentoo/"

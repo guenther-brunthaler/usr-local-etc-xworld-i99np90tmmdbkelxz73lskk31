@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -26,6 +26,210 @@
+@@ -26,6 +26,213 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -37,6 +37,7 @@ Index: etc/make.conf
 + custom-cflags
 + custom-cxxflags
 + dbus
++ development
 + device-mapper
 + dts
 + dv
@@ -74,6 +75,7 @@ Index: etc/make.conf
 + gtk
 + gtk2
 + -hal
++ i18n
 + icu
 + id3tag
 + idea
@@ -159,6 +161,7 @@ Index: etc/make.conf
 + screen
 + sdl
 + sharedmem
++ skey
 + slang
 + smartcard
 + smp
