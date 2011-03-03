@@ -4,9 +4,9 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -440,6 +440,9 @@ CONFIG_PROTECT="/usr/local/etc"
- # stay the same for all package versions.
- DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -444,6 +444,9 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+ # each time an ebuild accessing one is re-emerged.
+ #EBZR_OFFLINE="1"
  
 +# Used by GRUB ebuild in order to avoid automounting /boot.
 +DONT_MOUNT_BOOT="1"

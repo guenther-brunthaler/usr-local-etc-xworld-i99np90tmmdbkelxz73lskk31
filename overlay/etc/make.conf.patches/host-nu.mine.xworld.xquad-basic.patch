@@ -47,7 +47,7 @@ Index: etc/make.conf
  
  # Add files and directories here which should be put under
  # Gentoo's config protection. Such files will never be
-@@ -450,7 +454,7 @@ ECHANGELOG_USER="Guenther Brunthaler <gb
+@@ -474,7 +478,7 @@ ESVN_OFFLINE="1"
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.
  # Otherwise, all supported input drivers will be included.
@@ -56,7 +56,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -574,7 +578,7 @@ SSL_UNIT="Preliminary usage"
+@@ -598,7 +602,7 @@ SSL_UNIT="Preliminary usage"
  # If you are using X11, setting this variable will restrict
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.

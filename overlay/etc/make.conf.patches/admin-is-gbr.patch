@@ -5,16 +5,16 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -442,7 +442,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -446,7 +446,7 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
 -#ECHANGELOG_USER=""
 +ECHANGELOG_USER="Guenther Brunthaler <gb_about_gnu@gmx.net>"
  
- # If you are using X11, setting this variable will restrict
- # the set of input device drivers to be compiled in.
-@@ -559,12 +559,12 @@ PORTAGE_WORKDIR_MODE="0705"
+ # Disable automatic updating of checked-out CVS check-outs
+ # each time an ebuild accessing one is re-emerged.
+@@ -583,12 +583,12 @@ PORTAGE_WORKDIR_MODE="0705"
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"

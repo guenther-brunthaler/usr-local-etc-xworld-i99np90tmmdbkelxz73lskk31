@@ -6,7 +6,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -576,4 +576,4 @@ SSL_UNIT="Preliminary usage"
+@@ -600,4 +600,4 @@ SSL_UNIT="Preliminary usage"
  # This entry should be the last in /etc/make.conf!
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.

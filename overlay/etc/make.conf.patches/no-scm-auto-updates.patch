@@ -1,0 +1,59 @@
+Disable automatic updates of local SCM repository mirrors
+
+Disables the default behavior for the Ebuild integration of the
+most prominent SCMs to update the repository automatically each
+time an ebuild is emerged which gets its files directly from such
+a repository.
+
+This will typically only effect ebuilds with the version number
+9999, which are "bleeding edge" ebuilds by convention.
+
+Using this patch, it will be necessary for the administrator to
+manually update the local checked out branches of those
+repositories.
+
+But it is now under the administrator's control whether or not
+and when to fetch updates.
+
+This also makes re-emerging those ebuild possible when offline,
+because no network access will be required.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -440,10 +440,34 @@ CONFIG_PROTECT="/usr/local/etc"
+ # stay the same for all package versions.
+ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+ 
++# Disable automatic updating of checked-out Bazaar branches
++# each time an ebuild accessing one is re-emerged.
++#EBZR_OFFLINE="1"
++
+ # User and e-mail for Gentoo's changelog authoring tool.
+ # Only required if you are actually using that tool.
+ #ECHANGELOG_USER=""
+ 
++# Disable automatic updating of checked-out CVS check-outs
++# each time an ebuild accessing one is re-emerged.
++ECVS_OFFLINE="1"
++
++# Disable automatic updating of checked-out Darcs repositories
++# each time an ebuild accessing one is re-emerged.
++EDARCS_OFFLINE="1"
++
++# Disable automatic updating of checked-out Git branches
++# each time an ebuild accessing one is re-emerged.
++EGIT_OFFLINE="1"
++
++# Disable automatic updating of checked-out Mercurial repositories
++# each time an ebuild accessing one is re-emerged.
++EHG_OFFLINE="1"
++
++# Disable automatic updating of checked-out Subversion branches
++# each time an ebuild accessing one is re-emerged.
++ESVN_OFFLINE="1"
++
+ # If you are using X11, setting this variable will restrict
+ # the set of input device drivers to be compiled in.
+ # Otherwise, all supported input drivers will be included.
