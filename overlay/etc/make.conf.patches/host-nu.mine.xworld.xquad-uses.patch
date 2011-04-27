@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -26,6 +26,214 @@
+@@ -26,6 +26,216 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -71,7 +71,7 @@ Index: etc/make.conf
 + glut
 + gmp
 + -gphoto2
-+ -gstreamer
++ gstreamer
 + gtk
 + gtk2
 + -hal
@@ -109,6 +109,7 @@ Index: etc/make.conf
 + libclamav
 + libnotify
 + libsamplerate
++ lm_sensors
 + logrotate
 + lua
 + lzma
@@ -150,7 +151,7 @@ Index: etc/make.conf
 + png
 + -postgres
 + ppds
-+ pulseaudio
++ -pulseaudio
 + -python
 + qt
 + qt3support
@@ -179,6 +180,7 @@ Index: etc/make.conf
 + startup-notification
 + svg
 + -svga
++ swig
 + taglib
 + -tcltk
 + -tcpd

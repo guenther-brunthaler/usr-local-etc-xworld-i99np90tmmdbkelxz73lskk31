@@ -28,7 +28,7 @@ Index: etc/make.conf
  
 +# Disable automatic updating of checked-out Bazaar branches
 +# each time an ebuild accessing one is re-emerged.
-+#EBZR_OFFLINE="1"
++EBZR_OFFLINE="1"
 +
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
