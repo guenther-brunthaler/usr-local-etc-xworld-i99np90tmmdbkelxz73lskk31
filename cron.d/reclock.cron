@@ -5,10 +5,10 @@
 # $Revision: 220 $
 
 
-CLOCK="/etc/init.d/clock"
+CLOCK="/etc/init.d/hwclock"
 
 
 if "$CLOCK" --quiet status; then
-	"$CLOCK" --quiet pause > /dev/null
+	"$CLOCK" --quiet --nodeps stop > /dev/null
 	"$CLOCK" --quiet start
 fi
