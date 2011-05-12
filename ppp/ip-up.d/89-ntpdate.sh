@@ -31,5 +31,5 @@
 			ntp2.inrim.it 3.it.pool.ntp.org 0.europe.pool.ntp.org
 	fi
 	log notice "Setting CMOS clock to obtained NTP time"
-	run /etc/init.d/clock --quiet save
+	run /etc/init.d/hwclock --quiet save
 ) || exit

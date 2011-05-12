@@ -34,6 +34,6 @@
 		fi
 		log notice "Setting CMOS clock" \
 			"to least recently updated NTP time"
-		run /etc/init.d/clock --quiet save
+		run /etc/init.d/hwclock --quiet save
 	fi
 )
