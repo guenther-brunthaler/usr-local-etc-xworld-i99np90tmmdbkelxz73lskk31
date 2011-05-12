@@ -1,7 +1,7 @@
-#!/bin/bash
-# $Header: /usr/local/etc/rc/RCS/runlevels.sh,v 1.2 2005/08/13 11:32:00 root Exp root $
+#! /bin/bash
 
 # Common functions
-[[ ${RC_GOT_FUNCTIONS} != "yes" ]] && source /sbin/functions.sh
+test -z "$RC_GOT_FUNCTIONS" \
+	&& . /usr/local/libexec/xworld/sh/gentoo-functions.sh
 
 einfo "Runlevels now: $(/usr/local/bin/runlevels -s)"
