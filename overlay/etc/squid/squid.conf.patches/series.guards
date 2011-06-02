@@ -20,6 +20,7 @@ ssh-ports.patch
 +xquad.xworld.mine.nu host_specific_xquad.patch
 +xtreme.xworld.mine.nu host_specific_xtreme.patch
 +xvaio.xworld.mine.nu host_specific_xvaio.patch
++master.simplux.org host_specific_simplux.patch
 
 # Files that are not patches.
 - series.guards series

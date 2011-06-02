@@ -1,0 +1,17 @@
+This contains the host-specific changes
+for "host xtreme.xworld.mine.nu".
+
+Index: squid/squid.conf
+===================================================================
+--- squid.orig/squid.conf
++++ squid/squid.conf
+@@ -5694,7 +5694,9 @@ http_access deny all
+ 
+ always_direct allow from_localhost to_localhost
+ 
++visible_hostname master.simplux.org
+ http_port localhost:8080
++http_port 192.168.86.1:8080
+ 
+ cache_dir ufs /var/cache/squid 500 32 1024
+ 
