@@ -12,7 +12,7 @@ select_protocol.patch
 rsa_comments.patch
 -vmware.sciencesoft.at -xquad.xworld.mine.nu 32_bit_os.patch
 -vmware.sciencesoft.at no_pwd_auth.patch
-- no_skey_auth.patch
+no_skey_auth.patch
 root_login.patch
 x11_fwd.patch
 ssh_group.patch
@@ -20,7 +20,11 @@ select_ciphers.patch
 select_macs.patch
 select_kex.patch
 select_hostkeyalgos.patch
+- listen_port_874.patch
+- listen_port_875.patch
 +xworld.mine.nu +xternal.mine.nu listen_ports_875_992.patch
+- listen_port_876.patch
+- listen_port_877.patch
 +vmware.sciencesoft.at listen_port_6713.patch
 
 # Host-dependent patches.

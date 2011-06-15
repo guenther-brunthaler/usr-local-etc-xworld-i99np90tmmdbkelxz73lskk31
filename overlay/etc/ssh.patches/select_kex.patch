@@ -1,3 +1,33 @@
+Select preferred key-exchange algorithms
+
+I chose diffie-hellman-group-exchange-sha256 as the only algorithm
+for the server, because it allows to use my locally-generated
+safe-prime moduli.
+
+I do not believe the group-14 prime to be bogus, but I see the
+point why DH group exchange has been introduced: It cannot be ruled
+out that some day an algorithm might be invented which allows
+precomputation for reducing the effort of solving the discrete log
+problem (compared to a full brute-force attack) if the prime is
+known in advance.
+
+In such situations, it might be better to use many different safe
+prime moduli instead of just the single well-known group-14 safe
+prime.
+
+On the other hand, I have little trust in moduli *other* people may
+have generated for the same reason. In such cases, I prefer the
+group-14 prime which is quite certainly an actual prime. Other
+adminstrators might be incompetent and may have created bogus safe
+primes by accident.
+
+Therefore, my client settings prefer group-14 but allow group
+exchange, while my server only supports group exchange.
+
+If a foreign SSH server still allows group-14 my client will use
+it; in the case of my own server only group exchange is supported
+and my client will fall back to using it.
+
 Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
@@ -6,7 +36,7 @@ Index: ssh/sshd_config
  # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
  MACs hmac-ripemd160,hmac-sha1
  # kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
-+KexAlgorithms diffie-hellman-group14-sha1
++KexAlgorithms diffie-hellman-group-exchange-sha256
  # EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_20
 Index: ssh/ssh_config
 ===================================================================
@@ -16,7 +46,7 @@ Index: ssh/ssh_config
  # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_4
  MACs hmac-ripemd160,hmac-sha1
  # kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_5
-+KexAlgorithms diffie-hellman-group14-sha1
++KexAlgorithms diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1
  #   EscapeChar ~
  #   Tunnel no
  #   TunnelDevice any:any

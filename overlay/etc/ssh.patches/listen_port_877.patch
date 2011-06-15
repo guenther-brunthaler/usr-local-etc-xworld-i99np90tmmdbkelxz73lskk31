@@ -1,0 +1,16 @@
+Define ports for the SSH daemon to listen at.
+
+Irrelevant if the SSH server will be launched by inetd.
+
+Index: ssh/sshd_config
+===================================================================
+--- ssh.orig/sshd_config
++++ ssh/sshd_config
+@@ -12,6 +12,7 @@
+ 
+ # anchor_1i2w6k7g8dtsxb62ev3eliju4_1
+ #Port 22
++Port 877
+ #AddressFamily any
+ #ListenAddress 0.0.0.0
+ #ListenAddress ::
