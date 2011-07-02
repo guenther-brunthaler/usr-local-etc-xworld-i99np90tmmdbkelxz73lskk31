@@ -72,10 +72,12 @@ kpc1zz4q633lsv0zpezddl8u2_filter() {
 kpc1zz4q633lsv0zpezddl8u2_reconfig
 kpc1zz4q633lsv0zpezddl8u2_filter
 unset -f kpc1zz4q633lsv0zpezddl8u2_filter
-echo "OVERRIDING FLAGS: kpc1zz4q633lsv0zpezddl8u2_title"
-if test -n "$PORTAGE_ENV_OVERRIDE_DEBUGGING"; then
-	echo "CFLAGS=$CFLAGS"
-	echo "CXXFLAGS=$CXXFLAGS"
-	echo "FEATURES=$FEATURES"
-	echo "USE=$USE"
-fi
+{
+	echo "OVERRIDING FLAGS: kpc1zz4q633lsv0zpezddl8u2_title"
+	if test -n "$PORTAGE_ENV_OVERRIDE_DEBUGGING"; then
+		echo "CFLAGS=$CFLAGS"
+		echo "CXXFLAGS=$CXXFLAGS"
+		echo "FEATURES=$FEATURES"
+		echo "USE=$USE"
+	fi
+} >& 2
