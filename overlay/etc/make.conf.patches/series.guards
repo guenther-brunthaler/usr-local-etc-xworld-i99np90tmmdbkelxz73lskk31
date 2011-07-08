@@ -17,7 +17,9 @@ default-features.patch
 
 # Conditional patches possibly applying to different hosts.
 - portage-overlay-only.patch
-+vmware.sciencesoft.at +xternal.mine.nu +xworld.mine.nu layman-support.patch
++vmware.sciencesoft.at layman-support.patch
+- localset-support.patch
++xternal.mine.nu +xworld.mine.nu layman-and-localset-support.patch
 +xworld.mine.nu getdelta.patch
 kbuild_output.patch
 +xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
