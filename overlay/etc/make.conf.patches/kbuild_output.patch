@@ -14,7 +14,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -461,7 +461,18 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -465,7 +465,18 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  # kernel build directory (to be used when emerging kernel modules).
  # Note: The /usr/src/linux symlink is *not* used
  # when emerging kernel modules!

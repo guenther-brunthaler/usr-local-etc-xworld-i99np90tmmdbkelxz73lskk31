@@ -43,4 +43,5 @@
 	ipt -A GAMER -m limit --limit 3/minute -j LOGGER
 	ipt -A GAMER -j REJECT
 	ipt -m owner -A OUTPUT -o "$IFC" --uid-owner "$LOSER" -j GAMER
+	ipt -m owner -A OUTPUT -o "$IFC" --uid-owner "et" -j GAMER
 ) || exit

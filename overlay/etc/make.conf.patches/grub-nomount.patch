@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -444,6 +444,9 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
+@@ -448,6 +448,9 @@ DOC_SYMLINKS_DIR="/usr/share/doc/html"
  # each time an ebuild accessing one is re-emerged.
  EBZR_OFFLINE="1"
  
