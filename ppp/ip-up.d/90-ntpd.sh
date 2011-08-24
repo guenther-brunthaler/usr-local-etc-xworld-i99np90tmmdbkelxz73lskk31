@@ -22,13 +22,14 @@
 	}
 
 
-	# Wait 20 seconds for the slow connection and start the ntpd service.
-	sleep 20
-	if test -x /etc/init.d/ntpd; then
-		/etc/init.d/ntpd --quiet status || {
+	if test -x /etc/init.d/ntpd
+	then
+		/etc/init.d/ntpd --quiet status \
+		|| /etc/init.d/ntpd --quiet start \
+		|| {
 			run test -f /etc/conf.d/ntpd
 			run . /etc/conf.d/ntpd
-			log debug "Starting NTP service daemon"
+			log debug "Trying to start NTP service daemon"
 			run start-stop-daemon --start \
 				--exec /usr/sbin/ntpd \
 				--pidfile /var/run/ntpd.pid \

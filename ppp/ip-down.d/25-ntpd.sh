@@ -23,14 +23,15 @@
 
 
 	# Stop the ntpd service after the disconnection.
+	log debug "25-ntpd.sh executing"
 	if test -x /etc/init.d/ntpd; then
 		if /etc/init.d/ntpd --quiet status ; then
 			run /etc/init.d/ntpd --quiet stop
 		else
-			log debug "Stopping NTP service daemon"
+			test ! -e /var/run/ntpd.pid && exit
+			log debug "Trying to stop NTP service daemon"
 			run start-stop-daemon --stop \
-				--pidfile /var/run/ntpd.pid \
-				--exec /usr/sbin/ntpd
+				--pidfile /var/run/ntpd.pid
 		fi
 		log notice "Setting CMOS clock" \
 			"to least recently updated NTP time"

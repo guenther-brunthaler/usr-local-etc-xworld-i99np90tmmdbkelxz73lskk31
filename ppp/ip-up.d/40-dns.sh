@@ -21,11 +21,12 @@ if [ "$USEPEERDNS" ]; then
 			[ -n "$DNS2" ] && echo "nameserver $DNS2"
 		} | /sbin/resolvconf -a "$1"
 	else
-		# add the server supplied DNS entries to /etc/resolv.conf
+		RESOLVE_CONF=/etc/resolv.dnsmasq
+		# add the server supplied DNS entries to $RESOLVE_CONF
 		# (taken from debian's 0000usepeerdns)
 
 		# follow any symlink to find the real file
-		REALRESOLVCONF=$(readlink -f /etc/resolv.conf)
+		REALRESOLVCONF=$(readlink -f "$RESOLVE_CONF")
 	
 		if [ "$REALRESOLVCONF" != "/etc/ppp/resolv.conf" ]; then
 
@@ -40,8 +41,8 @@ if [ "$USEPEERDNS" ]; then
 			mv $REALRESOLVCONF.tmp $REALRESOLVCONF
 	
 			# correct permissions
-			chmod 0644 /etc/resolv.conf
-			chown root:root /etc/resolv.conf
+			chmod 0644 $RESOLVE_CONF
+			chown root:root $RESOLVE_CONF
 		fi
 	fi
 
