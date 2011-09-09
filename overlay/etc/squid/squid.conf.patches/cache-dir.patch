@@ -4,12 +4,12 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5695,6 +5695,8 @@ always_direct allow from_localhost to_lo
+@@ -5890,6 +5890,8 @@ always_direct allow from_localhost to_lo
  
  http_port localhost:8080
  
 +cache_dir ufs /var/cache/squid 500 32 1024
 +
- hierarchy_stoplist cgi-bin ?
  coredump_dir /var/cache/squid
  refresh_pattern ^ftp:		1440	20%	10080
+ refresh_pattern ^gopher:	1440	0%	1440

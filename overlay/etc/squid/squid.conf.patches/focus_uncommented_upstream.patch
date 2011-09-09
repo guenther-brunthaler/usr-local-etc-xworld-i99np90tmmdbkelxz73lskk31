@@ -6,7 +6,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -639,32 +639,32 @@
+@@ -682,32 +682,32 @@
  #
  # Recommended minimum configuration:
  #
@@ -61,7 +61,7 @@ Index: squid/squid.conf
  
  #  TAG: follow_x_forwarded_for
  #	Allowing or Denying the X-Forwarded-For header to be followed to
-@@ -763,14 +763,14 @@ acl CONNECT method CONNECT
+@@ -809,14 +809,14 @@ acl CONNECT method CONNECT
  # Recommended minimum Access Permission configuration:
  #
  # Only allow cachemgr access from localhost
@@ -80,7 +80,7 @@ Index: squid/squid.conf
  
  # We strongly recommend the following be uncommented to protect innocent
  # web applications running on the proxy server who think the only
-@@ -784,14 +784,14 @@ http_access deny CONNECT !SSL_ports
+@@ -830,14 +830,14 @@ http_access deny CONNECT !SSL_ports
  # Example rule allowing access from your local networks.
  # Adapt localnet in the ACL section to list your (internal) IP networks
  # from where browsing should be allowed
@@ -99,7 +99,7 @@ Index: squid/squid.conf
  
  #  TAG: adapted_http_access
  #	Allowing or Denying access based on defined access lists
-@@ -1076,7 +1076,7 @@ http_access deny all
+@@ -1124,7 +1124,7 @@ http_access deny all
  #
  
  # Squid normally listens to port 3128
@@ -108,16 +108,7 @@ Index: squid/squid.conf
  
  #  TAG: https_port
  #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]
-@@ -1876,7 +1876,7 @@ http_port 3128
- #
- 
- # We recommend you to use at least the following line.
--hierarchy_stoplist cgi-bin ?
-+###hierarchy_stoplist cgi-bin ?
- 
- # MEMORY CACHE OPTIONS
- # -----------------------------------------------------------------------------
-@@ -2599,7 +2599,7 @@ hierarchy_stoplist cgi-bin ?
+@@ -2701,7 +2701,7 @@ http_port 3128
  #
  
  # Leave coredumps in the first cache dir
@@ -126,7 +117,7 @@ Index: squid/squid.conf
  
  # OPTIONS FOR FTP GATEWAYING
  # -----------------------------------------------------------------------------
-@@ -2927,10 +2927,10 @@ coredump_dir /var/cache/squid
+@@ -3049,10 +3049,10 @@ coredump_dir /var/cache/squid
  #
  
  # Add any of your own refresh_pattern entries above these.
@@ -140,8 +131,8 @@ Index: squid/squid.conf
 +###refresh_pattern .		0	20%	4320
  
  #  TAG: quick_abort_min	(KB)
- #  TAG: quick_abort_max	(KB)
-@@ -5596,3 +5596,43 @@ refresh_pattern .		0	20%	4320
+ #Default:
+@@ -5791,3 +5791,42 @@ refresh_pattern .		0	20%	4320
  #Default:
  # max_filedescriptors 0
  
@@ -179,7 +170,6 @@ Index: squid/squid.conf
 +http_access allow localhost
 +http_access deny all
 +http_port 3128
-+hierarchy_stoplist cgi-bin ?
 +coredump_dir /var/cache/squid
 +refresh_pattern ^ftp:		1440	20%	10080
 +refresh_pattern ^gopher:	1440	0%	1440

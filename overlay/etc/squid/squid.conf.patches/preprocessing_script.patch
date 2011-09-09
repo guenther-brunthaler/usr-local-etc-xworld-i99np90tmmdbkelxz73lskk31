@@ -69,7 +69,7 @@ Index: squid/preprocess_new_version
 +}
 +
 +filter() {
-+	run grep -v '^#\|^ *$' "$1" > "$2"
++	grep -v '^#\|^ *$' "$1" > "$2"
 +}
 +
 +uncomment() {
@@ -91,8 +91,8 @@ Index: squid/preprocess_new_version
 +run test -f "$LOCAL"
 +run test -f "$NEWTPL"
 +run cat "$NEWTPL" > "$LOCAL.$ONEW_EXT"
-+run filter "$LOCAL" "$T.oa.tmp"
-+run filter "$NEWTPL" "$T.na.tmp"
++filter "$LOCAL" "$T.oa.tmp"
++filter "$NEWTPL" "$T.na.tmp"
 +run uncomment "$LOCAL" "$T.oa.tmp" "$T.ou.tmp"
 +run uncomment "$NEWTPL" "$T.na.tmp" "$LOCAL.$XNEW_EXT"
 +runx 1 diff -u "$T.ou.tmp" "$LOCAL.$XNEW_EXT" > "$LOCAL.$DIFF_EXT"
