@@ -8,6 +8,6 @@ service telnet
 	user            = root
 	server          = /usr/sbin/in.telnetd
 	log_on_success += DURATION
-	log_on_failure += USERID
+	log_on_failure  =
 	disable         = no
 }
