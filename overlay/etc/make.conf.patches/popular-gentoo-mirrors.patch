@@ -11,4 +11,4 @@ Index: etc/make.conf
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt http://tux.rainside.sk/gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ http://ftp.twaren.net/Linux/Gentoo/ ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ http://ftp.ncnu.edu.tw/Linux/Gentoo/ http://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/ http://ftp.lecl.net/pub/gentoo/ http://ftp.daum.net/gentoo/ ftp://tux.rainside.sk/gentoo/"
++GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ http://gentoo.mirror.dkm.cz/pub/gentoo/ ftp://gentoo.mirror.dkm.cz/pub/gentoo/ http://ftp.lecl.net/pub/gentoo/ ftp://tux.rainside.sk/gentoo/ http://tux.rainside.sk/gentoo/ ftp://mirror.its.uidaho.edu/gentoo/ http://mirror.its.uidaho.edu/pub/gentoo/ http://ftp.swin.edu.au/gentoo ftp://ftp.kaist.ac.kr/gentoo/"
