@@ -17,7 +17,7 @@ Index: etc/make.conf
  #CFLAGS="-mcpu=athlon-xp -O2 -pipe"
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
-+CFLAGS="-march=nocona -O3 -DNDEBUG -pipe -fomit-frame-pointer -fno-stack-check"
++CFLAGS="-march=nocona -Wl,-O1,--hash-style=gnu -O3 -DNDEBUG -pipe -fomit-frame-pointer -fno-stack-check"
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
@@ -63,6 +63,3 @@ Index: etc/make.conf
  
  # This entry should be the last in /etc/make.conf!
  #
- # Run "mirrorselect -s10 -b10" in order to update the next line.
- #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="ftp://mirror.bih.net.ba/gentoo/ ftp://ftp.twaren.net/Linux/Gentoo/ http://ftp.twaren.net/Linux/Gentoo/ ftp://de-mirror.org/distro/gentoo/ http://ftp.spline.inf.fu-berlin.de/mirrors/gentoo/ ftp://mirror.netcologne.de/gentoo/ ftp://mirror.icis.pcz.pl/gentoo/ http://mirror.averse.net/pub/gentoo/ http://mirror.its.uidaho.edu/pub/gentoo/ http://mirror.switch.ch/ftp/mirror/gentoo/"

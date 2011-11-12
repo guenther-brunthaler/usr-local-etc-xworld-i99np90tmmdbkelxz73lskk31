@@ -18,7 +18,7 @@ Index: etc/make.conf
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
 +##CFLAGS="-march=k8 -O3 -DNDEBUG -pipe -fno-stack-check"
-+CFLAGS="-march=amdfam10 -O3 -DNDEBUG -pipe -fno-stack-check"
++CFLAGS="-march=amdfam10 -Wl,-O1,--hash-style=gnu -O3 -DNDEBUG -pipe -fno-stack-check"
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
