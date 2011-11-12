@@ -99,7 +99,7 @@ Index: squid/squid.conf
  
  #  TAG: adapted_http_access
  #	Allowing or Denying access based on defined access lists
-@@ -1124,7 +1124,7 @@ http_access deny all
+@@ -1129,7 +1129,7 @@ http_access deny all
  #
  
  # Squid normally listens to port 3128
@@ -108,7 +108,7 @@ Index: squid/squid.conf
  
  #  TAG: https_port
  #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]
-@@ -2701,7 +2701,7 @@ http_port 3128
+@@ -2706,7 +2706,7 @@ http_port 3128
  #
  
  # Leave coredumps in the first cache dir
@@ -117,7 +117,7 @@ Index: squid/squid.conf
  
  # OPTIONS FOR FTP GATEWAYING
  # -----------------------------------------------------------------------------
-@@ -3049,10 +3049,10 @@ coredump_dir /var/cache/squid
+@@ -3054,10 +3054,10 @@ coredump_dir /var/cache/squid
  #
  
  # Add any of your own refresh_pattern entries above these.
@@ -132,7 +132,7 @@ Index: squid/squid.conf
  
  #  TAG: quick_abort_min	(KB)
  #Default:
-@@ -5791,3 +5791,42 @@ refresh_pattern .		0	20%	4320
+@@ -5817,3 +5817,42 @@ refresh_pattern .		0	20%	4320
  #Default:
  # max_filedescriptors 0
  
