@@ -23,6 +23,7 @@ Index: etc/make.conf
 + cddb
 + cdr
 + curl
++ dbus
 + ecc
 + -eds
 + -emacs
@@ -91,7 +92,6 @@ Index: etc/make.conf
 + qt4
 + -samba
 + sharedmem
-+ skey
 + slang
 + sndfile
 + speex
