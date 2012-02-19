@@ -22,7 +22,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -444,10 +444,34 @@ CONFIG_PROTECT="/usr/local/etc"
+@@ -450,10 +450,38 @@ CONFIG_PROTECT="/usr/local/etc"
  # stay the same for all package versions.
  DOC_SYMLINKS_DIR="/usr/share/doc/html"
  
@@ -53,6 +53,10 @@ Index: etc/make.conf
 +# Disable automatic updating of checked-out Subversion branches
 +# each time an ebuild accessing one is re-emerged.
 +ESVN_OFFLINE="1"
++
++# Prevents any VCS online operations. Used by git-2 ebuild instead
++# of ${EGIT_OFFLINE}.
++EVCS_OFFLINE="1"
 +
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.

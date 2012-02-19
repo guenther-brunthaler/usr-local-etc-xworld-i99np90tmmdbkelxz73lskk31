@@ -5,7 +5,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -450,7 +450,7 @@ EBZR_OFFLINE="1"
+@@ -456,7 +456,7 @@ EBZR_OFFLINE="1"
  
  # User and e-mail for Gentoo's changelog authoring tool.
  # Only required if you are actually using that tool.
@@ -14,7 +14,7 @@ Index: etc/make.conf
  
  # Disable automatic updating of checked-out CVS check-outs
  # each time an ebuild accessing one is re-emerged.
-@@ -587,12 +587,12 @@ PORTAGE_WORKDIR_MODE="0705"
+@@ -597,12 +597,12 @@ PORTAGE_WORKDIR_MODE="0705"
  # in the absence of appropriate default settings here, cryptographically
  # weak algorithms or key lengths might be chosen by the installer.
  SSL_BITS="2048"

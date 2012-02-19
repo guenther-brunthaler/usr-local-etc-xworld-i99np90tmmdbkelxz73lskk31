@@ -10,6 +10,8 @@ local-section.patch
 common-addons.patch
 enable-elogging.patch
 common-defaults.patch
+common-cppflags.patch
+common-ldflags.patch
 country-austria.patch
 city-vienna.patch
 ssh-friendly.patch

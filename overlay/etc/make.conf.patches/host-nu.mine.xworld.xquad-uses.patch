@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -26,6 +26,221 @@
+@@ -26,6 +26,223 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -76,6 +76,7 @@ Index: etc/make.conf
 + gstreamer
 + gtk
 + gtk2
++ gtk3
 + -hal
 + i18n
 + icu
@@ -111,6 +112,7 @@ Index: etc/make.conf
 + libcaca
 + libclamav
 + libev
++ libevent
 + libnotify
 + libsamplerate
 + lm_sensors

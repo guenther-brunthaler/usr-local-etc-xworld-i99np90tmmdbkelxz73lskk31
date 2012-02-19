@@ -1,0 +1,16 @@
+Linker flags common to all targets.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -115,6 +115,9 @@ CXXFLAGS="${CFLAGS}"
+ # Preprocessor flags. See bug # 404411.
+ CPPFLAGS="-DNDEBUG"
+ 
++# Linker flags. See bug # 404411.
++LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu"
++
+ # Advanced Masking
+ # ================
+ #

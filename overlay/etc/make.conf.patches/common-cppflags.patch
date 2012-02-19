@@ -1,0 +1,16 @@
+Define C preprocessor defaults common to all targets.
+
+Index: etc/make.conf
+===================================================================
+--- etc.orig/make.conf
++++ etc/make.conf
+@@ -112,6 +112,9 @@ USE="
+ #CXXFLAGS="${CFLAGS}"
+ CXXFLAGS="${CFLAGS}"
+ 
++# Preprocessor flags. See bug # 404411.
++CPPFLAGS="-DNDEBUG"
++
+ # Advanced Masking
+ # ================
+ #

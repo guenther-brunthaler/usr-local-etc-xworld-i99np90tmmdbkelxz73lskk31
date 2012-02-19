@@ -18,11 +18,11 @@ Index: etc/make.conf
  #CFLAGS="-march=pentium3 -O2 -pipe"
  # Avoid -O0 and -s in CFLAGS.
 +##CFLAGS="-march=k8 -O3 -DNDEBUG -pipe -fno-stack-check"
-+CFLAGS="-march=amdfam10 -Wl,-O1,--hash-style=gnu -O3 -DNDEBUG -pipe -fno-stack-check"
++CFLAGS="-march=amdfam10 -O3 -pipe -fno-stack-check"
  
  # If you set a CFLAGS above, then this line will set your default C++ flags to
  # the same settings.
-@@ -264,6 +266,7 @@ FETCHCOMMAND="/usr/bin/getdelta.sh \"\${
+@@ -270,6 +272,7 @@ FETCHCOMMAND="/usr/bin/getdelta.sh \"\${
  #     http://www.gentoo.org/doc/en/rsync.xml
  #
  #SYNC="rsync://rsync.gentoo.org/gentoo-portage"
@@ -30,7 +30,7 @@ Index: etc/make.conf
  #
  # PORTAGE_RSYNC_RETRIES sets the number of times portage will attempt to retrieve
  #     a current portage tree before it exits with an error. This allows
-@@ -295,6 +298,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
+@@ -301,6 +304,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
  #     the number of parallel makes (-j) to perform. The suggested number
  #     for parallel makes is CPUs+1.
  #MAKEOPTS="-j2"
@@ -38,7 +38,7 @@ Index: etc/make.conf
  #
  # PORTAGE_NICENESS provides a default increment to emerge's niceness level.
  #     Note: This is an increment. Running emerge in a niced environment will
-@@ -431,7 +435,7 @@ PORTAGE_ELOG_SYSTEM="save"
+@@ -437,7 +441,7 @@ PORTAGE_ELOG_SYSTEM="save"
  # If you are using ALSA, this variable must be set to the names
  # of the sound cards to be supported. See the "ALSA Sound Matrix"
  # decription in the Internet for a list of possible names.
@@ -47,7 +47,7 @@ Index: etc/make.conf
  
  # Add files and directories here which should be put under
  # Gentoo's config protection. Such files will never be
-@@ -478,7 +482,7 @@ ESVN_OFFLINE="1"
+@@ -488,7 +492,7 @@ EVCS_OFFLINE="1"
  # If you are using X11, setting this variable will restrict
  # the set of input device drivers to be compiled in.
  # Otherwise, all supported input drivers will be included.
@@ -56,7 +56,7 @@ Index: etc/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -602,7 +606,7 @@ SSL_UNIT="Preliminary usage"
+@@ -612,7 +616,7 @@ SSL_UNIT="Preliminary usage"
  # If you are using X11, setting this variable will restrict
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.

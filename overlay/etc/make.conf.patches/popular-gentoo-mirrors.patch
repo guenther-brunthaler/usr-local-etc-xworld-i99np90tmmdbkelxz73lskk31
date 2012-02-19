@@ -6,9 +6,9 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -604,4 +604,4 @@ SSL_UNIT="Preliminary usage"
+@@ -614,4 +614,4 @@ SSL_UNIT="Preliminary usage"
  # This entry should be the last in /etc/make.conf!
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ http://gentoo.mirror.dkm.cz/pub/gentoo/ ftp://gentoo.mirror.dkm.cz/pub/gentoo/ http://ftp.lecl.net/pub/gentoo/ ftp://tux.rainside.sk/gentoo/ http://tux.rainside.sk/gentoo/ ftp://mirror.its.uidaho.edu/gentoo/ http://mirror.its.uidaho.edu/pub/gentoo/ http://ftp.swin.edu.au/gentoo ftp://ftp.kaist.ac.kr/gentoo/"
++GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt http://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://de-mirror.org/gentoo/ rsync://gentoo.c3sl.ufpr.br/gentoo/ ftp://tux.rainside.sk/gentoo/ http://ftp.lecl.net/pub/gentoo/ http://gd.tuwien.ac.at/opsys/linux/gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ rsync://gentoo.mirror.dkm.cz/gentoo/ http://tux.rainside.sk/gentoo/"
