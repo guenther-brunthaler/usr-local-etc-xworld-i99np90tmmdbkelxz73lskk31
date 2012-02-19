@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -26,6 +26,118 @@
+@@ -26,6 +26,120 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -61,6 +61,8 @@ Index: etc/make.conf
 + ldap
 + libcaca
 + libclamav
++ libevent
++ libnotify
 + lzma
 + -mailwrapper
 + matroska
