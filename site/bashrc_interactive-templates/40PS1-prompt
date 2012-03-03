@@ -9,24 +9,34 @@
 PS1_nlxbsjpdq50evzj6zaaprqrat() {
 	case "$1" in
 		shlvl)
+			test -z "$SHLVL" && return
 			# Display the amount of shell-nesting which exceeds
 			# the "normal" nesting.
 			# This "normal" nesting is 1 for top-level terminals
 			# including "screen"-sessions and X11 terminals.
 			local EFFLVL
 			EFFLVL="$SHLVL"
-			test "${TERM%%.*}" = "screen" && (( --EFFLVL ))
-			test -n "$WINDOWID" && (( --EFFLVL ))
+			if test "${TERM%%.*}" = "screen"
+			then
+				EFFLVL=`expr $EFFLVL - 1`
+			fi
+			if test -n "$WINDOWID"
+			then
+				EFFLVL=`expr $EFFLVL - 1`
+			fi
 			test "$EFFLVL" -gt 1 && echo "[$EFFLVL]"
 		;;
 		dirnst)
+			test -z "$BASH_VERSION" && return
 			# The "pushd" directory nesting level is indicated
 			# by that number of "+"'s.
-			local LEVEL
-			for (( \
-				LEVEL= 2; $LEVEL <= ${#DIRSTACK[*]}; ++LEVEL \
-			)); do
-				echo -n "+"
+			local LEVEL DEPTH
+			LEVEL=2
+			eval 'DEPTH=${#DIRSTACK[*]}'
+			while test $LEVEL -le $DEPTH
+			do
+				printf '+'
+				LEVEL=`expr $LEVEL + 1`
 			done
 		;;
 		umask)
@@ -53,13 +63,14 @@ genPS1_nlxbsjpdq50evzj6zaaprqrat() {
 	ALERTCOLOR=3
 	USERCOLOR=2
 	ROOTCOLOR=1
-	if [ "$TERM" = 'dumb' -o -z "$BASH" ]; then
+	if test "$TERM" = 'dumb'
+	then
 		# Do not set PS1 for dumb terminals or shells other than BASH.
 		unset -f PS1_nlxbsjpdq50evzj6zaaprqrat
 		return
 	fi
 	local ISROOT P C0 C1 C2 H1 H2 ALERT GROUP
-	test "`/usr/bin/whoami`" = "root" -o "$EUID" = "0" && ISROOT=1
+	test "`/usr/bin/whoami`" = "root" || test "$EUID" = "0" && ISROOT=1
 	test -n "$ISROOT" && USERCOLOR="$ROOTCOLOR"
 	C0="\[\033[01;"
 	C1="${C0}3"
