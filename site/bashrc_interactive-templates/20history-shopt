@@ -4,4 +4,4 @@
 # This is always wise to enable because otherwise
 # the wrong command might be selected for execution
 # mistakenly sometimes.
-shopt -s histverify histreedit
+test -n "$BASH_VERSION" && shopt -s histverify histreedit || true
