@@ -19,35 +19,58 @@ Index: env/set-heavily-optimized-gcc3.tpl
 ===================================================================
 --- env.orig/set-heavily-optimized-gcc3.tpl
 +++ env/set-heavily-optimized-gcc3.tpl
-@@ -1 +1 @@
--1 | 2) SET="-O3 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
-+1 | 2) SET="-O3 -DNDEBUG -fno-stack-check";;
+@@ -1,2 +1,2 @@
+-CFLAGS | CXXFLAGS) SET="-O3 -fomit-frame-pointer -fno-stack-check";;
++CFLAGS | CXXFLAGS) SET="-O3 -fno-stack-check";;
+ CPPFLAGS) SET="-DNDEBUG";;
 Index: env/set-heavily-optimized.tpl
 ===================================================================
 --- env.orig/set-heavily-optimized.tpl
 +++ env/set-heavily-optimized.tpl
-@@ -1 +1 @@
--1 | 2) SET="-O3 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
-+1 | 2) SET="-O3 -DNDEBUG -fno-stack-check";;
-Index: env/set-no-ndebug-optimized.tpl
-===================================================================
---- env.orig/set-no-ndebug-optimized.tpl
-+++ env/set-no-ndebug-optimized.tpl
-@@ -1 +1 @@
--1 | 2) SET="-O3 -fomit-frame-pointer -fno-stack-check";;
-+1 | 2) SET="-O3 -fno-stack-check";;
+@@ -1,2 +1,2 @@
+-CFLAGS | CXXFLAGS) SET="-O3 -fomit-frame-pointer -fno-stack-check";;
++CFLAGS | CXXFLAGS) SET="-O3 -fno-stack-check";;
+ CPPFLAGS) SET="-DNDEBUG";;
 Index: env/set-not-optimized.tpl
 ===================================================================
 --- env.orig/set-not-optimized.tpl
 +++ env/set-not-optimized.tpl
-@@ -1 +1 @@
--1 | 2) SET="-O0 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
-+1 | 2) SET="-O0 -DNDEBUG -fno-stack-check";;
+@@ -1,2 +1,2 @@
+-CFLAGS | CXXFLAGS) SET="-O0 -fomit-frame-pointer -fno-stack-check";;
++CFLAGS | CXXFLAGS) SET="-O0 -fno-stack-check";;
+ CPPFLAGS) SET="-DNDEBUG";;
 Index: env/set-splitdebug-optimized.tpl
 ===================================================================
 --- env.orig/set-splitdebug-optimized.tpl
 +++ env/set-splitdebug-optimized.tpl
+@@ -1,3 +1,3 @@
+-CFLAGS | CXXFLAGS) SET="-O3 -fomit-frame-pointer -fno-stack-check -g -feliminate-unused-debug-symbols";;
++CFLAGS | CXXFLAGS) SET="-O3 -fno-stack-check -g -feliminate-unused-debug-symbols";;
+ CPPFLAGS) SET="-DNDEBUG";;
+ FEATURES) SET="splitdebug";;
+Index: env/set-conservative-srcdebug-optimized.tpl
+===================================================================
+--- env.orig/set-conservative-srcdebug-optimized.tpl
++++ env/set-conservative-srcdebug-optimized.tpl
+@@ -1,3 +1,3 @@
+-CFLAGS | CXXFLAGS) SET="-O3 -fomit-frame-pointer -fno-stack-check -g -feliminate-unused-debug-symbols";;
++CFLAGS | CXXFLAGS) SET="-O3 -fno-stack-check -g -feliminate-unused-debug-symbols";;
+ CPPFLAGS) SET="-DNDEBUG";;
+ FEATURES) SET="installsources splitdebug";;
+Index: env/set-conservatively-optimized.tpl
+===================================================================
+--- env.orig/set-conservatively-optimized.tpl
++++ env/set-conservatively-optimized.tpl
 @@ -1,2 +1,2 @@
--1 | 2) SET="-O3 -DNDEBUG -fomit-frame-pointer -fno-stack-check -g -feliminate-unused-debug-symbols";;
-+1 | 2) SET="-O3 -DNDEBUG -fno-stack-check -g -feliminate-unused-debug-symbols";;
- 3) SET="splitdebug";;
+-CFLAGS | CXXFLAGS) SET="-O3 -fno-strict-aliasing -fomit-frame-pointer -fno-stack-check";;
++CFLAGS | CXXFLAGS) SET="-O3 -fno-strict-aliasing -fno-stack-check";;
+ CPPFLAGS) SET="-DNDEBUG";;
+Index: env/set-split-fulldebug-optimized.tpl
+===================================================================
+--- env.orig/set-split-fulldebug-optimized.tpl
++++ env/set-split-fulldebug-optimized.tpl
+@@ -1,3 +1,3 @@
+-CFLAGS | CXXFLAGS) SET="-O3 -fomit-frame-pointer -fno-stack-check -ggdb3 -feliminate-unused-debug-symbols";;
++CFLAGS | CXXFLAGS) SET="-O3 -fno-stack-check -ggdb3 -feliminate-unused-debug-symbols";;
+ CPPFLAGS) SET="-DNDEBUG";;
+ FEATURES) SET="installsources splitdebug";;

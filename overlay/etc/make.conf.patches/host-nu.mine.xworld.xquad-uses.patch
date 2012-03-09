@@ -4,7 +4,7 @@ Index: etc/make.conf
 ===================================================================
 --- etc.orig/make.conf
 +++ etc/make.conf
-@@ -26,6 +26,223 @@
+@@ -26,6 +26,224 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -101,7 +101,7 @@ Index: etc/make.conf
 + kdeenablefinal
 + kdehiddenvisibility
 + kdexdeltas
-+ kerberos
++ -kerberos
 + -kipi
 + kpathsea
 + ladspa
@@ -160,6 +160,7 @@ Index: etc/make.conf
 + ppds
 + -pulseaudio
 + -python
++ python3
 + qt
 + qt3support
 + qt4

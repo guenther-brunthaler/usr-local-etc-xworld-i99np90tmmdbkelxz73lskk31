@@ -43,7 +43,7 @@ Index: etc/make.conf
  # of the sound cards to be supported. See the "ALSA Sound Matrix"
  # decription in the Internet for a list of possible names.
 -#ALSA_CARDS=""
-+ALSA_CARDS="emu10k1"
++ALSA_CARDS="hda-intel"
  
  # Add files and directories here which should be put under
  # Gentoo's config protection. Such files will never be

@@ -1,1 +1,2 @@
-1 | 2) SET="-O0 -DNDEBUG -fomit-frame-pointer -fno-stack-check";;
+CFLAGS | CXXFLAGS) SET="-O0 -fomit-frame-pointer -fno-stack-check";;
+CPPFLAGS) SET="-DNDEBUG";;
