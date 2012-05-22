@@ -1194,9 +1194,10 @@
  Simplicity source file
 *
 +#!\+\[ 	]\+\[a-z/]/env simple\>
--tab 3
++#!\+\[ 	]\+\[a-z/]/env sim\>
+-tab 2
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 

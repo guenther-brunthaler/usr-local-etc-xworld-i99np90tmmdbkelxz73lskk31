@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5821,6 +5821,61 @@
+@@ -5838,6 +5838,61 @@
  # Actual configuration
  # ====================
  

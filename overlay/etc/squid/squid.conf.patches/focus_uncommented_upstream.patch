@@ -6,7 +6,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -682,32 +682,32 @@
+@@ -691,32 +691,32 @@
  #
  # Recommended minimum configuration:
  #
@@ -61,7 +61,7 @@ Index: squid/squid.conf
  
  #  TAG: follow_x_forwarded_for
  #	Allowing or Denying the X-Forwarded-For header to be followed to
-@@ -809,14 +809,14 @@ acl CONNECT method CONNECT
+@@ -818,14 +818,14 @@ acl CONNECT method CONNECT
  # Recommended minimum Access Permission configuration:
  #
  # Only allow cachemgr access from localhost
@@ -80,7 +80,7 @@ Index: squid/squid.conf
  
  # We strongly recommend the following be uncommented to protect innocent
  # web applications running on the proxy server who think the only
-@@ -830,14 +830,14 @@ http_access deny CONNECT !SSL_ports
+@@ -839,14 +839,14 @@ http_access deny CONNECT !SSL_ports
  # Example rule allowing access from your local networks.
  # Adapt localnet in the ACL section to list your (internal) IP networks
  # from where browsing should be allowed
@@ -99,7 +99,7 @@ Index: squid/squid.conf
  
  #  TAG: adapted_http_access
  #	Allowing or Denying access based on defined access lists
-@@ -1129,7 +1129,7 @@ http_access deny all
+@@ -1138,7 +1138,7 @@ http_access deny all
  #
  
  # Squid normally listens to port 3128
@@ -108,7 +108,7 @@ Index: squid/squid.conf
  
  #  TAG: https_port
  #	Usage:  [ip:]port cert=certificate.pem [key=key.pem] [options...]
-@@ -2706,7 +2706,7 @@ http_port 3128
+@@ -2723,7 +2723,7 @@ http_port 3128
  #
  
  # Leave coredumps in the first cache dir
@@ -117,7 +117,7 @@ Index: squid/squid.conf
  
  # OPTIONS FOR FTP GATEWAYING
  # -----------------------------------------------------------------------------
-@@ -3054,10 +3054,10 @@ coredump_dir /var/cache/squid
+@@ -3071,10 +3071,10 @@ coredump_dir /var/cache/squid
  #
  
  # Add any of your own refresh_pattern entries above these.
@@ -132,7 +132,7 @@ Index: squid/squid.conf
  
  #  TAG: quick_abort_min	(KB)
  #Default:
-@@ -5817,3 +5817,42 @@ refresh_pattern .		0	20%	4320
+@@ -5834,3 +5834,42 @@ refresh_pattern .		0	20%	4320
  #Default:
  # max_filedescriptors 0
  
