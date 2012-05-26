@@ -1,0 +1,120 @@
+#! /bin/bash
+#
+# New user post-initialization hook.
+#
+# Arguments: original $0, $- and $@.
+
+
+warn() {
+	echo "Warning: $1" >&2
+}
+
+
+set -e
+trap "echo 'User first-time initialization FAILED!'" 0
+echo "Running per-user first-time setup..."
+
+# Remove bootstrap leftovers.
+cd
+rm .bashrc .profile .bash_profile .bashrc_bootstrap
+
+
+# Merge in the distribution-defined skeleton files.
+cd /etc/skel
+find -maxdepth 1 -type f | while read F
+do
+	T=$HOME/$F
+	cp "$F" "$T" || warn "Cannot create '$T'!"
+	chmod "--reference=$F" "$T" || {
+		warn "Cannot set permissions for '$T'!"
+	}
+done
+
+# Rename .bash_profile or .bash_login into .profile, unless all exist.
+# Why is this done?
+#
+# Some login managers (like "slim") only source .profile
+# but not .bash_profile.
+#
+# If .bash_profile sources .bashrc, then in this case
+# .bashrc is not sourced, possibly bypassing important
+# environment variable assignments.
+#
+# Bash itself does not care and happily sources .profile
+# if .bash_profile or .bash_login could not be found.
+cd
+F=
+for T in b:.bash_profile l:.bash_login p:.profile
+do
+	if test -f "${T#*:}"
+	then
+		F=$F${T%%:*}+
+	else
+		F=$F${T%%:*}-
+	fi
+done
+case $F in
+	b-l+p-) mv .bash_login .profile;;
+	b+l-p-) mv .bash_profile .profile;;
+	b+l+p-) cp .bash_profile .profile
+esac
+
+T=$HOME/.editor-backups
+mkdir -m 700 "$T" || warn "Cannot create '$T'!"
+OLD_IFS=$IFS; IFS=`printf '\nx'`; IFS=${IFS%x}
+{
+        while read -r L
+	do
+		if [ "${L#-backpath}" != "$L" ]; then
+			L="-backpath $T"
+		fi
+		printf '%s\n' "$L"
+        done
+} < "$HOME/.joerc" > "$HOME/.joerc.$$"
+IFS=$OLD_IFS
+rm "$HOME/.joerc"
+mv "$HOME/.joerc.$$" "$HOME/.joerc"
+
+echo "Done."
+# Re-run the shell.
+cd
+ME=`whoami`
+CMD=`awk -F':' '$1 == "'"$ME"'" {print $7}' < /etc/passwd`
+if
+	# Test original $0.
+	test x"${1#-}" = x"$1"
+then
+	# Not a login shell.
+	shift
+	case $1 in
+		*i*)
+			# Interactive.
+			shift
+			exec "$CMD" -i -- "$@"
+			;;
+		*)
+	                # Non-interactive.
+			shift
+			exec "$CMD" -- "$@"
+        esac
+else
+	# Login shell.
+	shift
+	case $1 in
+		*i*)
+			# Interactive.
+			shift
+			exec "$CMD" -l -i -- "$@"
+			;;
+		*)
+			# Non-interactive.
+			shift
+			exec "$CMD" -l -- "$@"
+        esac
+fi
+warn "Cannot re-launch shell - trying workaround."
+read -p "Press Enter to continue or Ctrl-C to abort. " REPLY
+unset -f warn
+unset REPLY ME OLD_IFS F T CMD
+trap - 0
+. "$HOME/.bashrc"
