@@ -11,7 +11,7 @@ Index: squid/squid.conf
  http_port localhost:8080
 +http_port xquad.1394.emgenxx69lwyn5ctlr4nl64ul.local:8080
 +http_port xquad.eth.emgenxx69lwyn5ctlr4nl64ul.local:8080
-+http_port 192.168.86.1:8080
++http_port 10.54.38.112:8080
  
  cache_dir ufs /var/cache/squid 500 32 1024
  
