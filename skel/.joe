@@ -1165,7 +1165,7 @@
 -istep 3
 -spaces
 
- Vala source file
+ Vala/Genie source file
 *.gir
 -autoindent
 -smartbacks
@@ -1175,6 +1175,14 @@
 -istep 3
 -spaces
 *.vala
+-autoindent
+-smartbacks
+-smarthome
+-tab 3
+-indentc 32
+-istep 3
+-spaces
+*.gs
 -autoindent
 -smartbacks
 -smarthome

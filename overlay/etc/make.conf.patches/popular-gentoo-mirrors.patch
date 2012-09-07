@@ -11,4 +11,4 @@ Index: etc/make.conf
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/mnt http://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://de-mirror.org/gentoo/ rsync://gentoo.c3sl.ufpr.br/gentoo/ ftp://tux.rainside.sk/gentoo/ http://ftp.lecl.net/pub/gentoo/ http://gd.tuwien.ac.at/opsys/linux/gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ rsync://gentoo.mirror.dkm.cz/gentoo/ http://tux.rainside.sk/gentoo/"
++GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/soon /usr/local/portage/distfiles/mnt ftp://ftp.las.ic.unicamp.br/pub/gentoo/ http://www.las.ic.unicamp.br/pub/gentoo/ rsync://gentoo.lagis.at/gentoo-distfiles/ http://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ rsync://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://gentoo.lagis.at/ http://gentoo.lagis.at/ ftp://ftp.lecl.net/pub/gentoo/ http://tux.rainside.sk/gentoo/"
