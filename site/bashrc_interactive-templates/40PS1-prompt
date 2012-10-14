@@ -17,7 +17,7 @@ PS1_nlxbsjpdq50evzj6zaaprqrat() {
 			# including "screen"-sessions and X11 terminals.
 			local EFFLVL
 			EFFLVL=$SHLVL
-			if test "${TERM%%.*}" = "screen"
+			if test x"${TERM%%.*}" = x"screen"
 			then
 				EFFLVL=`expr $EFFLVL - 1`
 			fi
@@ -44,7 +44,7 @@ PS1_nlxbsjpdq50evzj6zaaprqrat() {
 			# Display umask if not identical to $2.
 			local UMASK
 			UMASK=`umask`
-			test "$UMASK" = "$2" || echo " umask($UMASK)"
+			test x"$UMASK" = x"$2" || echo " umask($UMASK)"
 		;;
 	esac
 }
@@ -72,7 +72,10 @@ genPS1_nlxbsjpdq50evzj6zaaprqrat() {
 	fi
 	local ISROOT P C0 C1 C2 H1 H2 ALERT GROUP
 	ISROOT=; P=
-	test x"`/usr/bin/whoami`" = x"root" || test "$EUID" = "0" && ISROOT=1
+	if test x"`/usr/bin/whoami`" = x"root" || test x"$EUID" = x"0"
+	then
+		ISROOT=1
+	fi
 	test -n "$ISROOT" && USERCOLOR=$ROOTCOLOR
 	C0="\[\033[01;"
 	C1="${C0}3"
@@ -86,7 +89,7 @@ genPS1_nlxbsjpdq50evzj6zaaprqrat() {
 	ALERT=; test x"`id -un`" = x"$GROUP" || ALERT=1
 	if test -z "$ISROOT" || test -n "$ALERT"
 	then
-		P=$P\u
+		P="$P\u"
 		# Add group name if user's primary group is
 		# not the same as user's private group.
 		if test -n "$ALERT"
@@ -94,7 +97,7 @@ genPS1_nlxbsjpdq50evzj6zaaprqrat() {
 			P=$P:$C1$ALERTCOLOR$C2$GROUP$C1$USERCOLOR$C2
 		fi
 		# Insert an at-sign between user/group names and host name.
-		P=$P@
+		P="$P@"
 	fi
 	# Host name.
 	P="$P\h"
