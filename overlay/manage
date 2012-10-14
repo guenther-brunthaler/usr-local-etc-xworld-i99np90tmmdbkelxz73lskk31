@@ -440,7 +440,7 @@ $tmpfile= File::Spec->catfile(File::Temp::tempdir(CLEANUP => 1), "tmp");
 $sh= new Lib::ShellCmd(
    -log => DEBUGGING ? *STDOUT{IO} : undef, -noop => !!DEBUGGING
 );
-# Honor the ROOT variable from "/etc/make.conf".
+# Honor the ROOT variable from "/etc/portage/make.conf".
 $ROOT= qx{emerge --info | grep '^ROOT='};
 $ROOT= qx{eval "$ROOT" && printf '%s' \$ROOT} || File::Spec->rootdir;
 {

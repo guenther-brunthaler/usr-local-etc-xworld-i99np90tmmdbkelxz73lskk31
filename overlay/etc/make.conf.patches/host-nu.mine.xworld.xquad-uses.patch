@@ -1,9 +1,9 @@
 USE flags for host xquad.xworld.mine.nu
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
+--- portage.orig/make.conf
++++ portage/make.conf
 @@ -26,6 +26,226 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
@@ -134,7 +134,7 @@ Index: etc/make.conf
 + mule
 + musepack
 + musicbrainz
-+ -mysql
++ mysql
 + netlink
 + nls
 + nodrm

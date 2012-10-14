@@ -4,10 +4,14 @@
 # local current directory is not changed.
 
 rapp() {
-	if [ ${#@} -eq 1 ]; then
-		(cd; "$@" &> /dev/null)&
+	if test "$#" -eq 1
+	then
+		(cd && "$@" > /dev/null 2>& 1) &
 	else
-		test "$1" = "-l" -o "$1" = "--local" && shift
-		"$@" &> /dev/null &
+		if test x"$1" = x"-l" || test x"$1" = x"--local"
+		then
+			shift
+		fi
+		"$@" > /dev/null 2>& 1 &
 	fi
 }
