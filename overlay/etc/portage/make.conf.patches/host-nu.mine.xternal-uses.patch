@@ -1,10 +1,10 @@
 USE flags for host xternal.mine.nu
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
-@@ -26,6 +26,120 @@
+--- portage.orig/make.conf
++++ portage/make.conf
+@@ -26,6 +26,121 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -77,6 +77,7 @@ Index: etc/make.conf
 + nptl
 + nsplugin
 + oav
++ -ocamlopt
 + odbc
 + ogg
 + -openmp

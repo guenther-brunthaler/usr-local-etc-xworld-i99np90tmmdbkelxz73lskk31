@@ -1,9 +1,9 @@
 Define basic settings for "xtreme.xworld.mine.nu".
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
+--- portage.orig/make.conf
++++ portage/make.conf
 @@ -35,7 +35,7 @@ USE="
  # Change this line as appropriate (i686, i586, i486 or i386).
  # All modern systems (even Athlons) should use "i686-pc-linux-gnu".
@@ -38,7 +38,16 @@ Index: etc/make.conf
  #
  # Advanced Features
  # =================
-@@ -301,6 +303,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --with-
+@@ -289,7 +291,7 @@ source /var/lib/layman/make.conf
+ #     specified on every run. Useful options include --ask, --verbose,
+ #     --usepkg and many others. Options that are not useful, such as --help,
+ #     are not filtered.
+-EMERGE_DEFAULT_OPTS="--nospinner --jobs=8 --with-bdeps=y"
++EMERGE_DEFAULT_OPTS="--nospinner --quiet --with-bdeps=y"
+ #
+ # INSTALL_MASK allows certain files to not be installed into your file system.
+ #     This is useful when you wish to filter out a certain set of files from
+@@ -301,6 +303,7 @@ EMERGE_DEFAULT_OPTS="--nospinner --jobs=
  #     the number of parallel makes (-j) to perform. The suggested number
  #     for parallel makes is CPUs+1.
  #MAKEOPTS="-j2"
@@ -65,4 +74,4 @@ Index: etc/make.conf
  #
  # Run "mirrorselect -s10 -b10" in order to update the next line.
  #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="http://gd.tuwien.ac.at/opsys/linux/gentoo/ ftp://ftp.swin.edu.au/gentoo ftp://ftp.kaist.ac.kr/gentoo/ http://gentoo.modulix.net/gentoo/ ftp://cesium.di.uminho.pt/pub/gentoo/ http://cesium.di.uminho.pt/pub/gentoo/ http://ftp.lecl.net/pub/gentoo/ http://ftp.klid.dk/ftp/gentoo/ rsync://mirror.opteamax.de/gentoo/ ftp://mirrors.sohu.com/gentoo/"
++GENTOO_MIRRORS="ftp://gd.tuwien.ac.at/opsys/linux/gentoo/ ftp://mirror.bytemark.co.uk/gentoo/ rsync://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://91.121.125.139/gentoo-distfiles/ ftp://mirror.qubenet.net/mirror/gentoo/ http://ftp.swin.edu.au/gentoo ftp://ftp.swin.edu.au/gentoo ftp://ftp.kaist.ac.kr/gentoo/ ftp://ftp.klid.dk/gentoo/ http://ftp.gentoo.bg/"
