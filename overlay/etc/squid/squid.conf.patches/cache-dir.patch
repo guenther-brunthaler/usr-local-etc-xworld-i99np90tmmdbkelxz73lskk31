@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5933,6 +5933,8 @@ always_direct allow from_localhost to_lo
+@@ -5932,6 +5932,8 @@ always_direct allow from_localhost to_lo
  
  http_port localhost:8080
  

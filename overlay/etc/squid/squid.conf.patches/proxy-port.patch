@@ -4,7 +4,7 @@ Index: squid/squid.conf
 ===================================================================
 --- squid.orig/squid.conf
 +++ squid/squid.conf
-@@ -5931,7 +5931,7 @@ http_access deny all
+@@ -5930,7 +5930,7 @@ http_access deny all
  
  always_direct allow from_localhost to_localhost
  
