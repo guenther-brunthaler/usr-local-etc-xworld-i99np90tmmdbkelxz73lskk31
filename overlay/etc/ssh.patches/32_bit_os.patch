@@ -4,9 +4,9 @@ Default is for 64 bit installations.
 
 Index: ssh/sshd_config
 ===================================================================
---- ssh.orig/sshd_config
-+++ ssh/sshd_config
-@@ -126,7 +126,7 @@
+--- ssh.orig/sshd_config	2013-03-13 04:53:10.000000000 +0100
++++ ssh/sshd_config	2013-03-13 04:53:11.000000000 +0100
+@@ -130,7 +130,7 @@
  #Banner none
  
  # override default of no subsystems
