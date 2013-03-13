@@ -12,5 +12,5 @@ Index: ssh/sshd_config
  #RSAAuthentication yes
 +# PubkeyAuthentication is used for V2 only
  #PubkeyAuthentication yes
- #AuthorizedKeysFile	.ssh/authorized_keys
  
+ # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2

@@ -6,7 +6,7 @@ Index: ssh/sshd_config
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
 @@ -10,6 +10,7 @@
- # possible, but leave them commented.  Uncommented options change a
+ # possible, but leave them commented.  Uncommented options override the
  # default value.
  
 +# anchor_1i2w6k7g8dtsxb62ev3eliju4_1
@@ -31,8 +31,8 @@ Index: ssh/sshd_config
 +# anchor_1i2w6k7g8dtsxb62ev3eliju4_4
  #RSAAuthentication yes
  #PubkeyAuthentication yes
- #AuthorizedKeysFile	.ssh/authorized_keys
-@@ -56,10 +60,12 @@
+ 
+@@ -59,10 +63,12 @@
  # Don't read the user's ~/.rhosts and ~/.shosts files
  #IgnoreRhosts yes
  
@@ -45,15 +45,15 @@ Index: ssh/sshd_config
  # Change to no to disable s/key passwords
  #ChallengeResponseAuthentication yes
  
-@@ -73,6 +79,7 @@
- #GSSAPIAuthentication no
+@@ -77,6 +83,7 @@
  #GSSAPICleanupCredentials yes
+ #GSSAPIStrictAcceptorCheck yes
  
 +# anchor_1i2w6k7g8dtsxb62ev3eliju4_7
  # Set this to 'yes' to enable PAM authentication, account processing, 
  # and session processing. If this is enabled, PAM authentication will 
  # be allowed through the ChallengeResponseAuthentication and
-@@ -84,9 +91,12 @@
+@@ -88,9 +95,12 @@
  # and ChallengeResponseAuthentication to 'no'.
  #UsePAM no
  
@@ -66,7 +66,7 @@ Index: ssh/sshd_config
  #X11Forwarding no
  #X11DisplayOffset 10
  #X11UseLocalhost yes
-@@ -94,17 +104,22 @@
+@@ -98,17 +108,22 @@
  #PrintLastLog yes
  #TCPKeepAlive yes
  #UseLogin no
@@ -89,7 +89,7 @@ Index: ssh/sshd_config
  # no default banner path
  #Banner none
  
-@@ -130,3 +145,10 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
+@@ -134,3 +149,11 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
  #	X11Forwarding no
  #	AllowTcpForwarding no
  #	ForceCommand cvs server
@@ -99,6 +99,7 @@ Index: ssh/sshd_config
 +# ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_17
 +# macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
 +# kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
++# kick-stale: anchor_1i2w6k7g8dtsxb62ev3eliju4_21
 +# EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_20
 Index: ssh/ssh_config
 ===================================================================

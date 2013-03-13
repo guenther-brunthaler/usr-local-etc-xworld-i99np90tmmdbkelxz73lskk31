@@ -32,11 +32,13 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -158,4 +158,5 @@ Ciphers blowfish-cbc
+@@ -162,6 +162,7 @@ Ciphers blowfish-cbc
  # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
  MACs hmac-ripemd160,hmac-sha1
  # kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
 +KexAlgorithms diffie-hellman-group-exchange-sha256
+ # kick-stale: anchor_1i2w6k7g8dtsxb62ev3eliju4_21
+ ClientAliveInterval 1800
  # EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_20
 Index: ssh/ssh_config
 ===================================================================

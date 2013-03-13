@@ -4,14 +4,14 @@ Index: ssh/sshd_config
 ===================================================================
 --- ssh.orig/sshd_config
 +++ ssh/sshd_config
-@@ -154,6 +154,7 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
+@@ -158,6 +158,7 @@ Subsystem	sftp	/usr/lib64/misc/sftp-serv
  # Non-default options that have been added to the config file
  AllowGroups sshlogin
  # ciphers: anchor_1i2w6k7g8dtsxb62ev3eliju4_17
 +Ciphers blowfish-cbc
  # macs: anchor_1i2w6k7g8dtsxb62ev3eliju4_18
  # kex: anchor_1i2w6k7g8dtsxb62ev3eliju4_19
- # EOF: anchor_1i2w6k7g8dtsxb62ev3eliju4_20
+ # kick-stale: anchor_1i2w6k7g8dtsxb62ev3eliju4_21
 Index: ssh/ssh_config
 ===================================================================
 --- ssh.orig/ssh_config

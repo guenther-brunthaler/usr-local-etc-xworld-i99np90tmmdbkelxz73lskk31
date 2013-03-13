@@ -6,7 +6,6 @@
 # In order to check this file for consistency, run
 # $ guards --check < series.guards
 
-# List of patches to be always included.
 add_sections.patch
 select_protocol.patch
 rsa_comments.patch
@@ -16,6 +15,7 @@ no_skey_auth.patch
 root_login.patch
 x11_fwd.patch
 ssh_group.patch
+kick_stale_connections.patch
 select_ciphers.patch
 select_macs.patch
 select_kex.patch
@@ -26,8 +26,6 @@ select_hostkeyalgos.patch
 - listen_port_876.patch
 - listen_port_877.patch
 +vmware.sciencesoft.at listen_port_6713.patch
-
-# Host-dependent patches.
 
 # Files that are not patches.
 - series.guards series
