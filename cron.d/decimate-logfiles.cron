@@ -1,13 +1,9 @@
-#!/bin/sh
+#! /bin/sh
 # Delete excess log files.
-#
-# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/hourly/decimate-logfiles.cron $
-# $Author: root(xtreme) $
-# $Date: 2006-08-23T03:52:22.370203Z $
-# $Revision: 220 $
 
-. /usr/local/bin/xworld/functions/lookup.sh --version 1 \
+set -- --version 2 \
 	--namespace decimate-logfiles_fl8bnlzry000fvzqtjg4bu8m0 \
 	LOGSIZE_EBUILDS LOGSIZE_ELOGS
+. /usr/local/bin/xworld/functions/lookup.sh
 /usr/local/bin/xworld/decimate-files -f daemon /var/log/ebuilds "$LOGSIZE_EBUILDS"
 /usr/local/bin/xworld/decimate-files -f daemon /var/log/ebuilds/elog "$LOGSIZE_ELOGS"

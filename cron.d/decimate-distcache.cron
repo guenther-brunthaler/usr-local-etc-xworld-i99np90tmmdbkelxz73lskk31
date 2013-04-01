@@ -1,11 +1,7 @@
-#!/bin/sh
+#! /bin/sh
 # Delete excess cached distribution archives.
-#
-# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/daily/decimate-distcache.cron $
-# $Author: root(xtreme) $
-# $Date: 2006-08-23T03:52:22.370203Z $
-# $Revision: 220 $
 
-. /usr/local/bin/xworld/functions/lookup.sh --version 1 DISTFILES_KEEP_SIZE
+set -- --version 2 DISTFILES_KEEP_SIZE
+. /usr/local/bin/xworld/functions/lookup.sh
 /usr/local/bin/xworld/decimate-files -f daemon -ad 1 \
 	/usr/portage/distfiles "$DISTFILES_KEEP_SIZE"

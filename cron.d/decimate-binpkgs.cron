@@ -1,13 +1,11 @@
-#!/bin/sh
+#! /bin/sh
 # Delete excess cached distribution archives.
-#
-# $HeadURL: /caches/xsvn/uxadm/trunk/usr/local/etc/cron.d/daily/decimate-binpkgs.cron $
-# $Author: root(xtreme) $
-# $Date: 2006-08-23T03:52:22.370203Z $
-# $Revision: 220 $
 
-. /usr/local/bin/xworld/functions/lookup.sh --version 1 \
+set -- --version 2 \
 	--namespace decimate-binpkgs_t96tkd6t8t5gmmb86t293kayt \
 	BINPKG_KEEP_SIZE
+. /usr/local/bin/xworld/functions/lookup.sh
+dir=/usr/portage/packages/All
+test ! -d "$dir" && exit
 /usr/local/bin/xworld/decimate-files -f daemon -ad 1 \
-	/usr/portage/packages/All "$BINPKG_KEEP_SIZE"
+	"$dir" "$BINPKG_KEEP_SIZE"
