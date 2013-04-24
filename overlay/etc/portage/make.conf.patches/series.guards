@@ -22,13 +22,14 @@ default-features.patch
 +vmware.sciencesoft.at layman-support.patch
 - localset-support.patch
 +xternal.emgenxx69lwyn5ctlr4nl64ul.local +emgenxx69lwyn5ctlr4nl64ul.local layman-and-localset-support.patch
-+emgenxx69lwyn5ctlr4nl64ul.local getdelta.patch
+- emgenxx69lwyn5ctlr4nl64ul.local getdelta.patch
 kbuild_output.patch
 +xquad.emgenxx69lwyn5ctlr4nl64ul.local +xtreme.emgenxx69lwyn5ctlr4nl64ul.local +xvaio.emgenxx69lwyn5ctlr4nl64ul.local emgenxx69lwyn5ctlr4nl64ul-gnugp.patch
 +at +net +emgenxx69lwyn5ctlr4nl64ul.local +org no-scm-auto-updates.patch
 +vmware.sciencesoft.at admin-is-ps.patch
-+emgenxx69lwyn5ctlr4nl64ul.local +xternal.emgenxx69lwyn5ctlr4nl64ul.local admin-is-gbr.patch
-+emgenxx69lwyn5ctlr4nl64ul.local popular-gentoo-mirrors.patch
++emgenxx69lwyn5ctlr4nl64ul.local admin-is-gbr.patch
++xquad.emgenxx69lwyn5ctlr4nl64ul.local popular-gentoo-mirrors.patch
+-xternal.emgenxx69lwyn5ctlr4nl64ul.local popular-gentoo-mirrors.patch
 +vmware.sciencesoft.at +xternal.emgenxx69lwyn5ctlr4nl64ul.local +emgenxx69lwyn5ctlr4nl64ul.local grub-nomount.patch
 
 # Strictly host-specific patches.

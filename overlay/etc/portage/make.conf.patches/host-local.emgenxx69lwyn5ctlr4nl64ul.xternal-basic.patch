@@ -70,8 +70,8 @@ Index: portage/make.conf
  #VIDEO_CARDS="fbdev vesa vga"
 +VIDEO_CARDS="vmware"
  
- # This entry should be the last in /etc/make.conf!
+ # This entry should be the last in /etc/portage/make.conf!
  #
- # Run "mirrorselect -s10 -b10" in order to update the next line.
+ # Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.
  #GENTOO_MIRRORS=""
 +GENTOO_MIRRORS="ftp://gd.tuwien.ac.at/opsys/linux/gentoo/ ftp://mirror.bytemark.co.uk/gentoo/ rsync://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://91.121.125.139/gentoo-distfiles/ ftp://mirror.qubenet.net/mirror/gentoo/ http://ftp.swin.edu.au/gentoo ftp://ftp.swin.edu.au/gentoo ftp://ftp.kaist.ac.kr/gentoo/ ftp://ftp.klid.dk/gentoo/ http://ftp.gentoo.bg/"

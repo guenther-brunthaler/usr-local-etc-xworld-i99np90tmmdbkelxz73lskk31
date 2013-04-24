@@ -4,7 +4,7 @@ Index: portage/make.conf
 ===================================================================
 --- portage.orig/make.conf
 +++ portage/make.conf
-@@ -26,6 +26,121 @@
+@@ -26,6 +26,122 @@
  #USE="X gtk gnome -alsa"
  # USE flags sorted alphabetically for easier maintenance.
  USE="
@@ -49,7 +49,7 @@ Index: portage/make.conf
 + imlib
 + -ipv6
 + -java
-+ java6
++ -java6
 + javascript
 + jbig
 + jp2
@@ -82,6 +82,7 @@ Index: portage/make.conf
 + ogg
 + -openmp
 + -oss
++ pch
 + pcre
 + pdf
 + -perl
