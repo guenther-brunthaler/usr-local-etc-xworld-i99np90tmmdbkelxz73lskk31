@@ -5,7 +5,7 @@ Index: portage/make.conf
 ===================================================================
 --- portage.orig/make.conf
 +++ portage/make.conf
-@@ -409,3 +409,12 @@ FEATURES="
+@@ -409,3 +409,16 @@ FEATURES="
  #                               ${PACKAGE} - see description of PORTAGE_ELOG_COMMAND
  #                               ${HOST} - FQDN of the host portage is running on
  #PORTAGE_ELOG_MAILSUBJECT="[portage] ebuild log for \${PACKAGE} on \${HOST}"
@@ -16,5 +16,9 @@ Index: portage/make.conf
 +
 +# This entry should be the last in /etc/portage/make.conf!
 +#
-+# Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.
++# Run the following commands in order to update this last entry:
++# $ m=/etc/portage/make.conf; t=$m.tmp; t2=${m}_2.tmp
++# $ mirrorselect -s10 -b10 -o > "$t"
++# $ sed -e '/^GENTOO_MIRRORS=/,$ d' "$m" > "$t2"
++# $ cat "$t2" "$t" > "$m" && rm "$t2" "$t" && unset m t t2
 +#GENTOO_MIRRORS=""

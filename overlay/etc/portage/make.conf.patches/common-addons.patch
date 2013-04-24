@@ -136,4 +136,4 @@ Index: portage/make.conf
 +
  # This entry should be the last in /etc/portage/make.conf!
  #
- # Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.
+ # Run the following commands in order to update this last entry:

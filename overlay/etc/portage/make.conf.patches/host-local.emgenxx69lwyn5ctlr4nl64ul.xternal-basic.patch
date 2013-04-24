@@ -64,7 +64,7 @@ Index: portage/make.conf
  
  # The directory containing kernel the target kernel sources.
  # Defaults to symlink "/usr/src/linux" (which is managed by "eselect kernel").
-@@ -613,8 +616,10 @@ SSL_UNIT="Preliminary usage"
+@@ -613,6 +616,7 @@ SSL_UNIT="Preliminary usage"
  # the video adapter cards to be compiled in.
  # Otherwise, all supported video adapter cards will be included.
  #VIDEO_CARDS="fbdev vesa vga"
@@ -72,6 +72,8 @@ Index: portage/make.conf
  
  # This entry should be the last in /etc/portage/make.conf!
  #
- # Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.
+@@ -622,3 +626,4 @@ SSL_UNIT="Preliminary usage"
+ # $ sed -e '/^GENTOO_MIRRORS=/,$ d' "$m" > "$t2"
+ # $ cat "$t2" "$t" > "$m" && rm "$t2" "$t" && unset m t t2
  #GENTOO_MIRRORS=""
-+GENTOO_MIRRORS="ftp://gd.tuwien.ac.at/opsys/linux/gentoo/ ftp://mirror.bytemark.co.uk/gentoo/ rsync://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://91.121.125.139/gentoo-distfiles/ ftp://mirror.qubenet.net/mirror/gentoo/ http://ftp.swin.edu.au/gentoo ftp://ftp.swin.edu.au/gentoo ftp://ftp.kaist.ac.kr/gentoo/ ftp://ftp.klid.dk/gentoo/ http://ftp.gentoo.bg/"
++GENTOO_MIRRORS="http://gd.tuwien.ac.at/opsys/linux/gentoo/ http://tux.rainside.sk/gentoo/ http://123.58.173.106/gentoo/ ftp://ftp.ntua.gr/pub/linux/gentoo/ http://mirrors.xservers.ro/gentoo/ http://123.58.173.89/gentoo/ ftp://ftp.lecl.net/pub/gentoo/ rsync://mirror.bytemark.co.uk/gentoo/ http://mirror.bytemark.co.uk/gentoo/ ftp://gentoo.lagis.at/"
