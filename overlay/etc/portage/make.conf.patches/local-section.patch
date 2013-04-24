@@ -1,10 +1,10 @@
 Add a section to the end of the file for obtaining
 locally-added settings.
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
+--- portage.orig/make.conf
++++ portage/make.conf
 @@ -409,3 +409,12 @@ FEATURES="
  #                               ${PACKAGE} - see description of PORTAGE_ELOG_COMMAND
  #                               ${HOST} - FQDN of the host portage is running on
@@ -14,7 +14,7 @@ Index: etc/make.conf
 +# Locally added configuration settings. #
 +#########################################
 +
-+# This entry should be the last in /etc/make.conf!
++# This entry should be the last in /etc/portage/make.conf!
 +#
-+# Run "mirrorselect -s10 -b10" in order to update the next line.
++# Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.
 +#GENTOO_MIRRORS=""

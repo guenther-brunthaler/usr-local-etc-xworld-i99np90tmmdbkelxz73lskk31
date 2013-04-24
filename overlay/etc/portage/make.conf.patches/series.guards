@@ -21,29 +21,29 @@ default-features.patch
 - portage-overlay-only.patch
 +vmware.sciencesoft.at layman-support.patch
 - localset-support.patch
-+xternal.mine.nu +xworld.mine.nu layman-and-localset-support.patch
-+xworld.mine.nu getdelta.patch
++xternal.emgenxx69lwyn5ctlr4nl64ul.local +emgenxx69lwyn5ctlr4nl64ul.local layman-and-localset-support.patch
++emgenxx69lwyn5ctlr4nl64ul.local getdelta.patch
 kbuild_output.patch
-+xquad.xworld.mine.nu +xtreme.xworld.mine.nu +xvaio.xworld.mine.nu xworld-gnugp.patch
-+at +net +nu +org no-scm-auto-updates.patch
++xquad.emgenxx69lwyn5ctlr4nl64ul.local +xtreme.emgenxx69lwyn5ctlr4nl64ul.local +xvaio.emgenxx69lwyn5ctlr4nl64ul.local emgenxx69lwyn5ctlr4nl64ul-gnugp.patch
++at +net +emgenxx69lwyn5ctlr4nl64ul.local +org no-scm-auto-updates.patch
 +vmware.sciencesoft.at admin-is-ps.patch
-+xworld.mine.nu +xternal.mine.nu admin-is-gbr.patch
-+xworld.mine.nu popular-gentoo-mirrors.patch
-+vmware.sciencesoft.at +xternal.mine.nu +xworld.mine.nu grub-nomount.patch
++emgenxx69lwyn5ctlr4nl64ul.local +xternal.emgenxx69lwyn5ctlr4nl64ul.local admin-is-gbr.patch
++emgenxx69lwyn5ctlr4nl64ul.local popular-gentoo-mirrors.patch
++vmware.sciencesoft.at +xternal.emgenxx69lwyn5ctlr4nl64ul.local +emgenxx69lwyn5ctlr4nl64ul.local grub-nomount.patch
 
 # Strictly host-specific patches.
 +vmware.sciencesoft.at host-at.sciencesoft.vmware-basic.patch
 +vmware.sciencesoft.at host-at.sciencesoft.vmware-uses.patch
-+xquad.xworld.mine.nu host-nu.mine.xworld.xquad-basic.patch
-+xquad.xworld.mine.nu host-nu.mine.xworld.xquad-uses.patch
-+xqrescue.xworld.mine.nu host-nu.mine.xworld.xqrescue-basic.patch
-+xqrescue.xworld.mine.nu host-nu.mine.xworld.xqrescue-uses.patch
-+xternal.mine.nu host-nu.mine.xternal-basic.patch
-+xternal.mine.nu host-nu.mine.xternal-uses.patch
-+xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-basic.patch
-+xtreme.xworld.mine.nu host-nu.mine.xworld.xtreme-uses.patch
-+xvaio.xworld.mine.nu host-nu.mine.xworld.xvaio-basic.patch
-+xvaio.xworld.mine.nu host-nu.mine.xworld.xvaio-uses.patch
++xquad.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xquad-basic.patch
++xquad.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xquad-uses.patch
++xqrescue.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xqrescue-basic.patch
++xqrescue.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xqrescue-uses.patch
++xternal.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xternal-basic.patch
++xternal.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xternal-uses.patch
++xtreme.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xtreme-basic.patch
++xtreme.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xtreme-uses.patch
++xvaio.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xvaio-basic.patch
++xvaio.emgenxx69lwyn5ctlr4nl64ul.local host-local.emgenxx69lwyn5ctlr4nl64ul.xvaio-uses.patch
 
 # Non-patch files.
 - series.guards series

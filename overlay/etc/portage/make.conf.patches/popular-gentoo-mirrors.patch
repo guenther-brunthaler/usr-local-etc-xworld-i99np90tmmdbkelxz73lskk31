@@ -2,13 +2,13 @@ Defines the most popular GENTOO_MIRRORS setting throughout the
 administrative realm, enabling multiple sites to use them
 as a shared patch.
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
+--- portage.orig/make.conf
++++ portage/make.conf
 @@ -614,4 +614,4 @@ SSL_UNIT="Preliminary usage"
- # This entry should be the last in /etc/make.conf!
+ # This entry should be the last in /etc/portage/make.conf!
  #
- # Run "mirrorselect -s10 -b10" in order to update the next line.
+ # Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.
 -#GENTOO_MIRRORS=""
 +GENTOO_MIRRORS="/usr/local/portage/distfiles/local /usr/local/portage/distfiles /usr/local/portage/distfiles/precious /usr/local/portage/distfiles/soon /usr/local/portage/distfiles/mnt ftp://ftp.las.ic.unicamp.br/pub/gentoo/ http://www.las.ic.unicamp.br/pub/gentoo/ rsync://gentoo.lagis.at/gentoo-distfiles/ http://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://ftp.jaist.ac.jp/pub/Linux/Gentoo/ rsync://ftp.jaist.ac.jp/pub/Linux/Gentoo/ ftp://gentoo.lagis.at/ http://gentoo.lagis.at/ ftp://ftp.lecl.net/pub/gentoo/ http://tux.rainside.sk/gentoo/"

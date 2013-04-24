@@ -4,10 +4,10 @@ typically defined in later patches.
 This patch primarily adds the documentation comments for those
 new sections and also gives example values.
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
+--- portage.orig/make.conf
++++ portage/make.conf
 @@ -414,6 +414,128 @@ FEATURES="
  # Locally added configuration settings. #
  #########################################
@@ -134,6 +134,6 @@ Index: etc/make.conf
 +# Otherwise, all supported video adapter cards will be included.
 +#VIDEO_CARDS="fbdev vesa vga"
 +
- # This entry should be the last in /etc/make.conf!
+ # This entry should be the last in /etc/portage/make.conf!
  #
- # Run "mirrorselect -s10 -b10" in order to update the next line.
+ # Run "mirrorselect -o /etc/portage/make.conf -s10 -b10" in order to update the next line.

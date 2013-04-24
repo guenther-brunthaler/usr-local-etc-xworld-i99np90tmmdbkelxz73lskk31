@@ -1,10 +1,10 @@
 Changes settings regarding the administrative contact to refer
 to the person "Guenther Brunthaler".
 
-Index: etc/make.conf
+Index: portage/make.conf
 ===================================================================
---- etc.orig/make.conf
-+++ etc/make.conf
+--- portage.orig/make.conf
++++ portage/make.conf
 @@ -456,7 +456,7 @@ EBZR_OFFLINE="1"
  
  # User and e-mail for Gentoo's changelog authoring tool.
