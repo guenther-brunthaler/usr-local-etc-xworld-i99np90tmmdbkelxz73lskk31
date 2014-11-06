@@ -110,7 +110,7 @@
 		'backpath' and the 'path', no trailing spaces or comments
 		after the path).
  # *** BEGIN CHANGES BLOCK
--backpath /home/user/root/.editor-backups
+-backpath /home/root/.editor-backups
  # *** END CHANGES BLOCK
 
  -floatmouse	Clicking past end of line moves the cursor past the end
@@ -638,7 +638,7 @@ mode,"spaces",rtn	% % No tabs %Zspaces%
 \i \i \|\i \i
 \i \i  default joerc file is here /etc/joe/joerc \|\i \i
 \i \i  default syntax and i18n files are here /usr/share/joe \|\i \i
-\i \i  additional documentation can be found here /usr/share/doc/joe-3.7-r1 \|\i \i
+\i \i  additional documentation can be found here /usr/share/doc/joe \|\i \i
 }
 
 {CharTable
