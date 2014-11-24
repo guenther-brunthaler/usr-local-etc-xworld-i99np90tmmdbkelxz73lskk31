@@ -1,9 +1,2 @@
-# If the user has a "~/bin"-directory, prepend it to the user's $PATH unless already there.
-{
-	test -n "$HOME" && test -d /home && test -d /home/shared \
-		&& test -d /home/shared/local \
-		&& test -e /home/shared/local/bin \
-		&& test "`
-			stat -Lc '%A %u %g' /home/shared/local/bin
-		`" = 'drwxr-s--- 0 412'
-} && export PATH="$PATH:/home/shared/local/bin" || true
+. /usr/local/libexec/xworld/sh/path_hyec3v5m8kd1vjs8k7d1wce62.sh \
+	--append /home/shared/local/bin \
