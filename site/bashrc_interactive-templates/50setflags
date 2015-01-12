@@ -1,6 +1,0 @@
-#! /bin/false
-# Sources the "setflags" snippet (which is not in PATH)
-# which is used to interactively set CFLAGS and CXXFLAGS
-# as matching the local CPU.
-
-alias setflags=". /usr/local/etc/setflags"
