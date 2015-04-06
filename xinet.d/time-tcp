@@ -1,0 +1,20 @@
+# A server for the RFC 868 time service.
+#
+# The rdate client application (such as the one in BusyBox) can use this
+# service to set the local time in a much simpler (though less exact) way than
+# using NTP.
+#
+# The service returns a 4-octet unsigned integer in network byte order,
+# representing the number of seconds elapsed since 1900-01-01 00:00:00 GMT.
+
+service time
+{
+	type        = INTERNAL
+	id          = time-stream
+	socket_type = stream
+	protocol    = tcp
+	user        = root
+	wait        = no
+	only_from   = 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12 169.254.0.0/16 127.0.0.1
+	disable     = no
+}
