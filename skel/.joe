@@ -767,7 +767,7 @@
 
  Python
 *
-+#!\+\[ 	]\+\[a-z/]\+\[ 	]python\+\[0-9]\>
++#!\+\[ 	]\+\[a-z/]\+\[ 	]python\>
 -autoindent
 -syntax python
 -smarthome
@@ -1245,5 +1245,52 @@
 -indentc 32
 -istep 2
 -spaces
+
+ Rust source file
+*.rs
+-autoindent
+-smartbacks
+-smarthome
+-tab 3
+-indentc 32
+-istep 3
+-spaces
  # *** END CHANGES BLOCK
 
+ Gentoo files
+*.ebuild
+-autoindent
+-syntax sh
+-pound_comment
+-text_delimiters do=done:if=elif=else=fi:case=esac
+-smarthome
+-smartbacks
+-indentc 9
+-istep 1
+-tab 4
+
+*.eclass
+-autoindent
+-syntax sh
+-pound_comment
+-text_delimiters do=done:if=elif=else=fi:case=esac
+-smarthome
+-smartbacks
+-indentc 9
+-istep 1
+-tab 4
+
+*/etc/portage/*
+-syntax conf
+
+*/make.conf
+-syntax sh
+
+*/etc/conf.d/*
+-syntax conf
+
+*/etc/env.d/*
+-syntax conf
+
+*/usr/portage/profiles/*
+-syntax conf
