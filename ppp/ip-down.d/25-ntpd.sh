@@ -1,4 +1,5 @@
 #! /bin/false
+START_TAG=/var/run/ntpd_autostarted.tag
 
 
 (
@@ -24,6 +25,8 @@
 
 	# Stop the ntpd service after the disconnection.
 	log debug "25-ntpd.sh executing"
+	test ! -e "$START_TAG" && exit
+	rm -- "$START_TAG"
 	if test -x /etc/init.d/ntpd; then
 		if /etc/init.d/ntpd --quiet status ; then
 			run /etc/init.d/ntpd --quiet stop

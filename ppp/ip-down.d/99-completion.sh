@@ -22,6 +22,6 @@
 	}
 	
 
-	log info "PPP link $1 has been established on $2"
-	run date +'%s' > "/var/run/ppp-$1.established"
+	log info "PPP link $1 on $2 has been brought down"
+	rm "/var/run/ppp-$1.established"
 ) || exit
