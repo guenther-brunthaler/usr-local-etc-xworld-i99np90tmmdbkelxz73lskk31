@@ -109,9 +109,6 @@
 		Directory to store backup files (one space between
 		'backpath' and the 'path', no trailing spaces or comments
 		after the path).
- # *** BEGIN CHANGES BLOCK
--backpath /home/user/root/.editor-backups
- # *** END CHANGES BLOCK
 
  -floatmouse	Clicking past end of line moves the cursor past the end
  
@@ -330,6 +327,9 @@
 				does not change the spacing you give, but
 				sometimes it must put spacing in itself.  This
 				selects how much is inserted.
+ # *** BEGIN CHANGES BLOCK
+-french
+ # *** END CHANGES BLOCK
 
 	-linums			Enable line numbers on each line
 
@@ -389,7 +389,6 @@
 -istep 1
 -indentc 9
 -rmargin 79
--french
  # *** END CHANGES BLOCK
 
  Perforce macro: use this macro (put in first column) to have joe "p4 edit"
@@ -638,7 +637,7 @@ mode,"spaces",rtn	% % No tabs %Zspaces%
 \i \i \|\i \i
 \i \i  default joerc file is here /etc/joe/joerc \|\i \i
 \i \i  default syntax and i18n files are here /usr/share/joe \|\i \i
-\i \i  additional documentation can be found here /usr/share/doc/joe-3.7-r2 \|\i \i
+\i \i  additional documentation can be found here /usr/share/doc/joe \|\i \i
 }
 
 {CharTable

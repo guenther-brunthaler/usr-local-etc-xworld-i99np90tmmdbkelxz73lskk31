@@ -4,6 +4,8 @@
 *
 -wordwrap
  # *** BEGIN CHANGES BLOCK
+ What a braindead idea! Try word-wrapping a configuration file, for
+ instance...
 --wordwrap
  # *** END CHANGES BLOCK
 
@@ -82,9 +84,6 @@
  Text file.
 *.txt
 -wordwrap
- # *** BEGIN CHANGES BLOCK
---wordwrap
- # *** END CHANGES BLOCK
 
  News/mail files.
 *.article*
@@ -699,6 +698,12 @@
 -wordwrap
 -autoindent
 -syntax html
+ # *** BEGIN CHANGES BLOCK
+--wordwrap
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
 
  JAVA
 *.java
@@ -767,7 +772,7 @@
 
  Python
 *
-+#!\+\[ 	]\+\[a-z/]\+\[ 	]python\>
++#!\+\[ 	]\+\[a-z/]\+\[ 	]python\+\[0-9]\>
 -autoindent
 -syntax python
 -smarthome
@@ -1060,6 +1065,18 @@
 -spaces
 -syntax none
  # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#!\+\[ 	]\[a-z/]\+\[a-z/]\nif\+\[ 	]false\n\+\[ 	]then\n\+\[ 	]--[=[\n\+\[ 	]fi\n\+\[ 	]exec\+\[ 	]lu\[av]\[0-9]\+\[0-9.-+_]\>
+-autoindent
+-syntax lua
+-tab 3
+-indentc 32
+-istep 3
+-spaces
+-syntax none
+ # *** END CHANGES BLOCK
 
  TCL
 *.tcl
@@ -1255,42 +1272,15 @@
 -indentc 32
 -istep 3
 -spaces
+
+ Scala source file
+*.scala
+-autoindent
+-smartbacks
+-smarthome
+-tab 3
+-indentc 32
+-istep 3
+-spaces
  # *** END CHANGES BLOCK
 
- Gentoo files
-*.ebuild
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
--smarthome
--smartbacks
--indentc 9
--istep 1
--tab 4
-
-*.eclass
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
--smarthome
--smartbacks
--indentc 9
--istep 1
--tab 4
-
-*/etc/portage/*
--syntax conf
-
-*/make.conf
--syntax sh
-
-*/etc/conf.d/*
--syntax conf
-
-*/etc/env.d/*
--syntax conf
-
-*/usr/portage/profiles/*
--syntax conf
