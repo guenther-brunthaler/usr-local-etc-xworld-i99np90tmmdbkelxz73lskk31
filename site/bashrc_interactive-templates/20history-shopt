@@ -1,7 +1,0 @@
-# Preset useful shell options (cannot do any harm).
-#
-# Enable history editing and verification
-# This is always wise to enable because otherwise
-# the wrong command might be selected for execution
-# mistakenly sometimes.
-test -n "$BASH_VERSION" && shopt -s histverify histreedit || true
