@@ -1,9 +1,12 @@
 # Re-initialize shell from current global environment.
+# Version 2019.287
+
 alias reload-env="`
 	set --
-	test -n "$BASH_VERSION" && set -- "$@" ~/.bash_profile ~/.bashrc
+	test -n "$BASH_VERSION" && set -- "$@" ~/.bash_profile
 	set -- "$@" ~/.profile
 	test -n "$ENV" && set -- "$@" $ENV
+	test -n "$BASH_VERSION" && set -- "$@" ~/.bashrc
 	found=
 	for e
 	do
