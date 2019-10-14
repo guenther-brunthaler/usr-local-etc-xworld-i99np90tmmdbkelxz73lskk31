@@ -1,0 +1,1 @@
+../profile.d.avail/50bash_history.sh

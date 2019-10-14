@@ -1,0 +1,48 @@
+# Files which must bin in /bin:
+
+/bin/cat	Utility to concatenate files to standard output
+/bin/chgrp	Utility to change file group ownership
+/bin/chmod	Utility to change file access permissions
+/bin/chown	Utility to change file owner and group
+/bin/cp		Utility to copy files and directories
+/bin/date	Utility to print or set the system data and time
+/bin/dd		Utility to convert and copy a file
+/bin/df		Utility to report filesystem disk space usage
+/bin/dmesg	Utility to print or control the kernel message buffer
+/bin/echo	Utility to display a line of text
+/bin/false	Utility to do nothing, unsuccessfully
+/bin/hostname	Utility to show or set the system's host name
+/bin/kill	Utility to send signals to processes
+/bin/ln		Utility to make links between files
+/bin/login	Utility to begin a session on the system
+/bin/ls		Utility to list directory contents
+/bin/mkdir	Utility to make directories
+/bin/mknod	Utility to make block or character special files
+/bin/more	Utility to page through text
+/bin/mount	Utility to mount a filesystem
+/bin/mv		Utility to move/rename files
+/bin/ps		Utility to report process status
+/bin/pwd	Utility to print name of current working directory
+/bin/rm		Utility to remove files or directories
+/bin/rmdir	Utility to remove empty directories
+/bin/sed	The `sed' stream editor
+/bin/sh		The Bourne command shell
+/bin/stty	Utility to change and print terminal line settings
+/bin/su		Utility to change user ID
+/bin/sync	Utility to flush filesystem buffers
+/bin/true	Utility to do nothing, successfully
+/bin/umount	Utility to unmount file systems
+/bin/uname	Utility to print system information
+
+# The following programs, or symbolic links to programs, must be in /bin if
+# the corresponding subsystem is installed:
+
+/bin/csh	The C shell (optional)
+/bin/ed		The `ed' editor (optional)
+/bin/tar	The tar archiving utility (optional)
+/bin/cpio	The cpio archiving utility (optional)
+/bin/gzip	The GNU compression utility (optional)
+/bin/gunzip	The GNU uncompression utility (optional)
+/bin/zcat	The GNU uncompression utility (optional)
+/bin/netstat	The network statistics utility (optional)
+/bin/ping	The ICMP network test utility (optional)

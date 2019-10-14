@@ -1,0 +1,213 @@
+The site-snippets framework
+===========================
+Version 2019.287.7
+
+This framework allows to globally share or site-locally augment
+site-specific customizations of your login-shell's ~/.profile
+initialization script.
+
+The directory containing this README file should have been
+checked-out, symlinked or copied as /usr/local/etc/site for a
+site-wide installation, or somewhere below the user's $HOME
+directory for a per-user installation.
+
+In both cases there should exist a per-user directory ~/.profile
+containing symlinks to all the *.sh shell snippets which shall be
+sourced by the framework.
+
+There shall also exist a symlink ~/.profile/site, which points to
+THIS directory /usr/local/etc/site or wherever the directory is
+located in case of a per-user installation.
+
+The ~/.profile directory itself shall contain all *.sh snippets
+which shall by sourced in lexicographical order, which can either
+have been created by the local user herself or just have been
+symlinked to shared pre-existing snippets in the ~/.profile/site
+subdirectory.
+
+There are basically 2 subdirectories with snippets within
+~/.profile/site to choose from:
+
+- profile.d.avail
+- profile.d.recommended
+
+"profile.d.avail" contains shared *.sh snippets available to all
+users and can be symlinked individually into ~/.profile.
+
+"profile.d.recommended" contains the site-administrator's choice
+of *.sh snippets that are useful to all the users of the local
+site. It is just a selection of relative symlinks to a subset of
+all the available snippets in the "profile.d.avail" directory.
+
+There is a helper snippet for sourcing all the snippets in
+"profile.d.recommended", which it itself also a snippet in
+"profile.d.avail". Symlink this snippet into your ~/.profile.d as
+follows, thus enabling automatic sourcing of the local site
+administrator's recommended snippets:
+
+$ ln -s site/profile.d.avail/10site_recommendations.sh ~/.profile.d
+
+In order to actually enable the framework for including
+site-specific as well as per-user custom settings in your
+~/.profile, include the following code within your ~/.profile:
+
+for sh in ~/.profile.d/*.sh
+do
+	. "$sh"
+done
+unset sh
+
+Alternatively, there is also a "profile.d.avail"-snippet
+available which does exactly that, which you could source as
+
+. ~/.profile.d/site/profile.d.avail/00user_snippets.sh
+
+within your ~/.profile login-shell initialization script.
+
+
+Site-customization
+------------------
+
+The local site administrator who sets up /usr/local/etc/site
+could of course create all files and symlinks there manually, but
+there is a better choice which allows sharing a
+version-controlled branch that can be replicated identically to
+all the sites as a starting point to build upon.
+
+A similar use-case is an individual per-user installation sharing
+the same version-controlled branch as a starting point, but
+checking it out somewhere else (below $HOME).
+
+In both cases, the checked-out copy of the re-usable version
+control branch should not be used directly, but rather be
+symlinked to the actual location.
+
+The symlinks then represent a basic subset of the available files
+or subdirectories, but the local user or site-administrator can
+add additional files or remove unwanted symlinks, thus
+customizing this "site"-subdirectory.
+
+
+Example 1: Site administrator does not need to customize
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this example, the shared branch has been checked out in such a
+way that the template for the /usr/local/etc/site is available at
+/usr/local/etc/myrealm/local/etc/site.
+
+The administrator wants to use this template unmodified, no
+customization intended at the moment. In this case, creating
+a symlink is all that is required:
+
+$ ln -s /usr/local/etc/myrealm/local/etc/site /usr/local/etc/site 
+
+After creation, the administrator should really convert this
+symlink from an absolute ones into a relative ones.
+
+Absolute symlinks should never be used without a good reason,
+because they will stop working when the whole filesystem
+containing the symlink is mounted at an unexpected location, such
+as when mounting from a rescue system. Relative symlinks will
+still work in such a case, provided the relative symlinks do not
+cross filesystem boundaries.
+
+
+Example 2: Site administrator needs to customize
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this example, the shared branch has been checked out in such a
+way that the template for the /usr/local/etc/site is available at
+/usr/local/etc/myrealm/local/etc/site.
+
+In order to set up and prepare a customizable
+/usr/local/etc/site, she does the following:
+
+$ mkdir /usr/local/etc/site
+$ cd /usr/local/etc/site
+$ ln -s /usr/local/etc/myrealm/local/etc/site shared
+$ for sh in shared/*
+do
+	ln -s -- "$sh"
+done
+$ d=profile.d.avail && rm $d && mkdir $d && (
+	cd $d
+	for sh in ../shared/$d/*
+	do
+		ln -s -- "$sh"
+	done
+)
+$ d=profile.d.recommended && rm $d && mkdir $d && (
+	cd $d
+	for sh in ../shared/$d/*
+	do
+		cp -P -- "$sh" .
+	done
+)
+
+After this, the administrator should really convert all the
+symlinks in /usr/local/etc/site from absolute ones into relative
+ones. Except for the /usr/local/etc/site/shared symlink itself,
+all the remaining symlinks that have been created should be made
+relative to the /usr/local/etc/site/shared symlink.
+
+See example 1 for some reasons why to avoid absolute symlinks.
+
+
+Example 3: Individual user using administrator-provided setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this example, the site administrator did set up a
+/usr/local/etc/site directory, and the user just wants to use it.
+
+In order to set up and prepare a customizable ~/.profile.d
+directory, the user does the following:
+
+$ mkdir -m 700 ~/.profile.d
+$ cd ~/.profile.d
+$ ln -s /usr/local/etc/site ~/.profile.d/
+$ echo >> ~/.profile \
+	'. ~/.profile.d/site/profile.d.avail/00user_snippets.sh'
+
+After creating that symlink, also try to convert it into a
+relative one for the same reasons as explained in example 1.
+
+A normal user is never intended to customize or augment the
+contents of ~/.profile.d/site, so no copying of the contents is
+necessary in this case.
+
+User-specific *.sh snippets will be created directly in the
+~/.profile.d directory instead.
+
+
+Example 4: Individual user installing independent local setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this example, the site administrator did not set up a
+/usr/local/etc/site, but the user still wants to use the
+site-snippets framework for ~/profile cumstomization.
+
+For that reason, the user has checked out the shared
+version-control branch in such a way that the template originally
+intended for the /usr/local/etc/site is now available as
+~/.config/site-pulmfbx1uutp14crtpr96c4ti. (This is a location as
+good as any other. Feel free to re-use this directory path, but
+there is no obligation.)
+
+In order to set up and prepare a customizable ~/.profile.d
+directory, she does the following:
+
+$ mkdir -m 700 ~/.profile.d
+$ cd ~/.profile.d
+$ ln -s ~/.config/site-pulmfbx1uutp14crtpr96c4ti site
+$ echo >> ~/.profile \
+	'. ~/.profile.d/site/profile.d.avail/00user_snippets.sh'
+
+After creating that symlink, also try to convert it into a
+relative one for the same reasons as explained in example 1.
+
+A normal user is never intended to customize or augment the
+contents of ~/.profile.d/site, so no copying of the contents is
+necessary in this case.
+
+User-specific *.sh snippets will be created directly in the
+~/.profile.d directory instead.
