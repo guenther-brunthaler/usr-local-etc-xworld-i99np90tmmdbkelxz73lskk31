@@ -1,6 +1,6 @@
 The site-snippets framework
 ===========================
-Version 2019.287.7
+Version 2019.298
 
 This framework allows to globally share or site-locally augment
 site-specific customizations of your login-shell's ~/.profile
@@ -11,28 +11,28 @@ checked-out, symlinked or copied as /usr/local/etc/site for a
 site-wide installation, or somewhere below the user's $HOME
 directory for a per-user installation.
 
-In both cases there should exist a per-user directory ~/.profile
-containing symlinks to all the *.sh shell snippets which shall be
-sourced by the framework.
+In both cases there should exist a per-user directory
+~/.profile.d containing symlinks to all the *.sh shell snippets
+which shall be sourced by the framework.
 
-There shall also exist a symlink ~/.profile/site, which points to
-THIS directory /usr/local/etc/site or wherever the directory is
-located in case of a per-user installation.
+There shall also exist a symlink ~/.profile.d/site, which points
+to THIS directory /usr/local/etc/site or wherever the directory
+is located in case of a per-user installation.
 
-The ~/.profile directory itself shall contain all *.sh snippets
+The ~/.profile.d directory itself shall contain all *.sh snippets
 which shall by sourced in lexicographical order, which can either
 have been created by the local user herself or just have been
-symlinked to shared pre-existing snippets in the ~/.profile/site
-subdirectory.
+symlinked to shared pre-existing snippets in the
+~/.profile.d/site subdirectory.
 
 There are basically 2 subdirectories with snippets within
-~/.profile/site to choose from:
+~/.profile.d/site to choose from:
 
 - profile.d.avail
 - profile.d.recommended
 
 "profile.d.avail" contains shared *.sh snippets available to all
-users and can be symlinked individually into ~/.profile.
+users and can be symlinked individually into ~/.profile.d.
 
 "profile.d.recommended" contains the site-administrator's choice
 of *.sh snippets that are useful to all the users of the local
