@@ -1,143 +1,93 @@
  File Type table.  This is :included by the joerc file.
+ Scripts can look like this '#!/usr/bin/python' or this '#!   /usr/bin/env  python3'
 
+ A text file
+[text]
  No '.' in file name?  Assume it's a text file and we want wordwrap on.
 *
--wordwrap
+ Text file.
+*.txt
  # *** BEGIN CHANGES BLOCK
  What a braindead idea! Try word-wrapping a configuration file, for
  instance...
 --wordwrap
  # *** END CHANGES BLOCK
 
+ Not a text file
+[not_text]
  File name with '.'?  It's probably not a text file.
 *.*
+-wordwrap
 
  Diff
+[diff]
 *
++\? [A-Za-z]
++Index: [A-Za-z]
++Only in
++Nur in
 +--- 
--syntax diff
-
-*
-+*** 
--syntax diff
-
-*
-+\[1-9]\+\[0-9]\[cda]
--syntax diff
-
++\*\*\* 
++[1-9][0-9]*[cda]
 *.diff
--syntax diff
-
 *.patch
 -syntax diff
 
-*
-+Only in
--syntax diff
-
-*
-+Nur in
--syntax diff
-
-*
-+Index: \[A-Za-z]
--syntax diff
-
-*
-+? \[A-Za-z]
--syntax diff
-
  Troff
+[troff]
 *.1
--wordwrap
--syntax troff
-
 *.1.in
 -wordwrap
 -syntax troff
 
  TeX
+[tex]
 *.tex
--wordwrap
--syntax tex
--tex_comment
--no_double_quoted
- # *** BEGIN CHANGES BLOCK
---wordwrap
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.sty
--wordwrap
 -syntax tex
 -tex_comment
 -no_double_quoted
+-wordwrap
  # *** BEGIN CHANGES BLOCK
 --wordwrap
 -indentc 32
 -istep 3
 -spaces
  # *** END CHANGES BLOCK
-
- Text file.
-*.txt
--wordwrap
 
  News/mail files.
+[email]
 *.article*
--wordwrap
--syntax mail
-
 *.followup
--wordwrap
--syntax mail
-
 *.letter
--wordwrap
--syntax mail
-
  NN newsreader
 *tmp/nn.*
--wordwrap
--syntax mail
-
  mail
 *tmp/Re*
--wordwrap
--syntax mail
-
  elm
 *tmp/snd.*
--wordwrap
--syntax mail
-
  dmail
 *tmp/dmt*
--wordwrap
--syntax mail
-
  pine
 *tmp/pico.*
+ Mutt
+*tmp/mutt-*
 -wordwrap
 -syntax mail
 
- Assembly language
+ AVR assembly language
+[avr]
+*.avr
+*.inc
+-syntax avr
+-autoindent
+-wordwrap
+-tab 8
+
+ Generic assembly language
+[assembly]
 *.asm
--wordwrap
--syntax asm
- # *** BEGIN CHANGES BLOCK
---wordwrap
- # *** END CHANGES BLOCK
-
 *.s
--wordwrap
--syntax asm
- # *** BEGIN CHANGES BLOCK
---wordwrap
- # *** END CHANGES BLOCK
-
 *.S
 -wordwrap
 -syntax asm
@@ -145,16 +95,20 @@
 --wordwrap
  # *** END CHANGES BLOCK
 
- Mason
+ Mason (Perl in HTML)
+[mason]
 *.mas
 -autoindent
+-title
 -syntax mason
 -smarthome
 -smartbacks
 
  SML
+[sml]
 *.sml
 -autoindent
+-title
 -syntax sml
 -smarthome
 -smartbacks
@@ -169,8 +123,9 @@
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\+\[a-z/]/env\+\[ 	]\+\[a-z0-9/]ocaml\>
++#![ 	]*[a-z/]+/env[ 	]+[a-z0-9/]+ocaml\>
 -autoindent
+-title
 -syntax sml
 -smarthome
 -smartbacks
@@ -184,8 +139,9 @@
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\+\[a-z0-9/]ocaml\>
++#![ 	]+[a-z0-9/]+ocaml\>
 -autoindent
+-title
 -syntax sml
 -smarthome
 -smartbacks
@@ -197,24 +153,13 @@
 -spaces
  # *** END CHANGES BLOCK
 
- OCaml lanaguage file
+ OCaml
+[ocaml]
 *.ml
--autoindent
--syntax ocaml
--smarthome
--smartbacks
--istep 2
- # *** BEGIN CHANGES BLOCK
--syntax ocaml
--tab 2
--indentc 32
--istep 2
--spaces
- # *** END CHANGES BLOCK
-
  OCaml language interface
 *.mli
 -autoindent
+-title
 -syntax ocaml
 -smarthome
 -smartbacks
@@ -228,11 +173,22 @@
  # *** END CHANGES BLOCK
 
  Ruby
+[ruby]
 *.rb
+*
++#![ 	]*[^\n]*ruby[0-9.]*\>
+*.gemspec
+*Gemfile
+*Rakefile
+*Guardfile
+*.rabl
 -autoindent
+-title
+-pound_comment
 -syntax ruby
+-text_delimiters do=end
  # *** BEGIN CHANGES BLOCK
-+#!\+\[ 	]\+\[a-z/]/env ruby\>
++#![ 	]+[a-z/]+/env ruby\>
 -tab 3
 -indentc 32
 -istep 3
@@ -240,35 +196,14 @@
  # *** END CHANGES BLOCK
 
  Perl
+[perl]
 *
-+#!\+\[ 	]\+\[a-z/]/perl\>
--autoindent
--syntax perl
--smarthome
--smartbacks
--pound_comment
--single_quoted
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
++#![ 	]*[^\n]*perl[0-9.]*\>
 *.pl
--autoindent
--syntax perl
--smarthome
--smartbacks
--pound_comment
--single_quoted
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.pm
+*.t
 -autoindent
+-title
 -syntax perl
 -smarthome
 -smartbacks
@@ -280,9 +215,11 @@
 -spaces
  # *** END CHANGES BLOCK
 
- SQL file
+ SQL
+[sql]
 *.sql
 -autoindent
+-title
 -syntax sql
 -smarthome
 -smartbacks
@@ -299,9 +236,11 @@
 -spaces
  # *** END CHANGES BLOCK
 
- AWK language file
+ AWK
+[awk]
 *.awk
 -autoindent
+-title
 -syntax awk
 -smarthome
 -smartbacks
@@ -309,9 +248,12 @@
 -pound_comment
 
  YACC
+[yacc]
 *.y
 -autoindent
+-title
 -syntax c
+-highlighter_context
 -smarthome
 -smartbacks
 -purify
@@ -326,27 +268,14 @@
 -spaces
  # *** END CHANGES BLOCK
 
- LEX
+ Lex
+[lex]
 *.l
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.lex
 -autoindent
+-title
 -syntax c
+-highlighter_context
 -smarthome
 -smartbacks
 -purify
@@ -355,242 +284,79 @@
 -cpp_comment
 -text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
 -cpara >#!;*/%
+ # *** BEGIN CHANGES BLOCK
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
 
- ADA
+ Ada
+[ada]
 *.adb
--syntax ada
--autoindent
--istep 2
--smarthome
--smartbacks
--purify
--vhdl_comment
--text_delimiters declare|Declare|DECLARE|exception|Exception|EXCEPTION|if|If|IF|loop|Loop|LOOP|case|Case|CASE|package|Package|PACKAGE|procedure|Procedure|PROCEDURE|record|Record|RECORD|function|Function|FUNCTION=end|End|END
-
 *.ads
 -syntax ada
 -autoindent
+-title
 -istep 2
 -smarthome
 -smartbacks
 -purify
 -vhdl_comment
 -text_delimiters declare|Declare|DECLARE|exception|Exception|EXCEPTION|if|If|IF|loop|Loop|LOOP|case|Case|CASE|package|Package|PACKAGE|procedure|Procedure|PROCEDURE|record|Record|RECORD|function|Function|FUNCTION=end|End|END
+ # *** BEGIN CHANGES BLOCK
+ # ANSI-Tab text file as global default.
+--guess_indent
+-smarthome
+-indentfirst
+-istep 1
+-indentc 9
+-rmargin 79
+ # *** END CHANGES BLOCK
 
  COBOL
+[cobol]
 *.cbl
--syntax cobol
-
 *.cob
 -syntax cobol
 
  REXX
+[rexx]
 *.rex
--syntax rexx
--autoindent
-
 *.REX
--syntax rexx
--autoindent
-
 *
-+#!\+\[ 	]\+\[a-z/]/rxx\>
++#![ 	]*[^\n]*rexx[0-9.]*\>
 -syntax rexx
 -autoindent
+-title
 
- sed
+ SED script
+[sed]
 *.sed
 -syntax sed
 
  Postscript
+[postscript]
 *.ps
--syntax ps
-
 *.eps
 -syntax ps
 
- C language file
+ C language
+[c]
 *.c
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.cpp
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*.cxx
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*.C
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*.hxx
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*.inl
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.cc
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
-
 *.c++
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
  C language header file
 *.h
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.h.in
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
-
 *.hpp
--autoindent
--syntax c
--smarthome
--smartbacks
--purify
--single_quoted
--c_comment
--cpp_comment
--text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.h++
+*.hh
+*.mm
 -autoindent
+-title
 -syntax c
+-highlighter_context
 -smarthome
 -smartbacks
 -purify
@@ -605,24 +371,9 @@
 -spaces
  # *** END CHANGES BLOCK
 
- Verilog file
+ Verilog
+[verilog]
 *.v
--autoindent
--syntax verilog
--istep 2
--smarthome
--smartbacks
--purify
--c_comment
--cpp_comment
--text_delimiters `ifdef|`ifndef=`else=`endif:begin=end:case|casex|casez=endcase:function=endfunction:module=endmodule:task=endtask:attribute=endattribute:primitive=endprimitive:table=endtable
--cpara >#!;*/%
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
  Verilog header file
 *.vh
 -autoindent
@@ -641,7 +392,8 @@
 -spaces
  # *** END CHANGES BLOCK
 
- VHDL file
+ VHDL
+[vhdl]
 *.vhd
 -autoindent
 -syntax vhdl
@@ -659,8 +411,16 @@
  # *** END CHANGES BLOCK
 
  XML
+[xml]
 *.xml
--wordwrap
+*.xsd
+*
++<.xml
+*.jnlp
+ RESX/.NET resource files
+*.resx
+ Ant's build.xml
+*build.xml
 -autoindent
 -syntax xml
  # *** BEGIN CHANGES BLOCK
@@ -670,33 +430,20 @@
 -spaces
  # *** END CHANGES BLOCK
 
- XML
-*.xsd
--wordwrap
+ Apple plists
+[plist]
+*.plist
 -autoindent
 -syntax xml
- # *** BEGIN CHANGES BLOCK
---wordwrap
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
 
  HTML
+[html]
 *.htm
--wordwrap
--autoindent
--syntax html
- # *** BEGIN CHANGES BLOCK
---wordwrap
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.html
 -wordwrap
 -autoindent
+-smarthome
+-smartbacks
 -syntax html
  # *** BEGIN CHANGES BLOCK
 --wordwrap
@@ -705,12 +452,25 @@
 -spaces
  # *** END CHANGES BLOCK
 
+ CSS
+[css]
+*.css
+-wordwrap
+-autoindent
+-smarthome
+-smartbacks
+-syntax css
+
  JAVA
+[java]
 *.java
 -autoindent
+-title
 -syntax java
 -smarthome
 -smartbacks
+-c_comment
+-cpp_comment
 -purify
 -cpara >#!;*/%
  # *** BEGIN CHANGES BLOCK
@@ -723,9 +483,12 @@
  JavaScript / ECMAScript
 *.js
 -autoindent
+-title
 -syntax java
 -smarthome
 -smartbacks
+-c_comment
+-cpp_comment
 -purify
 -cpara >#!;*/%
 -indentc 32
@@ -736,11 +499,14 @@
 
  JavaScript / ECMAScript
 *
-+#!\+\[ 	]\+\[a-z/]/env kjscmd\>
++#![ 	]*[a-z/]+/env kjscmd\>
 -autoindent
+-title
 -syntax java
 -smarthome
 -smartbacks
+-c_comment
+-cpp_comment
 -purify
 -cpara >#!;*/%
 -indentc 32
@@ -749,17 +515,46 @@
  # *** END CHANGES BLOCK
 
  Javascript
+[javascript]
 *.js
+*
++#![ 	]*[^\n]*nodejs[0-9.]*\>
 -autoindent
--syntax java
+-title
+-syntax js
 -smarthome
 -smartbacks
 -purify
+-c_comment
+-cpp_comment
+-cpara >#!;*/%
+
+ JSON
+[json]
+*.json
+-autoindent
+-syntax json
+-smarthome
+-smartbacks
+
+ Typescript
+[typescript]
+*.ts
+-autoindent
+-title
+-syntax typescript
+-smarthome
+-smartbacks
+-purify
+-c_comment
+-cpp_comment
 -cpara >#!;*/%
 
  Hypertext preprocessor file
+[php]
 *.php
 -autoindent
+-title
 -syntax php
 -smarthome
 -smartbacks
@@ -771,160 +566,82 @@
  # *** END CHANGES BLOCK
 
  Python
+[python]
 *
-+#!\+\[ 	]\+\[a-z/]\+\[ 	]python\+\[0-9]\>
--autoindent
--syntax python
--smarthome
--smartbacks
--purify
-
++#![ 	]*[^\n]*python[0-9.]*\>
 *.py
 -autoindent
+-title
 -syntax python
+-highlighter_context
 -smarthome
 -smartbacks
 -purify
+-single_quoted
+-pound_comment
  # *** BEGIN CHANGES BLOCK
 -indentc 32
 -istep 3
 -spaces
  # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
 
- CSH
 *
-+#!\+\[ 	]\+\[a-z/]/csh\>
++#![ 	]*[a-z/]+/env[ 	]+python\>
 -autoindent
--syntax csh
+-title
+-syntax python
+-highlighter_context
+-smarthome
+-smartbacks
+-purify
+-single_quoted
 -pound_comment
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
 
+ C-shell
+[csh]
+*
++#![ 	]*[^\n 	]*/csh\>
++#![ 	]*[^\n 	]*/tcsh\>
 *.csh
--autoindent
--syntax csh
--pound_comment
-
 *.login
--autoindent
--syntax csh
--pound_comment
-
 *.logout
--autoindent
--syntax csh
--pound_comment
-
- TCSH
-*
-+#!\+\[ 	]\+\[a-z/]/tcsh\>
--autoindent
--syntax csh
--pound_comment
-
 *.tcsh
--autoindent
--syntax csh
--pound_comment
-
 *.tcshrc
 -autoindent
+-title
 -syntax csh
 -pound_comment
 
  Shell
+[sh]
 *
-+#!\+\[ 	]\+\[a-z/]/sh\>
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
++#![ 	]*[^\n 	]*/sh\>
++#![ 	]*[^\n 	]*/bash\>
 *.sh
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
 *profile
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
- BASH Shell
-*
-+#!\+\[ 	]\+\[a-z/]/bash\>
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
 *.bash
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
+*.bashrc
 *.bash_login
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
 *.bash_logout
 -autoindent
+-title
 -syntax sh
+-highlighter_context
 -pound_comment
 -text_delimiters do=done:if=elif=else=fi:case=esac
 
- LISP
+ Lisp
+[lisp]
 *.lisp
--autoindent
--syntax lisp
--semi_comment
- # *** BEGIN CHANGES BLOCK
--tab 2
--indentc 32
--istep 2
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*
-+#!\+\[ 	]\+\[a-z/]/env\+\[ 	]\+\[a-z0-9/]scheme\>
--autoindent
--syntax lisp
--semi_comment
--tab 2
--indentc 32
--istep 2
--spaces
- # *** END CHANGES BLOCK
- # *** BEGIN CHANGES BLOCK
-
-*
-+#!\+\[ 	]\+\[a-z0-9/]scheme\>
--autoindent
--syntax lisp
--semi_comment
--tab 2
--indentc 32
--istep 2
--spaces
- # *** END CHANGES BLOCK
-
 *.lsp
--autoindent
--syntax lisp
--semi_comment
- # *** BEGIN CHANGES BLOCK
--tab 2
--indentc 32
--istep 2
--spaces
- # *** END CHANGES BLOCK
-
 *.el
 -autoindent
+-title
 -syntax lisp
 -semi_comment
  # *** BEGIN CHANGES BLOCK
@@ -933,53 +650,55 @@
 -istep 2
 -spaces
  # *** END CHANGES BLOCK
-
- KSH
-*
-+#!\+\[ 	]\+\[a-z/]/ksh\>
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
-*.ksh
--autoindent
--syntax sh
--pound_comment
--text_delimiters do=done:if=elif=else=fi:case=esac
-
- Makefile
-*akefile
--autoindent
--syntax conf
--pound_comment
-
-*akefile.in
--autoindent
--syntax conf
--pound_comment
-
-*AKEFILE
--autoindent
--syntax conf
--pound_comment
-
- Pascal
-*.p
--autoindent
--syntax pascal
--smarthome
--smartbacks
--purify
--text_delimiters begin|BEGIN|record|RECORD|case|CASE=end|END:repeat|REPEAT=until|UNTIL
  # *** BEGIN CHANGES BLOCK
+
+*
++#![ 	]*[a-z/]+/env[ 	]*[a-z0-9/]+scheme\>
+*.lsp
+*.el
+-autoindent
+-title
+-syntax lisp
+-semi_comment
+-tab 2
 -indentc 32
--istep 3
+-istep 2
+-spaces
+ # *** END CHANGES BLOCK
+ # *** BEGIN CHANGES BLOCK
+
+*
++#![ 	]*[a-z0-9/]+scheme\>
+*.lsp
+*.el
+-autoindent
+-title
+-syntax lisp
+-semi_comment
+-tab 2
+-indentc 32
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
+ Korn shell
+[ksh]
+*
++#![ 	]*[^\n 	]*/ksh\>
+*.ksh
+-autoindent
+-title
+-syntax sh
+-highlighter_context
+-pound_comment
+-text_delimiters do=done:if=elif=else=fi:case=esac
+
+ PASCAL
+[pascal]
+*.p
 *.pas
 -autoindent
+-title
 -syntax pascal
 -smarthome
 -smartbacks
@@ -992,26 +711,13 @@
  # *** END CHANGES BLOCK
 
  Fortran
+[fortran]
 *.f
--autoindent
--syntax fortran
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
+*.f90
 *.for
--autoindent
--syntax fortran
- # *** BEGIN CHANGES BLOCK
--indentc 32
--istep 3
--spaces
- # *** END CHANGES BLOCK
-
 *.FOR
 -autoindent
+-title
 -syntax fortran
  # *** BEGIN CHANGES BLOCK
 -indentc 32
@@ -1020,19 +726,25 @@
  # *** END CHANGES BLOCK
 
  Cadence SKILL
+[skill]
 *.il
 -semi_comment
 -syntax skill
 -autoindent
+-title
 -istep 3
 -indentc 32
 -smartbacks
 -smarthome
 -indentfirst
 
- LUA
+ Lua
+[lua]
 *.lua
+*
++#![ 	]*[^\n]*lua[0-9.]*\>
 -autoindent
+-title
 -syntax lua
  # *** BEGIN CHANGES BLOCK
 -tab 3
@@ -1044,8 +756,11 @@
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\+\[a-z/]/lua\>
++#!+[ 	]+[a-z/]/lua\>
+*
++#![ 	]*[^\n]*lua[0-9.]*\>
 -autoindent
+-title
 -syntax lua
 -tab 3
 -indentc 32
@@ -1056,8 +771,11 @@
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\+\[a-z/]/env\+\[ 	]lua\>
++#!+[ 	]+[a-z/]/env+[ 	]lua\>
+*
++#![ 	]*[^\n]*lua[0-9.]*\>
 -autoindent
+-title
 -syntax lua
 -tab 3
 -indentc 32
@@ -1068,8 +786,11 @@
  # *** BEGIN CHANGES BLOCK
 
 *
-+#!\+\[ 	]\[a-z/]\+\[a-z/]\nif\+\[ 	]false\n\+\[ 	]then\n\+\[ 	]--[=[\n\+\[ 	]fi\n\+\[ 	]exec\+\[ 	]lu\[av]\[0-9]\+\[0-9.-+_]\>
++#!+[ 	][a-z/]+[a-z/]\nif+[ 	]false\n+[ 	]then\n+[ 	]--[=[\n+[ 	]fi\n+[ 	]exec+[ 	]lu[av][0-9]+[0-9.-+_]\>
+*
++#![ 	]*[^\n]*lua[0-9.]*\>
 -autoindent
+-title
 -syntax lua
 -tab 3
 -indentc 32
@@ -1079,146 +800,173 @@
  # *** END CHANGES BLOCK
 
  TCL
+[tcl]
 *.tcl
 -autoindent
+-title
 -syntax tcl
  # *** BEGIN CHANGES BLOCK
--tab 3
--indentc 32
--istep 3
--spaces
+    TCL via shabang
+    (According to FHS 2.3, the following
+    executables must at least have a symlink in
+    /usr/bin if they are installed at all.)
+
+*
++#![ 	]+[a-z/]+/tclsh\>
+   -autoindent
+   -title
+   -syntax tcl
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+
+*
++#![ 	]+[a-z/]+/wish\>
+   -autoindent
+   -title
+   -syntax tcl
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+
+*
++#![ 	]+[a-z/]+/expect\>
+   -autoindent
+   -title
+   -syntax tcl
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+
+*
++#![ 	]+[a-z/]+\n#\*\\nexec tclsh\>
+   -autoindent
+   -title
+   -syntax tcl
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+
+*
++#![ 	]+[a-z/]+\n#\*\\nexec wish\>
+   -autoindent
+   -title
+   -syntax tcl
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+
+*
++#![ 	]+[a-z/]+\n#\*\\nexec expect\>
+   -autoindent
+   -title
+   -syntax tcl
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
  # *** END CHANGES BLOCK
 
- Joe Syntax File
-*.jsf
+ Go language
+[go]
+*.go
 -autoindent
--syntax jsf
+-title
+-syntax go
 -smarthome
+-smartbacks
+-purify
+-single_quoted
+-c_comment
+-text_delimiters #if|#ifdef|#ifndef=#elif=#else=#endif
+-cpara >#!;*/%
+ # *** BEGIN CHANGES BLOCK
+-indentc 9
+-istep 1
+-tab 4
+ # *** END CHANGES BLOCK
 
+ CSharp
+[c#]
+*.cs
+-autoindent
+-title
+-syntax csharp
+-smarthome
+-smartbacks
+-purify
+-cpara >#!;*/%
+-text_delimiters #region=#endregion:#if=#elif=#else=#endif
 
+ Joe Syntax File
+[jsf]
+*.jsf
 *.jsf.in
 -autoindent
+-title
 -syntax jsf
 -smarthome
 
- Autoconfig file
+ M4 / Autoconfig file
+[m4]
 *.ac
--autoindent
--syntax m4
-
- M4 file
 *.m4
 -autoindent
+-title
 -syntax m4
 
- Matlab file
+ Matlab file (clashes with objective-C)
+[matlab]
 *.m
 -wordwrap
 -syntax matlab
 
+ UNIX configuration file
+[conf]
  Automake file
 *.am
--autoindent
--syntax conf
-
- Mail file
-*tmp/mutt-*
--wordwrap
--syntax mail
-
  System RC file
 *rc
+ Makefile
+*Makefile
+*makefile.in
+*Makefile.in
+*makefile
+*AKEFILE
+-autoindent
 -syntax conf
+-pound_comment
+
+ Windows batch files
+[bat]
+*.bat
+*.cmd
+-autoindent
+-syntax batch
 
  JOERC file
+[joerc]
 *ftyperc
--syntax joerc
-
 *joerc
--syntax joerc
-
 *jmacsrc
--syntax joerc
-
 *jstarrc
--syntax joerc
-
 *rjoerc
--syntax joerc
-
 *jpicorc
--syntax joerc
-
 *joerc.in
--syntax joerc
-
 *jmacsrc.in
--syntax joerc
-
 *jstarrc.in
--syntax joerc
-
 *rjoerc.in
--syntax joerc
-
 *jpicorc.in
 -syntax joerc
  # *** BEGIN CHANGES BLOCK
 
  Completely new entries.
 
- TCL via shabang
- (According to FHS 2.3, the following
- executables must at least have a symlink in
- /usr/bin if they are installed at all.)
-*
-+#!\+\[ 	]\+\[a-z/]/tclsh\>
--autoindent
--syntax tcl
--tab 3
--indentc 32
--istep 3
--spaces
-*
-+#!\+\[ 	]\+\[a-z/]/wish\>
--autoindent
--syntax tcl
--tab 3
--indentc 32
--istep 3
--spaces
-*
-+#!\+\[ 	]\+\[a-z/]/expect\>
--autoindent
--syntax tcl
--tab 3
--indentc 32
--istep 3
--spaces
-*
-+#!\+\[ 	]\+\[a-z/]\n#\*\\\nexec tclsh\>
--autoindent
--syntax tcl
--tab 3
--indentc 32
--istep 3
--spaces
-*
-+#!\+\[ 	]\+\[a-z/]\n#\*\\\nexec wish\>
--autoindent
--syntax tcl
--tab 3
--indentc 32
--istep 3
--spaces
-*
-+#!\+\[ 	]\+\[a-z/]\n#\*\\\nexec expect\>
--autoindent
--syntax tcl
--tab 3
--indentc 32
--istep 3
--spaces
 
  Vala/Genie source file
 *.gir
@@ -1256,31 +1004,288 @@
 
  Simplicity source file
 *
-+#!\+\[ 	]\+\[a-z/]/env simple\>
-+#!\+\[ 	]\+\[a-z/]/env sim\>
++#![ 	]+[a-z/]+/env simple\>
++#![ 	]+[a-z/]+/env sim\>
 -tab 2
 -indentc 32
 -istep 2
 -spaces
+ # *** END CHANGES BLOCK
 
- Rust source file
+ Markdown
+[markdown]
+*.md
+-syntax md
+-wordwrap
+
+ YAML
+[yaml]
+*.yml
+*.yaml
+-autoindent
+-smarthome
+-smartbacks
+-pound_comment
+-syntax yaml
+
+ Debian apt
+[debian]
+*apt/sources.list
+*sources.list.*
+-pound_comment
+-syntax debian
+
+ debcontrol
+[control]
+*control
+*copyright
+-syntax debcontrol
+
+ Java's .properties
+[java_properties]
+*.properties
+ this is part of the specification:
+-encoding iso-8859-1
+-pound_comment
+-syntax properties
+
+ INI Files
+[ini]
+*.ini
+*.inf
+*hgrc
+*.gitconfig
+*.git/config
+-syntax ini
+-pound_comment
+-semi_comment
+
+ plain ERB
+[erb]
+*.erb
+-syntax erb
+
+ ERB within HTML
+[erb_html]
+*.html.erb
+-syntax htmlerb
+
+ Haml
+[haml]
+*.haml
+-syntax haml
+-istep 2
+-indentc 32
+-autoindent
+-smarthome
+-smartbacks
+
+ Erlang
+[erlang]
+*.erl
+*.eterm
+*.app.src
+*rebar.config
+*.hrl
+*.erlang
+-syntax erlang
+-autoindent
+-title
+
+ Sieve (ManageSieve)
+[sieve]
+*.sieve
+-syntax sieve
+-autoindent
+-title
+
+ Puppet
+[puppet]
+*.pp
+-syntax puppet
+-pound_comment
+-autoindent
+-title
+
+ ip(6)tables
+[iptables]
+*
++# Generated by iptables-save
++# Generated by ip6tables-save
+-syntax iptables
+-pound_comment
+
+ PowerShell
+[powershell]
+*.ps1
+*.psm1
+-syntax powershell
+-autoindent
+-smarthome
+-smartbacks
+
+ Git COMMIT_EDITMSG
+[git-commit]
+*COMMIT_EDITMSG
+-syntax git-commit
+
+ Elixir
+[elixir]
+*.ex
+*.exs
+-autoindent
+-smarthome
+-smartbacks
+-title
+-syntax elixir
+-pound_comment
+-text_delimiters do=else=end
+-indentc 32
+-istep 2
+
+ R
+[r]
+*.r
+-autoindent
+-title
+-syntax r
+-pound_comment
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+
+ Groovy
+[groovy]
+*.gvy
+*.groovy
+*.gy
+*.gsh
+-autoindent
+-title
+-syntax groovy
+-c_comment
+-cpp_comment
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+
+ Clojure
+[clojure]
+*.clj
+*.cljs
+*.cljc
+*.edn
+-autoindent
+-title
+-syntax clojure
+-semi_comment
+-smarthome
+-smartbacks
+-purify
+
+ Rust
+[rust]
 *.rs
 -autoindent
--smartbacks
+-title
+-syntax rust
+-c_comment
+-cpp_comment
 -smarthome
--tab 3
--indentc 32
--istep 3
--spaces
-
- Scala source file
-*.scala
--autoindent
 -smartbacks
--smarthome
--tab 3
+-purify
+-single_quoted
+ # *** BEGIN CHANGES BLOCK
 -indentc 32
 -istep 3
 -spaces
  # *** END CHANGES BLOCK
 
+ Coffeescript
+[coffee]
+*.coffee
+-autoindent
+-title
+-syntax coffee
+-pound_comment
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+
+ Scala
+[scala]
+*.scala
+-autoindent
+-title
+-syntax scala
+-c_comment
+-cpp_comment
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+ # *** BEGIN CHANGES BLOCK
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
+
+ Swift
+[swift]
+*.swift
+-autoindent
+-title
+-syntax swift
+-c_comment
+-cpp_comment
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+
+ D
+[d]
+*.d
+-autoindent
+-title
+-syntax d
+-c_comment
+-cpp_comment
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+
+ Docker
+[dockerfile]
+*Dockerfile
+-autoindent
+-title
+-syntax dockerfile
+-pound_comment
+
+ RPM Spec
+[spec]
+*.spec
+-autoindent
+-syntax spec
+ # *** BEGIN CHANGES BLOCK
+
+*
++#![ 	]*/bin/sh\n""":"\n.*\<python
+-autoindent
+-title
+-syntax python
+-highlighter_context
+-smarthome
+-smartbacks
+-purify
+-single_quoted
+-pound_comment
+-indentc 32
+-istep 3
+-spaces
+ # *** END CHANGES BLOCK
