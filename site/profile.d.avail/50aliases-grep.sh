@@ -1,9 +1,12 @@
 #! /bin/false
-# Version 2019.287
+# Version 2019.333
 
 case $- in
 	*i*) ;;
 	*) return
 esac
 
-alias grep="grep --color=auto"
+if echo | command grep -q --color=auto ^ > /dev/null 2>& 1
+then
+	alias grep="grep --color=auto"
+fi
