@@ -1,1 +1,0 @@
-../profile.d.avail/95bashrc.sh
