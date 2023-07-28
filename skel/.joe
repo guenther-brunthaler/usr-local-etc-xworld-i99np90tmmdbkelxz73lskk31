@@ -18,6 +18,11 @@
  File name with '.'?  It's probably not a text file.
 *.*
 -wordwrap
+ # *** BEGIN CHANGES BLOCK
+ This seems clearly to be a bug: '-wordwrap' actually enables word wrap!
+ Override and disable it.
+--wordwrap
+ # *** END CHANGES BLOCK
 
  Diff
 [diff]
@@ -606,7 +611,7 @@
 -pound_comment
  # *** BEGIN CHANGES BLOCK
 -indentc 32
--istep 3
+-istep 4
 -spaces
  # *** END CHANGES BLOCK
  # *** BEGIN CHANGES BLOCK
@@ -623,7 +628,7 @@
 -single_quoted
 -pound_comment
 -indentc 32
--istep 3
+-istep 4
 -spaces
  # *** END CHANGES BLOCK
 
@@ -1016,51 +1021,55 @@
 -highlighter_context
  # *** BEGIN CHANGES BLOCK
 
- Completely new entries.
+    Completely new entries.
 
 
- Vala/Genie source file
-*.gir
--autoindent
--smartbacks
--smarthome
--tab 3
--indentc 32
--istep 3
--spaces
-*.vala
--autoindent
--smartbacks
--smarthome
--tab 3
--indentc 32
--istep 3
--spaces
-*.gs
--autoindent
--smartbacks
--smarthome
--tab 3
--indentc 32
--istep 3
--spaces
-*.vapi
--autoindent
--smartbacks
--smarthome
--tab 3
--indentc 32
--istep 3
--spaces
+    Vala/Genie source file
+   *.gir
+      -autoindent
+   -smartbacks
+   -smarthome
 
- Simplicity source file
-*
-+#![ 	]+[a-z/]+/env simple\>
-+#![ 	]+[a-z/]+/env sim\>
--tab 2
--indentc 32
--istep 2
--spaces
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+   *.vala
+      -autoindent
+   -smartbacks
+   -smarthome
+
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+   *.gs
+      -autoindent
+   -smartbacks
+   -smarthome
+
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+   *.vapi
+      -autoindent
+   -smartbacks
+   -smarthome
+
+   -tab 3
+   -indentc 32
+   -istep 3
+   -spaces
+
+    Simplicity source file
+   *
+   +#![ 	]+[a-z/]+/env simple\>
+   +#![ 	]+[a-z/]+/env sim\>
+   -tab 2
+   -indentc 32
+   -istep 2
+   -spaces
  # *** END CHANGES BLOCK
 
  Markdown
@@ -1296,8 +1305,9 @@
 -single_quoted
 -highlighter_context
  # *** BEGIN CHANGES BLOCK
+-tab 2
 -indentc 32
--istep 3
+-istep 2
 -spaces
  # *** END CHANGES BLOCK
 
@@ -1367,6 +1377,6 @@
 -single_quoted
 -pound_comment
 -indentc 32
--istep 3
+-istep 4
 -spaces
  # *** END CHANGES BLOCK
